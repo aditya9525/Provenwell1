@@ -1,0 +1,324 @@
+{%- comment -%}
+  Shopify Section: 06 — The Superior Choice (Comparison Section)
+  Compares Polar Instant Dye Shampoo vs Regular Hair Dye with side-by-side feature cards & floating center category indicators.
+{%- endcomment -%}
+
+{%- if section.settings.enable_section -%}
+  <section class="superior-choice-section" id="superior-choice-{{ section.id }}" aria-labelledby="superior-heading-{{ section.id }}">
+    <div class="superior-choice-container">
+
+      <!-- Section Header -->
+      <div class="superior-header">
+        {%- if section.settings.heading != blank -%}
+          <h2 class="superior-main-title" id="superior-heading-{{ section.id }}">
+            {{ section.settings.heading | escape }}
+          </h2>
+        {%- endif -%}
+
+        {%- if section.settings.description != blank -%}
+          <p class="superior-sub-desc">
+            {{ section.settings.description | escape }}
+          </p>
+        {%- endif -%}
+      </div>
+
+      <!-- Main Comparison Grid Wrapper -->
+      <div class="superior-comparison-wrap">
+        
+        <!-- Left Card: Polar Hair Care (Winner) -->
+        <div class="superior-card superior-card-polar">
+          
+          <!-- Brand Logo / Header -->
+          <div class="superior-card-brand">
+            {%- if section.settings.polar_logo != blank -%}
+              <img src="{{ section.settings.polar_logo | image_url: width: 300 }}" alt="Polar Hair Care" class="superior-brand-img" loading="lazy">
+            {%- else -%}
+              <div class="superior-polar-logo-text">
+                <span class="polar-logo-main">POLAR<sup>®</sup></span>
+                <span class="polar-logo-sub">HAIR CARE</span>
+              </div>
+            {%- endif -%}
+          </div>
+
+          <!-- Product Image -->
+          <div class="superior-product-img-wrap">
+            {%- if section.settings.polar_image != blank -%}
+              <img src="{{ section.settings.polar_image | image_url: width: 400 }}" alt="Polar Hair Care Instant Dye Shampoo" class="superior-product-img" loading="lazy">
+            {%- else -%}
+              <img src="{{ 'polar-bottle-tall.png' | asset_url }}" alt="Polar Hair Care Instant Dye Shampoo" class="superior-product-img" loading="lazy">
+            {%- endif -%}
+          </div>
+
+          <!-- Polar Rows List -->
+          <div class="superior-rows-list superior-rows-left">
+            
+            <!-- Row 1 -->
+            <div class="superior-row-pill superior-pill-polar">
+              <div class="superior-badge-icon superior-badge-check" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+              <span class="superior-row-val">{{ section.settings.polar_val_1 | default: "15 applications" }}</span>
+            </div>
+
+            <!-- Row 2 -->
+            <div class="superior-row-pill superior-pill-polar">
+              <div class="superior-badge-icon superior-badge-check" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+              <span class="superior-row-val">{{ section.settings.polar_val_2 | default: "10 minutes" }}</span>
+            </div>
+
+            <!-- Row 3 -->
+            <div class="superior-row-pill superior-pill-polar">
+              <div class="superior-badge-icon superior-badge-check" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+              <span class="superior-row-val">{{ section.settings.polar_val_3 | default: "$2.33" }}</span>
+            </div>
+
+            <!-- Row 4 -->
+            <div class="superior-row-pill superior-pill-polar">
+              <div class="superior-badge-icon superior-badge-check" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+              <span class="superior-row-val">{{ section.settings.polar_val_4 | default: "Ammonia-free" }}</span>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Center Floating Category Labels Card (Desktop) -->
+        <div class="superior-center-labels-card" aria-hidden="true">
+          <div class="superior-cat-label-item">
+            <span>{{ section.settings.label_1 | default: "NUMBER OF USES" }}</span>
+          </div>
+          <div class="superior-cat-label-item">
+            <span>{{ section.settings.label_2 | default: "APPLICATION TIME" }}</span>
+          </div>
+          <div class="superior-cat-label-item">
+            <span>{{ section.settings.label_3 | default: "COST PER USE" }}</span>
+          </div>
+          <div class="superior-cat-label-item">
+            <span>{{ section.settings.label_4 | default: "INGREDIENTS" }}</span>
+          </div>
+        </div>
+
+        <!-- Right Card: Regular Hair Dye (Loser) -->
+        <div class="superior-card superior-card-regular">
+          
+          <!-- Header Title -->
+          <div class="superior-card-brand">
+            <h3 class="superior-regular-title">{{ section.settings.regular_title | default: "Regular Hair Dye" }}</h3>
+          </div>
+
+          <!-- Product Image / Illustration -->
+          <div class="superior-product-img-wrap superior-regular-img-wrap">
+            {%- if section.settings.regular_image != blank -%}
+              <img src="{{ section.settings.regular_image | image_url: width: 400 }}" alt="{{ section.settings.regular_title | escape }}" class="superior-product-img superior-bowl-img" loading="lazy">
+            {%- else -%}
+              <img src="{{ 'dye-bowl.png' | asset_url }}" alt="{{ section.settings.regular_title | escape }}" class="superior-product-img superior-bowl-img" loading="lazy">
+            {%- endif -%}
+          </div>
+
+          <!-- Regular Rows List -->
+          <div class="superior-rows-list superior-rows-right">
+            
+            <!-- Row 1 -->
+            <div class="superior-row-pill superior-pill-regular">
+              <span class="superior-row-val">{{ section.settings.regular_val_1 | default: "1 application" }}</span>
+              <div class="superior-badge-icon superior-badge-cross" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Row 2 -->
+            <div class="superior-row-pill superior-pill-regular">
+              <span class="superior-row-val">{{ section.settings.regular_val_2 | default: "40-60 minutes" }}</span>
+              <div class="superior-badge-icon superior-badge-cross" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Row 3 -->
+            <div class="superior-row-pill superior-pill-regular">
+              <span class="superior-row-val">{{ section.settings.regular_val_3 | default: "$15" }}</span>
+              <div class="superior-badge-icon superior-badge-cross" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Row 4 -->
+            <div class="superior-row-pill superior-pill-regular">
+              <span class="superior-row-val">{{ section.settings.regular_val_4 | default: "Synthetic" }}</span>
+              <div class="superior-badge-icon superior-badge-cross" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "06 — Superior Choice",
+  "tag": "section",
+  "class": "section-superior-choice",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_section",
+      "label": "Enable Section",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Main Heading",
+      "default": "The Superior Choice"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "It’s been over a 100 years since the first dyes were created, but we haven't seen any sort of significant change since then. Polar Haircare is here to change that."
+    },
+    {
+      "type": "header",
+      "content": "Polar Hair Care Settings"
+    },
+    {
+      "type": "image_picker",
+      "id": "polar_logo",
+      "label": "Polar Logo Image (Optional)"
+    },
+    {
+      "type": "image_picker",
+      "id": "polar_image",
+      "label": "Polar Product Image"
+    },
+    {
+      "type": "text",
+      "id": "polar_val_1",
+      "label": "Polar Value 1",
+      "default": "15 applications"
+    },
+    {
+      "type": "text",
+      "id": "polar_val_2",
+      "label": "Polar Value 2",
+      "default": "10 minutes"
+    },
+    {
+      "type": "text",
+      "id": "polar_val_3",
+      "label": "Polar Value 3",
+      "default": "$2.33"
+    },
+    {
+      "type": "text",
+      "id": "polar_val_4",
+      "label": "Polar Value 4",
+      "default": "Ammonia-free"
+    },
+    {
+      "type": "header",
+      "content": "Comparison Feature Labels"
+    },
+    {
+      "type": "text",
+      "id": "label_1",
+      "label": "Category Label 1",
+      "default": "NUMBER OF USES"
+    },
+    {
+      "type": "text",
+      "id": "label_2",
+      "label": "Category Label 2",
+      "default": "APPLICATION TIME"
+    },
+    {
+      "type": "text",
+      "id": "label_3",
+      "label": "Category Label 3",
+      "default": "COST PER USE"
+    },
+    {
+      "type": "text",
+      "id": "label_4",
+      "label": "Category Label 4",
+      "default": "INGREDIENTS"
+    },
+    {
+      "type": "header",
+      "content": "Regular Hair Dye Settings"
+    },
+    {
+      "type": "text",
+      "id": "regular_title",
+      "label": "Regular Hair Dye Title",
+      "default": "Regular Hair Dye"
+    },
+    {
+      "type": "image_picker",
+      "id": "regular_image",
+      "label": "Regular Dye Image (Optional)"
+    },
+    {
+      "type": "text",
+      "id": "regular_val_1",
+      "label": "Regular Value 1",
+      "default": "1 application"
+    },
+    {
+      "type": "text",
+      "id": "regular_val_2",
+      "label": "Regular Value 2",
+      "default": "40-60 minutes"
+    },
+    {
+      "type": "text",
+      "id": "regular_val_3",
+      "label": "Regular Value 3",
+      "default": "$15"
+    },
+    {
+      "type": "text",
+      "id": "regular_val_4",
+      "label": "Regular Value 4",
+      "default": "Synthetic"
+    }
+  ],
+  "presets": [
+    {
+      "name": "06 — Superior Choice"
+    }
+  ]
+}
+{% endschema %}

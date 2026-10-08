@@ -1,0 +1,250 @@
+{%- comment -%}
+  Shopify Main Product Section
+  Complete responsive product page with dynamic variant pricing, bundles, reward unlocks, spotlight reviews, trust badges, and accordions.
+{%- endcomment -%}
+
+<section class="product-section" id="product-section-{{ section.id }}" data-section-id="{{ section.id }}">
+  <div class="product-container">
+
+    <!-- Left Column: Gallery & Spotlight -->
+    <div class="product-left-col">
+      <div class="product-gallery">
+        <div class="main-image-wrapper">
+          <div class="badge-per-use">
+            <span>as low as</span>
+            <strong>$2.33</strong>
+            <span>per use</span>
+          </div>
+
+          {%- if product.featured_image != blank -%}
+            <img id="mainProductImage-{{ section.id }}" src="{{ product.featured_image | image_url: width: 800 }}" alt="{{ product.title | escape }}" class="main-product-img">
+          {%- else -%}
+            <img id="mainProductImage-{{ section.id }}" src="{{ 'product-black-main.png' | asset_url }}" alt="Polar Instant Hair Dye Shampoo" class="main-product-img">
+          {%- endif -%}
+        </div>
+
+        <!-- Thumbnails Slider -->
+        <div class="thumbnails-container">
+          <button class="thumb-nav-btn prev" type="button" aria-label="Previous image">
+            <svg width="8" height="14" viewBox="0 0 8 14" fill="none"><path d="M7 1L1 7L7 13" stroke="#1E2123" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="thumbnails-slider" id="thumbnailsSlider-{{ section.id }}">
+            {%- for media in product.media -%}
+              <button class="thumb-item{% if forloop.first %} active{% endif %}" data-img="{{ media | image_url: width: 800 }}" type="button">
+                <img src="{{ media | image_url: width: 120 }}" alt="{{ media.alt | escape }}">
+              </button>
+            {%- else -%}
+              <button class="thumb-item active" data-img="{{ 'product-black-main.png' | asset_url }}" type="button"><img src="{{ 'product-black-main.png' | asset_url }}" alt="Natural Black Bottle & Box"></button>
+              <button class="thumb-item" data-img="{{ 'spotlight-caroline.png' | asset_url }}" type="button"><img src="{{ 'spotlight-caroline.png' | asset_url }}" alt="Before After Caroline"></button>
+              <button class="thumb-item video-thumb" data-img="{{ 'customer_story.jpg' | asset_url }}" type="button">
+                <img src="{{ 'customer_story.jpg' | asset_url }}" alt="Video Review">
+                <span class="thumb-play-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="#FFFFFF"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg></span>
+              </button>
+            {%- endfor -%}
+          </div>
+          <button class="thumb-nav-btn next" type="button" aria-label="Next image">
+            <svg width="8" height="14" viewBox="0 0 8 14" fill="none"><path d="M1 1L7 7L1 13" stroke="#1E2123" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Spotlight Card -->
+      <div class="spotlight-card">
+        <div class="spotlight-media">
+          <img src="{{ 'spotlight-caroline.png' | asset_url }}" alt="Before & After Caroline T." class="spotlight-img">
+          <div class="split-badges">
+            <span class="pill-badge before-pill">BEFORE</span>
+            <span class="pill-badge after-pill">AFTER</span>
+          </div>
+        </div>
+        <div class="spotlight-content">
+          <div class="star-rating-row">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <h3 class="spotlight-title">I FEEL LIKE MYSELF AGAIN</h3>
+          <p class="spotlight-quote">&ldquo;I look and feel like my younger self again. It’s nice having color that looks natural and not fake or harsh.&rdquo;</p>
+          <div class="spotlight-author-row">
+            <span class="spotlight-author">Caroline T., Austin, TX</span>
+            <div class="verified-buyer-pill">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>VERIFIED BUYER</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Column: Product Details & Actions -->
+    <div class="product-right-col">
+      <div class="product-reviews-header">
+        <div class="stars-gold">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <a href="#reviews" class="reviews-count-link"><strong>(26,966)</strong> <span>Verified Reviews</span></a>
+      </div>
+
+      <h1 class="product-main-title">{{ product.title | default: 'Instant Dye Shampoo' }}</h1>
+      <h2 class="product-subtitle">THE EASIEST WAY TO COVER GRAYS NATURALLY</h2>
+
+      <hr class="product-divider">
+
+      <!-- Pricing Row -->
+      <div class="product-pricing-row">
+        <span class="compare-at-price" id="comparePrice-{{ section.id }}">{{ product.compare_at_price | default: 490000 | money }}</span>
+        <span class="current-price" id="currentPrice-{{ section.id }}">{{ product.price | default: 350000 | money }}</span>
+        <div class="discount-pill" id="discountPill-{{ section.id }}">FALL SALE | SAVE 29%</div>
+      </div>
+
+      <!-- 4-Benefit Feature Grid -->
+      <div class="features-highlight-box">
+        <div class="feature-item">
+          <span class="feature-check-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+          <div class="feature-text"><span>Covers grays</span><strong>in just 10 minutes</strong></div>
+        </div>
+        <div class="feature-item">
+          <span class="feature-check-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+          <div class="feature-text"><span>Protects hair with</span><strong>ammonia-free formula</strong></div>
+        </div>
+        <div class="feature-item">
+          <span class="feature-check-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+          <div class="feature-text"><span>As easy as</span><strong>regular shampoo</strong></div>
+        </div>
+        <div class="feature-item">
+          <span class="feature-check-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+          <div class="feature-text"><span>Suitable for</span><strong>ALL hair types</strong></div>
+        </div>
+      </div>
+
+      <!-- Color Swatches -->
+      <div class="color-selection-wrapper">
+        <div class="section-label-row">
+          <span class="label-title">Choose Color:</span>
+          <strong class="selected-color-name" id="selectedColorName-{{ section.id }}">Black</strong>
+        </div>
+        <div class="color-swatches-list">
+          <button type="button" class="color-swatch-btn active" data-color="Black"><div class="swatch-img-box"><img src="{{ 'swatch-black.png' | asset_url }}" alt="Black Swatch" class="swatch-img"></div><span class="swatch-label">Black</span></button>
+          <button type="button" class="color-swatch-btn" data-color="Dark Brown"><div class="swatch-img-box"><img src="{{ 'swatch-dark-brown.png' | asset_url }}" alt="Dark Brown Swatch" class="swatch-img"></div><span class="swatch-label">Dark Brown</span></button>
+          <button type="button" class="color-swatch-btn" data-color="Medium Brown"><div class="swatch-img-box"><img src="{{ 'swatch-medium-brown.png' | asset_url }}" alt="Medium Brown Swatch" class="swatch-img"></div><span class="swatch-label">Medium Brown</span></button>
+        </div>
+      </div>
+
+      <!-- Bundle Selector -->
+      <div class="quantity-bundles-wrapper">
+        <div class="section-label-row"><span class="label-title">Select Quantity:</span></div>
+        <div class="bundles-grid">
+          <div class="bundle-card active" data-qty="1" data-price="350000" data-compare="490000" data-save="29%">
+            <div class="bundle-box-btn"><span class="bundle-qty-title">1 Bottle</span></div>
+            <span class="bundle-price-each">Rs. 3,500 Each</span>
+          </div>
+          <div class="bundle-card" data-qty="2" data-price="590000" data-compare="980000" data-save="40%">
+            <div class="floating-benefit-badge shipping-badge">+ Free Shipping</div>
+            <div class="bundle-box-btn"><span class="bundle-qty-title">2 Bottles</span></div>
+            <span class="bundle-price-each">Rs. 2,950 Each</span>
+          </div>
+          <div class="bundle-card" data-qty="3" data-price="699900" data-compare="1470000" data-save="52%">
+            <div class="floating-benefit-badge conditioner-badge">+ Free Conditioner</div>
+            <div class="bundle-box-btn"><span class="bundle-qty-title">3 Bottles</span></div>
+            <span class="bundle-price-each">Rs. 2,333 Each</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Rewards Unlock Box -->
+      <div class="rewards-unlock-card">
+        <div class="rewards-header">
+          <span class="rewards-title">Fall Sale Exclusive</span>
+          <span class="rewards-unlocked-status" id="rewardsStatusText-{{ section.id }}">0 of 2 unlocked</span>
+        </div>
+        <div class="rewards-body">
+          <div class="rewards-progress-track"><div class="rewards-progress-fill" id="rewardsProgressFill-{{ section.id }}" style="width: 15%;"></div></div>
+          <div class="rewards-items-grid">
+            <div class="reward-item" id="rewardShipping-{{ section.id }}">
+              <div class="reward-icon-wrapper">
+                <div class="lock-indicator"><svg width="9" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
+                <div class="reward-img-badge"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E63639" stroke-width="2"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg></div>
+              </div>
+              <div class="reward-text-col"><span class="reward-name">Free Shipping</span><span class="reward-req">2 Bottles</span></div>
+            </div>
+            <div class="reward-item" id="rewardConditioner-{{ section.id }}">
+              <div class="reward-icon-wrapper">
+                <div class="lock-indicator"><svg width="9" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
+                <div class="reward-img-badge"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg></div>
+              </div>
+              <div class="reward-text-col"><span class="reward-name">Free Conditioner</span><span class="reward-req">3 Bottles · Rs. 2,300.00</span></div>
+            </div>
+          </div>
+          <p class="rewards-hint" id="rewardsHintText-{{ section.id }}">Add 1 more bottle to unlock free shipping</p>
+        </div>
+      </div>
+
+      <!-- Add to Cart Form -->
+      {%- form 'product', product, id: 'product-form' -%}
+        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+        <input type="hidden" name="quantity" id="selectedQuantityInput-{{ section.id }}" value="1">
+        <button type="submit" class="btn-add-to-cart"><span>ADD TO CART</span></button>
+      {%- endform -%}
+
+      <p class="moneyback-guarantee-text"><strong>30 Day Money-Back-Guarantee.</strong> If it doesn't work for you we'll refund no questions asked</p>
+
+      <!-- Warning Stock Box -->
+      <div class="warning-stock-box">
+        <div class="warning-icon-col">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+        </div>
+        <div class="warning-content-col">
+          <h3 class="warning-title">WARNING: Low Stock Notice</h3>
+          <p class="warning-desc">This product sold out <strong>11 times</strong> last year. We encourage you to take advantage of the <strong>Limited Fall Sale</strong> and buy now.</p>
+          <p class="warning-ps"><strong>PS:</strong> Only available here, don't buy fakes on Amazon/eBay</p>
+        </div>
+      </div>
+
+      <!-- Trust Badges -->
+      <div class="trust-grid-box">
+        <div class="trust-card"><div class="trust-icon-wrap"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2B3344" stroke-width="1.6"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg></div><strong class="trust-title">30-Day Money Back</strong><span class="trust-subtitle">Hassle-free money-back option</span></div>
+        <div class="trust-card"><div class="trust-icon-wrap"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2B3344" stroke-width="1.6"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg></div><strong class="trust-title">Insured & Fast Shipping</strong><span class="trust-subtitle">Worldwide delivery to your door</span></div>
+        <div class="trust-card"><div class="trust-icon-wrap"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2B3344" stroke-width="1.6"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg></div><strong class="trust-title">Returns Accepted</strong><span class="trust-subtitle">Easy and simple return process</span></div>
+        <div class="trust-card"><div class="trust-icon-wrap"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2B3344" stroke-width="1.6"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg></div><strong class="trust-title">Secure Payment</strong><span class="trust-subtitle">Protected and safe transactions</span></div>
+      </div>
+
+      <!-- Accordions -->
+      <div class="product-accordions-group">
+        <div class="accordion-item active">
+          <button class="accordion-header" type="button"><span class="accordion-title">Description</span><svg class="accordion-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1.5L6 6.5L11 1.5" stroke="#1E2123" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="accordion-panel"><p>{{ product.description | default: 'Experience salon-grade gray coverage from the comfort of your own shower. Polar Hair Care Instant Dye Shampoo naturally covers stubborn gray hairs in under 10 minutes.' }}</p></div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-header" type="button"><span class="accordion-title">Ingredients</span><svg class="accordion-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1.5L6 6.5L11 1.5" stroke="#1E2123" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="accordion-panel"><p>Aqua (Water), Argan Oil, Polygonum Multiflorum Extract, Ginseng Extract, Keratin, Ammonia-Free Plant Dye Actives, Glycerin, Fragrance.</p></div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-header" type="button"><span class="accordion-title">Shipping & delivery</span><svg class="accordion-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1.5L6 6.5L11 1.5" stroke="#1E2123" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="accordion-panel"><p>Dispatched within 24-48 hours. Free expedited shipping on 2+ bottles.</p></div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-header" type="button"><span class="accordion-title">Price breakdown</span><svg class="accordion-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1.5L6 6.5L11 1.5" stroke="#1E2123" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="accordion-panel"><p>Up to 15 full uses per bottle = as low as $2.33 / Rs. 195 per use.</p></div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-header" type="button"><span class="accordion-title">How To Use</span><svg class="accordion-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1.5L6 6.5L11 1.5" stroke="#1E2123" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="accordion-panel"><p>1. Put on gloves. 2. Pump into damp hair. 3. Massage 3-5 mins. 4. Wait 10 mins. 5. Rinse until clear.</p></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Main Product",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_sticky_info",
+      "label": "Enable sticky gallery on desktop",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Main Product"
+    }
+  ]
+}
+{% endschema %}

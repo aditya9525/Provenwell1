@@ -1,0 +1,503 @@
+{%- comment -%}
+  Shopify Section: The Results Speak For Themselves (Swiper.js Reviews Carousel)
+  Features Women's & Men's toggle tabs, Swiper.js touch carousel, custom pill pagination, and dynamic blocks.
+{%- endcomment -%}
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+{%- if section.settings.enable_section -%}
+  <section class="results-carousel-section" id="results-carousel-{{ section.id }}" aria-labelledby="results-title-{{ section.id }}">
+    <div class="results-carousel-container">
+
+      <!-- Top 5 Gold Star Icon Badge -->
+      <div class="results-top-stars" aria-label="5 out of 5 stars">
+        <span class="star-icon">&#9733;</span>
+        <span class="star-icon">&#9733;</span>
+        <span class="star-icon">&#9733;</span>
+        <span class="star-icon">&#9733;</span>
+        <span class="star-icon">&#9733;</span>
+      </div>
+
+      <!-- Main Heading -->
+      {%- if section.settings.heading != blank -%}
+        <h2 class="results-main-title" id="results-title-{{ section.id }}">
+          {{ section.settings.heading | escape }}
+        </h2>
+      {%- endif -%}
+
+      <!-- Gender Results Toggle Filter Tabs -->
+      <div class="results-tabs-wrapper" role="tablist" aria-label="Results Category Tabs">
+        <button type="button" class="results-tab-btn active" role="tab" aria-selected="true" data-tab="women">
+          {{ section.settings.tab_women_label | default: "WOMEN’S RESULTS" | escape }}
+        </button>
+        <button type="button" class="results-tab-btn" role="tab" aria-selected="false" data-tab="men">
+          {{ section.settings.tab_men_label | default: "MEN’S RESULTS" | escape }}
+        </button>
+      </div>
+
+      <!-- Swiper Carousel Container -->
+      <div class="swiper results-swiper" id="resultsSwiper-{{ section.id }}">
+        <div class="swiper-wrapper">
+          
+          {%- if section.blocks.size > 0 -%}
+            {%- for block in section.blocks -%}
+              <div class="swiper-slide result-card-slide" data-category="{{ block.settings.category | default: 'women' }}" {{ block.shopify_attributes }}>
+                <div class="result-card">
+                  
+                  <!-- Card Image with Before/After Overlays -->
+                  <div class="result-card-media">
+                    {%- if block.settings.image != blank -%}
+                      <img src="{{ block.settings.image | image_url: width: 600 }}" alt="{{ block.settings.author | default: 'Customer Result' | escape }}" class="result-img" loading="lazy">
+                    {%- else -%}
+                      <img src="{{ 'spotlight-caroline.png' | asset_url }}" alt="Before and After Result" class="result-img" loading="lazy">
+                    {%- endif -%}
+                    
+                    <div class="result-badge-overlay">
+                      <span class="badge-pill before-pill">BEFORE</span>
+                      <span class="badge-pill after-pill">AFTER</span>
+                    </div>
+                  </div>
+
+                  <!-- Card Review Details -->
+                  <div class="result-card-body">
+                    <div class="result-card-stars" aria-label="5 Star Rating">
+                      <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+                    </div>
+
+                    <p class="result-card-quote">
+                      {{ block.settings.quote | escape }}
+                    </p>
+
+                    <div class="result-card-footer">
+                      <span class="result-author">{{ block.settings.author | escape }}</span>
+                      
+                      {%- if block.settings.verified -%}
+                        <div class="verified-pill">
+                          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                          </svg>
+                          <span>VERIFIED BUYER</span>
+                        </div>
+                      {%- endif -%}
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            {%- endfor -%}
+          {%- else -%}
+            <!-- Default Sample Slides -->
+            
+            <!-- Slide 1 -->
+            <div class="swiper-slide result-card-slide" data-category="women">
+              <div class="result-card">
+                <div class="result-card-media">
+                  <img src="{{ 'customer_story.jpg' | asset_url }}" alt="Customer Result 1" class="result-img" loading="lazy">
+                  <div class="result-badge-overlay">
+                    <span class="badge-pill before-pill">BEFORE</span>
+                    <span class="badge-pill after-pill">AFTER</span>
+                  </div>
+                </div>
+                <div class="result-card-body">
+                  <div class="result-card-stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>
+                  <p class="result-card-quote">I absolutely love this ! It’s so easy to use like regular shampoo. The gray coverage looked amazing. No mess, no long salon visits, just quick color in one step. Totally worth it!</p>
+                  <div class="result-card-footer">
+                    <span class="result-author">Demara O., Miami, FL</span>
+                    <div class="verified-pill">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                      <span>VERIFIED BUYER</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="swiper-slide result-card-slide" data-category="women">
+              <div class="result-card">
+                <div class="result-card-media">
+                  <img src="{{ 'spotlight-caroline.png' | asset_url }}" alt="Customer Result 2" class="result-img" loading="lazy">
+                  <div class="result-badge-overlay">
+                    <span class="badge-pill before-pill">BEFORE</span>
+                    <span class="badge-pill after-pill">AFTER</span>
+                  </div>
+                </div>
+                <div class="result-card-body">
+                  <div class="result-card-stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>
+                  <p class="result-card-quote">I was pleasantly surprised! Covered my grays in 10 minutes, no mess and no strong smell! Very happy with my Order!</p>
+                  <div class="result-card-footer">
+                    <span class="result-author">Laura T., Austin, TX</span>
+                    <div class="verified-pill">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                      <span>VERIFIED BUYER</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="swiper-slide result-card-slide" data-category="women">
+              <div class="result-card">
+                <div class="result-card-media">
+                  <img src="{{ 'before_after.jpg' | asset_url }}" alt="Customer Result 3" class="result-img" loading="lazy">
+                  <div class="result-badge-overlay">
+                    <span class="badge-pill before-pill">BEFORE</span>
+                    <span class="badge-pill after-pill">AFTER</span>
+                  </div>
+                </div>
+                <div class="result-card-body">
+                  <div class="result-card-stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>
+                  <p class="result-card-quote">&ldquo;Quick and easy. Color looks really good. No staining on hairline or face / ears. Love this product&rdquo;</p>
+                  <div class="result-card-footer">
+                    <span class="result-author">Priadashni T., Boston, MA</span>
+                    <div class="verified-pill">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                      <span>VERIFIED BUYER</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 4 -->
+            <div class="swiper-slide result-card-slide" data-category="women">
+              <div class="result-card">
+                <div class="result-card-media">
+                  <img src="{{ 'customer_story.jpg' | asset_url }}" alt="Customer Result 4" class="result-img" loading="lazy">
+                  <div class="result-badge-overlay">
+                    <span class="badge-pill before-pill">BEFORE</span>
+                    <span class="badge-pill after-pill">AFTER</span>
+                  </div>
+                </div>
+                <div class="result-card-body">
+                  <div class="result-card-stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>
+                  <p class="result-card-quote">&ldquo;Got the red and it covered all grays. No nasty smell. Didn't stain my skin. Finally an easy to use solution.&rdquo;</p>
+                  <div class="result-card-footer">
+                    <span class="result-author">Kara P., Nashville, TN</span>
+                    <div class="verified-pill">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                      <span>VERIFIED BUYER</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 5 -->
+            <div class="swiper-slide result-card-slide" data-category="women">
+              <div class="result-card">
+                <div class="result-card-media">
+                  <img src="{{ 'spotlight-caroline.png' | asset_url }}" alt="Customer Result 5" class="result-img" loading="lazy">
+                  <div class="result-badge-overlay">
+                    <span class="badge-pill before-pill">BEFORE</span>
+                    <span class="badge-pill after-pill">AFTER</span>
+                  </div>
+                </div>
+                <div class="result-card-body">
+                  <div class="result-card-stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>
+                  <p class="result-card-quote">&ldquo;I was a little skeptical, but it really works!!! The grey on my edges grow wildly and they tend to be hard the dye, but this process was effortlessly and I'm loving the results!&rdquo;</p>
+                  <div class="result-card-footer">
+                    <span class="result-author">Krista M., Toronto, CA</span>
+                    <div class="verified-pill">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                      <span>VERIFIED BUYER</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 6 -->
+            <div class="swiper-slide result-card-slide" data-category="women">
+              <div class="result-card">
+                <div class="result-card-media">
+                  <img src="{{ 'before_after.jpg' | asset_url }}" alt="Customer Result 6" class="result-img" loading="lazy">
+                  <div class="result-badge-overlay">
+                    <span class="badge-pill before-pill">BEFORE</span>
+                    <span class="badge-pill after-pill">AFTER</span>
+                  </div>
+                </div>
+                <div class="result-card-body">
+                  <div class="result-card-stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>
+                  <p class="result-card-quote">&ldquo;Love the all naturalness of this hair color shampoo and ease of using it. I get compliments on my hair color actually!&rdquo;</p>
+                  <div class="result-card-footer">
+                    <span class="result-author">Busie L., Los Angeles, CA</span>
+                    <div class="verified-pill">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                      <span>VERIFIED BUYER</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 7 (Men Sample) -->
+            <div class="swiper-slide result-card-slide" data-category="men">
+              <div class="result-card">
+                <div class="result-card-media">
+                  <img src="{{ 'customer_story.jpg' | asset_url }}" alt="Men Result 1" class="result-img" loading="lazy">
+                  <div class="result-badge-overlay">
+                    <span class="badge-pill before-pill">BEFORE</span>
+                    <span class="badge-pill after-pill">AFTER</span>
+                  </div>
+                </div>
+                <div class="result-card-body">
+                  <div class="result-card-stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>
+                  <p class="result-card-quote">&ldquo;Best beard and gray hair wash I have ever tried. Looks completely natural, not jet black or dyed looking. Takes only 5 minutes in the shower.&rdquo;</p>
+                  <div class="result-card-footer">
+                    <span class="result-author">Marcus D., Chicago, IL</span>
+                    <div class="verified-pill">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                      <span>VERIFIED BUYER</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 8 (Men Sample) -->
+            <div class="swiper-slide result-card-slide" data-category="men">
+              <div class="result-card">
+                <div class="result-card-media">
+                  <img src="{{ 'spotlight-caroline.png' | asset_url }}" alt="Men Result 2" class="result-img" loading="lazy">
+                  <div class="result-badge-overlay">
+                    <span class="badge-pill before-pill">BEFORE</span>
+                    <span class="badge-pill after-pill">AFTER</span>
+                  </div>
+                </div>
+                <div class="result-card-body">
+                  <div class="result-card-stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>
+                  <p class="result-card-quote">&ldquo;No messy bowls, no staining on my hands or neck. Blends away all sideburn grays cleanly. My wife couldn't even tell I dyed it!&rdquo;</p>
+                  <div class="result-card-footer">
+                    <span class="result-author">David R., Seattle, WA</span>
+                    <div class="verified-pill">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                      <span>VERIFIED BUYER</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          {%- endif -%}
+
+        </div>
+
+        <!-- Pill/Dash Swiper Pagination -->
+        <div class="results-pagination-wrapper">
+          <div class="swiper-pagination results-swiper-pagination"></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const sectionEl = document.getElementById('results-carousel-{{ section.id }}');
+      if (!sectionEl) return;
+
+      const swiperContainer = sectionEl.querySelector('.results-swiper');
+      const tabBtns = sectionEl.querySelectorAll('.results-tab-btn');
+      const allSlides = Array.from(sectionEl.querySelectorAll('.result-card-slide'));
+
+      let swiperInstance = new Swiper(swiperContainer, {
+        slidesPerView: 1.15,
+        spaceBetween: 16,
+        grabCursor: true,
+        watchOverflow: true,
+        pagination: {
+          el: sectionEl.querySelector('.results-swiper-pagination'),
+          clickable: true,
+          renderBullet: function(index, className) {
+            return '<span class="' + className + ' results-pill-bullet"></span>';
+          }
+        },
+        breakpoints: {
+          480: {
+            slidesPerView: 1.6,
+            spaceBetween: 16
+          },
+          768: {
+            slidesPerView: 2.5,
+            spaceBetween: 20
+          },
+          1024: {
+            slidesPerView: 3.5,
+            spaceBetween: 24
+          },
+          1200: {
+            slidesPerView: 5.9,
+            spaceBetween: 24
+          }
+        }
+      });
+
+      // Filter tabs logic
+      function filterCategory(category) {
+        allSlides.forEach(function(slide) {
+          const slideCategory = slide.getAttribute('data-category');
+          if (category === 'all' || slideCategory === category) {
+            slide.style.display = '';
+          } else {
+            slide.style.display = 'none';
+          }
+        });
+
+        if (swiperInstance) {
+          swiperInstance.update();
+          swiperInstance.slideTo(0);
+        }
+      }
+
+      // Initial filter to active tab
+      const activeTab = sectionEl.querySelector('.results-tab-btn.active');
+      if (activeTab) {
+        filterCategory(activeTab.getAttribute('data-tab'));
+      }
+
+      tabBtns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          tabBtns.forEach(b => {
+            b.classList.remove('active');
+            b.setAttribute('aria-selected', 'false');
+          });
+          btn.classList.add('active');
+          btn.setAttribute('aria-selected', 'true');
+          const tab = btn.getAttribute('data-tab');
+          filterCategory(tab);
+        });
+      });
+    });
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Results Carousel",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_section",
+      "label": "Enable Section",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "THE RESULTS SPEAK FOR THEMSELVES"
+    },
+    {
+      "type": "text",
+      "id": "tab_women_label",
+      "label": "Tab 1 Label",
+      "default": "WOMEN’S RESULTS"
+    },
+    {
+      "type": "text",
+      "id": "tab_men_label",
+      "label": "Tab 2 Label",
+      "default": "MEN’S RESULTS"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "result_card",
+      "name": "Result Card",
+      "settings": [
+        {
+          "type": "select",
+          "id": "category",
+          "label": "Gender Category",
+          "options": [
+            { "value": "women", "label": "Women’s Results" },
+            { "value": "men", "label": "Men’s Results" }
+          ],
+          "default": "women"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Before & After Image"
+        },
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Review Quote",
+          "default": "I was pleasantly surprised! Covered my grays in 10 minutes, no mess and no strong smell! Very happy with my Order!"
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Author & Location",
+          "default": "Laura T., Austin, TX"
+        },
+        {
+          "type": "checkbox",
+          "id": "verified",
+          "label": "Verified Buyer Badge",
+          "default": true
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Results Carousel",
+      "blocks": [
+        {
+          "type": "result_card",
+          "settings": {
+            "category": "women",
+            "author": "Demara O., Miami, FL",
+            "quote": "I absolutely love this ! It’s so easy to use like regular shampoo. The gray coverage looked amazing. No mess, no long salon visits, just quick color in one step. Totally worth it!"
+          }
+        },
+        {
+          "type": "result_card",
+          "settings": {
+            "category": "women",
+            "author": "Laura T., Austin, TX",
+            "quote": "I was pleasantly surprised! Covered my grays in 10 minutes, no mess and no strong smell! Very happy with my Order!"
+          }
+        },
+        {
+          "type": "result_card",
+          "settings": {
+            "category": "women",
+            "author": "Priadashni T., Boston, MA",
+            "quote": "\"Quick and easy. Color looks really good. No staining on hairline or face / ears. Love this product\""
+          }
+        },
+        {
+          "type": "result_card",
+          "settings": {
+            "category": "women",
+            "author": "Kara P., Nashville, TN",
+            "quote": "\"Got the red and it covered all grays. No nasty smell. Didn't stain my skin. Finally an easy to use solution.\""
+          }
+        },
+        {
+          "type": "result_card",
+          "settings": {
+            "category": "women",
+            "author": "Krista M., Toronto, CA",
+            "quote": "\"I was a little skeptical, but it really works!!! The grey on my edges grow wildly and they tend to be hard the dye, but this process was effortlessly and I'm loving the results!\""
+          }
+        },
+        {
+          "type": "result_card",
+          "settings": {
+            "category": "women",
+            "author": "Busie L., Los Angeles, CA",
+            "quote": "\"Love the all naturalness of this hair color shampoo and ease of using it. I get compliments on my hair color actually!\""
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

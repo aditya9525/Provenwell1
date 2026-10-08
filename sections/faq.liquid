@@ -1,0 +1,360 @@
+{%- comment -%}
+  Shopify Section: 08 — Frequently Asked Questions (FAQ)
+  Accordion with 10 questions, side-by-side layout with left background illustration.
+{%- endcomment -%}
+
+{%- if section.settings.enable_section -%}
+  <section class="faq-section" id="faq-{{ section.id }}" aria-labelledby="faq-heading-{{ section.id }}">
+    <div class="faq-container">
+
+      <div class="faq-card"{% if section.settings.bg_image != blank %} style="background-image: url('{{ section.settings.bg_image | image_url: width: 1400 }}');"{% endif %}>
+        
+        <!-- Left Column: Title -->
+        <div class="faq-header-col">
+          <h2 class="faq-title-line-1" id="faq-heading-{{ section.id }}">
+            {{ section.settings.title_line_1 | default: "FREQUENTLY" }}
+          </h2>
+          <span class="faq-title-line-2">
+            {{ section.settings.title_line_2 | default: "ASKED QUESTIONS" }}
+          </span>
+        </div>
+
+        <!-- Right Column: Accordion Items -->
+        <div class="faq-accordion-col" role="region" aria-label="Frequently Asked Questions Accordion">
+          
+          {%- if section.blocks.size > 0 -%}
+            {%- for block in section.blocks -%}
+              <div class="faq-item" {{ block.shopify_attributes }}>
+                <button type="button" class="faq-trigger" aria-expanded="false" aria-controls="faq-ans-{{ block.id }}">
+                  <span class="faq-question">{{ block.settings.question | escape }}</span>
+                  <span class="faq-icon" aria-hidden="true">
+                    <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M4 6L8 10L12 6" stroke="#1E2123" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                </button>
+                <div class="faq-answer-wrap" id="faq-ans-{{ block.id }}" hidden>
+                  <div class="faq-answer-inner">
+                    <p>{{ block.settings.answer | escape }}</p>
+                  </div>
+                </div>
+              </div>
+            {%- endfor -%}
+          {%- else -%}
+            <!-- Default 10 Questions -->
+            <div class="faq-item">
+              <button type="button" class="faq-trigger" aria-expanded="false">
+                <span class="faq-question">How long does the hair color last?</span>
+                <span class="faq-icon" aria-hidden="true">
+                  <svg viewBox="0 0 16 16" fill="none"><path d="M4 6L8 10L12 6" stroke="#1E2123" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </button>
+              <div class="faq-answer-wrap" hidden>
+                <div class="faq-answer-inner">
+                  <p>Polar Instant Dye Shampoo provides rich, natural-looking color that lasts up to 4–6 weeks depending on your hair wash frequency.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button type="button" class="faq-trigger" aria-expanded="false">
+                <span class="faq-question">How long does a bottle last?</span>
+                <span class="faq-icon" aria-hidden="true">
+                  <svg viewBox="0 0 16 16" fill="none"><path d="M4 6L8 10L12 6" stroke="#1E2123" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </button>
+              <div class="faq-answer-wrap" hidden>
+                <div class="faq-answer-inner">
+                  <p>Each 200ml bottle provides approximately 10–15 applications depending on your hair length and thickness.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button type="button" class="faq-trigger" aria-expanded="false">
+                <span class="faq-question">Does it work on any hair type?</span>
+                <span class="faq-icon" aria-hidden="true">
+                  <svg viewBox="0 0 16 16" fill="none"><path d="M4 6L8 10L12 6" stroke="#1E2123" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </button>
+              <div class="faq-answer-wrap" hidden>
+                <div class="faq-answer-inner">
+                  <p>Yes! Polar works effectively on all hair types and textures, including straight, wavy, curly, and coily hair.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button type="button" class="faq-trigger" aria-expanded="false">
+                <span class="faq-question">Does it cause allergies or work on sensitive skin?</span>
+                <span class="faq-icon" aria-hidden="true">
+                  <svg viewBox="0 0 16 16" fill="none"><path d="M4 6L8 10L12 6" stroke="#1E2123" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </button>
+              <div class="faq-answer-wrap" hidden>
+                <div class="faq-answer-inner">
+                  <p>Polar is formulated with gentle, natural ingredients like reishi mushroom and is 100% ammonia-free and paraben-free. We always recommend doing a standard 48-hour patch test before first use.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button type="button" class="faq-trigger" aria-expanded="false">
+                <span class="faq-question">Does this shampoo leave stains on skin or fabric?</span>
+                <span class="faq-icon" aria-hidden="true">
+                  <svg viewBox="0 0 16 16" fill="none"><path d="M4 6L8 10L12 6" stroke="#1E2123" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </button>
+              <div class="faq-answer-wrap" hidden>
+                <div class="faq-answer-inner">
+                  <p>No! Unlike traditional box dyes that stain hands, forehead, and towels, Polar rinses away cleanly with water.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button type="button" class="faq-trigger" aria-expanded="false">
+                <span class="faq-question">Can I use this shampoo on my beard?</span>
+                <span class="faq-icon" aria-hidden="true">
+                  <svg viewBox="0 0 16 16" fill="none"><path d="M4 6L8 10L12 6" stroke="#1E2123" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </button>
+              <div class="faq-answer-wrap" hidden>
+                <div class="faq-answer-inner">
+                  <p>Yes, Polar is gentle and completely safe to use for facial hair and beards.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button type="button" class="faq-trigger" aria-expanded="false">
+                <span class="faq-question">Can it be used with my normal hair care products?</span>
+                <span class="faq-icon" aria-hidden="true">
+                  <svg viewBox="0 0 16 16" fill="none"><path d="M4 6L8 10L12 6" stroke="#1E2123" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </button>
+              <div class="faq-answer-wrap" hidden>
+                <div class="faq-answer-inner">
+                  <p>Absolutely! You can continue using your favorite conditioners, oils, and styling products.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button type="button" class="faq-trigger" aria-expanded="false">
+                <span class="faq-question">Is it safe on my hair?</span>
+                <span class="faq-icon" aria-hidden="true">
+                  <svg viewBox="0 0 16 16" fill="none"><path d="M4 6L8 10L12 6" stroke="#1E2123" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </button>
+              <div class="faq-answer-wrap" hidden>
+                <div class="faq-answer-inner">
+                  <p>Yes, our formula nourishes and strengthens hair while depositing color, keeping hair soft and healthy without dryness or damage.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button type="button" class="faq-trigger" aria-expanded="false">
+                <span class="faq-question">Will it cover my gray hair completely?</span>
+                <span class="faq-icon" aria-hidden="true">
+                  <svg viewBox="0 0 16 16" fill="none"><path d="M4 6L8 10L12 6" stroke="#1E2123" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </button>
+              <div class="faq-answer-wrap" hidden>
+                <div class="faq-answer-inner">
+                  <p>Yes! Polar provides 100% full gray coverage in just 10 minutes.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button type="button" class="faq-trigger" aria-expanded="false">
+                <span class="faq-question">Can it be used on dyed or chemically treated hair?</span>
+                <span class="faq-icon" aria-hidden="true">
+                  <svg viewBox="0 0 16 16" fill="none"><path d="M4 6L8 10L12 6" stroke="#1E2123" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </button>
+              <div class="faq-answer-wrap" hidden>
+                <div class="faq-answer-inner">
+                  <p>Yes, it is completely safe and effective on bleached, dyed, or chemically treated hair.</p>
+                </div>
+              </div>
+            </div>
+          {%- endif -%}
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const faqSection = document.getElementById('faq-{{ section.id }}');
+      if (!faqSection) return;
+
+      const triggers = faqSection.querySelectorAll('.faq-trigger');
+      triggers.forEach(function(trigger) {
+        trigger.addEventListener('click', function() {
+          const item = this.closest('.faq-item');
+          const answer = item.querySelector('.faq-answer-wrap');
+          const isExpanded = this.getAttribute('aria-expanded') === 'true';
+
+          // Close other open items
+          faqSection.querySelectorAll('.faq-item').forEach(function(otherItem) {
+            if (otherItem !== item) {
+              const otherTrigger = otherItem.querySelector('.faq-trigger');
+              const otherAnswer = otherItem.querySelector('.faq-answer-wrap');
+              if (otherTrigger) otherTrigger.setAttribute('aria-expanded', 'false');
+              if (otherAnswer) otherAnswer.hidden = true;
+              otherItem.classList.remove('active');
+            }
+          });
+
+          // Toggle current
+          if (isExpanded) {
+            this.setAttribute('aria-expanded', 'false');
+            if (answer) answer.hidden = true;
+            item.classList.remove('active');
+          } else {
+            this.setAttribute('aria-expanded', 'true');
+            if (answer) answer.hidden = false;
+            item.classList.add('active');
+          }
+        });
+      });
+    });
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "08 — FAQ",
+  "tag": "section",
+  "class": "section-faq",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_section",
+      "label": "Enable Section",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "text",
+      "id": "title_line_1",
+      "label": "Title Line 1",
+      "default": "FREQUENTLY"
+    },
+    {
+      "type": "text",
+      "id": "title_line_2",
+      "label": "Title Line 2",
+      "default": "ASKED QUESTIONS"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "How long does the hair color last?"
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Answer",
+          "default": "Polar Instant Dye Shampoo provides rich, natural-looking color that lasts up to 4–6 weeks depending on your hair wash frequency."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "08 — FAQ",
+      "blocks": [
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "How long does the hair color last?",
+            "answer": "Polar Instant Dye Shampoo provides rich, natural-looking color that lasts up to 4–6 weeks depending on your hair wash frequency."
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "How long does a bottle last?",
+            "answer": "Each 200ml bottle provides approximately 10–15 applications depending on your hair length and thickness."
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Does it work on any hair type?",
+            "answer": "Yes! Polar works effectively on all hair types and textures, including straight, wavy, curly, and coily hair."
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Does it cause allergies or work on sensitive skin?",
+            "answer": "Polar is formulated with gentle, natural ingredients like reishi mushroom and is 100% ammonia-free and paraben-free. We always recommend doing a standard 48-hour patch test before first use."
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Does this shampoo leave stains on skin or fabric?",
+            "answer": "No! Unlike traditional box dyes that stain hands, forehead, and towels, Polar rinses away cleanly with water."
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Can I use this shampoo on my beard?",
+            "answer": "Yes, Polar is gentle and completely safe to use for facial hair and beards."
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Can it be used with my normal hair care products?",
+            "answer": "Absolutely! You can continue using your favorite conditioners, oils, and styling products."
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Is it safe on my hair?",
+            "answer": "Yes, our formula nourishes and strengthens hair while depositing color, keeping hair soft and healthy without dryness or damage."
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Will it cover my gray hair completely?",
+            "answer": "Yes! Polar provides 100% full gray coverage in just 10 minutes."
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Can it be used on dyed or chemically treated hair?",
+            "answer": "Yes, it is completely safe and effective on bleached, dyed, or chemically treated hair."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

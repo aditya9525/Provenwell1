@@ -1,0 +1,82 @@
+{%- comment -%}
+  Shopify Section: 07 — 30-Day Satisfaction Guarantee
+  Presents the 30-day money-back guarantee banner with product imagery, gold badge, and wave background.
+{%- endcomment -%}
+
+{%- if section.settings.enable_section -%}
+  <section class="guarantee-section" id="guarantee-{{ section.id }}" aria-labelledby="guarantee-heading-{{ section.id }}">
+    <div class="guarantee-container">
+
+      <div class="guarantee-banner-card"{% if section.settings.bg_image != blank %} style="background-image: url('{{ section.settings.bg_image | image_url: width: 1400 }}');"{% endif %}>
+        
+        <!-- Right Content: Titles & Guarantee Promise -->
+        <div class="guarantee-content-col">
+          
+          <div class="guarantee-title-wrap">
+            <h2 class="guarantee-title-primary" id="guarantee-heading-{{ section.id }}">
+              {{ section.settings.title_primary | default: "30-DAY" }}
+            </h2>
+            <h3 class="guarantee-title-secondary">
+              {{ section.settings.title_secondary | default: "SATISFACTION GUARANTEE" }}
+            </h3>
+          </div>
+
+          {%- if section.settings.description != blank -%}
+            <div class="guarantee-desc-wrap">
+              <p class="guarantee-desc">
+                {{ section.settings.description | escape }}
+              </p>
+            </div>
+          {%- endif -%}
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "07 — Guarantee",
+  "tag": "section",
+  "class": "section-satisfaction-guarantee",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_section",
+      "label": "Enable Section",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Banner Background Image"
+    },
+    {
+      "type": "text",
+      "id": "title_primary",
+      "label": "Primary Title",
+      "default": "30-DAY"
+    },
+    {
+      "type": "text",
+      "id": "title_secondary",
+      "label": "Secondary Title",
+      "default": "SATISFACTION GUARANTEE"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "We understand that trying new products can feel risky, which is why Polar offers you a completely Risk-Free experience. With our 30-Day Money Back Guarantee, you can try our natural hair dye solution with confidence. Achieving vibrant, healthy hair has never been safer or easier!"
+    }
+  ],
+  "presets": [
+    {
+      "name": "07 — Guarantee"
+    }
+  ]
+}
+{% endschema %}

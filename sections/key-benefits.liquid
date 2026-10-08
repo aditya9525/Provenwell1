@@ -1,0 +1,287 @@
+{%- comment -%}
+  Shopify Section: 05 — Key Benefits & How It Works (4 Reasons)
+  Features 3-column layout (Left Benefits, Center Demo Video with Modal, Right Benefits) in a dark navy container.
+{%- endcomment -%}
+
+{%- if section.settings.enable_section -%}
+  <section class="key-benefits-section" id="key-benefits-{{ section.id }}" aria-labelledby="benefits-heading-{{ section.id }}">
+    <div class="key-benefits-container">
+
+      <!-- Section Heading -->
+      <div class="benefits-header">
+        {%- if section.settings.pill_text != blank -%}
+          <div class="benefits-heading-pill">
+            <span>{{ section.settings.pill_text | escape }}</span>
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.heading != blank -%}
+          <h2 class="benefits-main-title" id="benefits-heading-{{ section.id }}">
+            {{ section.settings.heading | escape }}
+          </h2>
+        {%- endif -%}
+      </div>
+
+      <!-- Main Navy Benefits Panel -->
+      <div class="benefits-panel"{% if section.settings.bg_image != blank %} style="background-image: url('{{ section.settings.bg_image | image_url: width: 2000 }}'); background-size: cover; background-position: center;"{% endif %}>
+        <div class="benefits-panel-inner">
+        
+          <!-- Left Column (2 Benefit Cards) -->
+          <div class="benefits-col benefits-col-left">
+            
+            <!-- Card 1 -->
+            <div class="benefit-card">
+              <div class="benefit-icon-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="13" r="8"></circle>
+                  <path d="M12 9v4l2.5 1.5"></path>
+                  <path d="M10 2h4"></path>
+                  <path d="M12 2v3"></path>
+                </svg>
+              </div>
+              <h3 class="benefit-card-title">{{ section.settings.card_1_title | default: "WORKS IN JUST 10 MINUTES" }}</h3>
+              <p class="benefit-card-desc">{{ section.settings.card_1_desc | default: "No more scheduling life around hair dye. Apply to dry hair, wait 10 minutes, and rinse. It’s that easy." }}</p>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="benefit-card">
+              <div class="benefit-icon-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path>
+                </svg>
+              </div>
+              <h3 class="benefit-card-title">{{ section.settings.card_2_title | default: "QUICK, MESS-FREE APPLICATION" }}</h3>
+              <p class="benefit-card-desc">{{ section.settings.card_2_desc | default: "Forget messy box dyes. No mixing, no gloves, no stains — it works just like your regular shampoo." }}</p>
+            </div>
+
+          </div>
+
+          <!-- Center Column (Demo Video Card) -->
+          <div class="benefits-video-col">
+            <div class="benefits-video-card js-open-benefits-video" role="button" tabindex="0" aria-label="Play product demonstration video" data-video-url="{{ section.settings.video_url | default: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4' }}">
+              {%- if section.settings.poster_image != blank -%}
+                <img src="{{ section.settings.poster_image | image_url: width: 800 }}" alt="{{ section.settings.heading | escape }}" class="benefits-video-poster" loading="lazy">
+              {%- else -%}
+                <img src="{{ 'customer_story.jpg' | asset_url }}" alt="Demonstration Video" class="benefits-video-poster" loading="lazy">
+              {%- endif -%}
+              
+              <!-- Circular Glass Play Button -->
+              <div class="benefits-play-btn" aria-hidden="true">
+                <svg class="benefits-play-icon" viewBox="0 0 24 24" fill="#2C3452">
+                  <polygon points="8 5 19 12 8 19 8 5"></polygon>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column (2 Benefit Cards) -->
+          <div class="benefits-col benefits-col-right">
+            
+            <!-- Card 3 -->
+            <div class="benefit-card">
+              <div class="benefit-icon-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path>
+                  <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
+                </svg>
+              </div>
+              <h3 class="benefit-card-title">{{ section.settings.card_3_title | default: "GENTLE ON HAIR" }}</h3>
+              <p class="benefit-card-desc">{{ section.settings.card_3_desc | default: "Natural ingredients like reishi mushroom, without harsh chemicals like ammonia. Hair stays soft, not damaged." }}</p>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="benefit-card">
+              <div class="benefit-icon-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                  <path d="m9 12 2 2 4-4"></path>
+                </svg>
+              </div>
+              <h3 class="benefit-card-title">{{ section.settings.card_4_title | default: "LONG-LASTING NATURAL COLOR" }}</h3>
+              <p class="benefit-card-desc">{{ section.settings.card_4_desc | default: "Natural-looking color that lasts up to 6 weeks, so you can stay confident without frequent touch-ups." }}</p>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Video Popup Modal -->
+  <div class="benefits-modal-overlay" id="benefitsVideoModal-{{ section.id }}" aria-hidden="true" role="dialog" aria-label="Product Demo Video Modal">
+    <div class="benefits-modal-container">
+      <button class="benefits-modal-close-btn js-close-benefits-video" aria-label="Close video player">&times;</button>
+      <div class="benefits-modal-player-wrapper">
+        <video id="benefitsVideoPlayer-{{ section.id }}" controls playsinline preload="metadata">
+          <source src="{{ section.settings.video_url | default: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4' }}" type="video/mp4">
+          Your browser does not support HTML5 video.
+        </video>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const sectionEl = document.getElementById('key-benefits-{{ section.id }}');
+      const openBtn = sectionEl?.querySelector('.js-open-benefits-video');
+      const modal = document.getElementById('benefitsVideoModal-{{ section.id }}');
+      const closeBtn = modal?.querySelector('.js-close-benefits-video');
+      const video = document.getElementById('benefitsVideoPlayer-{{ section.id }}');
+
+      function openModal() {
+        if (!modal) return;
+        modal.classList.add('active');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        if (video) {
+          video.currentTime = 0;
+          video.play().catch(function() {});
+        }
+      }
+
+      function closeModal() {
+        if (!modal) return;
+        modal.classList.remove('active');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        if (video) {
+          video.pause();
+        }
+      }
+
+      openBtn?.addEventListener('click', openModal);
+      openBtn?.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openModal();
+        }
+      });
+
+      closeBtn?.addEventListener('click', closeModal);
+      modal?.addEventListener('click', function(e) {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal?.classList.contains('active')) {
+          closeModal();
+        }
+      });
+    });
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Key Benefits & How It Work",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_section",
+      "label": "Enable Section",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "pill_text",
+      "label": "Badge Pill Text",
+      "default": "4 REASONS"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Thousands are switching to Polar Instant Dye Shampoo"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Panel Background Image (Optional)"
+    },
+    {
+      "type": "image_picker",
+      "id": "poster_image",
+      "label": "Video Demo Poster Image"
+    },
+    {
+      "type": "text",
+      "id": "video_url",
+      "label": "Video MP4 URL",
+      "default": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+    },
+    {
+      "type": "header",
+      "content": "Card 1 (Left Top)"
+    },
+    {
+      "type": "text",
+      "id": "card_1_title",
+      "label": "Title",
+      "default": "WORKS IN JUST 10 MINUTES"
+    },
+    {
+      "type": "textarea",
+      "id": "card_1_desc",
+      "label": "Description",
+      "default": "No more scheduling life around hair dye. Apply to dry hair, wait 10 minutes, and rinse. It’s that easy."
+    },
+    {
+      "type": "header",
+      "content": "Card 2 (Left Bottom)"
+    },
+    {
+      "type": "text",
+      "id": "card_2_title",
+      "label": "Title",
+      "default": "QUICK, MESS-FREE APPLICATION"
+    },
+    {
+      "type": "textarea",
+      "id": "card_2_desc",
+      "label": "Description",
+      "default": "Forget messy box dyes. No mixing, no gloves, no stains — it works just like your regular shampoo."
+    },
+    {
+      "type": "header",
+      "content": "Card 3 (Right Top)"
+    },
+    {
+      "type": "text",
+      "id": "card_3_title",
+      "label": "Title",
+      "default": "GENTLE ON HAIR"
+    },
+    {
+      "type": "textarea",
+      "id": "card_3_desc",
+      "label": "Description",
+      "default": "Natural ingredients like reishi mushroom, without harsh chemicals like ammonia. Hair stays soft, not damaged."
+    },
+    {
+      "type": "header",
+      "content": "Card 4 (Right Bottom)"
+    },
+    {
+      "type": "text",
+      "id": "card_4_title",
+      "label": "Title",
+      "default": "LONG-LASTING NATURAL COLOR"
+    },
+    {
+      "type": "textarea",
+      "id": "card_4_desc",
+      "label": "Description",
+      "default": "Natural-looking color that lasts up to 6 weeks, so you can stay confident without frequent touch-ups."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Key Benefits & How It Works"
+    }
+  ]
+}
+{% endschema %}

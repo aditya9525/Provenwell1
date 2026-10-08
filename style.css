@@ -492,6 +492,27 @@ body {
   width: 100%;
   background: #FFFFFF;
   padding: clamp(24px, 5vw, 60px) 0;
+  position: relative;
+}
+
+.top-line-style {
+  max-width: 351px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  z-index: 0;
+}
+
+.bottom-line-style { 
+  max-width: 351px;
+  width: 100%;
+  position: absolute;
+  bottom: 50%;
+  left: 0;
+  width: 100%;
+  z-index: 0;
 }
 
 .product-container {

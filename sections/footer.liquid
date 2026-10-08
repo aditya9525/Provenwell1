@@ -1,0 +1,381 @@
+{%- comment -%}
+  Polar Haircare Footer Section
+  Includes Brand Bio, Contact Details, Social, Newsletter Subscription, Navigation Columns, Localization Selector, Copyright, and Payment Badges.
+{%- endcomment -%}
+
+<footer class="site-footer" id="site-footer-{{ section.id }}" role="contentinfo">
+  <div class="footer-container">
+    
+    <!-- Top Block: Brand Info & Contact -->
+    <div class="footer-top-block">
+      <div class="footer-brand-logo-wrap">
+        {%- if section.settings.logo != blank -%}
+          <img
+            src="{{ section.settings.logo | image_url: width: 300 }}"
+            alt="{{ section.settings.logo.alt | default: shop.name | escape }}"
+            loading="lazy"
+            class="brand-logo-img"
+            style="max-width: {{ section.settings.logo_width | default: 150 }}px;"
+          >
+        {%- else -%}
+          <svg class="footer-logo-svg" viewBox="0 0 150 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-label="Polar Hair Care">
+            <text x="0" y="19" font-family="'Lato', sans-serif" font-size="20" font-weight="300" letter-spacing="4.5" fill="#FFFFFF">POLAR</text>
+            <text x="2" y="29" font-family="'Lato', sans-serif" font-size="6.5" font-weight="400" letter-spacing="4.2" fill="#FFFFFF">HAIR CARE</text>
+          </svg>
+        {%- endif -%}
+      </div>
+
+      <p class="footer-about-text">
+        {{ section.settings.about_text | default: "At Polar, we prioritize naturally vibrant hair. Our instant dye shampoo covers grays in 10 minutes without the mess, damage, or chemicals of traditional dyes. When you choose Polar, you're committing to effortless confidence." }}
+      </p>
+
+      <p class="footer-service-hours">
+        {{ section.settings.service_hours | default: "Our customer service team is available 24/7, Monday through Saturday." }}
+      </p>
+
+      <ul class="footer-contact-list">
+        <li class="footer-contact-item">
+          <span class="footer-contact-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+              <path d="M22 6L12 13L2 6"></path>
+            </svg>
+          </span>
+          <a href="mailto:{{ section.settings.email | default: 'customers@polarhaircare.com' }}" class="footer-contact-link">
+            {{ section.settings.email | default: 'customers@polarhaircare.com' }}
+          </a>
+        </li>
+
+        <li class="footer-contact-item">
+          <span class="footer-contact-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+          </span>
+          <a href="tel:{{ section.settings.phone_link | default: '+18334240123' }}" class="footer-contact-link">
+            {{ section.settings.phone | default: '+1 (833) 424-0123' }}
+          </a>
+        </li>
+
+        <li class="footer-contact-item">
+          <a href="{{ section.settings.instagram_url | default: 'https://instagram.com/polarhaircare' }}" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="Follow us on Instagram">
+            <span class="footer-contact-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </span>
+            <span>Instagram</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Middle Block: Newsletter & Navigation -->
+    <div class="footer-middle-block">
+      
+      <!-- Newsletter -->
+      <div class="footer-newsletter-col">
+        <h3 class="footer-block-heading">{{ section.settings.newsletter_heading | default: 'Subscribe to our emails' }}</h3>
+        {%- form 'customer', id: 'FooterNewsletterForm', class: 'footer-newsletter-form' -%}
+          <input type="hidden" name="contact[tags]" value="newsletter">
+          <input
+            type="email"
+            name="contact[email]"
+            class="footer-newsletter-input"
+            value="{{ form.email }}"
+            placeholder="Email"
+            aria-label="Email address"
+            autocorrect="off"
+            autocapitalize="off"
+            autocomplete="email"
+            required
+          >
+          <button type="submit" class="footer-newsletter-btn" aria-label="Subscribe">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
+        {%- endform -%}
+      </div>
+
+      <!-- Navigation Links -->
+      <div class="footer-nav-cols">
+        <!-- Information Links -->
+        <div class="footer-nav-col">
+          <h3 class="footer-block-heading">{{ section.settings.menu_1_heading | default: 'Information' }}</h3>
+          <ul class="footer-nav-list">
+            {%- if section.settings.menu_1 != blank -%}
+              {%- for link in linklists[section.settings.menu_1].links -%}
+                <li class="footer-nav-item">
+                  <a href="{{ link.url }}" class="footer-nav-link">{{ link.title | escape }}</a>
+                </li>
+              {%- endfor -%}
+            {%- else -%}
+              <li class="footer-nav-item"><a href="/pages/track-order" class="footer-nav-link">Track Your Order</a></li>
+              <li class="footer-nav-item"><a href="/pages/returns-exchanges" class="footer-nav-link">Returns &amp; Exchanges</a></li>
+              <li class="footer-nav-item"><a href="/pages/shipping-information" class="footer-nav-link">Shipping Information</a></li>
+              <li class="footer-nav-item"><a href="/pages/help-center" class="footer-nav-link">Help Center / FAQ</a></li>
+              <li class="footer-nav-item"><a href="/pages/contact" class="footer-nav-link">Contact Us</a></li>
+            {%- endif -%}
+          </ul>
+        </div>
+
+        <!-- More Information Links -->
+        <div class="footer-nav-col">
+          <h3 class="footer-block-heading">{{ section.settings.menu_2_heading | default: 'More Information' }}</h3>
+          <ul class="footer-nav-list">
+            {%- if section.settings.menu_2 != blank -%}
+              {%- for link in linklists[section.settings.menu_2].links -%}
+                <li class="footer-nav-item">
+                  <a href="{{ link.url }}" class="footer-nav-link">{{ link.title | escape }}</a>
+                </li>
+              {%- endfor -%}
+            {%- else -%}
+              <li class="footer-nav-item"><a href="/policies/terms-of-service" class="footer-nav-link">Terms of Service</a></li>
+              <li class="footer-nav-item"><a href="/policies/privacy-policy" class="footer-nav-link">Privacy Policy</a></li>
+              <li class="footer-nav-item"><a href="/blogs/news" class="footer-nav-link">Blog</a></li>
+            {%- endif -%}
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom Block: Localization, Copyright & Payment Badges -->
+    <div class="footer-bottom-block">
+      
+      <!-- Localization Selector -->
+      <div class="footer-localization">
+        <div class="footer-localization-btn" role="button" tabindex="0" aria-label="Country and currency selector">
+          <span class="footer-localization-text">India | INR &#8377;</span>
+          <span class="footer-localization-chevron" aria-hidden="true">
+            <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M1 1L5 5L9 1"/>
+            </svg>
+          </span>
+        </div>
+      </div>
+
+      <!-- Copyright Notice -->
+      <p class="footer-copyright">
+        Copyright &copy; {{ 'now' | date: '%Y' }} Polar Haircare
+      </p>
+
+      <!-- Payment Method Badges -->
+      <ul class="footer-payment-list" aria-label="Accepted Payment Methods">
+        <!-- Amazon Pay -->
+        <li class="footer-payment-item" title="Amazon Pay">
+          <svg viewBox="0 0 42 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="42" height="26.5" rx="3" fill="#FFFFFF"/>
+            <path d="M16.5 15.5c-2.8 1.8-6.8 2.2-10 .8-.4-.2-.8.2-.5.6 2.3 2.1 6.5 2.5 10 .8.4-.2.4-.8.5-1.4.1-.4-.2-.7-.5-.8z" fill="#FF9900"/>
+            <path d="M17.8 14.2c-.3-.4-.9-.3-1.3-.2.3-.5.7-1.1.9-1.8.1-.3.4-.3.6-.2.4.6.7 1.3.9 2-.4-.2-.8-.2-1.1.2z" fill="#FF9900"/>
+            <path d="M11.6 8.5c-2.4 0-3.6 1.4-3.6 3.2 0 2.2 1.5 3.3 3.5 3.3 1.1 0 2-.4 2.5-1.1v.9c0 .5.3.7.8.7.3 0 .6-.1.8-.2V10c0-1.2-.6-1.5-1.6-1.5h-2.4zm1.6 3.8c0 1.2-.6 2-1.6 2-.8 0-1.3-.5-1.3-1.4 0-1 .6-1.5 1.6-1.7l1.3-.2v1.3z" fill="#221F1F"/>
+          </svg>
+        </li>
+
+        <!-- American Express -->
+        <li class="footer-payment-item" title="American Express">
+          <svg viewBox="0 0 42 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="42" height="26.5" rx="3" fill="#0071CE"/>
+            <path d="M6 8.5h3.2l1.6 3.6 1.6-3.6h3.2v9H13v-5.2l-1.6 3.6h-1.2L8.6 12.3V17.5H6V8.5zm10.5 0h7.5v1.8h-5.2v1.8h4.6v1.8h-4.6v1.8H24v1.8h-7.5V8.5zm9 0h2.6l1.8 3.2 1.8-3.2h2.6l-3.1 5.2 3.3 3.8h-2.8l-2-2.5-2 2.5h-2.8l3.3-4-2.7-5z" fill="#FFFFFF"/>
+          </svg>
+        </li>
+
+        <!-- Apple Pay -->
+        <li class="footer-payment-item" title="Apple Pay">
+          <svg viewBox="0 0 42 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="42" height="26.5" rx="3" fill="#000000"/>
+            <path d="M12.8 11.2c-.3.4-.8.6-1.3.6-.1-.5.1-1 .4-1.3.3-.4.8-.6 1.3-.6.1.5-.1 1-.4 1.3zm1.3 4.3c-.2.4-.4.8-.8 1.3-.5.7-1 1.4-1.8 1.4-.8 0-1-.5-1.9-.5-.9 0-1.2.5-1.9.5-.8 0-1.4-.8-1.9-1.5-1-1.5-1.7-4.1-.7-5.8.5-.9 1.4-1.5 2.4-1.5.8 0 1.5.5 1.9.5.5 0 1.3-.6 2.2-.5.4 0 1.4.1 2.1 1.1-.1.1-1.2.7-1.2 2.1 0 1.7 1.5 2.3 1.6 2.4z" fill="#FFFFFF"/>
+            <path d="M17.2 9.5h2.8c1.6 0 2.8 1.1 2.8 2.8 0 1.7-1.2 2.8-2.8 2.8h-1.4v3.4h-1.4V9.5zm1.4 4.3h1.4c.9 0 1.5-.6 1.5-1.5 0-.9-.6-1.5-1.5-1.5h-1.4v3zm8 1.6c0-1.3 1-2.1 2.6-2.2l1.7-.1v-.5c0-.7-.5-1.1-1.3-1.1-.7 0-1.2.3-1.4.8l-1.3-.4c.3-1 1.3-1.7 2.7-1.7 1.7 0 2.7.9 2.7 2.4v5.4h-1.3v-1.1c-.5.7-1.4 1.2-2.3 1.2-1.5 0-2.4-1-2.4-2.2zm4.3-.1v-.7l-1.5.1c-.8.1-1.3.5-1.3 1.2 0 .6.5 1 1.2 1 .9 0 1.6-.7 1.6-1.6zm4.8-3.4l1.6 4.7 1.5-4.7h1.5l-2.4 6.8c-.5 1.4-1.1 1.8-2.3 1.8h-.8v-1.2h.6c.5 0 .8-.2 1-.8l.2-.5-2.8-6.1h1.6z" fill="#FFFFFF"/>
+          </svg>
+        </li>
+
+        <!-- Diners Club -->
+        <li class="footer-payment-item" title="Diners Club">
+          <svg viewBox="0 0 42 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="42" height="26.5" rx="3" fill="#0079BE"/>
+            <rect x="1" y="1" width="40" height="24.5" rx="2" fill="#FFFFFF"/>
+            <circle cx="21" cy="13.25" r="8.5" fill="#0079BE"/>
+            <path d="M19.5 7.5c-3.2 0-5.8 2.6-5.8 5.75s2.6 5.75 5.8 5.75V7.5zm3 11.5c3.2 0 5.8-2.6 5.8-5.75s-2.6-5.75-5.8-5.75v11.5z" fill="#FFFFFF"/>
+          </svg>
+        </li>
+
+        <!-- Discover -->
+        <li class="footer-payment-item" title="Discover">
+          <svg viewBox="0 0 42 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="42" height="26.5" rx="3" fill="#FFFFFF"/>
+            <path d="M6 10.5h2.5c1.8 0 3 1.2 3 2.8s-1.2 2.8-3 2.8H6v-5.6zm1.5 4.3h1c1 0 1.6-.6 1.6-1.5s-.6-1.5-1.6-1.5h-1v3zm5.5-4.3h1.5v5.6H13v-5.6zm3 4.2c.3.8 1.1 1.5 2.1 1.5 1 0 1.6-.5 1.6-1.2 0-.8-.7-1.1-1.6-1.4-1.2-.4-2.3-.9-2.3-2.1 0-1.2 1-2.1 2.4-2.1 1.2 0 2.1.6 2.5 1.5l-1.2.6c-.2-.5-.6-.8-1.3-.8-.6 0-1 .3-1 .8 0 .6.5.8 1.4 1.1 1.4.5 2.5.9 2.5 2.3 0 1.3-1.1 2.3-2.7 2.3-1.5 0-2.6-.8-3-1.9l1.6-.7zm9.5-4.2l1.6 3.6 1.6-3.6h1.7l-2.5 5.6h-1.6l-2.5-5.6h1.7zm6 0h4.2v1.3h-2.8v1h2.5v1.2h-2.5v1h2.9v1.1h-4.3v-5.6z" fill="#231F20"/>
+            <circle cx="21" cy="13.25" r="3.2" fill="#FF6000"/>
+          </svg>
+        </li>
+
+        <!-- Google Pay -->
+        <li class="footer-payment-item" title="Google Pay">
+          <svg viewBox="0 0 42 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="42" height="26.5" rx="3" fill="#FFFFFF"/>
+            <path d="M12.5 13.3v-1.6h5.8c.1.3.1.6.1 1 0 1.2-.3 2.7-1.3 3.6-.9 1-2.2 1.5-3.8 1.5-3 0-5.5-2.4-5.5-5.5s2.5-5.5 5.5-5.5c1.6 0 2.8.6 3.7 1.5l-1.1 1.1c-.6-.6-1.5-1.1-2.6-1.1-2.2 0-3.9 1.8-3.9 4s1.7 4 3.9 4c1.4 0 2.2-.6 2.7-1.1.4-.4.7-1 .8-1.9h-4.3v-.5z" fill="#4285F4"/>
+            <path d="M21.5 10.5h2.2c1.2 0 2.1.9 2.1 2.1 0 1.3-.9 2.2-2.1 2.2h-1.1v2.5h-1.1v-6.8zm1.1 3.3h1.1c.6 0 1.1-.4 1.1-1.1 0-.6-.5-1.1-1.1-1.1h-1.1v2.2zm5.8 1.2c0-1.1.9-1.7 2.1-1.8l1.3-.1v-.4c0-.5-.4-.8-1-.8-.5 0-.9.2-1.1.6l-.9-.5c.4-.7 1.1-1.1 2.1-1.1 1.3 0 2.1.7 2.1 1.9v4.3h-1v-.9c-.4.6-1.1 1-1.8 1-1.2 0-1.8-.8-1.8-1.7zm3.4-.1v-.6l-1.2.1c-.6.1-1 .3-1 .9 0 .5.4.8.9.8.7 0 1.3-.5 1.3-1.2zm3.8-2.7l1.3 3.7 1.2-3.7h1.2l-1.9 5.4c-.4 1.1-.9 1.4-1.8 1.4h-.6v-1h.5c.4 0 .6-.2.8-.6l.2-.4-2.2-4.8h1.3z" fill="#5F6368"/>
+            <path d="M8.2 11.8c-.2.5-.2 1.1 0 1.6l-1.7 1.3C5.9 13.6 5.6 12.1 6 10.5l2.2 1.3z" fill="#FBBC04"/>
+            <path d="M12.5 8.2c1.1 0 2.1.4 2.8 1.1l-1.1 1.1c-.4-.4-1-.7-1.7-.7-1.5 0-2.8 1-3.2 2.3L7 10.7c.9-1.8 2.7-3 4.8-3.1.2.6.5.6.7.6z" fill="#EA4335"/>
+            <path d="M9.3 14.6c.4 1.3 1.7 2.3 3.2 2.3 1.3 0 2.2-.5 2.7-1.1l1.1 1.1c-.9.9-2.2 1.5-3.8 1.5-2.1 0-3.9-1.2-4.8-3.1l2.3-1.2c-.3.2-.6.3-.7.5z" fill="#34A853"/>
+          </svg>
+        </li>
+
+        <!-- JCB -->
+        <li class="footer-payment-item" title="JCB">
+          <svg viewBox="0 0 42 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="42" height="26.5" rx="3" fill="#FFFFFF"/>
+            <rect x="7" y="5.5" width="8.5" height="15.5" rx="3" fill="#00377B"/>
+            <rect x="16.5" y="5.5" width="8.5" height="15.5" rx="3" fill="#D9161B"/>
+            <rect x="26" y="5.5" width="8.5" height="15.5" rx="3" fill="#007934"/>
+            <path d="M13 13.5v-3h-1.5v3c0 .8-.4 1.2-1.2 1.2-.5 0-.9-.2-1.1-.5l-.8.9c.5.6 1.1.9 1.9.9 1.8 0 2.7-.9 2.7-2.5zm9.5-1.5c0-1.5-.9-2.5-2.6-2.5h-2.4v6.5h2.4c1.7 0 2.6-1 2.6-2.5v-1.5zm-1.5 1.5c0 .8-.4 1.2-1.2 1.2h-.9v-3.9h.9c.8 0 1.2.4 1.2 1.2v1.5zm11-1.5c0-1.5-.9-2.5-2.6-2.5h-2.4v6.5h2.4c1.7 0 2.6-1 2.6-2.5v-.8h-2.5v-1.1h3.9v.4z" fill="#FFFFFF"/>
+          </svg>
+        </li>
+
+        <!-- Mastercard -->
+        <li class="footer-payment-item" title="Mastercard">
+          <svg viewBox="0 0 42 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="42" height="26.5" rx="3" fill="#232323"/>
+            <circle cx="16" cy="13.25" r="6.5" fill="#EB001B"/>
+            <circle cx="26" cy="13.25" r="6.5" fill="#F79E1B"/>
+            <path d="M21 8.25a6.47 6.47 0 0 0-2.6 5 6.47 6.47 0 0 0 2.6 5 6.47 6.47 0 0 0 2.6-5 6.47 6.47 0 0 0-2.6-5z" fill="#FF5F00"/>
+          </svg>
+        </li>
+
+        <!-- MB WAY -->
+        <li class="footer-payment-item" title="MB WAY">
+          <svg viewBox="0 0 42 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="42" height="26.5" rx="3" fill="#FFFFFF"/>
+            <circle cx="11.5" cy="13.25" r="4.5" fill="#E31837"/>
+            <text x="18" y="15.5" font-family="'Lato', sans-serif" font-size="7.5" font-weight="900" fill="#100F0D" letter-spacing="0.5">MB WAY</text>
+          </svg>
+        </li>
+
+        <!-- PayPal -->
+        <li class="footer-payment-item" title="PayPal">
+          <svg viewBox="0 0 42 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="42" height="26.5" rx="3" fill="#FFFFFF"/>
+            <path d="M15.5 8h4.5c2.3 0 3.8 1.2 3.5 3.2-.4 2.2-2.1 3.5-4.4 3.5h-1.8l-1 5.3h-2.5l2.7-12z" fill="#003087"/>
+            <path d="M19 11.5h3.8c1.8 0 3 1 2.7 2.6-.4 1.8-1.8 2.9-3.7 2.9H19.5l-.8 4h-2.2l2.5-9.5z" fill="#0079C1"/>
+            <path d="M19.5 17h2.3c1.9 0 3.3-1.1 3.7-2.9.1-.5.1-1 0-1.4-.4 1.8-1.8 2.9-3.7 2.9H19.5l-.8 4h1.6l.7-2.6z" fill="#00457C"/>
+          </svg>
+        </li>
+
+        <!-- Shop Pay -->
+        <li class="footer-payment-item" title="Shop Pay">
+          <svg viewBox="0 0 42 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="42" height="26.5" rx="3" fill="#5A31F4"/>
+            <path d="M13.8 16.2c-.3 0-.6-.1-.9-.3-.5-.4-.6-1-.2-1.5l2.8-3.4c.4-.5 1.1-.5 1.5-.1.4.4.5 1.1.1 1.5l-2.4 2.9c-.2.3-.5.4-.9.4zm1.5-5.2c-.3 0-.6-.1-.8-.3l-3-3c-.4-.4-.4-1.1 0-1.5.4-.4 1.1-.4 1.5 0l3 3c.4.4.4 1.1 0 1.5-.2.2-.5.3-.7.3zm3.9 7c-.3 0-.6-.1-.8-.3l-7-7c-.4-.4-.4-1.1 0-1.5.4-.4 1.1-.4 1.5 0l7 7c.4.4.4 1.1 0 1.5-.2.2-.4.3-.7.3z" fill="#FFFFFF"/>
+            <text x="21" y="16" font-family="'Lato', sans-serif" font-size="8" font-weight="700" fill="#FFFFFF">pay</text>
+          </svg>
+        </li>
+
+        <!-- Visa -->
+        <li class="footer-payment-item" title="Visa">
+          <svg viewBox="0 0 42 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="42" height="26.5" rx="3" fill="#142FBD"/>
+            <path d="M16.5 17.5l2.2-10h2.6l-2.2 10h-2.6zm9.2-9.7c-.5-.2-1.3-.4-2.3-.4-2.5 0-4.3 1.3-4.3 3.2 0 1.4 1.3 2.2 2.2 2.7.9.5 1.3.8 1.3 1.2 0 .6-.8.9-1.5.9-.9 0-1.5-.2-2.3-.6l-.3-.2-.3 1.9c.5.2 1.5.4 2.5.4 2.7 0 4.4-1.3 4.4-3.3 0-1.1-.7-2-2.2-2.7-.9-.5-1.5-.8-1.5-1.3 0-.4.5-.9 1.5-.9.8 0 1.4.2 1.9.4l.2.1.3-1.9zm7.3 6.3l1.1-5.4.6 3.1c.1.6.6 2.3.6 2.3h-2.3zm3.5-6.6h-2c-.6 0-1.1.2-1.3.8l-3.8 9.2h2.7l.5-1.5h3.4l.3 1.5h2.4l-2.2-10zm-17 0l-2.5 6.9-.3-1.4c-.5-1.7-2-3.5-3.7-4.4l2.4 8.9h2.7l4-10h-2.6z" fill="#FFFFFF"/>
+            <path d="M12.2 7.5h-4.3l-.1.3c3.3.8 5.5 2.8 6.4 5.2l-.9-4.5c-.2-.7-.6-1-1.1-1z" fill="#F7B600"/>
+          </svg>
+        </li>
+      </ul>
+
+    </div>
+
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo image"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "min": 100,
+      "max": 250,
+      "step": 5,
+      "unit": "px",
+      "label": "Logo width",
+      "default": 150
+    },
+    {
+      "type": "textarea",
+      "id": "about_text",
+      "label": "About description",
+      "default": "At Polar, we prioritize naturally vibrant hair. Our instant dye shampoo covers grays in 10 minutes without the mess, damage, or chemicals of traditional dyes. When you choose Polar, you're committing to effortless confidence."
+    },
+    {
+      "type": "text",
+      "id": "service_hours",
+      "label": "Customer service hours",
+      "default": "Our customer service team is available 24/7, Monday through Saturday."
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "label": "Support Email",
+      "default": "customers@polarhaircare.com"
+    },
+    {
+      "type": "text",
+      "id": "phone",
+      "label": "Support Phone",
+      "default": "+1 (833) 424-0123"
+    },
+    {
+      "type": "text",
+      "id": "phone_link",
+      "label": "Phone Tel Link",
+      "default": "+18334240123"
+    },
+    {
+      "type": "url",
+      "id": "instagram_url",
+      "label": "Instagram URL"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_heading",
+      "label": "Newsletter heading",
+      "default": "Subscribe to our emails"
+    },
+    {
+      "type": "text",
+      "id": "menu_1_heading",
+      "label": "First menu heading",
+      "default": "Information"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_1",
+      "label": "First menu",
+      "default": "footer"
+    },
+    {
+      "type": "text",
+      "id": "menu_2_heading",
+      "label": "Second menu heading",
+      "default": "More Information"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_2",
+      "label": "Second menu"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Footer"
+    }
+  ]
+}
+{% endschema %}

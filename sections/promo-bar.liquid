@@ -1,5 +1,5 @@
 {%- if section.settings.show_promo and section.settings.text != blank -%}
-  <div class="promo-bar-section" id="promo-bar-{{ section.id }}" role="region" aria-label="Promo">
+  <div class="promo-bar-section" role="region" aria-label="Promo">
     <div class="promo-container">
       {%- if section.settings.link != blank -%}
         <a href="{{ section.settings.link }}" class="promo-link">
@@ -10,65 +10,6 @@
       {%- endif -%}
     </div>
   </div>
-
-  <style>
-    #promo-bar-{{ section.id }} {
-      width: 100%;
-      background-color: {{ section.settings.bg_color | default: '#465069' }};
-      border-bottom: 1px solid {{ section.settings.border_color | default: 'rgba(255, 255, 255, 0.08)' }};
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      z-index: 990;
-    }
-
-    #promo-bar-{{ section.id }} .promo-container {
-      width: 100%;
-      max-width: {{ section.settings.max_width | default: 1260 }}px;
-      padding: 10.5px 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    #promo-bar-{{ section.id }} .promo-text {
-      font-family: 'Lato', var(--font-body-family, sans-serif);
-      font-style: normal;
-      font-weight: 400;
-      font-size: 14px;
-      line-height: 18px;
-      text-align: center;
-      letter-spacing: 1.05px;
-      text-transform: uppercase;
-      color: {{ section.settings.text_color | default: '#FFFFFF' }};
-      margin: 0;
-      display: inline-block;
-    }
-
-    #promo-bar-{{ section.id }} .promo-link {
-      text-decoration: none;
-      color: inherit;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-    }
-
-    #promo-bar-{{ section.id }} .promo-link:hover .promo-text {
-      opacity: 0.85;
-    }
-
-    @media (max-width: 600px) {
-      #promo-bar-{{ section.id }} .promo-container {
-        padding: 8px 12px;
-      }
-      #promo-bar-{{ section.id }} .promo-text {
-        font-size: 12.5px;
-        letter-spacing: 0.8px;
-      }
-    }
-  </style>
 {%- endif -%}
 
 {% schema %}

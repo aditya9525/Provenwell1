@@ -1,0 +1,137 @@
+{%- comment -%}
+  Polar Haircare — 02 Why Everyone's Switching (Stat Highlights)
+  Section featuring eyebrow, headline, subheading, and 4 statistical accomplishment cards.
+{%- endcomment -%}
+
+<section class="why-switching-section" aria-label="Why Everyone is Switching to Polar">
+  <div class="why-switching-container">
+
+    <!-- Header Block -->
+    <div class="why-switching-header">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="why-switching-eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      {%- endif -%}
+
+      <h2 class="why-switching-title">
+        {{ section.settings.heading | default: 'Hair color that finally fits into your life.' }}
+      </h2>
+
+      <p class="why-switching-desc">
+        {{ section.settings.subheading | default: 'No salon appointments, no 60-minute waits, no stained towels. Just natural-looking color in the time it takes to shower — and the confidence that comes with it.' }}
+      </p>
+    </div>
+
+    <!-- 4 Stats Grid -->
+    <div class="why-switching-grid">
+      
+      <!-- Stat 1 -->
+      <div class="why-stat-card">
+        <span class="why-stat-number">{{ section.settings.stat_1_num | default: '840,000+' }}</span>
+        <div class="why-stat-line" aria-hidden="true"></div>
+        <p class="why-stat-text">{{ section.settings.stat_1_text | default: 'Customers have made the switch to Polar' }}</p>
+      </div>
+
+      <!-- Stat 2 -->
+      <div class="why-stat-card">
+        <span class="why-stat-number">{{ section.settings.stat_2_num | default: '26,966' }}</span>
+        <div class="why-stat-line" aria-hidden="true"></div>
+        <p class="why-stat-text">{{ section.settings.stat_2_text | default: 'Verified 5-star reviews and counting' }}</p>
+      </div>
+
+      <!-- Stat 3 -->
+      <div class="why-stat-card">
+        <span class="why-stat-number">{{ section.settings.stat_3_num | default: '11×' }}</span>
+        <div class="why-stat-line" aria-hidden="true"></div>
+        <p class="why-stat-text">{{ section.settings.stat_3_text | default: 'Sold out last year — stock up while it lasts' }}</p>
+      </div>
+
+      <!-- Stat 4 -->
+      <div class="why-stat-card">
+        <span class="why-stat-number">{{ section.settings.stat_4_num | default: '95%' }}</span>
+        <div class="why-stat-line" aria-hidden="true"></div>
+        <p class="why-stat-text">{{ section.settings.stat_4_text | default: 'Say it gives natural-looking gray coverage that lasts' }}</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Why Switching Stats",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow subtitle",
+      "default": "WHY EVERYONE'S SWITCHING"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Headline",
+      "default": "Hair color that finally fits into your life."
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading description",
+      "default": "No salon appointments, no 60-minute waits, no stained towels. Just natural-looking color in the time it takes to shower — and the confidence that comes with it."
+    },
+    {
+      "type": "text",
+      "id": "stat_1_num",
+      "label": "Stat 1 Number",
+      "default": "840,000+"
+    },
+    {
+      "type": "text",
+      "id": "stat_1_text",
+      "label": "Stat 1 Label",
+      "default": "Customers have made the switch to Polar"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_num",
+      "label": "Stat 2 Number",
+      "default": "26,966"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_text",
+      "label": "Stat 2 Label",
+      "default": "Verified 5-star reviews and counting"
+    },
+    {
+      "type": "text",
+      "id": "stat_3_num",
+      "label": "Stat 3 Number",
+      "default": "11×"
+    },
+    {
+      "type": "text",
+      "id": "stat_3_text",
+      "label": "Stat 3 Label",
+      "default": "Sold out last year — stock up while it lasts"
+    },
+    {
+      "type": "text",
+      "id": "stat_4_num",
+      "label": "Stat 4 Number",
+      "default": "95%"
+    },
+    {
+      "type": "text",
+      "id": "stat_4_text",
+      "label": "Stat 4 Label",
+      "default": "Say it gives natural-looking gray coverage that lasts"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Why Switching Stats"
+    }
+  ]
+}
+{% endschema %}

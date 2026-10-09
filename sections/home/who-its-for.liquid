@@ -1,0 +1,273 @@
+{%- comment -%}
+  Polar Haircare — 08 Who It's For
+  Features 4 use-case cards (For Women, For Men, For Busy Schedules, For Gentle Care).
+{%- endcomment -%}
+
+{%- if section.settings.enable_section -%}
+  <section class="who-for-section" aria-label="Who It's For Use Cases">
+    <div class="who-for-container">
+
+      <!-- Section Header -->
+      <div class="who-for-header">
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="who-for-eyebrow">{{ section.settings.eyebrow | escape }}</p>
+        {%- endif -%}
+
+        <h2 class="who-for-title">
+          {{ section.settings.heading | default: 'Whoever you are, it just works.' | escape }}
+        </h2>
+
+        <p class="who-for-subtitle">
+          {{ section.settings.subheading | default: 'From first silver strands to stubborn edges and beards — Polar fits into your routine, not the other way around.' | escape }}
+        </p>
+      </div>
+
+      <!-- 4 Cards Grid -->
+      <div class="who-for-grid">
+
+        <!-- Card 1: For Women -->
+        <div class="who-for-card">
+          <div class="who-for-img-wrap">
+            {%- if section.settings.card_1_image != blank -%}
+              <img src="{{ section.settings.card_1_image | image_url: width: 600 }}" alt="{{ section.settings.card_1_title | escape }}" class="who-for-img" loading="lazy">
+            {%- else -%}
+              <img src="{{ 'spotlight-caroline.png' | asset_url }}" alt="For Women" class="who-for-img" loading="lazy">
+            {%- endif -%}
+          </div>
+          <div class="who-for-body">
+            <span class="who-for-card-tag">{{ section.settings.card_1_tag | default: 'FOR WOMEN' }}</span>
+            <h3 class="who-for-card-title">{{ section.settings.card_1_title | default: 'Roots, temples & full coverage' }}</h3>
+            <p class="who-for-card-desc">{{ section.settings.card_1_desc | default: 'Blend first grays or cover them completely — with soft, natural-looking color that never looks flat or fake.' }}</p>
+            <a href="{{ section.settings.card_1_link | default: routes.all_products_collection_url }}" class="who-for-card-link">
+              Shop now →
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 2: For Men -->
+        <div class="who-for-card">
+          <div class="who-for-img-wrap">
+            {%- if section.settings.card_2_image != blank -%}
+              <img src="{{ section.settings.card_2_image | image_url: width: 600 }}" alt="{{ section.settings.card_2_title | escape }}" class="who-for-img" loading="lazy">
+            {%- else -%}
+              <img src="{{ 'before_after.jpg' | asset_url }}" alt="For Men" class="who-for-img" loading="lazy">
+            {%- endif -%}
+          </div>
+          <div class="who-for-body">
+            <span class="who-for-card-tag">{{ section.settings.card_2_tag | default: 'FOR MEN' }}</span>
+            <h3 class="who-for-card-title">{{ section.settings.card_2_title | default: 'Hair and beards, in one bottle' }}</h3>
+            <p class="who-for-card-desc">{{ section.settings.card_2_desc | default: 'Works just as well on beards. A subtle, natural refresh without a trip to the salon or barber.' }}</p>
+            <a href="{{ section.settings.card_2_link | default: routes.all_products_collection_url }}" class="who-for-card-link">
+              Shop now →
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 3: For Busy Schedules -->
+        <div class="who-for-card">
+          <div class="who-for-img-wrap">
+            {%- if section.settings.card_3_image != blank -%}
+              <img src="{{ section.settings.card_3_image | image_url: width: 600 }}" alt="{{ section.settings.card_3_title | escape }}" class="who-for-img" loading="lazy">
+            {%- else -%}
+              <img src="{{ 'customer_story.jpg' | asset_url }}" alt="For Busy Schedules" class="who-for-img" loading="lazy">
+            {%- endif -%}
+          </div>
+          <div class="who-for-body">
+            <span class="who-for-card-tag">{{ section.settings.card_3_tag | default: 'FOR BUSY SCHEDULES' }}</span>
+            <h3 class="who-for-card-title">{{ section.settings.card_3_title | default: '10 minutes, done in the shower' }}</h3>
+            <p class="who-for-card-desc">{{ section.settings.card_3_desc | default: 'No appointments, bowls or brushes. Color your hair at home whenever it suits you.' }}</p>
+            <a href="{{ section.settings.card_3_link | default: routes.all_products_collection_url }}" class="who-for-card-link">
+              Shop now →
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 4: For Gentle Care -->
+        <div class="who-for-card">
+          <div class="who-for-img-wrap">
+            {%- if section.settings.card_4_image != blank -%}
+              <img src="{{ section.settings.card_4_image | image_url: width: 600 }}" alt="{{ section.settings.card_4_title | escape }}" class="who-for-img" loading="lazy">
+            {%- else -%}
+              <img src="{{ 'polar_shampoo.jpg' | asset_url }}" alt="For Gentle Care" class="who-for-img" loading="lazy">
+            {%- endif -%}
+          </div>
+          <div class="who-for-body">
+            <span class="who-for-card-tag">{{ section.settings.card_4_tag | default: 'FOR GENTLE CARE' }}</span>
+            <h3 class="who-for-card-title">{{ section.settings.card_4_title | default: 'Ammonia-free, plant-powered' }}</h3>
+            <p class="who-for-card-desc">{{ section.settings.card_4_desc | default: 'Reishi, black sesame, ginseng and fo-ti help keep hair soft, shiny and healthy-feeling.' }}</p>
+            <a href="{{ section.settings.card_4_link | default: routes.all_products_collection_url }}" class="who-for-card-link">
+              Shop now →
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Who It's For",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_section",
+      "label": "Show / Hide Entire Section",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "MADE FOR EVERY KIND OF GRAY"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Whoever you are, it just works."
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "From first silver strands to stubborn edges and beards — Polar fits into your routine, not the other way around."
+    },
+    {
+      "type": "header",
+      "content": "Card 1: For Women"
+    },
+    {
+      "type": "image_picker",
+      "id": "card_1_image",
+      "label": "Card 1 Image"
+    },
+    {
+      "type": "text",
+      "id": "card_1_tag",
+      "label": "Card 1 Tag",
+      "default": "FOR WOMEN"
+    },
+    {
+      "type": "text",
+      "id": "card_1_title",
+      "label": "Card 1 Title",
+      "default": "Roots, temples & full coverage"
+    },
+    {
+      "type": "textarea",
+      "id": "card_1_desc",
+      "label": "Card 1 Description",
+      "default": "Blend first grays or cover them completely — with soft, natural-looking color that never looks flat or fake."
+    },
+    {
+      "type": "url",
+      "id": "card_1_link",
+      "label": "Card 1 Link"
+    },
+    {
+      "type": "header",
+      "content": "Card 2: For Men"
+    },
+    {
+      "type": "image_picker",
+      "id": "card_2_image",
+      "label": "Card 2 Image"
+    },
+    {
+      "type": "text",
+      "id": "card_2_tag",
+      "label": "Card 2 Tag",
+      "default": "FOR MEN"
+    },
+    {
+      "type": "text",
+      "id": "card_2_title",
+      "label": "Card 2 Title",
+      "default": "Hair and beards, in one bottle"
+    },
+    {
+      "type": "textarea",
+      "id": "card_2_desc",
+      "label": "Card 2 Description",
+      "default": "Works just as well on beards. A subtle, natural refresh without a trip to the salon or barber."
+    },
+    {
+      "type": "url",
+      "id": "card_2_link",
+      "label": "Card 2 Link"
+    },
+    {
+      "type": "header",
+      "content": "Card 3: For Busy Schedules"
+    },
+    {
+      "type": "image_picker",
+      "id": "card_3_image",
+      "label": "Card 3 Image"
+    },
+    {
+      "type": "text",
+      "id": "card_3_tag",
+      "label": "Card 3 Tag",
+      "default": "FOR BUSY SCHEDULES"
+    },
+    {
+      "type": "text",
+      "id": "card_3_title",
+      "label": "Card 3 Title",
+      "default": "10 minutes, done in the shower"
+    },
+    {
+      "type": "textarea",
+      "id": "card_3_desc",
+      "label": "Card 3 Description",
+      "default": "No appointments, bowls or brushes. Color your hair at home whenever it suits you."
+    },
+    {
+      "type": "url",
+      "id": "card_3_link",
+      "label": "Card 3 Link"
+    },
+    {
+      "type": "header",
+      "content": "Card 4: For Gentle Care"
+    },
+    {
+      "type": "image_picker",
+      "id": "card_4_image",
+      "label": "Card 4 Image"
+    },
+    {
+      "type": "text",
+      "id": "card_4_tag",
+      "label": "Card 4 Tag",
+      "default": "FOR GENTLE CARE"
+    },
+    {
+      "type": "text",
+      "id": "card_4_title",
+      "label": "Card 4 Title",
+      "default": "Ammonia-free, plant-powered"
+    },
+    {
+      "type": "textarea",
+      "id": "card_4_desc",
+      "label": "Card 4 Description",
+      "default": "Reishi, black sesame, ginseng and fo-ti help keep hair soft, shiny and healthy-feeling."
+    },
+    {
+      "type": "url",
+      "id": "card_4_link",
+      "label": "Card 4 Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Who It's For"
+    }
+  ]
+}
+{% endschema %}

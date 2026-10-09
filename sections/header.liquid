@@ -3,11 +3,11 @@
   Fully responsive with fluid max-width, Shopify Navigation, Currency/Country selector, and Cart
 {%- endcomment -%}
 
-<header class="site-header" id="site-header-{{ section.id }}">
+<header class="site-header" id="siteHeader">
   <div class="header-container">
     
     <!-- Mobile Hamburger Toggle -->
-    <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" id="mobileMenuToggle-{{ section.id }}">
+    <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" id="mobileMenuToggle">
       <svg class="hamburger-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <line x1="3" y1="12" x2="21" y2="12"></line>
         <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -72,10 +72,10 @@
               <!-- Visitor Country Flag Icon -->
               <span class="flag-icon" title="{{ localization.country.name }}">
                 <svg viewBox="0 0 36 36" width="22" height="22" xmlns="http://www.w3.org/2000/svg">
-                  <clipPath id="circle-clip-{{ section.id }}">
+                  <clipPath id="circle-clip-header">
                     <circle cx="18" cy="18" r="18" />
                   </clipPath>
-                  <g clip-path="url(#circle-clip-{{ section.id }})">
+                  <g clip-path="url(#circle-clip-header)">
                     <rect width="36" height="12" fill="#FF9933"/>
                     <rect y="12" width="36" height="12" fill="#FFFFFF"/>
                     <rect y="24" width="36" height="12" fill="#138808"/>
@@ -138,10 +138,10 @@
 </header>
 
 <!-- Mobile Navigation Drawer -->
-<div class="mobile-drawer" id="mobileDrawer-{{ section.id }}">
+<div class="mobile-drawer" id="mobileDrawer">
   <div class="mobile-drawer-header">
     <span class="mobile-drawer-title">Menu</span>
-    <button class="mobile-drawer-close" id="mobileDrawerClose-{{ section.id }}" aria-label="Close menu">&times;</button>
+    <button class="mobile-drawer-close" id="mobileDrawerClose" aria-label="Close menu">&times;</button>
   </div>
   <ul class="mobile-nav-list">
     {%- if section.settings.menu != blank -%}
@@ -161,14 +161,14 @@
     {%- endif -%}
   </ul>
 </div>
-<div class="drawer-overlay" id="drawerOverlay-{{ section.id }}"></div>
+<div class="drawer-overlay" id="drawerOverlay"></div>
 
 <script>
   (function() {
-    const toggleBtn = document.getElementById('mobileMenuToggle-{{ section.id }}');
-    const drawer = document.getElementById('mobileDrawer-{{ section.id }}');
-    const overlay = document.getElementById('drawerOverlay-{{ section.id }}');
-    const closeBtn = document.getElementById('mobileDrawerClose-{{ section.id }}');
+    const toggleBtn = document.getElementById('mobileMenuToggle');
+    const drawer = document.getElementById('mobileDrawer');
+    const overlay = document.getElementById('drawerOverlay');
+    const closeBtn = document.getElementById('mobileDrawerClose');
 
     function openNav() {
       drawer.classList.add('open');

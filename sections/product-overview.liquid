@@ -1,0 +1,322 @@
+{%- comment -%}
+  Polar Haircare — 04 Product / Solution Overview Section
+  Features product callout visual card, eyebrow, heading, description, 6 checkmark benefits,
+  4-column spec table, shade swatch selectors, and primary & secondary CTA buttons.
+{%- endcomment -%}
+
+<section class="product-overview-section" aria-label="Product Solution Overview">
+  <div class="product-overview-container">
+
+    <!-- Left Column: Product Feature Callouts Visual Card -->
+    <div class="product-overview-visual-col">
+      <div class="product-overview-card">
+        {%- if section.settings.image != blank -%}
+          {{ section.settings.image | image_url: width: 1120 | image_tag: 
+            class: 'product-overview-card-img', 
+            loading: 'lazy', 
+            alt: section.settings.heading | default: 'Polar Instant Dye Shampoo Feature Callouts' 
+          }}
+        {%- else -%}
+          <img
+            src="{{ 'product-feature-callout.png' | asset_url }}"
+            alt="Polar Instant Dye Shampoo - Product Features and 840,000+ Happy Customers"
+            class="product-overview-card-img"
+            loading="lazy"
+            width="560"
+            height="560"
+          >
+        {%- endif -%}
+      </div>
+    </div>
+
+    <!-- Right Column: Product Copy, Checklist, Specs, Swatches & CTAs -->
+    <div class="product-overview-copy-col">
+
+      <!-- Eyebrow -->
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="product-overview-eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      {%- endif -%}
+
+      <!-- Main Headline -->
+      <h2 class="product-overview-title">
+        {{ section.settings.heading | default: 'Instant Dye Shampoo — one bottle, 15 full applications.' }}
+      </h2>
+
+      <!-- Description Body -->
+      <p class="product-overview-desc">
+        {{ section.settings.description | default: "A color-depositing shampoo powered by botanicals like Ganoderma (reishi), black sesame, ginseng and fo-ti. Apply to dry hair, wait 10 minutes, rinse — that's it." }}
+      </p>
+
+      <!-- Feature Checklist (6 items) -->
+      <ul class="product-overview-checklist">
+        <li class="product-overview-check-item">
+          <span class="product-overview-check-icon" aria-hidden="true">
+            <svg viewBox="0 0 12 10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="1.5 5 4.5 8 10.5 2"></polyline>
+            </svg>
+          </span>
+          <span class="product-overview-check-text">{{ section.settings.feature_1 | default: 'Full gray coverage' }}</span>
+        </li>
+
+        <li class="product-overview-check-item">
+          <span class="product-overview-check-icon" aria-hidden="true">
+            <svg viewBox="0 0 12 10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="1.5 5 4.5 8 10.5 2"></polyline>
+            </svg>
+          </span>
+          <span class="product-overview-check-text">{{ section.settings.feature_2 | default: 'Results in just 10 minutes' }}</span>
+        </li>
+
+        <li class="product-overview-check-item">
+          <span class="product-overview-check-icon" aria-hidden="true">
+            <svg viewBox="0 0 12 10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="1.5 5 4.5 8 10.5 2"></polyline>
+            </svg>
+          </span>
+          <span class="product-overview-check-text">{{ section.settings.feature_3 | default: 'No stains, gloves or mixing' }}</span>
+        </li>
+
+        <li class="product-overview-check-item">
+          <span class="product-overview-check-icon" aria-hidden="true">
+            <svg viewBox="0 0 12 10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="1.5 5 4.5 8 10.5 2"></polyline>
+            </svg>
+          </span>
+          <span class="product-overview-check-text">{{ section.settings.feature_4 | default: 'Gentle on scalp, ammonia-free' }}</span>
+        </li>
+
+        <li class="product-overview-check-item">
+          <span class="product-overview-check-icon" aria-hidden="true">
+            <svg viewBox="0 0 12 10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="1.5 5 4.5 8 10.5 2"></polyline>
+            </svg>
+          </span>
+          <span class="product-overview-check-text">{{ section.settings.feature_5 | default: 'Color lasts 4–6 weeks' }}</span>
+        </li>
+
+        <li class="product-overview-check-item">
+          <span class="product-overview-check-icon" aria-hidden="true">
+            <svg viewBox="0 0 12 10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="1.5 5 4.5 8 10.5 2"></polyline>
+            </svg>
+          </span>
+          <span class="product-overview-check-text">{{ section.settings.feature_6 | default: 'Works on hair and beards' }}</span>
+        </li>
+      </ul>
+
+      <!-- Spec Table (4 columns) -->
+      <div class="product-overview-spec-table">
+        <div class="product-overview-spec-cell">
+          <span class="product-overview-spec-label">{{ section.settings.spec_1_label | default: 'SIZE' }}</span>
+          <span class="product-overview-spec-val">{{ section.settings.spec_1_val | default: '200 ml / 6.76 fl oz' }}</span>
+        </div>
+
+        <div class="product-overview-spec-cell">
+          <span class="product-overview-spec-label">{{ section.settings.spec_2_label | default: 'USES / BOTTLE' }}</span>
+          <span class="product-overview-spec-val">{{ section.settings.spec_2_val | default: '15' }}</span>
+        </div>
+
+        <div class="product-overview-spec-cell">
+          <span class="product-overview-spec-label">{{ section.settings.spec_3_label | default: 'SHADES' }}</span>
+          <span class="product-overview-spec-val">{{ section.settings.spec_3_val | default: 'Black · Dark · Med. Brown' }}</span>
+        </div>
+
+        <div class="product-overview-spec-cell">
+          <span class="product-overview-spec-label">{{ section.settings.spec_4_label | default: 'FORMULA' }}</span>
+          <span class="product-overview-spec-val">{{ section.settings.spec_4_val | default: 'Ammonia-free' }}</span>
+        </div>
+      </div>
+
+      <!-- Shade Swatches -->
+      <div class="product-overview-swatches" role="radiogroup" aria-label="Select Hair Shade">
+        <button type="button" class="product-swatch-btn is-active" role="radio" aria-checked="true" aria-label="Shade Black" data-shade="black">
+          <span class="product-swatch-thumb-wrap">
+            <img src="{{ 'swatch-black.png' | asset_url }}" alt="Black Shade Swatch" class="product-swatch-img" width="74" height="74" loading="lazy">
+          </span>
+          <span class="product-swatch-title">Black</span>
+        </button>
+
+        <button type="button" class="product-swatch-btn" role="radio" aria-checked="false" aria-label="Shade Dark Brown" data-shade="dark-brown">
+          <span class="product-swatch-thumb-wrap">
+            <img src="{{ 'swatch-dark-brown.png' | asset_url }}" alt="Dark Brown Shade Swatch" class="product-swatch-img" width="74" height="74" loading="lazy">
+          </span>
+          <span class="product-swatch-title">Dark Brown</span>
+        </button>
+
+        <button type="button" class="product-swatch-btn" role="radio" aria-checked="false" aria-label="Shade Medium Brown" data-shade="medium-brown">
+          <span class="product-swatch-thumb-wrap">
+            <img src="{{ 'swatch-medium-brown.png' | asset_url }}" alt="Medium Brown Shade Swatch" class="product-swatch-img" width="74" height="74" loading="lazy">
+          </span>
+          <span class="product-swatch-title">Medium Brown</span>
+        </button>
+      </div>
+
+      <!-- CTAs Row -->
+      <div class="product-overview-ctas">
+        <a href="{{ section.settings.btn_1_link | default: routes.all_products_collection_url }}" class="product-overview-btn-primary">
+          {{ section.settings.btn_1_text | default: 'Add to Cart — Rs. 3,500' }}
+        </a>
+
+        <a href="{{ section.settings.btn_2_link | default: '#shade-guide' }}" class="product-overview-btn-secondary">
+          {{ section.settings.btn_2_text | default: 'Find Your Shade' }}
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product Overview",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Product Feature Callout Card Image"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "THE PRODUCT"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Instant Dye Shampoo — one bottle, 15 full applications."
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "A color-depositing shampoo powered by botanicals like Ganoderma (reishi), black sesame, ginseng and fo-ti. Apply to dry hair, wait 10 minutes, rinse — that's it."
+    },
+    {
+      "type": "header",
+      "content": "Feature Checklist"
+    },
+    {
+      "type": "text",
+      "id": "feature_1",
+      "label": "Feature 1",
+      "default": "Full gray coverage"
+    },
+    {
+      "type": "text",
+      "id": "feature_2",
+      "label": "Feature 2",
+      "default": "Results in just 10 minutes"
+    },
+    {
+      "type": "text",
+      "id": "feature_3",
+      "label": "Feature 3",
+      "default": "No stains, gloves or mixing"
+    },
+    {
+      "type": "text",
+      "id": "feature_4",
+      "label": "Feature 4",
+      "default": "Gentle on scalp, ammonia-free"
+    },
+    {
+      "type": "text",
+      "id": "feature_5",
+      "label": "Feature 5",
+      "default": "Color lasts 4–6 weeks"
+    },
+    {
+      "type": "text",
+      "id": "feature_6",
+      "label": "Feature 6",
+      "default": "Works on hair and beards"
+    },
+    {
+      "type": "header",
+      "content": "Spec Table"
+    },
+    {
+      "type": "text",
+      "id": "spec_1_label",
+      "label": "Spec 1 Label",
+      "default": "SIZE"
+    },
+    {
+      "type": "text",
+      "id": "spec_1_val",
+      "label": "Spec 1 Value",
+      "default": "200 ml / 6.76 fl oz"
+    },
+    {
+      "type": "text",
+      "id": "spec_2_label",
+      "label": "Spec 2 Label",
+      "default": "USES / BOTTLE"
+    },
+    {
+      "type": "text",
+      "id": "spec_2_val",
+      "label": "Spec 2 Value",
+      "default": "15"
+    },
+    {
+      "type": "text",
+      "id": "spec_3_label",
+      "label": "Spec 3 Label",
+      "default": "SHADES"
+    },
+    {
+      "type": "text",
+      "id": "spec_3_val",
+      "label": "Spec 3 Value",
+      "default": "Black · Dark · Med. Brown"
+    },
+    {
+      "type": "text",
+      "id": "spec_4_label",
+      "label": "Spec 4 Label",
+      "default": "FORMULA"
+    },
+    {
+      "type": "text",
+      "id": "spec_4_val",
+      "label": "Spec 4 Value",
+      "default": "Ammonia-free"
+    },
+    {
+      "type": "header",
+      "content": "Call to Actions"
+    },
+    {
+      "type": "text",
+      "id": "btn_1_text",
+      "label": "Primary Button Text",
+      "default": "Add to Cart — Rs. 3,500"
+    },
+    {
+      "type": "url",
+      "id": "btn_1_link",
+      "label": "Primary Button Link"
+    },
+    {
+      "type": "text",
+      "id": "btn_2_text",
+      "label": "Secondary Button Text",
+      "default": "Find Your Shade"
+    },
+    {
+      "type": "url",
+      "id": "btn_2_link",
+      "label": "Secondary Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Overview"
+    }
+  ]
+}
+{% endschema %}

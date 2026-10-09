@@ -4,7 +4,7 @@
 {%- endcomment -%}
 
 {%- if section.settings.enable_section -%}
-  <section class="guarantee-section" id="guarantee-{{ section.id }}" aria-labelledby="guarantee-heading-{{ section.id }}">
+  <section class="guarantee-section" id="satisfactionGuarantee" aria-label="30-Day Satisfaction Guarantee">
     <div class="guarantee-container">
 
       <div class="guarantee-banner-card"{% if section.settings.bg_image != blank %} style="background-image: url('{{ section.settings.bg_image | image_url: width: 1400 }}');"{% endif %}>
@@ -13,7 +13,7 @@
         <div class="guarantee-content-col">
           
           <div class="guarantee-title-wrap">
-            <h2 class="guarantee-title-primary" id="guarantee-heading-{{ section.id }}">
+            <h2 class="guarantee-title-primary">
               {{ section.settings.title_primary | default: "30-DAY" }}
             </h2>
             <h3 class="guarantee-title-secondary">

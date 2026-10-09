@@ -4,14 +4,14 @@
 {%- endcomment -%}
 
 {%- if section.settings.enable_section -%}
-  <section class="faq-section" id="faq-{{ section.id }}" aria-labelledby="faq-heading-{{ section.id }}">
+  <section class="faq-section" id="faqSection" aria-label="Frequently Asked Questions">
     <div class="faq-container">
 
       <div class="faq-card"{% if section.settings.bg_image != blank %} style="background-image: url('{{ section.settings.bg_image | image_url: width: 1400 }}');"{% endif %}>
         
         <!-- Left Column: Title -->
         <div class="faq-header-col">
-          <h2 class="faq-title-line-1" id="faq-heading-{{ section.id }}">
+          <h2 class="faq-title-line-1">
             {{ section.settings.title_line_1 | default: "FREQUENTLY" }}
           </h2>
           <span class="faq-title-line-2">
@@ -192,7 +192,7 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      const faqSection = document.getElementById('faq-{{ section.id }}');
+      const faqSection = document.getElementById('faqSection');
       if (!faqSection) return;
 
       const triggers = faqSection.querySelectorAll('.faq-trigger');

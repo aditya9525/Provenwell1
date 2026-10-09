@@ -4,7 +4,7 @@
 {%- endcomment -%}
 
 {%- if section.settings.enable_section -%}
-  <section class="as-seen-in-bar" id="as-seen-in-{{ section.id }}" aria-label="Featured In Publications">
+  <section class="as-seen-in-bar" aria-label="Featured In Publications">
     <div class="as-seen-in-wrapper">
       
       <!-- Label -->
@@ -103,19 +103,6 @@
 
     </div>
   </section>
-
-  <style>
-    #as-seen-in-{{ section.id }} {
-      width: 100%;
-      background: {{ section.settings.bg_gradient | default: 'linear-gradient(90deg, #1C2438 0%, #25334D 50%, #1C2438 100%)' }};
-      display: flex;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-      padding: clamp(14px, 1.6vw, 18px) 0;
-    }
-  </style>
 {%- endif -%}
 
 {% schema %}

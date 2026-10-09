@@ -1,0 +1,279 @@
+{%- comment -%}
+  Polar Haircare — 01 Hero Section (Home Page)
+  Features dual background wave decor, rich responsive typography, CTAs, review stars, trust checklist, and dark visual card with 3 floating stat chips and shade tag.
+{%- endcomment -%}
+
+<section class="hero-section" aria-label="Polar Instant Dye Shampoo Hero">
+  
+  <!-- Wave Decors -->
+  <div class="hero-decor-right" aria-hidden="true">
+    <img src="{{ 'line_style.svg' | asset_url }}" alt="" width="351" height="493" loading="eager">
+  </div>
+  <div class="hero-decor-left" aria-hidden="true">
+    <img src="{{ 'line_style1.svg' | asset_url }}" alt="" width="507" height="622" loading="eager">
+  </div>
+
+  <div class="hero-container">
+    
+    <!-- Left Column: Copy, CTAs, Social Proof & Trust Badges -->
+    <div class="hero-copy-col">
+      
+      <!-- Eyebrow Pill -->
+      <div class="hero-eyebrow-pill">
+        <span class="hero-eyebrow-text">{{ section.settings.eyebrow_text | default: 'FALL SALE | SAVE 29%' }}</span>
+      </div>
+
+      <!-- Main Headline -->
+      <h1 class="hero-main-title">
+        {{ section.settings.heading | default: 'Cover your grays in<br>10 minutes —<br>naturally.' }}
+      </h1>
+
+      <!-- Subheading -->
+      <p class="hero-subheading">
+        {{ section.settings.subheading | default: 'Just shampoo it in, wait 10 minutes and rinse. Natural-looking, ammonia-free color with no mixing, no gloves and no stains — loved by 840,000+ customers.' }}
+      </p>
+
+      <!-- CTAs Row -->
+      <div class="hero-ctas-row">
+        <a href="{{ section.settings.primary_btn_link | default: '#product-form' }}" class="hero-btn-primary">
+          {{ section.settings.primary_btn_text | default: 'Shop Now — From Rs. 2,333' }}
+        </a>
+        <a href="{{ section.settings.secondary_btn_link | default: '#results' }}" class="hero-btn-secondary">
+          {{ section.settings.secondary_btn_text | default: 'See Real Results' }}
+        </a>
+      </div>
+
+      <!-- Rating & Social Proof -->
+      <div class="hero-rating-row" aria-label="Customer Rating">
+        <div class="hero-stars-wrap" aria-hidden="true">
+          {%- for i in (1..5) -%}
+            <svg viewBox="0 0 20 20" fill="currentColor">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+            </svg>
+          {%- endfor -%}
+        </div>
+        <span class="hero-verified-reviews">{{ section.settings.reviews_text | default: '26,966 verified reviews' }}</span>
+        <span class="hero-happy-customers">{{ section.settings.customers_text | default: '· 840,000+ happy customers' }}</span>
+      </div>
+
+      <!-- Divider -->
+      <div class="hero-divider" aria-hidden="true"></div>
+
+      <!-- Trust Badges List -->
+      <div class="hero-trust-checks">
+        <div class="hero-trust-item">
+          <span class="hero-trust-icon" aria-hidden="true">
+            <svg viewBox="0 0 12 10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="1.5 5 4.5 8 10.5 2"></polyline>
+            </svg>
+          </span>
+          <span class="hero-trust-label">{{ section.settings.trust_1 | default: 'Ammonia-free formula' }}</span>
+        </div>
+
+        <div class="hero-trust-item">
+          <span class="hero-trust-icon" aria-hidden="true">
+            <svg viewBox="0 0 12 10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="1.5 5 4.5 8 10.5 2"></polyline>
+            </svg>
+          </span>
+          <span class="hero-trust-label">{{ section.settings.trust_2 | default: 'Color lasts 4–6 weeks' }}</span>
+        </div>
+
+        <div class="hero-trust-item">
+          <span class="hero-trust-icon" aria-hidden="true">
+            <svg viewBox="0 0 12 10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="1.5 5 4.5 8 10.5 2"></polyline>
+            </svg>
+          </span>
+          <span class="hero-trust-label">{{ section.settings.trust_3 | default: '30-day money-back guarantee' }}</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Right Column: Visual Card with Glowing Bottle & 3 Floating Stat Chips -->
+    <div class="hero-visual-col">
+      <div class="hero-visual-card">
+        
+        <!-- Center Blue Glow -->
+        <div class="hero-visual-glow" aria-hidden="true"></div>
+
+        <!-- Bottle Product Image -->
+        {%- if section.settings.bottle_image != blank -%}
+          <img
+            src="{{ section.settings.bottle_image | image_url: width: 800 }}"
+            alt="{{ section.settings.bottle_image.alt | default: 'Polar Instant Dye Shampoo' | escape }}"
+            class="hero-bottle-img"
+            loading="eager"
+            width="320"
+            height="500"
+          >
+        {%- else -%}
+          <img
+            src="{{ 'product-black-main.png' | asset_url }}"
+            alt="Polar Instant Dye Shampoo Bottle"
+            class="hero-bottle-img"
+            loading="eager"
+            width="320"
+            height="500"
+          >
+        {%- endif -%}
+
+        <!-- Stat Chip 1: 10 min -->
+        <div class="hero-stat-chip hero-chip-time">
+          <span class="hero-stat-value">{{ section.settings.stat_1_val | default: '10 min' }}</span>
+          <span class="hero-stat-label">{{ section.settings.stat_1_lbl | default: 'to full gray coverage' }}</span>
+        </div>
+
+        <!-- Stat Chip 2: 15 uses -->
+        <div class="hero-stat-chip hero-chip-uses">
+          <span class="hero-stat-value">{{ section.settings.stat_2_val | default: '15' }}</span>
+          <span class="hero-stat-label">{{ section.settings.stat_2_lbl | default: 'applications per bottle' }}</span>
+        </div>
+
+        <!-- Stat Chip 3: $2.33 cost -->
+        <div class="hero-stat-chip hero-chip-cost">
+          <span class="hero-stat-value">{{ section.settings.stat_3_val | default: '$2.33' }}</span>
+          <span class="hero-stat-label">{{ section.settings.stat_3_lbl | default: 'per use vs $15 for box dye' }}</span>
+        </div>
+
+        <!-- Shade Range Pill -->
+        <div class="hero-shade-pill">
+          <span>{{ section.settings.shade_pill_text | default: 'Available in Black · Dark Brown · Medium Brown' }}</span>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Home Hero Banner",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow_text",
+      "label": "Eyebrow badge text",
+      "default": "FALL SALE | SAVE 29%"
+    },
+    {
+      "type": "html",
+      "id": "heading",
+      "label": "Headline",
+      "default": "Cover your grays in<br>10 minutes —<br>naturally."
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading description",
+      "default": "Just shampoo it in, wait 10 minutes and rinse. Natural-looking, ammonia-free color with no mixing, no gloves and no stains — loved by 840,000+ customers."
+    },
+    {
+      "type": "text",
+      "id": "primary_btn_text",
+      "label": "Primary button text",
+      "default": "Shop Now — From Rs. 2,333"
+    },
+    {
+      "type": "url",
+      "id": "primary_btn_link",
+      "label": "Primary button link"
+    },
+    {
+      "type": "text",
+      "id": "secondary_btn_text",
+      "label": "Secondary button text",
+      "default": "See Real Results"
+    },
+    {
+      "type": "url",
+      "id": "secondary_btn_link",
+      "label": "Secondary button link"
+    },
+    {
+      "type": "text",
+      "id": "reviews_text",
+      "label": "Reviews text",
+      "default": "26,966 verified reviews"
+    },
+    {
+      "type": "text",
+      "id": "customers_text",
+      "label": "Customers count text",
+      "default": "· 840,000+ happy customers"
+    },
+    {
+      "type": "text",
+      "id": "trust_1",
+      "label": "Trust item 1",
+      "default": "Ammonia-free formula"
+    },
+    {
+      "type": "text",
+      "id": "trust_2",
+      "label": "Trust item 2",
+      "default": "Color lasts 4–6 weeks"
+    },
+    {
+      "type": "text",
+      "id": "trust_3",
+      "label": "Trust item 3",
+      "default": "30-day money-back guarantee"
+    },
+    {
+      "type": "image_picker",
+      "id": "bottle_image",
+      "label": "Bottle visual image"
+    },
+    {
+      "type": "text",
+      "id": "stat_1_val",
+      "label": "Stat 1 value",
+      "default": "10 min"
+    },
+    {
+      "type": "text",
+      "id": "stat_1_lbl",
+      "label": "Stat 1 label",
+      "default": "to full gray coverage"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_val",
+      "label": "Stat 2 value",
+      "default": "15"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_lbl",
+      "label": "Stat 2 label",
+      "default": "applications per bottle"
+    },
+    {
+      "type": "text",
+      "id": "stat_3_val",
+      "label": "Stat 3 value",
+      "default": "$2.33"
+    },
+    {
+      "type": "text",
+      "id": "stat_3_lbl",
+      "label": "Stat 3 label",
+      "default": "per use vs $15 for box dye"
+    },
+    {
+      "type": "text",
+      "id": "shade_pill_text",
+      "label": "Bottom shade tag text",
+      "default": "Available in Black · Dark Brown · Medium Brown"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Home Hero Banner"
+    }
+  ]
+}
+{% endschema %}

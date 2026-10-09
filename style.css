@@ -5227,3 +5227,1045 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
+/* ==========================================================================
+   09 — Offer / Choose Your Bundle Section
+   ========================================================================== */
+.bundle-offer-section {
+  width: 100%;
+  background: #FFFFFF;
+  padding: clamp(64px, 8vw, 110px) 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.bundle-offer-container {
+  width: 100%;
+  max-width: 1248px;
+  margin: 0 auto;
+  padding: 0 clamp(16px, 3vw, 24px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(32px, 4vw, 48px);
+  box-sizing: border-box;
+}
+
+/* Section Header */
+.bundle-offer-header {
+  width: 100%;
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.bundle-sale-pill {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 18px;
+  background: linear-gradient(90deg, #1D2A45 5%, #677E98 99%);
+  border-radius: 100px;
+  box-sizing: border-box;
+}
+
+.bundle-sale-pill span {
+  font-family: 'Lato', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 16px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
+
+.bundle-offer-title {
+  font-family: 'Lato', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: clamp(28px, 3.5vw, 44px);
+  line-height: 1.2;
+  text-align: center;
+  color: #1E2123;
+  margin: 0;
+}
+
+.bundle-offer-subtitle {
+  font-family: 'Red Hat Display', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: clamp(15px, 1.25vw, 18px);
+  line-height: 1.55;
+  text-align: center;
+  color: #63697A;
+  margin: 0;
+  max-width: 720px;
+}
+
+/* Bundles Grid / Cards Row */
+.bundle-cards-row {
+  width: 100%;
+  max-width: 1200px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(16px, 2vw, 24px);
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/* Individual Bundle Item Card */
+.bundle-item-card {
+  width: 100%;
+  background: #F4F4F4;
+  border-radius: 24px;
+  padding: 32px 28px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 18px;
+  box-sizing: border-box;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.bundle-item-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.06);
+}
+
+/* Featured 2 Bottles Card (Dark & Elevated) */
+.bundle-featured-card {
+  background: linear-gradient(180deg, #1D2A45 0%, #151F33 100%);
+  box-shadow: 0px 24px 50px rgba(28, 41, 69, 0.35);
+  padding: 32px 28px 38px;
+  transform: scale(1.025);
+  z-index: 2;
+}
+
+.bundle-featured-card:hover {
+  transform: scale(1.04) translateY(-4px);
+  box-shadow: 0px 30px 60px rgba(28, 41, 69, 0.45);
+}
+
+/* Badge at Card Top */
+.bundle-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 26px;
+  padding: 6px 14px;
+  border-radius: 100px;
+  box-sizing: border-box;
+}
+
+.bundle-badge span {
+  font-family: 'Lato', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+
+.bundle-badge-white {
+  background: #FFFFFF;
+}
+
+.bundle-badge-white span {
+  color: #2C3452;
+}
+
+.bundle-badge-dark {
+  background: #2C3452;
+}
+
+.bundle-badge-dark span {
+  color: #FFFFFF;
+}
+
+.bundle-card-badge-placeholder {
+  height: 26px;
+  width: 100%;
+}
+
+/* Bottle Image Container */
+.bundle-img-box {
+  width: 100%;
+  max-width: 260px;
+  height: 190px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.bundle-bottle-img {
+  max-height: 180px;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0px 8px 16px rgba(0, 0, 0, 0.12));
+  transition: transform 0.35s ease;
+}
+
+.bundle-item-card:hover .bundle-bottle-img {
+  transform: scale(1.04);
+}
+
+/* Card Title */
+.bundle-item-title {
+  font-family: 'Lato', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 31px;
+  color: #1E2123;
+  margin: 0;
+}
+
+.bundle-title-light {
+  color: #FFFFFF;
+}
+
+/* Price Row */
+.bundle-price-row {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.bundle-price-compare {
+  font-family: 'Red Hat Display', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 22px;
+  text-decoration: line-through;
+  color: #63697A;
+}
+
+.bundle-price-current {
+  font-family: 'Lato', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 38px;
+  color: #1E2123;
+}
+
+.bundle-price-unit {
+  font-family: 'Red Hat Display', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 20px;
+  color: #63697A;
+}
+
+.bundle-light {
+  color: #C9D0DD;
+}
+
+.bundle-price-current.bundle-light {
+  color: #FFFFFF;
+}
+
+/* Save Tag */
+.bundle-save-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 12px;
+  background: #D1FAE5;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+.bundle-save-tag span {
+  font-family: 'Lato', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 16px;
+  color: #047857;
+}
+
+.bundle-save-tag-glass {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.bundle-save-tag-glass span {
+  color: #FFFFFF;
+}
+
+/* Divider Line */
+.bundle-divider {
+  width: 100%;
+  height: 1px;
+  background: #D9D9D9;
+  border: none;
+  margin: 0;
+}
+
+.bundle-divider-light {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Perks List */
+.bundle-perks-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  box-sizing: border-box;
+}
+
+.bundle-perk-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  text-align: left;
+}
+
+.bundle-check-icon {
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.bundle-check-icon svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+.bundle-perk-text {
+  font-family: 'Red Hat Display', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 20px;
+  color: #1E2123;
+}
+
+.bundle-text-light {
+  color: #FFFFFF;
+}
+
+/* Action CTA Buttons */
+.bundle-btn {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 0;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  box-sizing: border-box;
+  text-decoration: none;
+  transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.bundle-btn span {
+  font-family: 'Lato', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.bundle-btn-primary {
+  background: #2C3452;
+}
+
+.bundle-btn-primary span {
+  color: #FFFFFF;
+}
+
+.bundle-btn-primary:hover {
+  background: #1e2439;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(44, 52, 82, 0.25);
+}
+
+.bundle-btn-inverse {
+  background: #FFFFFF;
+}
+
+.bundle-btn-inverse span {
+  color: #2C3452;
+}
+
+.bundle-btn-inverse:hover {
+  background: #f0f4f8;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
+
+.bundle-btn:active {
+  transform: scale(0.98);
+}
+
+/* ==========================================================================
+   Trust Badges Card (Bordered 4-Column Box)
+   ========================================================================== */
+.bundle-trust-card {
+  width: 100%;
+  max-width: 570px;
+  box-sizing: border-box;
+  border: 1px solid #D9D9D9;
+  border-radius: 8px;
+  background: #FFFFFF;
+  padding: 20px 14px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.bundle-trust-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  box-sizing: border-box;
+}
+
+.bundle-trust-icon-wrap {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.bundle-trust-icon-wrap svg {
+  width: 32px;
+  height: 32px;
+  display: block;
+}
+
+.bundle-trust-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 2px;
+  box-sizing: border-box;
+}
+
+.bundle-trust-title {
+  font-family: 'Red Hat Display', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 11px;
+  line-height: 15px;
+  text-align: center;
+  color: #2B3344;
+}
+
+.bundle-trust-desc {
+  font-family: 'Red Hat Display', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 15px;
+  text-align: center;
+  color: #2B3344;
+}
+
+/* Money-Back Guarantee Note */
+.bundle-money-back-note {
+  font-family: 'Red Hat Display', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 19px;
+  text-align: center;
+  color: #63697A;
+  max-width: 589px;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* ==========================================================================
+   Responsive Breakpoints for Bundle Section
+   ========================================================================== */
+@media (max-width: 1080px) {
+  .bundle-cards-row {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .bundle-item-card {
+    padding: 28px 20px 28px;
+  }
+
+  .bundle-featured-card {
+    padding: 28px 20px 32px;
+  }
+
+  .bundle-price-current {
+    font-size: 28px;
+    line-height: 34px;
+  }
+
+  .bundle-item-title {
+    font-size: 23px;
+  }
+}
+
+@media (max-width: 860px) {
+  .bundle-cards-row {
+    grid-template-columns: 1fr;
+    max-width: 420px;
+    gap: 24px;
+  }
+
+  .bundle-item-card {
+    max-width: 100%;
+    padding: 32px 24px;
+  }
+
+  .bundle-featured-card {
+    transform: none;
+    order: -1; /* Most popular on top for mobile */
+  }
+
+  .bundle-featured-card:hover {
+    transform: translateY(-4px);
+  }
+
+  .bundle-card-badge-placeholder {
+    display: none;
+  }
+}
+
+@media (max-width: 540px) {
+  .bundle-trust-card {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px 12px;
+    padding: 20px 16px;
+  }
+
+  .bundle-offer-subtitle {
+    font-size: 15px;
+    line-height: 24px;
+  }
+}
+
+/* ==========================================================================
+   11 — Customer Videos (UGC)
+   ========================================================================== */
+.ugc-videos-section {
+  width: 100%;
+  background: #FFFFFF;
+  padding: clamp(60px, 7vw, 100px) 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.ugc-videos-container {
+  width: 100%;
+  max-width: 1248px;
+  margin: 0 auto;
+  padding: 0 clamp(16px, 3vw, 24px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(32px, 4vw, 44px);
+  box-sizing: border-box;
+}
+
+.ugc-videos-header {
+  width: 100%;
+  max-width: 1011px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.ugc-videos-title {
+  font-family: 'Lato', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: clamp(26px, 3.2vw, 40px);
+  line-height: 1.2;
+  text-align: center;
+  color: #1E2123;
+  margin: 0;
+}
+
+.ugc-videos-subtitle {
+  font-family: 'Red Hat Display', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: clamp(15px, 1.2vw, 18px);
+  line-height: 24px;
+  text-align: center;
+  color: #63697A;
+  margin: 0;
+  max-width: 500px;
+}
+
+/* Swiper Outer & Slider */
+.ugc-swiper-wrapper-outer {
+  width: 100%;
+  max-width: 1200px;
+  overflow: hidden;
+}
+
+.ugc-videos-swiper {
+  width: 100%;
+  padding: 8px 0 24px;
+  overflow: visible;
+}
+
+.ugc-video-slide {
+  display: flex;
+  justify-content: center;
+  height: auto;
+  box-sizing: border-box;
+}
+
+.ugc-video-card {
+  width: 100%;
+  max-width: 224px;
+  height: 408px;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  background: #E5E7EB;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
+}
+
+.ugc-video-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 32px rgba(44, 52, 82, 0.15);
+}
+
+.ugc-video-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.ugc-video-card:hover .ugc-video-img {
+  transform: scale(1.04);
+}
+
+/* Center Play Button */
+.ugc-play-btn-circle {
+  position: absolute;
+  width: 58px;
+  height: 58px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease, box-shadow 0.2s ease;
+  z-index: 2;
+}
+
+.ugc-play-btn-circle svg {
+  margin-left: 3px;
+  display: block;
+}
+
+.ugc-video-card:hover .ugc-play-btn-circle {
+  transform: translate(-50%, -50%) scale(1.1);
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* Secondary Reviews Button */
+.ugc-reviews-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 28px;
+  min-width: 228px;
+  height: 54px;
+  background: #FFFFFF;
+  border: 1.5px solid #2C3452;
+  border-radius: 8px;
+  text-decoration: none;
+  box-sizing: border-box;
+  transition: background-color 0.25s ease, color 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+}
+
+.ugc-reviews-btn span {
+  font-family: 'Lato', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  color: #2C3452;
+  transition: color 0.25s ease;
+}
+
+.ugc-reviews-btn:hover {
+  background: #2C3452;
+  box-shadow: 0 6px 18px rgba(44, 52, 82, 0.2);
+  transform: translateY(-2px);
+}
+
+.ugc-reviews-btn:hover span {
+  color: #FFFFFF;
+}
+
+.ugc-swiper-pagination {
+  position: static !important;
+  margin-top: 14px;
+  display: none;
+}
+
+.ugc-swiper-pagination .swiper-pagination-bullet {
+  background: #C9D0DD;
+  opacity: 0.6;
+  width: 8px;
+  height: 8px;
+  transition: all 0.25s ease;
+}
+
+.ugc-swiper-pagination .swiper-pagination-bullet-active {
+  background: #2C3452;
+  opacity: 1;
+  width: 22px;
+  border-radius: 4px;
+}
+
+@media (max-width: 1024px) {
+  .ugc-swiper-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .ugc-video-card {
+    max-width: 100%;
+    height: 380px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ugc-video-card {
+    height: 340px;
+  }
+  .ugc-play-btn-circle {
+    width: 48px;
+    height: 48px;
+  }
+  .ugc-play-btn-circle svg {
+    width: 15px;
+    height: 17px;
+  }
+}
+
+/* ==========================================================================
+   13 — Final CTA Section
+   ========================================================================== */
+.final-cta-section {
+  width: 100%;
+  background: #FFFFFF;
+  padding: 40px 0 110px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.final-cta-container {
+  width: 100%;
+  max-width: 1248px;
+  margin: 0 auto;
+  padding: 0 clamp(16px, 3vw, 24px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.final-cta-banner {
+  width: 100%;
+  max-width: 1200px;
+  min-height: 460px;
+  border-radius: 38px;
+  background-color: #172138;
+  background-image: url('assets/final-cta-bg.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  padding: 0 40px 0 72px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  box-shadow: 0 20px 48px rgba(18, 27, 48, 0.25);
+}
+
+.final-cta-content {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 64px 0;
+  gap: 20px;
+  box-sizing: border-box;
+  z-index: 2;
+}
+
+.final-cta-eyebrow {
+  font-family: 'Lato', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 16px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #AEB8CC;
+  margin: 0;
+}
+
+.final-cta-title {
+  font-family: 'Lato', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: clamp(28px, 3.5vw, 44px);
+  line-height: 1.18;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+.final-cta-subtitle {
+  font-family: 'Red Hat Display', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: clamp(15px, 1.2vw, 18px);
+  line-height: 28px;
+  color: #C9D0DD;
+  margin: 0;
+  max-width: 560px;
+}
+
+.final-cta-actions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-top: 4px;
+}
+
+.final-cta-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 17px 30px;
+  background: #FFFFFF;
+  border-radius: 8px;
+  font-family: 'Lato', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 20px;
+  color: #2C3452;
+  text-decoration: none;
+  border: 1.5px solid #FFFFFF;
+  transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease, color 0.2s ease;
+  box-sizing: border-box;
+}
+
+.final-cta-btn-primary:hover {
+  background: #f0f4f8;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.final-cta-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 17px 30px;
+  background: transparent;
+  border: 1.5px solid rgba(255, 255, 255, 0.6);
+  border-radius: 8px;
+  font-family: 'Lato', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 20px;
+  color: #FFFFFF;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.final-cta-btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: #FFFFFF;
+  transform: translateY(-2px);
+}
+
+.final-cta-rating-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.final-cta-stars {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  color: #FFB800;
+}
+
+.final-cta-stars svg {
+  width: 16px;
+  height: 16px;
+  fill: #FFB800;
+}
+
+.final-cta-review-count {
+  font-family: 'Red Hat Display', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 19px;
+  color: #C9D0DD;
+}
+
+/* Image / Product Pair Column */
+.final-cta-media {
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+.final-cta-bottles-img {
+  max-width: 100%;
+  max-height: 380px;
+  object-fit: contain;
+  filter: drop-shadow(0 16px 32px rgba(0, 0, 0, 0.35));
+  transition: transform 0.4s ease;
+}
+
+.final-cta-banner:hover .final-cta-bottles-img {
+  transform: translateY(-4px) scale(1.02);
+}
+
+/* Responsive */
+@media (max-width: 1080px) {
+  .final-cta-banner {
+    padding: 48px 40px;
+    gap: 24px;
+  }
+  .final-cta-media {
+    max-width: 340px;
+  }
+}
+
+@media (max-width: 860px) {
+  .final-cta-section {
+    padding: 30px 0 80px;
+  }
+  .final-cta-banner {
+    flex-direction: column;
+    padding: 48px 28px 40px;
+    text-align: center;
+    border-radius: 28px;
+  }
+  .final-cta-content {
+    align-items: center;
+    padding: 0;
+    text-align: center;
+  }
+  .final-cta-title {
+    text-align: center;
+  }
+  .final-cta-subtitle {
+    text-align: center;
+  }
+  .final-cta-actions {
+    justify-content: center;
+  }
+  .final-cta-rating-row {
+    justify-content: center;
+  }
+  .final-cta-media {
+    max-width: 300px;
+    margin-top: 10px;
+  }
+  .final-cta-bottles-img {
+    max-height: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .final-cta-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  .final-cta-btn-primary,
+  .final-cta-btn-ghost {
+    width: 100%;
+  }
+}

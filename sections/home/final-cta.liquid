@@ -1,0 +1,127 @@
+<!-- 13 — Final CTA Section -->
+<section class="final-cta-section" id="finalCtaSection" aria-labelledby="finalCtaTitle">
+  <div class="final-cta-container">
+
+    <div class="final-cta-banner">
+      
+      <!-- Copy Column -->
+      <div class="final-cta-content">
+        <span class="final-cta-eyebrow">{{ section.settings.eyebrow | default: "FALL SALE — UP TO 52% OFF" }}</span>
+        
+        <h2 class="final-cta-title" id="finalCtaTitle">
+          {{ section.settings.title | default: "Ready to see your grays disappear in 10 minutes?" }}
+        </h2>
+        
+        <p class="final-cta-subtitle">
+          {{ section.settings.subtitle | default: "Try Polar risk-free. If it doesn’t work for you, our 30-day money-back guarantee has you covered." }}
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="final-cta-actions">
+          <a href="{{ section.settings.primary_btn_link | default: '../index.html' }}" class="final-cta-btn-primary">
+            <span>{{ section.settings.primary_btn_text | default: "Shop Now — Save 29%" }}</span>
+          </a>
+          <a href="{{ section.settings.ghost_btn_link | default: '#bundleOfferSection' }}" class="final-cta-btn-ghost">
+            <span>{{ section.settings.ghost_btn_text | default: "Compare Bundles" }}</span>
+          </a>
+        </div>
+
+        <!-- Rating & Social Proof -->
+        <div class="final-cta-rating-row">
+          <div class="final-cta-stars" aria-label="5 out of 5 stars">
+            {%- for i in (1..5) -%}
+              <svg viewBox="0 0 20 20" fill="currentColor" width="16" height="16" aria-hidden="true">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+              </svg>
+            {%- endfor -%}
+          </div>
+          <span class="final-cta-review-count">{{ section.settings.review_count_text | default: "26,966 verified reviews" }}</span>
+        </div>
+
+      </div>
+
+      <!-- Media / Product Pair Column -->
+      <div class="final-cta-media">
+        <img 
+          src="../assets/final-cta-bottles.png" 
+          alt="Polar Instant Dye Shampoo Pair" 
+          class="final-cta-bottles-img"
+          loading="lazy"
+        >
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "13 — Final CTA",
+  "tag": "section",
+  "class": "section-final-cta",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "FALL SALE — UP TO 52% OFF"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Ready to see your grays disappear in 10 minutes?"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Try Polar risk-free. If it doesn’t work for you, our 30-day money-back guarantee has you covered."
+    },
+    {
+      "type": "text",
+      "id": "primary_btn_text",
+      "label": "Primary Button Text",
+      "default": "Shop Now — Save 29%"
+    },
+    {
+      "type": "url",
+      "id": "primary_btn_link",
+      "label": "Primary Button Link"
+    },
+    {
+      "type": "text",
+      "id": "ghost_btn_text",
+      "label": "Secondary Button Text",
+      "default": "Compare Bundles"
+    },
+    {
+      "type": "url",
+      "id": "ghost_btn_link",
+      "label": "Secondary Button Link"
+    },
+    {
+      "type": "text",
+      "id": "review_count_text",
+      "label": "Review Count Text",
+      "default": "26,966 verified reviews"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Banner Background Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_image",
+      "label": "Product Bottles Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "13 — Final CTA"
+    }
+  ]
+}
+{% endschema %}

@@ -1,155 +1,166 @@
 {%- comment -%}
-  Polar Haircare — 05 Key Benefits & How It Works (4 Reasons + 3-Step Process)
-  Features 3-column layout (Left Benefits, Center Demo Video, Right Benefits) + 3-Step Bar.
-  Can be fully hidden/unhidden in Shopify Theme Customizer.
+  Polar Haircare — Make Hair Coloring Simple & Hassle-Free Section
 {%- endcomment -%}
 
 {%- if section.settings.enable_section -%}
-  <section class="key-benefits-section" aria-label="Key Benefits and How It Works">
-    <div class="key-benefits-container">
+  <section class="make-simple-section" id="makeSimpleSection" aria-labelledby="makeSimpleTitle">
+    <div class="make-simple-container">
 
-      <!-- Section Heading -->
-      <div class="benefits-header">
-        {%- if section.settings.pill_text != blank -%}
-          <div class="benefits-heading-pill">
-            <span>{{ section.settings.pill_text | escape }}</span>
-          </div>
-        {%- endif -%}
-
-        {%- if section.settings.heading != blank -%}
-          <h2 class="benefits-main-title">
-            {{ section.settings.heading | escape }}
-          </h2>
-        {%- endif -%}
+      <!-- Section Heading (Desktop + Mobile Responsive) -->
+      <div class="make-simple-header">
+        <span class="make-simple-eyebrow">{{ section.settings.eyebrow_text | default: "GET NATURAL, LASTING COLOR IN JUST 10 MINUTES" }}</span>
+        <h2 class="make-simple-title-desktop" id="makeSimpleTitle">
+          <span class="title-top">{{ section.settings.title_top | default: "Make Hair Coloring" }}</span>
+          <span class="title-main">{{ section.settings.title_main | default: "SIMPLE & HASSLE-FREE" }}</span>
+        </h2>
+        <h2 class="make-simple-title-mobile">{{ section.settings.mobile_title | default: "Make hair coloring simple & hassle-free" }}</h2>
+        <p class="make-simple-subtitle">{{ section.settings.subtitle | default: "Get natural, lasting color in just 10 minutes" }}</p>
       </div>
 
-      <!-- Main Navy Benefits Panel -->
-      <div class="benefits-panel"{% if section.settings.bg_image != blank %} style="background-image: url('{{ section.settings.bg_image | image_url: width: 2000 }}'); background-size: cover; background-position: center;"{% endif %}>
-        <div class="benefits-panel-inner">
-        
-          <!-- Left Column (2 Benefit Cards) -->
-          <div class="benefits-col benefits-col-left">
-            
-            <!-- Card 1 -->
-            <div class="benefit-card">
-              <div class="benefit-icon-badge">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="13" r="8"></circle>
-                  <path d="M12 9v4l2.5 1.5"></path>
-                  <path d="M10 2h4"></path>
-                  <path d="M12 2v3"></path>
-                </svg>
-              </div>
-              <h3 class="benefit-card-title">{{ section.settings.card_1_title | default: "WORKS IN JUST 10 MINUTES" }}</h3>
-              <p class="benefit-card-desc">{{ section.settings.card_1_desc | default: "No more scheduling life around hair dye. Apply to dry hair, wait 10 minutes, and rinse. It’s that easy." }}</p>
-            </div>
+      <!-- Desktop Dark Purple Banner with Overlapping Video Card -->
+      <div class="make-simple-banner">
 
-            <!-- Card 2 -->
-            <div class="benefit-card">
-              <div class="benefit-icon-badge">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path>
-                </svg>
-              </div>
-              <h3 class="benefit-card-title">{{ section.settings.card_2_title | default: "QUICK, MESS-FREE APPLICATION" }}</h3>
-              <p class="benefit-card-desc">{{ section.settings.card_2_desc | default: "Forget messy box dyes. No mixing, no gloves, no stains — it works just like your regular shampoo." }}</p>
-            </div>
-
-          </div>
-
-          <!-- Center Column (Demo Video Card) -->
-          <div class="benefits-video-col">
-            <div class="benefits-video-card js-open-benefits-video" role="button" tabindex="0" aria-label="Play product demonstration video" data-video-url="{{ section.settings.video_url | default: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4' }}">
-              {%- if section.settings.poster_image != blank -%}
-                <img src="{{ section.settings.poster_image | image_url: width: 800 }}" alt="{{ section.settings.heading | escape }}" class="benefits-video-poster" loading="lazy">
-              {%- else -%}
-                <img src="{{ 'customer_story.jpg' | asset_url }}" alt="Demonstration Video" class="benefits-video-poster" loading="lazy">
-              {%- endif -%}
-              
-              <!-- Circular Glass Play Button -->
-              <div class="benefits-play-btn" aria-hidden="true">
-                <svg class="benefits-play-icon" viewBox="0 0 24 24" fill="#2C3452">
-                  <polygon points="8 5 19 12 8 19 8 5"></polygon>
-                </svg>
-              </div>
+        <!-- Video Thumbnail Card (Desktop & Mobile trigger) -->
+        <div class="make-simple-video-wrap">
+          <div class="make-simple-video-card js-open-simple-video" role="button" tabindex="0"
+            aria-label="Play demonstration video">
+            {%- if section.settings.poster_image != blank -%}
+              <img src="{{ section.settings.poster_image | image_url: width: 1200 }}" alt="{{ section.settings.title_top | escape }}" class="make-simple-video-poster" loading="lazy">
+            {%- else -%}
+              <img src="{{ 'customer_story.jpg' | asset_url }}" alt="Make Hair Coloring Simple Video" class="make-simple-video-poster" loading="lazy">
+            {%- endif -%}
+            <div class="make-simple-play-btn" aria-hidden="true">
+              <svg width="22" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="6 3 20 12 6 21 6 3"></polygon>
+              </svg>
             </div>
           </div>
+        </div>
 
-          <!-- Right Column (2 Benefit Cards) -->
-          <div class="benefits-col benefits-col-right">
-            
-            <!-- Card 3 -->
-            <div class="benefit-card">
-              <div class="benefit-icon-badge">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path>
-                  <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
-                </svg>
-              </div>
-              <h3 class="benefit-card-title">{{ section.settings.card_3_title | default: "GENTLE ON HAIR" }}</h3>
-              <p class="benefit-card-desc">{{ section.settings.card_3_desc | default: "Natural ingredients like reishi mushroom, without harsh chemicals like ammonia. Hair stays soft, not damaged." }}</p>
+        <!-- Desktop 4-Feature Row (inside the banner) -->
+        <div class="make-simple-features-desktop">
+
+          <!-- Feature 1 -->
+          <div class="simple-feature-item">
+            <div class="simple-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="13" r="8"></circle>
+                <path d="M12 9v4l2.5 1.5"></path>
+                <path d="M10 2h4"></path>
+                <path d="M12 2v3"></path>
+              </svg>
             </div>
+            <h3 class="simple-feature-title">{{ section.settings.card_1_title | default: "WORKS IN JUST 10 MINUTES" }}</h3>
+            <p class="simple-feature-desc">{{ section.settings.card_1_desc | default: "Apply to dry hair, wait 10 minutes, and rinse. It’s that easy." }}</p>
+          </div>
 
-            <!-- Card 4 -->
-            <div class="benefit-card">
-              <div class="benefit-icon-badge">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                  <path d="m9 12 2 2 4-4"></path>
-                </svg>
-              </div>
-              <h3 class="benefit-card-title">{{ section.settings.card_4_title | default: "LONG-LASTING NATURAL COLOR" }}</h3>
-              <p class="benefit-card-desc">{{ section.settings.card_4_desc | default: "Natural-looking color that lasts up to 6 weeks, so you can stay confident without frequent touch-ups." }}</p>
+          <!-- Feature 2 -->
+          <div class="simple-feature-item">
+            <div class="simple-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"></path>
+              </svg>
             </div>
+            <h3 class="simple-feature-title">{{ section.settings.card_2_title | default: "QUICK, MESS-FREE APPLICATION" }}</h3>
+            <p class="simple-feature-desc">{{ section.settings.card_2_desc | default: "No mixing, no gloves, no stains. Works just like your regular shampoo." }}</p>
+          </div>
 
+          <!-- Feature 3 -->
+          <div class="simple-feature-item">
+            <div class="simple-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path>
+                <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
+              </svg>
+            </div>
+            <h3 class="simple-feature-title">{{ section.settings.card_3_title | default: "CONTAINS NATURAL INGREDIENTS" }}</h3>
+            <p class="simple-feature-desc">{{ section.settings.card_3_desc | default: "Like reishi mushrooms, without harsh chemicals like ammonia." }}</p>
+          </div>
+
+          <!-- Feature 4 -->
+          <div class="simple-feature-item">
+            <div class="simple-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="13.5" cy="6.5" r=".5" fill="#FFFFFF"></circle>
+                <circle cx="17.5" cy="10.5" r=".5" fill="#FFFFFF"></circle>
+                <circle cx="8.5" cy="7.5" r=".5" fill="#FFFFFF"></circle>
+                <circle cx="6.5" cy="12.5" r=".5" fill="#FFFFFF"></circle>
+                <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.563-2.512 5.563-5.563C22 6.5 17.5 2 12 2Z"></path>
+              </svg>
+            </div>
+            <h3 class="simple-feature-title">{{ section.settings.card_4_title | default: "LONG-LASTING NATURAL COLOR" }}</h3>
+            <p class="simple-feature-desc">{{ section.settings.card_4_desc | default: "Each application lasts up to 6 weeks, keeping grays hidden longer." }}</p>
           </div>
 
         </div>
       </div>
 
-      <!-- 3-Step Process Row (Can be hidden / shown via theme setting) -->
-      {%- if section.settings.show_steps -%}
-        <div class="benefits-steps-grid">
-          
-          <!-- Step 1 -->
-          <div class="benefit-step-card">
-            <div class="benefit-step-num">{{ section.settings.step_1_num | default: '01' }}</div>
-            <div class="benefit-step-content">
-              <h3 class="benefit-step-title">{{ section.settings.step_1_title | default: 'Apply to dry hair' }}</h3>
-              <p class="benefit-step-desc">{{ section.settings.step_1_desc | default: 'Massage evenly from roots to ends — just like shampoo.' }}</p>
-            </div>
-          </div>
+      <!-- Mobile 2x2 Feature Cards Grid -->
+      <div class="make-simple-features-mobile">
 
-          <!-- Step 2 -->
-          <div class="benefit-step-card">
-            <div class="benefit-step-num">{{ section.settings.step_2_num | default: '02' }}</div>
-            <div class="benefit-step-content">
-              <h3 class="benefit-step-title">{{ section.settings.step_2_title | default: 'Wait 10 minutes' }}</h3>
-              <p class="benefit-step-desc">{{ section.settings.step_2_desc | default: 'No bowls, brushes or timers to babysit.' }}</p>
-            </div>
+        <!-- Mobile Card 1 -->
+        <div class="simple-mob-card">
+          <div class="simple-mob-badge">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="13" r="8"></circle>
+              <path d="M12 9v4l2.5 1.5"></path>
+              <path d="M10 2h4"></path>
+              <path d="M12 2v3"></path>
+            </svg>
           </div>
-
-          <!-- Step 3 -->
-          <div class="benefit-step-card">
-            <div class="benefit-step-num">{{ section.settings.step_3_num | default: '03' }}</div>
-            <div class="benefit-step-content">
-              <h3 class="benefit-step-title">{{ section.settings.step_3_title | default: 'Rinse & reveal' }}</h3>
-              <p class="benefit-step-desc">{{ section.settings.step_3_desc | default: 'Natural-looking color that lasts 4–6 weeks.' }}</p>
-            </div>
-          </div>
-
+          <h4 class="simple-mob-title">Works in just 10 minutes</h4>
+          <p class="simple-mob-desc">Apply to dry hair, wait 10 minutes, and rinse.</p>
         </div>
-      {%- endif -%}
+
+        <!-- Mobile Card 2 -->
+        <div class="simple-mob-card">
+          <div class="simple-mob-badge">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"></path>
+            </svg>
+          </div>
+          <h4 class="simple-mob-title">Quick, mess-free</h4>
+          <p class="simple-mob-desc">No mixing, no gloves, no stains.</p>
+        </div>
+
+        <!-- Mobile Card 3 -->
+        <div class="simple-mob-card">
+          <div class="simple-mob-badge">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path>
+              <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
+            </svg>
+          </div>
+          <h4 class="simple-mob-title">Natural ingredients</h4>
+          <p class="simple-mob-desc">Reishi mushroom, without ammonia.</p>
+        </div>
+
+        <!-- Mobile Card 4 -->
+        <div class="simple-mob-card">
+          <div class="simple-mob-badge">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="13.5" cy="6.5" r=".5" fill="#FFFFFF"></circle>
+              <circle cx="17.5" cy="10.5" r=".5" fill="#FFFFFF"></circle>
+              <circle cx="8.5" cy="7.5" r=".5" fill="#FFFFFF"></circle>
+              <circle cx="6.5" cy="12.5" r=".5" fill="#FFFFFF"></circle>
+              <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.563-2.512 5.563-5.563C22 6.5 17.5 2 12 2Z"></path>
+            </svg>
+          </div>
+          <h4 class="simple-mob-title">Long-lasting color</h4>
+          <p class="simple-mob-desc">Each application lasts up to 6 weeks.</p>
+        </div>
+
+      </div>
 
     </div>
   </section>
 
   <!-- Video Popup Modal -->
-  <div class="benefits-modal-overlay" id="benefitsVideoModal" aria-hidden="true" role="dialog" aria-label="Product Demo Video Modal">
-    <div class="benefits-modal-container">
-      <button class="benefits-modal-close-btn js-close-benefits-video" aria-label="Close video player">&times;</button>
-      <div class="benefits-modal-player-wrapper">
-        <video id="benefitsVideoPlayer" controls playsinline preload="metadata">
+  <div class="make-simple-modal-overlay" id="simpleVideoModal" aria-hidden="true" role="dialog" aria-label="Product Demo Video Modal">
+    <div class="make-simple-modal-container">
+      <button class="make-simple-modal-close-btn js-close-simple-video" aria-label="Close video player">&times;</button>
+      <div class="make-simple-modal-player-wrapper">
+        <video id="simpleVideoPlayer" controls playsinline preload="metadata">
           <source src="{{ section.settings.video_url | default: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4' }}" type="video/mp4">
           Your browser does not support HTML5 video.
         </video>
@@ -159,10 +170,10 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      const openBtns = document.querySelectorAll('.js-open-benefits-video');
-      const modal = document.getElementById('benefitsVideoModal');
-      const closeBtn = modal?.querySelector('.js-close-benefits-video');
-      const video = document.getElementById('benefitsVideoPlayer');
+      const openBtns = document.querySelectorAll('.js-open-simple-video');
+      const modal = document.getElementById('simpleVideoModal');
+      const closeBtn = modal?.querySelector('.js-close-simple-video');
+      const video = document.getElementById('simpleVideoPlayer');
 
       function openModal() {
         if (!modal) return;
@@ -213,7 +224,7 @@
 
 {% schema %}
 {
-  "name": "Key Benefits & How It Work",
+  "name": "Make Hair Coloring Simple",
   "settings": [
     {
       "type": "checkbox",
@@ -223,20 +234,33 @@
     },
     {
       "type": "text",
-      "id": "pill_text",
-      "label": "Badge Pill Text",
-      "default": "4 REASONS"
+      "id": "eyebrow_text",
+      "label": "Mobile Eyebrow Text",
+      "default": "GET NATURAL, LASTING COLOR IN JUST 10 MINUTES"
     },
     {
       "type": "text",
-      "id": "heading",
-      "label": "Heading",
-      "default": "Thousands are switching to Polar Instant Dye Shampoo"
+      "id": "title_top",
+      "label": "Desktop Title Top",
+      "default": "Make Hair Coloring"
     },
     {
-      "type": "image_picker",
-      "id": "bg_image",
-      "label": "Panel Background Image (Optional)"
+      "type": "text",
+      "id": "title_main",
+      "label": "Desktop Title Main",
+      "default": "SIMPLE & HASSLE-FREE"
+    },
+    {
+      "type": "text",
+      "id": "mobile_title",
+      "label": "Mobile Title",
+      "default": "Make hair coloring simple & hassle-free"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Get natural, lasting color in just 10 minutes"
     },
     {
       "type": "image_picker",
@@ -251,7 +275,7 @@
     },
     {
       "type": "header",
-      "content": "Card 1 (Left Top)"
+      "content": "Feature 1"
     },
     {
       "type": "text",
@@ -263,11 +287,11 @@
       "type": "textarea",
       "id": "card_1_desc",
       "label": "Description",
-      "default": "No more scheduling life around hair dye. Apply to dry hair, wait 10 minutes, and rinse. It’s that easy."
+      "default": "Apply to dry hair, wait 10 minutes, and rinse. It’s that easy."
     },
     {
       "type": "header",
-      "content": "Card 2 (Left Bottom)"
+      "content": "Feature 2"
     },
     {
       "type": "text",
@@ -279,27 +303,27 @@
       "type": "textarea",
       "id": "card_2_desc",
       "label": "Description",
-      "default": "Forget messy box dyes. No mixing, no gloves, no stains — it works just like your regular shampoo."
+      "default": "No mixing, no gloves, no stains. Works just like your regular shampoo."
     },
     {
       "type": "header",
-      "content": "Card 3 (Right Top)"
+      "content": "Feature 3"
     },
     {
       "type": "text",
       "id": "card_3_title",
       "label": "Title",
-      "default": "GENTLE ON HAIR"
+      "default": "CONTAINS NATURAL INGREDIENTS"
     },
     {
       "type": "textarea",
       "id": "card_3_desc",
       "label": "Description",
-      "default": "Natural ingredients like reishi mushroom, without harsh chemicals like ammonia. Hair stays soft, not damaged."
+      "default": "Like reishi mushrooms, without harsh chemicals like ammonia."
     },
     {
       "type": "header",
-      "content": "Card 4 (Right Bottom)"
+      "content": "Feature 4"
     },
     {
       "type": "text",
@@ -311,76 +335,12 @@
       "type": "textarea",
       "id": "card_4_desc",
       "label": "Description",
-      "default": "Natural-looking color that lasts up to 6 weeks, so you can stay confident without frequent touch-ups."
-    },
-    {
-      "type": "header",
-      "content": "3-Step How-To Process"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_steps",
-      "label": "Show / Hide 3-Step Process Bar",
-      "default": true
-    },
-    {
-      "type": "text",
-      "id": "step_1_num",
-      "label": "Step 1 Number",
-      "default": "01"
-    },
-    {
-      "type": "text",
-      "id": "step_1_title",
-      "label": "Step 1 Title",
-      "default": "Apply to dry hair"
-    },
-    {
-      "type": "text",
-      "id": "step_1_desc",
-      "label": "Step 1 Description",
-      "default": "Massage evenly from roots to ends — just like shampoo."
-    },
-    {
-      "type": "text",
-      "id": "step_2_num",
-      "label": "Step 2 Number",
-      "default": "02"
-    },
-    {
-      "type": "text",
-      "id": "step_2_title",
-      "label": "Step 2 Title",
-      "default": "Wait 10 minutes"
-    },
-    {
-      "type": "text",
-      "id": "step_2_desc",
-      "label": "Step 2 Description",
-      "default": "No bowls, brushes or timers to babysit."
-    },
-    {
-      "type": "text",
-      "id": "step_3_num",
-      "label": "Step 3 Number",
-      "default": "03"
-    },
-    {
-      "type": "text",
-      "id": "step_3_title",
-      "label": "Step 3 Title",
-      "default": "Rinse & reveal"
-    },
-    {
-      "type": "text",
-      "id": "step_3_desc",
-      "label": "Step 3 Description",
-      "default": "Natural-looking color that lasts 4–6 weeks."
+      "default": "Each application lasts up to 6 weeks, keeping grays hidden longer."
     }
   ],
   "presets": [
     {
-      "name": "Key Benefits & How It Works"
+      "name": "Make Hair Coloring Simple"
     }
   ]
 }

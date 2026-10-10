@@ -304,8 +304,8 @@
       const allSlides = Array.from(sectionEl.querySelectorAll('.result-card-slide'));
 
       let swiperInstance = new Swiper(swiperContainer, {
-        slidesPerView: 1.15,
-        spaceBetween: 16,
+        slidesPerView: 'auto',
+        spaceBetween: 12,
         grabCursor: true,
         watchOverflow: true,
         pagination: {
@@ -316,11 +316,7 @@
           }
         },
         breakpoints: {
-          480: {
-            slidesPerView: 1.6,
-            spaceBetween: 16
-          },
-          768: {
+          769: {
             slidesPerView: 2.5,
             spaceBetween: 20
           },

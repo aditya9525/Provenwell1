@@ -144,26 +144,9 @@
 
     </div>
 
-    <!-- Bottom Block: Localization, Copyright & Payment Badges -->
+    <!-- Bottom Block: Payment Badges, Copyright & Currency -->
     <div class="footer-bottom-block">
       
-      <!-- Localization Selector -->
-      <div class="footer-localization">
-        <div class="footer-localization-btn" role="button" tabindex="0" aria-label="Country and currency selector">
-          <span class="footer-localization-text">India | INR &#8377;</span>
-          <span class="footer-localization-chevron" aria-hidden="true">
-            <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M1 1L5 5L9 1"/>
-            </svg>
-          </span>
-        </div>
-      </div>
-
-      <!-- Copyright Notice -->
-      <p class="footer-copyright">
-        Copyright &copy; {{ 'now' | date: '%Y' }} Polar Haircare
-      </p>
-
       <!-- Payment Method Badges -->
       <ul class="footer-payment-list" aria-label="Accepted Payment Methods">
         <!-- Amazon Pay -->
@@ -282,6 +265,24 @@
           </svg>
         </li>
       </ul>
+
+      <!-- Sub-row: Copyright Notice & Localization Selector -->
+      <div class="footer-bottom-subrow">
+        <p class="footer-copyright">
+          &copy; {{ 'now' | date: '%Y' }} Polar Haircare
+        </p>
+
+        <div class="footer-localization">
+          <div class="footer-localization-btn" role="button" tabindex="0" aria-label="Country and currency selector">
+            <span class="footer-localization-text">India | INR &#8377;</span>
+            <span class="footer-localization-chevron" aria-hidden="true">
+              <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 1L5 5L9 1"/>
+              </svg>
+            </span>
+          </div>
+        </div>
+      </div>
 
     </div>
 

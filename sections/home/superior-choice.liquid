@@ -1,29 +1,32 @@
 {%- comment -%}
   Shopify Section: 06 — The Superior Choice (Comparison Section)
-  Compares Polar Instant Dye Shampoo vs Regular Hair Dye with side-by-side feature cards & floating center category indicators.
+  Desktop: Side-by-side comparison cards (Polar vs Regular Hair Dye) with center floating category labels card.
+  Mobile: Integrated 3-column comparison table card with Polar dark column and Regular light column.
 {%- endcomment -%}
 
 {%- if section.settings.enable_section -%}
-  <section class="superior-choice-section" id="superiorChoice" aria-label="The Superior Choice">
+  <section class="superior-choice-section" id="superiorChoice" aria-labelledby="superiorHeading">
     <div class="superior-choice-container">
 
-      <!-- Section Header -->
+      <!-- Section Header (Desktop & Mobile) -->
       <div class="superior-header">
-        {%- if section.settings.heading != blank -%}
-          <h2 class="superior-main-title">
-            {{ section.settings.heading | escape }}
-          </h2>
-        {%- endif -%}
-
-        {%- if section.settings.description != blank -%}
-          <p class="superior-sub-desc">
-            {{ section.settings.description | escape }}
-          </p>
-        {%- endif -%}
+        <span class="superior-eyebrow">{{ section.settings.eyebrow | default: "THE SUPERIOR CHOICE" }}</span>
+        <h2 class="superior-main-title-desktop" id="superiorHeading">
+          {{ section.settings.heading | default: "The Superior Choice" }}
+        </h2>
+        <h2 class="superior-main-title-mobile">
+          {{ section.settings.mobile_heading | default: "Polar vs. regular hair dye" }}
+        </h2>
+        <p class="superior-sub-desc-desktop">
+          {{ section.settings.description | default: "It’s been over a 100 years since the first dyes were created, but we haven't seen any sort of significant change since then. Polar Haircare is here to change that." }}
+        </p>
+        <p class="superior-sub-desc-mobile">
+          {{ section.settings.mobile_description | default: "It’s been over 100 years since the first dyes were created, with no significant change. Until now." }}
+        </p>
       </div>
 
-      <!-- Main Comparison Grid Wrapper -->
-      <div class="superior-comparison-wrap">
+      <!-- DESKTOP COMPARISON WRAPPER (> 768px) -->
+      <div class="superior-comparison-wrap superior-comparison-desktop">
         
         <!-- Left Card: Polar Hair Care (Winner) -->
         <div class="superior-card superior-card-polar">
@@ -181,6 +184,105 @@
 
       </div>
 
+      <!-- MOBILE COMPARISON TABLE (<= 768px) -->
+      <div class="superior-comparison-mobile">
+        <div class="superior-mobile-table">
+
+          <!-- Header Row (3 Columns) -->
+          <div class="superior-mob-row superior-mob-header-row">
+            <div class="superior-mob-col-blank"></div>
+            <div class="superior-mob-col-polar superior-mob-head-polar">
+              <div class="superior-mob-logo">
+                <span>POLAR<sup>®</sup></span>
+                <small>HAIR CARE</small>
+              </div>
+              <img src="{{ 'polar-bottle-tall.png' | asset_url }}" alt="Polar Bottle" class="superior-mob-bottle-img">
+            </div>
+            <div class="superior-mob-col-regular superior-mob-head-regular">
+              <span class="superior-mob-reg-title">Regular Hair Dye</span>
+              <img src="{{ 'dye-bowl.png' | asset_url }}" alt="Regular Dye Bowl" class="superior-mob-bowl-img">
+            </div>
+          </div>
+
+          <!-- Data Row 1: NUMBER OF USES -->
+          <div class="superior-mob-row superior-mob-data-row">
+            <div class="superior-mob-col-label">
+              <span>{{ section.settings.label_1 | default: "NUMBER OF USES" }}</span>
+            </div>
+            <div class="superior-mob-col-polar">
+              <div class="superior-mob-badge-check">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </div>
+              <span class="superior-mob-val-polar">{{ section.settings.polar_val_1 | default: "15 applications" }}</span>
+            </div>
+            <div class="superior-mob-col-regular">
+              <div class="superior-mob-badge-cross">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              </div>
+              <span class="superior-mob-val-reg">{{ section.settings.regular_val_1 | default: "1 application" }}</span>
+            </div>
+          </div>
+
+          <!-- Data Row 2: APPLICATION TIME -->
+          <div class="superior-mob-row superior-mob-data-row">
+            <div class="superior-mob-col-label">
+              <span>{{ section.settings.label_2 | default: "APPLICATION TIME" }}</span>
+            </div>
+            <div class="superior-mob-col-polar">
+              <div class="superior-mob-badge-check">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </div>
+              <span class="superior-mob-val-polar">{{ section.settings.polar_val_2 | default: "10 minutes" }}</span>
+            </div>
+            <div class="superior-mob-col-regular">
+              <div class="superior-mob-badge-cross">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              </div>
+              <span class="superior-mob-val-reg">{{ section.settings.regular_val_2 | default: "40–60 minutes" }}</span>
+            </div>
+          </div>
+
+          <!-- Data Row 3: COST PER USE -->
+          <div class="superior-mob-row superior-mob-data-row">
+            <div class="superior-mob-col-label">
+              <span>{{ section.settings.label_3 | default: "COST PER USE" }}</span>
+            </div>
+            <div class="superior-mob-col-polar">
+              <div class="superior-mob-badge-check">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </div>
+              <span class="superior-mob-val-polar">{{ section.settings.polar_val_3 | default: "$2.33" }}</span>
+            </div>
+            <div class="superior-mob-col-regular">
+              <div class="superior-mob-badge-cross">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              </div>
+              <span class="superior-mob-val-reg">{{ section.settings.regular_val_3 | default: "$15" }}</span>
+            </div>
+          </div>
+
+          <!-- Data Row 4: INGREDIENTS -->
+          <div class="superior-mob-row superior-mob-data-row">
+            <div class="superior-mob-col-label">
+              <span>{{ section.settings.label_4 | default: "INGREDIENTS" }}</span>
+            </div>
+            <div class="superior-mob-col-polar">
+              <div class="superior-mob-badge-check">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </div>
+              <span class="superior-mob-val-polar">{{ section.settings.polar_val_4 | default: "Ammonia-free" }}</span>
+            </div>
+            <div class="superior-mob-col-regular">
+              <div class="superior-mob-badge-cross">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              </div>
+              <span class="superior-mob-val-reg">{{ section.settings.regular_val_4 | default: "Synthetic" }}</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
     </div>
   </section>
 {%- endif -%}
@@ -199,15 +301,33 @@
     },
     {
       "type": "text",
+      "id": "eyebrow",
+      "label": "Mobile Eyebrow",
+      "default": "THE SUPERIOR CHOICE"
+    },
+    {
+      "type": "text",
       "id": "heading",
-      "label": "Main Heading",
+      "label": "Desktop Heading",
       "default": "The Superior Choice"
+    },
+    {
+      "type": "text",
+      "id": "mobile_heading",
+      "label": "Mobile Heading",
+      "default": "Polar vs. regular hair dye"
     },
     {
       "type": "textarea",
       "id": "description",
-      "label": "Description",
+      "label": "Desktop Description",
       "default": "It’s been over a 100 years since the first dyes were created, but we haven't seen any sort of significant change since then. Polar Haircare is here to change that."
+    },
+    {
+      "type": "textarea",
+      "id": "mobile_description",
+      "label": "Mobile Description",
+      "default": "It’s been over 100 years since the first dyes were created, with no significant change. Until now."
     },
     {
       "type": "header",
@@ -221,58 +341,58 @@
     {
       "type": "image_picker",
       "id": "polar_image",
-      "label": "Polar Product Image"
+      "label": "Polar Product Image (Optional)"
     },
     {
       "type": "text",
       "id": "polar_val_1",
-      "label": "Polar Value 1",
+      "label": "Polar Feature 1",
       "default": "15 applications"
     },
     {
       "type": "text",
       "id": "polar_val_2",
-      "label": "Polar Value 2",
+      "label": "Polar Feature 2",
       "default": "10 minutes"
     },
     {
       "type": "text",
       "id": "polar_val_3",
-      "label": "Polar Value 3",
+      "label": "Polar Feature 3",
       "default": "$2.33"
     },
     {
       "type": "text",
       "id": "polar_val_4",
-      "label": "Polar Value 4",
+      "label": "Polar Feature 4",
       "default": "Ammonia-free"
     },
     {
       "type": "header",
-      "content": "Comparison Feature Labels"
+      "content": "Center Categories"
     },
     {
       "type": "text",
       "id": "label_1",
-      "label": "Category Label 1",
+      "label": "Category 1",
       "default": "NUMBER OF USES"
     },
     {
       "type": "text",
       "id": "label_2",
-      "label": "Category Label 2",
+      "label": "Category 2",
       "default": "APPLICATION TIME"
     },
     {
       "type": "text",
       "id": "label_3",
-      "label": "Category Label 3",
+      "label": "Category 3",
       "default": "COST PER USE"
     },
     {
       "type": "text",
       "id": "label_4",
-      "label": "Category Label 4",
+      "label": "Category 4",
       "default": "INGREDIENTS"
     },
     {
@@ -293,25 +413,25 @@
     {
       "type": "text",
       "id": "regular_val_1",
-      "label": "Regular Value 1",
+      "label": "Regular Feature 1",
       "default": "1 application"
     },
     {
       "type": "text",
       "id": "regular_val_2",
-      "label": "Regular Value 2",
+      "label": "Regular Feature 2",
       "default": "40-60 minutes"
     },
     {
       "type": "text",
       "id": "regular_val_3",
-      "label": "Regular Value 3",
+      "label": "Regular Feature 3",
       "default": "$15"
     },
     {
       "type": "text",
       "id": "regular_val_4",
-      "label": "Regular Value 4",
+      "label": "Regular Feature 4",
       "default": "Synthetic"
     }
   ],

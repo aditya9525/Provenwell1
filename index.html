@@ -145,6 +145,8 @@
           <div class="main-image-wrapper">
             <img id="mainProductImage" src="assets/product-black-main.png"
               alt="Polar Instant Hair Dye Shampoo - Natural Black" class="main-product-img">
+            <div class="gallery-counter-badge"><span id="galleryCurrentIndex">1</span> / <span
+                id="galleryTotalCount">8</span></div>
           </div>
 
           <!-- Thumbnails Carousel -->
@@ -156,13 +158,19 @@
               </svg>
             </button>
             <div class="thumbnails-slider" id="thumbnailsSlider">
-              <button class="thumb-item active" data-img="assets/product-black-main.png" aria-label="Thumbnail 1">
+              <button class="thumb-item active" data-img="assets/product-black-main.png" data-index="1"
+                aria-label="Thumbnail 1">
                 <img src="assets/product-black-main.png" alt="Natural Black Shampoo Bottle and Box">
               </button>
-              <button class="thumb-item" data-img="assets/spotlight-caroline.png" aria-label="Thumbnail 2">
+              <button class="thumb-item" data-img="assets/polar-bottle-tall.png" data-index="2"
+                aria-label="Thumbnail 2">
+                <img src="assets/polar-bottle-tall.png" alt="Polar Tall Bottle">
+              </button>
+              <button class="thumb-item" data-img="assets/spotlight-caroline.png" data-index="3"
+                aria-label="Thumbnail 3">
                 <img src="assets/spotlight-caroline.png" alt="Before and After Results">
               </button>
-              <button class="thumb-item video-thumb" data-img="assets/customer_story.jpg"
+              <button class="thumb-item video-thumb" data-img="assets/customer_story.jpg" data-index="4"
                 aria-label="Watch customer review video">
                 <img src="assets/customer_story.jpg" alt="Customer Video Review">
                 <span class="thumb-play-icon">
@@ -171,8 +179,18 @@
                   </svg>
                 </span>
               </button>
-              <button class="thumb-item" data-img="assets/polar_shampoo.jpg" aria-label="Thumbnail 4">
+              <button class="thumb-item" data-img="assets/polar_shampoo.jpg" data-index="5" aria-label="Thumbnail 5">
                 <img src="assets/polar_shampoo.jpg" alt="Packaging studio view">
+              </button>
+              <button class="thumb-item" data-img="assets/before_after.jpg" data-index="6" aria-label="Thumbnail 6">
+                <img src="assets/before_after.jpg" alt="Customer Transformation">
+              </button>
+              <button class="thumb-item" data-img="assets/product-feature-callout.png" data-index="7"
+                aria-label="Thumbnail 7">
+                <img src="assets/product-feature-callout.png" alt="Feature Callouts">
+              </button>
+              <button class="thumb-item" data-img="assets/before-after-3.jpg" data-index="8" aria-label="Thumbnail 8">
+                <img src="assets/before-after-3.jpg" alt="Hair Results">
               </button>
             </div>
             <button class="thumb-nav-btn next" aria-label="Next thumbnail">
@@ -252,7 +270,8 @@
         <div class="product-pricing-row">
           <span class="compare-at-price" id="comparePrice">Rs. 4,900.00</span>
           <span class="current-price" id="currentPrice">Rs. 3,500.00</span>
-          <div class="discount-pill" id="discountPill">FALL SALE | SAVE 29%</div>
+          <div class="discount-pill desktop-view" id="discountPill">FALL SALE | SAVE 29%</div>
+          <div class="discount-pill mobile-view" id="discountPill">SAVE 29%</div>
         </div>
 
         <!-- 4-Benefit Feature Grid -->
@@ -347,13 +366,13 @@
           <div class="section-label-row">
             <span class="label-title">Select Quantity:</span>
           </div>
-
           <div class="bundles-grid">
 
             <!-- Bundle 1: 1 Bottle -->
             <div class="bundle-card active" data-qty="1" data-price="3500" data-compare="4900" data-save="29%">
               <div class="bundle-box-btn">
                 <span class="bundle-qty-title">1 Bottle</span>
+                <span class="bundle-perk-text"></span>
               </div>
               <span class="bundle-price-each">Rs. 3,500 Each</span>
             </div>
@@ -363,6 +382,7 @@
               <div class="floating-benefit-badge shipping-badge">+ Free Shipping</div>
               <div class="bundle-box-btn">
                 <span class="bundle-qty-title">2 Bottles</span>
+                <span class="bundle-perk-text">+ Free Shipping</span>
               </div>
               <span class="bundle-price-each">Rs. 2,950 Each</span>
             </div>
@@ -372,6 +392,7 @@
               <div class="floating-benefit-badge conditioner-badge">+ Free Conditioner</div>
               <div class="bundle-box-btn">
                 <span class="bundle-qty-title">3 Bottles</span>
+                <span class="bundle-perk-text">+ Free Conditioner</span>
               </div>
               <span class="bundle-price-each">Rs. 2,333 Each</span>
             </div>
@@ -391,7 +412,13 @@
               <div class="rewards-progress-fill" id="rewardsProgressFill" style="width: 15%;"></div>
             </div>
 
-            <!-- Reward Unlocked Items List -->
+            <!-- Mobile Milestones Row -->
+            <div class="rewards-milestones-row">
+              <span class="milestone-item" id="milestoneShipping">&#10003; Free Shipping &middot; 2 Bottles</span>
+              <span class="milestone-item" id="milestoneConditioner">Free Conditioner &middot; 3 Bottles</span>
+            </div>
+
+            <!-- Desktop Reward Unlocked Items List -->
             <div class="rewards-items-grid">
               <!-- Reward 1 -->
               <div class="reward-item" id="rewardShipping">
@@ -405,7 +432,7 @@
                   <div class="reward-img-badge">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E63639" stroke-width="2">
                       <rect x="1" y="3" width="15" height="13"></rect>
-                      <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                      <polygon points="16 8 20 8 23 11 23 16 16 16 8"></polygon>
                       <circle cx="5.5" cy="18.5" r="2.5"></circle>
                       <circle cx="18.5" cy="18.5" r="2.5"></circle>
                     </svg>
@@ -467,13 +494,13 @@
             </svg>
           </div>
           <div class="warning-content-col">
-            <h3 class="warning-title">WARNING: Low Stock Notice</h3>
+            <h3 class="warning-title">⚠ WARNING: Low Stock Notice</h3>
             <p class="warning-desc">
-              This product sold out <strong>11 times</strong> last year. We encourage you to take advantage of the
-              <strong>Limited Fall Sale</strong> and buy now.
+              This product sold out 11 times last year. We encourage you to take advantage of the Limited Fall Sale and
+              buy today.
             </p>
             <p class="warning-ps">
-              <strong>PS:</strong> Only available here, don't buy fakes on Amazon/eBay
+              PS: Only available here, don’t buy fakes on Amazon/eBay.
             </p>
           </div>
         </div>
@@ -482,7 +509,7 @@
         <div class="trust-grid-box">
           <div class="trust-card">
             <div class="trust-icon-wrap">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2B3344" stroke-width="1.6">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#5E3A58" stroke-width="1.6">
                 <circle cx="12" cy="12" r="10"></circle>
                 <path d="M12 6v6l4 2"></path>
               </svg>
@@ -493,7 +520,7 @@
 
           <div class="trust-card">
             <div class="trust-icon-wrap">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2B3344" stroke-width="1.6">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#5E3A58" stroke-width="1.6">
                 <rect x="1" y="3" width="15" height="13"></rect>
                 <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
                 <circle cx="5.5" cy="18.5" r="2.5"></circle>
@@ -506,7 +533,7 @@
 
           <div class="trust-card">
             <div class="trust-icon-wrap">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2B3344" stroke-width="1.6">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#5E3A58" stroke-width="1.6">
                 <polyline points="1 4 1 10 7 10"></polyline>
                 <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
               </svg>
@@ -517,7 +544,7 @@
 
           <div class="trust-card">
             <div class="trust-icon-wrap">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2B3344" stroke-width="1.6">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#5E3A58" stroke-width="1.6">
                 <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
                 <line x1="1" y1="10" x2="23" y2="10"></line>
               </svg>
@@ -527,55 +554,108 @@
           </div>
         </div>
 
+        <!-- Mobile-Only Featured Review Card (Caroline T.) -->
+        <div class="mobile-featured-review-card">
+          <div class="review-media">
+            <img src="assets/spotlight-caroline.png" alt="Before and After Results" class="review-img">
+            <div class="split-badges">
+              <span class="pill-badge before-pill">BEFORE</span>
+              <span class="pill-badge after-pill">AFTER</span>
+            </div>
+          </div>
+          <div class="review-body">
+            <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <h4 class="review-headline">I Feel Like Myself Again</h4>
+            <p class="review-quote">&ldquo;I look and feel like my younger self again. It’s nice having color that looks
+              natural and not fake or harsh.&rdquo;</p>
+            <div class="review-author-row">
+              <span class="review-author">Caroline T., Austin, TX</span>
+              <span class="review-verified">&#10003; Verified Buyer</span>
+            </div>
+          </div>
+        </div>
+
         <!-- UGC Social Proof Section: Happy Customers Have Made The Switch -->
         <div class="ugc-customers-section">
           <h2 class="ugc-section-heading">
             Over 840,000+ Happy Customers<br>Have Made The Switch
           </h2>
 
-          <div class="ugc-videos-slider">
-            <!-- Video Card 1 -->
-            <div class="ugc-video-card">
-              <img src="assets/customer_story.jpg" alt="Customer Video Review 1" class="ugc-cover-img">
-              <button class="ugc-play-btn" aria-label="Play Customer Video">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="#FFFFFF">
-                  <polygon points="6 3 20 12 6 21 6 3"></polygon>
-                </svg>
-              </button>
-            </div>
+          <div class="swiper ugc-customers-swiper" id="ugcCustomersSwiper">
+            <div class="swiper-wrapper">
+              <!-- Video Card 1 -->
+              <div class="swiper-slide ugc-customer-slide">
+                <div class="ugc-video-card">
+                  <img src="assets/customer_story.jpg" alt="Customer Video Review 1" class="ugc-cover-img">
+                  <button class="ugc-play-btn" aria-label="Play Customer Video">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="#FFFFFF">
+                      <polygon points="6 3 20 12 6 21 6 3"></polygon>
+                    </svg>
+                  </button>
+                </div>
+              </div>
 
-            <!-- Video Card 2 -->
-            <div class="ugc-video-card">
-              <img src="assets/before_after.jpg" alt="Customer Video Review 2" class="ugc-cover-img">
-              <button class="ugc-play-btn" aria-label="Play Customer Video">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="#FFFFFF">
-                  <polygon points="6 3 20 12 6 21 6 3"></polygon>
-                </svg>
-              </button>
-            </div>
+              <!-- Video Card 2 -->
+              <div class="swiper-slide ugc-customer-slide">
+                <div class="ugc-video-card">
+                  <img src="assets/before_after.jpg" alt="Customer Video Review 2" class="ugc-cover-img">
+                  <button class="ugc-play-btn" aria-label="Play Customer Video">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="#FFFFFF">
+                      <polygon points="6 3 20 12 6 21 6 3"></polygon>
+                    </svg>
+                  </button>
+                </div>
+              </div>
 
-            <!-- Video Card 3 -->
-            <div class="ugc-video-card">
-              <img src="assets/customer_story.jpg" alt="Customer Video Review 3" class="ugc-cover-img">
-              <button class="ugc-play-btn" aria-label="Play Customer Video">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="#FFFFFF">
-                  <polygon points="6 3 20 12 6 21 6 3"></polygon>
-                </svg>
-              </button>
+              <!-- Video Card 3 -->
+              <div class="swiper-slide ugc-customer-slide">
+                <div class="ugc-video-card">
+                  <img src="assets/customer_story.jpg" alt="Customer Video Review 3" class="ugc-cover-img">
+                  <button class="ugc-play-btn" aria-label="Play Customer Video">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="#FFFFFF">
+                      <polygon points="6 3 20 12 6 21 6 3"></polygon>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Video Card 4 -->
+              <div class="swiper-slide ugc-customer-slide">
+                <div class="ugc-video-card">
+                  <img src="assets/before_after.jpg" alt="Customer Video Review 4" class="ugc-cover-img">
+                  <button class="ugc-play-btn" aria-label="Play Customer Video">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="#FFFFFF">
+                      <polygon points="6 3 20 12 6 21 6 3"></polygon>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Video Card 5 -->
+              <div class="swiper-slide ugc-customer-slide">
+                <div class="ugc-video-card">
+                  <img src="assets/spotlight-caroline.png" alt="Customer Video Review 5" class="ugc-cover-img">
+                  <button class="ugc-play-btn" aria-label="Play Customer Video">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="#FFFFFF">
+                      <polygon points="6 3 20 12 6 21 6 3"></polygon>
+                    </svg>
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
 
           <!-- Carousel Controls -->
           <div class="ugc-nav-controls">
-            <button class="ugc-arrow prev" aria-label="Previous customer video">
+            <button class="ugc-arrow prev ugc-cust-prev" aria-label="Previous customer video">
               <svg width="10" height="16" viewBox="0 0 8 14" fill="none">
-                <path d="M7 1L1 7L7 13" stroke="#2B3344" stroke-width="2" stroke-linecap="round"
+                <path d="M7 1L1 7L7 13" stroke="#5E3A58" stroke-width="2" stroke-linecap="round"
                   stroke-linejoin="round" />
               </svg>
             </button>
-            <button class="ugc-arrow next" aria-label="Next customer video">
+            <button class="ugc-arrow next ugc-cust-next" aria-label="Next customer video">
               <svg width="10" height="16" viewBox="0 0 8 14" fill="none">
-                <path d="M1 1L7 7L1 13" stroke="#2B3344" stroke-width="2" stroke-linecap="round"
+                <path d="M1 1L7 7L1 13" stroke="#5E3A58" stroke-width="2" stroke-linecap="round"
                   stroke-linejoin="round" />
               </svg>
             </button>
@@ -760,6 +840,291 @@
             </span>
           </div>
         </div>
+      </div>
+
+    </div>
+  </section>
+
+
+
+  <!-- 05 — 4 Reasons Key Benefits & How It Works (New Section) -->
+  <section class="four-reasons-section" id="fourReasonsSection" aria-labelledby="fourReasonsTitle">
+    <div class="four-reasons-container">
+
+      <!-- Section Heading -->
+      <div class="four-reasons-header">
+        <div class="four-reasons-pill">
+          <span>4 REASONS</span>
+        </div>
+        <h2 class="four-reasons-title" id="fourReasonsTitle">
+          Thousands are switching to Polar Instant Dye Shampoo
+        </h2>
+      </div>
+
+      <!-- Main Dark Purple Benefits Panel -->
+      <div class="four-reasons-panel">
+
+        <!-- Desktop Left Column (2 Benefit Cards) / Mobile order 2 -->
+        <div class="four-reasons-col four-reasons-col-left">
+
+          <!-- Card 1 -->
+          <div class="four-reasons-card">
+            <div class="four-reasons-icon-badge">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="13" r="8"></circle>
+                <path d="M12 9v4l2.5 1.5"></path>
+                <path d="M10 2h4"></path>
+                <path d="M12 2v3"></path>
+              </svg>
+            </div>
+            <div class="four-reasons-card-copy">
+              <h3 class="four-reasons-card-title">WORKS IN JUST 10 MINUTES</h3>
+              <p class="four-reasons-card-desc">No more scheduling life around hair dye. Apply to dry hair, wait 10 minutes, and rinse. It’s that easy.</p>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="four-reasons-card">
+            <div class="four-reasons-icon-badge">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"></path>
+              </svg>
+            </div>
+            <div class="four-reasons-card-copy">
+              <h3 class="four-reasons-card-title">QUICK, MESS-FREE APPLICATION</h3>
+              <p class="four-reasons-card-desc">Forget messy box dyes. No mixing, no gloves, no stains — it works just like your regular shampoo.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Center Column (Video Card) / Mobile order 1 (Top) -->
+        <div class="four-reasons-video-col">
+          <div class="four-reasons-video-card js-open-four-reasons-video" id="openFourReasonsVideoBtn" role="button" tabindex="0" aria-label="Play demonstration video">
+            <img src="assets/customer_story.jpg" alt="Thousands are switching to Polar Instant Dye Shampoo" class="four-reasons-video-poster" loading="lazy">
+            <div class="four-reasons-play-btn" aria-hidden="true">
+              <svg width="22" height="26" viewBox="0 0 24 24" fill="#4A2346">
+                <polygon points="6 3 20 12 6 21 6 3"></polygon>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Desktop Right Column (2 Benefit Cards) / Mobile order 3 -->
+        <div class="four-reasons-col four-reasons-col-right">
+
+          <!-- Card 3 -->
+          <div class="four-reasons-card">
+            <div class="four-reasons-icon-badge">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path>
+                <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
+              </svg>
+            </div>
+            <div class="four-reasons-card-copy">
+              <h3 class="four-reasons-card-title">GENTLE ON HAIR</h3>
+              <p class="four-reasons-card-desc">Natural ingredients like reishi mushroom, without harsh chemicals like ammonia. Hair stays soft, not damaged.</p>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="four-reasons-card">
+            <div class="four-reasons-icon-badge">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="13.5" cy="6.5" r=".5" fill="#FFFFFF"></circle>
+                <circle cx="17.5" cy="10.5" r=".5" fill="#FFFFFF"></circle>
+                <circle cx="8.5" cy="7.5" r=".5" fill="#FFFFFF"></circle>
+                <circle cx="6.5" cy="12.5" r=".5" fill="#FFFFFF"></circle>
+                <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.563-2.512 5.563-5.563C22 6.5 17.5 2 12 2Z"></path>
+              </svg>
+            </div>
+            <div class="four-reasons-card-copy">
+              <h3 class="four-reasons-card-title">LONG-LASTING NATURAL COLOR</h3>
+              <p class="four-reasons-card-desc">Natural-looking color that lasts up to 6 weeks, so you can stay confident without frequent touch-ups.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Four Reasons Video Modal -->
+  <div class="four-reasons-modal-overlay" id="fourReasonsVideoModal" aria-hidden="true" role="dialog" aria-label="Demo Video Player">
+    <div class="four-reasons-modal-container">
+      <button class="four-reasons-modal-close-btn js-close-four-reasons-video" id="fourReasonsCloseBtn" aria-label="Close video player">&times;</button>
+      <div class="four-reasons-modal-player-wrapper">
+        <video id="fourReasonsVideoPlayer" controls playsinline preload="metadata">
+          <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+          Your browser does not support HTML5 video.
+        </video>
+      </div>
+    </div>
+  </div>
+
+  <!-- Make Hair Coloring Simple & Hassle-Free Section -->
+  <section class="make-simple-section" id="makeSimpleSection" aria-labelledby="makeSimpleTitle">
+    <div class="make-simple-container">
+
+      <!-- Section Heading (Desktop + Mobile Responsive) -->
+      <div class="make-simple-header">
+        <span class="make-simple-eyebrow">GET NATURAL, LASTING COLOR IN JUST 10 MINUTES</span>
+        <h2 class="make-simple-title-desktop" id="makeSimpleTitle">
+          <span class="title-top">Make Hair Coloring</span>
+          <span class="title-main">SIMPLE & HASSLE-FREE</span>
+        </h2>
+        <h2 class="make-simple-title-mobile">Make hair coloring simple & hassle-free</h2>
+        <p class="make-simple-subtitle">Get natural, lasting color in just 10 minutes</p>
+      </div>
+
+      <!-- Desktop Dark Purple Banner with Overlapping Video Card -->
+      <div class="make-simple-banner">
+
+        <!-- Video Thumbnail Card (Desktop & Mobile trigger) -->
+        <div class="make-simple-video-wrap">
+          <div class="make-simple-video-card" id="openSimpleVideoBtn" role="button" tabindex="0"
+            aria-label="Play demonstration video">
+            <img src="assets/customer_story.jpg" alt="Make Hair Coloring Simple & Hassle-Free Video"
+              class="make-simple-video-poster" loading="lazy">
+            <div class="make-simple-play-btn" aria-hidden="true">
+              <svg width="22" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="6 3 20 12 6 21 6 3"></polygon>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Desktop 4-Feature Row (inside the banner) -->
+        <div class="make-simple-features-desktop">
+
+          <!-- Feature 1 -->
+          <div class="simple-feature-item">
+            <div class="simple-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="13" r="8"></circle>
+                <path d="M12 9v4l2.5 1.5"></path>
+                <path d="M10 2h4"></path>
+                <path d="M12 2v3"></path>
+              </svg>
+            </div>
+            <h3 class="simple-feature-title">WORKS IN JUST 10 MINUTES</h3>
+            <p class="simple-feature-desc">Apply to dry hair, wait 10 minutes, and rinse. It’s that easy.</p>
+          </div>
+
+          <!-- Feature 2 -->
+          <div class="simple-feature-item">
+            <div class="simple-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z">
+                </path>
+              </svg>
+            </div>
+            <h3 class="simple-feature-title">QUICK, MESS-FREE APPLICATION</h3>
+            <p class="simple-feature-desc">No mixing, no gloves, no stains. Works just like your regular shampoo.</p>
+          </div>
+
+          <!-- Feature 3 -->
+          <div class="simple-feature-item">
+            <div class="simple-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path>
+                <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
+              </svg>
+            </div>
+            <h3 class="simple-feature-title">CONTAINS NATURAL INGREDIENTS</h3>
+            <p class="simple-feature-desc">Like reishi mushrooms, without harsh chemicals like ammonia.</p>
+          </div>
+
+          <!-- Feature 4 -->
+          <div class="simple-feature-item">
+            <div class="simple-feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="13.5" cy="6.5" r=".5" fill="#FFFFFF"></circle>
+                <circle cx="17.5" cy="10.5" r=".5" fill="#FFFFFF"></circle>
+                <circle cx="8.5" cy="7.5" r=".5" fill="#FFFFFF"></circle>
+                <circle cx="6.5" cy="12.5" r=".5" fill="#FFFFFF"></circle>
+                <path
+                  d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.563-2.512 5.563-5.563C22 6.5 17.5 2 12 2Z">
+                </path>
+              </svg>
+            </div>
+            <h3 class="simple-feature-title">LONG-LASTING NATURAL COLOR</h3>
+            <p class="simple-feature-desc">Each application lasts up to 6 weeks, keeping grays hidden longer.</p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Mobile 2x2 Feature Cards Grid -->
+      <div class="make-simple-features-mobile">
+
+        <!-- Mobile Card 1 -->
+        <div class="simple-mob-card">
+          <div class="simple-mob-badge">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="13" r="8"></circle>
+              <path d="M12 9v4l2.5 1.5"></path>
+              <path d="M10 2h4"></path>
+              <path d="M12 2v3"></path>
+            </svg>
+          </div>
+          <h4 class="simple-mob-title">Works in just 10 minutes</h4>
+          <p class="simple-mob-desc">Apply to dry hair, wait 10 minutes, and rinse.</p>
+        </div>
+
+        <!-- Mobile Card 2 -->
+        <div class="simple-mob-card">
+          <div class="simple-mob-badge">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z">
+              </path>
+            </svg>
+          </div>
+          <h4 class="simple-mob-title">Quick, mess-free</h4>
+          <p class="simple-mob-desc">No mixing, no gloves, no stains.</p>
+        </div>
+
+        <!-- Mobile Card 3 -->
+        <div class="simple-mob-card">
+          <div class="simple-mob-badge">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path>
+              <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
+            </svg>
+          </div>
+          <h4 class="simple-mob-title">Natural ingredients</h4>
+          <p class="simple-mob-desc">Reishi mushroom, without ammonia.</p>
+        </div>
+
+        <!-- Mobile Card 4 -->
+        <div class="simple-mob-card">
+          <div class="simple-mob-badge">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="13.5" cy="6.5" r=".5" fill="#FFFFFF"></circle>
+              <circle cx="17.5" cy="10.5" r=".5" fill="#FFFFFF"></circle>
+              <circle cx="8.5" cy="7.5" r=".5" fill="#FFFFFF"></circle>
+              <circle cx="6.5" cy="12.5" r=".5" fill="#FFFFFF"></circle>
+              <path
+                d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.563-2.512 5.563-5.563C22 6.5 17.5 2 12 2Z">
+              </path>
+            </svg>
+          </div>
+          <h4 class="simple-mob-title">Long-lasting color</h4>
+          <p class="simple-mob-desc">Each application lasts up to 6 weeks.</p>
+        </div>
+
       </div>
 
     </div>
@@ -1140,155 +1505,14 @@
     </div>
   </section>
 
-  <!-- 05 — Key Benefits & How It Works (4 Reasons) -->
-  <section class="key-benefits-section" id="keyBenefitsSection" aria-labelledby="keyBenefitsTitle">
-    <div class="key-benefits-container">
-
-      <!-- Section Heading -->
-      <div class="benefits-header">
-        <div class="benefits-heading-pill">
-          <span>4 REASONS</span>
-        </div>
-        <h2 class="benefits-main-title" id="keyBenefitsTitle">
-          Thousands are switching to Polar Instant Dye Shampoo
-        </h2>
-      </div>
-
-      <!-- Main Navy Benefits Panel -->
-      <div class="benefits-panel">
-        <div class="benefits-panel-inner">
-
-          <!-- Left Column (2 Benefit Cards) -->
-          <div class="benefits-col benefits-col-left">
-
-            <!-- Card 1 -->
-            <div class="benefit-card">
-              <div class="benefit-icon-badge">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"
-                  stroke-linejoin="round">
-                  <circle cx="12" cy="13" r="8"></circle>
-                  <path d="M12 9v4l2.5 1.5"></path>
-                  <path d="M10 2h4"></path>
-                  <path d="M12 2v3"></path>
-                </svg>
-              </div>
-              <h3 class="benefit-card-title">WORKS IN JUST 10 MINUTES</h3>
-              <p class="benefit-card-desc">No more scheduling life around hair dye. Apply to dry hair, wait 10 minutes,
-                and rinse. It’s that easy.</p>
-            </div>
-
-            <!-- Card 2 -->
-            <div class="benefit-card">
-              <div class="benefit-icon-badge">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"
-                  stroke-linejoin="round">
-                  <path
-                    d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3">
-                  </path>
-                </svg>
-              </div>
-              <h3 class="benefit-card-title">QUICK, MESS-FREE APPLICATION</h3>
-              <p class="benefit-card-desc">Forget messy box dyes. No mixing, no gloves, no stains — it works just like
-                your regular shampoo.</p>
-            </div>
-
-          </div>
-
-          <!-- Center Column (Demo Video Card) -->
-          <div class="benefits-video-col">
-            <div class="benefits-video-card" id="openBenefitsVideoBtn" role="button" tabindex="0"
-              aria-label="Play product demonstration video">
-              <img src="assets/customer_story.jpg" alt="Polar Hair Care Shampoo Demo" class="benefits-video-poster"
-                loading="lazy">
-
-              <!-- Circular Glass Play Button -->
-              <div class="benefits-play-btn" aria-hidden="true">
-                <svg class="benefits-play-icon" viewBox="0 0 24 24" fill="#2C3452">
-                  <polygon points="8 5 19 12 8 19 8 5"></polygon>
-                </svg>
-              </div>
-            </div>
-          </div>
-
-          <!-- Right Column (2 Benefit Cards) -->
-          <div class="benefits-col benefits-col-right">
-
-            <!-- Card 3 -->
-            <div class="benefit-card">
-              <div class="benefit-icon-badge">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"
-                  stroke-linejoin="round">
-                  <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path>
-                  <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
-                </svg>
-              </div>
-              <h3 class="benefit-card-title">GENTLE ON HAIR</h3>
-              <p class="benefit-card-desc">Natural ingredients like reishi mushroom, without harsh chemicals like
-                ammonia. Hair stays soft, not damaged.</p>
-            </div>
-
-            <!-- Card 4 -->
-            <div class="benefit-card">
-              <div class="benefit-icon-badge">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"
-                  stroke-linejoin="round">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                  <path d="m9 12 2 2 4-4"></path>
-                </svg>
-              </div>
-              <h3 class="benefit-card-title">LONG-LASTING NATURAL COLOR</h3>
-              <p class="benefit-card-desc">Natural-looking color that lasts up to 6 weeks, so you can stay confident
-                without frequent touch-ups.</p>
-            </div>
-
-          </div>
-
-        </div>
-      </div>
-
-      <!-- 3-Step How-To Grid -->
-      <div class="benefits-steps-grid">
-        
-        <!-- Step 1 -->
-        <div class="benefit-step-card">
-          <div class="benefit-step-num">01</div>
-          <div class="benefit-step-content">
-            <h3 class="benefit-step-title">Apply to dry hair</h3>
-            <p class="benefit-step-desc">Massage evenly from roots to ends — just like shampoo.</p>
-          </div>
-        </div>
-
-        <!-- Step 2 -->
-        <div class="benefit-step-card">
-          <div class="benefit-step-num">02</div>
-          <div class="benefit-step-content">
-            <h3 class="benefit-step-title">Wait 10 minutes</h3>
-            <p class="benefit-step-desc">No bowls, brushes or timers to babysit.</p>
-          </div>
-        </div>
-
-        <!-- Step 3 -->
-        <div class="benefit-step-card">
-          <div class="benefit-step-num">03</div>
-          <div class="benefit-step-content">
-            <h3 class="benefit-step-title">Rinse & reveal</h3>
-            <p class="benefit-step-desc">Natural-looking color that lasts 4–6 weeks.</p>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Key Benefits Video Popup Modal -->
-  <div class="benefits-modal-overlay" id="benefitsVideoModal" aria-hidden="true" role="dialog"
+  <!-- Video Popup Modal -->
+  <div class="make-simple-modal-overlay" id="simpleVideoModal" aria-hidden="true" role="dialog"
     aria-label="Product Demo Video Modal">
-    <div class="benefits-modal-container">
-      <button class="benefits-modal-close-btn" id="benefitsVideoCloseBtn"
+    <div class="make-simple-modal-container">
+      <button class="make-simple-modal-close-btn" id="simpleVideoCloseBtn"
         aria-label="Close video player">&times;</button>
-      <div class="benefits-modal-player-wrapper">
-        <video id="benefitsVideoPlayer" controls playsinline preload="metadata">
+      <div class="make-simple-modal-player-wrapper">
+        <video id="simpleVideoPlayer" controls playsinline preload="metadata">
           <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
             type="video/mp4">
           Your browser does not support HTML5 video.
@@ -1303,19 +1527,25 @@
   <section class="superior-choice-section" id="superiorChoiceSection" aria-labelledby="superiorHeading">
     <div class="superior-choice-container">
 
-      <!-- Section Header -->
+      <!-- Section Header (Desktop & Mobile) -->
       <div class="superior-header">
-        <h2 class="superior-main-title" id="superiorHeading">
+        <span class="superior-eyebrow">THE SUPERIOR CHOICE</span>
+        <h2 class="superior-main-title-desktop" id="superiorHeading">
           The Superior Choice
         </h2>
-        <p class="superior-sub-desc">
-          It’s been over a 100 years since the first dyes were created, but we haven't seen any sort of significant
-          change since then. Polar Haircare is here to change that.
+        <h2 class="superior-main-title-mobile">
+          Polar vs. regular hair dye
+        </h2>
+        <p class="superior-sub-desc-desktop">
+          It’s been over a 100 years since the first dyes were created, but we haven't seen any sort of significant change since then. Polar Haircare is here to change that.
+        </p>
+        <p class="superior-sub-desc-mobile">
+          It’s been over 100 years since the first dyes were created, with no significant change. Until now.
         </p>
       </div>
 
-      <!-- Main Comparison Grid Wrapper -->
-      <div class="superior-comparison-wrap">
+      <!-- DESKTOP COMPARISON WRAPPER (> 768px) -->
+      <div class="superior-comparison-wrap superior-comparison-desktop">
 
         <!-- Left Card: Polar Hair Care (Winner) -->
         <div class="superior-card superior-card-polar">
@@ -1471,6 +1701,105 @@
 
       </div>
 
+      <!-- MOBILE COMPARISON TABLE (<= 768px) -->
+      <div class="superior-comparison-mobile">
+        <div class="superior-mobile-table">
+
+          <!-- Header Row (3 Columns) -->
+          <div class="superior-mob-row superior-mob-header-row">
+            <div class="superior-mob-col-blank"></div>
+            <div class="superior-mob-col-polar superior-mob-head-polar">
+              <div class="superior-mob-logo">
+                <span>POLAR<sup>®</sup></span>
+                <small>HAIR CARE</small>
+              </div>
+              <img src="assets/polar-bottle-tall.png" alt="Polar Bottle" class="superior-mob-bottle-img">
+            </div>
+            <div class="superior-mob-col-regular superior-mob-head-regular">
+              <span class="superior-mob-reg-title">Regular Hair Dye</span>
+              <img src="assets/dye-bowl.png" alt="Regular Dye Bowl" class="superior-mob-bowl-img">
+            </div>
+          </div>
+
+          <!-- Data Row 1: NUMBER OF USES -->
+          <div class="superior-mob-row superior-mob-data-row">
+            <div class="superior-mob-col-label">
+              <span>NUMBER OF USES</span>
+            </div>
+            <div class="superior-mob-col-polar">
+              <div class="superior-mob-badge-check">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </div>
+              <span class="superior-mob-val-polar">15 applications</span>
+            </div>
+            <div class="superior-mob-col-regular">
+              <div class="superior-mob-badge-cross">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              </div>
+              <span class="superior-mob-val-reg">1 application</span>
+            </div>
+          </div>
+
+          <!-- Data Row 2: APPLICATION TIME -->
+          <div class="superior-mob-row superior-mob-data-row">
+            <div class="superior-mob-col-label">
+              <span>APPLICATION TIME</span>
+            </div>
+            <div class="superior-mob-col-polar">
+              <div class="superior-mob-badge-check">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </div>
+              <span class="superior-mob-val-polar">10 minutes</span>
+            </div>
+            <div class="superior-mob-col-regular">
+              <div class="superior-mob-badge-cross">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              </div>
+              <span class="superior-mob-val-reg">40–60 minutes</span>
+            </div>
+          </div>
+
+          <!-- Data Row 3: COST PER USE -->
+          <div class="superior-mob-row superior-mob-data-row">
+            <div class="superior-mob-col-label">
+              <span>COST PER USE</span>
+            </div>
+            <div class="superior-mob-col-polar">
+              <div class="superior-mob-badge-check">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </div>
+              <span class="superior-mob-val-polar">$2.33</span>
+            </div>
+            <div class="superior-mob-col-regular">
+              <div class="superior-mob-badge-cross">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              </div>
+              <span class="superior-mob-val-reg">$15</span>
+            </div>
+          </div>
+
+          <!-- Data Row 4: INGREDIENTS -->
+          <div class="superior-mob-row superior-mob-data-row">
+            <div class="superior-mob-col-label">
+              <span>INGREDIENTS</span>
+            </div>
+            <div class="superior-mob-col-polar">
+              <div class="superior-mob-badge-check">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </div>
+              <span class="superior-mob-val-polar">Ammonia-free</span>
+            </div>
+            <div class="superior-mob-col-regular">
+              <div class="superior-mob-badge-cross">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              </div>
+              <span class="superior-mob-val-reg">Synthetic</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -1480,9 +1809,10 @@
   <section class="guarantee-section" id="guaranteeSection" aria-labelledby="guaranteeHeading">
     <div class="guarantee-container">
 
+      <!-- DESKTOP BANNER CARD (> 768px) -->
       <div class="guarantee-banner-card">
 
-        <!-- Right Content: Titles & Guarantee Promise -->
+        <!-- Right Content: Titles, Description & CTA -->
         <div class="guarantee-content-col">
 
           <div class="guarantee-title-wrap">
@@ -1502,6 +1832,36 @@
             </p>
           </div>
 
+          <div class="guarantee-btn-wrap">
+            <a href="#chooseBundleSection" class="guarantee-cta-btn">
+              ADD TO CART
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- MOBILE CARD (<= 768px) -->
+      <div class="guarantee-mobile-card">
+        
+        <div class="guarantee-mobile-visual">
+          <img src="assets/guarantee-bg.png" alt="30-Day Satisfaction Guarantee" class="guarantee-mob-img" loading="lazy">
+        </div>
+
+        <div class="guarantee-mobile-copy">
+          <h2 class="guarantee-mob-title-primary">
+            30-DAY
+          </h2>
+          <h3 class="guarantee-mob-title-secondary">
+            SATISFACTION GUARANTEE
+          </h3>
+          <p class="guarantee-mob-desc">
+            We understand that trying new products can feel risky, which is why Polar offers you a completely risk-free experience with our 30-Day Money Back Guarantee.
+          </p>
+          <a href="#chooseBundleSection" class="guarantee-mob-cta-btn">
+            Add to cart
+          </a>
         </div>
 
       </div>
@@ -1748,7 +2108,8 @@
           <div class="bundle-card-badge-placeholder" aria-hidden="true"></div>
 
           <div class="bundle-img-box">
-            <img src="assets/bundle-1-bottle.png" alt="1 Bottle - Polar Instant Dye Shampoo" class="bundle-bottle-img" loading="lazy">
+            <img src="assets/bundle-1-bottle.png" alt="1 Bottle - Polar Instant Dye Shampoo" class="bundle-bottle-img"
+              loading="lazy">
           </div>
 
           <h3 class="bundle-item-title">1 Bottle</h3>
@@ -1770,7 +2131,8 @@
               <span class="bundle-check-icon" aria-hidden="true">
                 <svg viewBox="0 0 18 18" fill="none" width="18" height="18">
                   <circle cx="9" cy="9" r="9" fill="#2FA60F" />
-                  <path d="M5.5 9.2L7.8 11.5L12.5 6.8" stroke="#FFFFFF" stroke-width="1.88" stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M5.5 9.2L7.8 11.5L12.5 6.8" stroke="#FFFFFF" stroke-width="1.88" stroke-linecap="round"
+                    stroke-linejoin="round" />
                 </svg>
               </span>
               <span class="bundle-perk-text">15 applications</span>
@@ -1779,7 +2141,8 @@
               <span class="bundle-check-icon" aria-hidden="true">
                 <svg viewBox="0 0 18 18" fill="none" width="18" height="18">
                   <circle cx="9" cy="9" r="9" fill="#2FA60F" />
-                  <path d="M5.5 9.2L7.8 11.5L12.5 6.8" stroke="#FFFFFF" stroke-width="1.88" stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M5.5 9.2L7.8 11.5L12.5 6.8" stroke="#FFFFFF" stroke-width="1.88" stroke-linecap="round"
+                    stroke-linejoin="round" />
                 </svg>
               </span>
               <span class="bundle-perk-text">Covers grays in 10 minutes</span>
@@ -1788,14 +2151,16 @@
               <span class="bundle-check-icon" aria-hidden="true">
                 <svg viewBox="0 0 18 18" fill="none" width="18" height="18">
                   <circle cx="9" cy="9" r="9" fill="#2FA60F" />
-                  <path d="M5.5 9.2L7.8 11.5L12.5 6.8" stroke="#FFFFFF" stroke-width="1.88" stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M5.5 9.2L7.8 11.5L12.5 6.8" stroke="#FFFFFF" stroke-width="1.88" stroke-linecap="round"
+                    stroke-linejoin="round" />
                 </svg>
               </span>
               <span class="bundle-perk-text">30-day money-back guarantee</span>
             </li>
           </ul>
 
-          <button type="button" class="bundle-btn bundle-btn-primary" data-bundle-qty="1" data-bundle-price="3500" aria-label="Add 1 Bottle bundle to cart">
+          <button type="button" class="bundle-btn bundle-btn-primary" data-bundle-qty="1" data-bundle-price="3500"
+            aria-label="Add 1 Bottle bundle to cart">
             <span>ADD TO CART</span>
           </button>
         </div>
@@ -1807,7 +2172,8 @@
           </div>
 
           <div class="bundle-img-box">
-            <img src="assets/bundle-2-bottles.png" alt="2 Bottles - Polar Instant Dye Shampoo" class="bundle-bottle-img" loading="lazy">
+            <img src="assets/bundle-2-bottles.png" alt="2 Bottles - Polar Instant Dye Shampoo" class="bundle-bottle-img"
+              loading="lazy">
           </div>
 
           <h3 class="bundle-item-title bundle-title-light">2 Bottles</h3>
@@ -1829,7 +2195,8 @@
               <span class="bundle-check-icon" aria-hidden="true">
                 <svg viewBox="0 0 18 18" fill="none" width="18" height="18">
                   <circle cx="9" cy="9" r="9" fill="#2FA60F" />
-                  <path d="M5.5 9.2L7.8 11.5L12.5 6.8" stroke="#FFFFFF" stroke-width="1.88" stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M5.5 9.2L7.8 11.5L12.5 6.8" stroke="#FFFFFF" stroke-width="1.88" stroke-linecap="round"
+                    stroke-linejoin="round" />
                 </svg>
               </span>
               <span class="bundle-perk-text bundle-text-light">30 applications</span>
@@ -1838,7 +2205,8 @@
               <span class="bundle-check-icon" aria-hidden="true">
                 <svg viewBox="0 0 18 18" fill="none" width="18" height="18">
                   <circle cx="9" cy="9" r="9" fill="#2FA60F" />
-                  <path d="M5.5 9.2L7.8 11.5L12.5 6.8" stroke="#FFFFFF" stroke-width="1.88" stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M5.5 9.2L7.8 11.5L12.5 6.8" stroke="#FFFFFF" stroke-width="1.88" stroke-linecap="round"
+                    stroke-linejoin="round" />
                 </svg>
               </span>
               <span class="bundle-perk-text bundle-text-light">+ Free shipping</span>
@@ -1847,14 +2215,16 @@
               <span class="bundle-check-icon" aria-hidden="true">
                 <svg viewBox="0 0 18 18" fill="none" width="18" height="18">
                   <circle cx="9" cy="9" r="9" fill="#2FA60F" />
-                  <path d="M5.5 9.2L7.8 11.5L12.5 6.8" stroke="#FFFFFF" stroke-width="1.88" stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M5.5 9.2L7.8 11.5L12.5 6.8" stroke="#FFFFFF" stroke-width="1.88" stroke-linecap="round"
+                    stroke-linejoin="round" />
                 </svg>
               </span>
               <span class="bundle-perk-text bundle-text-light">30-day money-back guarantee</span>
             </li>
           </ul>
 
-          <button type="button" class="bundle-btn bundle-btn-inverse" data-bundle-qty="2" data-bundle-price="5900" aria-label="Add 2 Bottles bundle to cart">
+          <button type="button" class="bundle-btn bundle-btn-inverse" data-bundle-qty="2" data-bundle-price="5900"
+            aria-label="Add 2 Bottles bundle to cart">
             <span>ADD TO CART</span>
           </button>
         </div>
@@ -1866,7 +2236,8 @@
           </div>
 
           <div class="bundle-img-box">
-            <img src="assets/bundle-3-bottles.png" alt="3 Bottles - Polar Instant Dye Shampoo" class="bundle-bottle-img" loading="lazy">
+            <img src="assets/bundle-3-bottles.png" alt="3 Bottles - Polar Instant Dye Shampoo" class="bundle-bottle-img"
+              loading="lazy">
           </div>
 
           <h3 class="bundle-item-title">3 Bottles</h3>
@@ -1888,7 +2259,8 @@
               <span class="bundle-check-icon" aria-hidden="true">
                 <svg viewBox="0 0 18 18" fill="none" width="18" height="18">
                   <circle cx="9" cy="9" r="9" fill="#2FA60F" />
-                  <path d="M5.5 9.2L7.8 11.5L12.5 6.8" stroke="#FFFFFF" stroke-width="1.88" stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M5.5 9.2L7.8 11.5L12.5 6.8" stroke="#FFFFFF" stroke-width="1.88" stroke-linecap="round"
+                    stroke-linejoin="round" />
                 </svg>
               </span>
               <span class="bundle-perk-text">45 applications</span>
@@ -1897,7 +2269,8 @@
               <span class="bundle-check-icon" aria-hidden="true">
                 <svg viewBox="0 0 18 18" fill="none" width="18" height="18">
                   <circle cx="9" cy="9" r="9" fill="#2FA60F" />
-                  <path d="M5.5 9.2L7.8 11.5L12.5 6.8" stroke="#FFFFFF" stroke-width="1.88" stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M5.5 9.2L7.8 11.5L12.5 6.8" stroke="#FFFFFF" stroke-width="1.88" stroke-linecap="round"
+                    stroke-linejoin="round" />
                 </svg>
               </span>
               <span class="bundle-perk-text">+ Free shipping</span>
@@ -1906,14 +2279,16 @@
               <span class="bundle-check-icon" aria-hidden="true">
                 <svg viewBox="0 0 18 18" fill="none" width="18" height="18">
                   <circle cx="9" cy="9" r="9" fill="#2FA60F" />
-                  <path d="M5.5 9.2L7.8 11.5L12.5 6.8" stroke="#FFFFFF" stroke-width="1.88" stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M5.5 9.2L7.8 11.5L12.5 6.8" stroke="#FFFFFF" stroke-width="1.88" stroke-linecap="round"
+                    stroke-linejoin="round" />
                 </svg>
               </span>
               <span class="bundle-perk-text">+ Free conditioner</span>
             </li>
           </ul>
 
-          <button type="button" class="bundle-btn bundle-btn-primary" data-bundle-qty="3" data-bundle-price="6999" aria-label="Add 3 Bottles bundle to cart">
+          <button type="button" class="bundle-btn bundle-btn-primary" data-bundle-qty="3" data-bundle-price="6999"
+            aria-label="Add 3 Bottles bundle to cart">
             <span>ADD TO CART</span>
           </button>
         </div>
@@ -1922,18 +2297,21 @@
 
       <!-- Trust Badges Container (4 Badges) -->
       <div class="bundle-trust-card">
-        
+
         <!-- Trust Item 1: 30-Day Money Back -->
         <div class="bundle-trust-item">
           <div class="bundle-trust-icon-wrap" aria-hidden="true">
             <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="16" cy="16" r="14" stroke="#2B3344" stroke-width="1.2" fill="#FFFFFF"/>
-              <circle cx="16" cy="16" r="11" stroke="#2B3344" stroke-width="0.8" stroke-dasharray="2 2"/>
-              <path d="M12.5 12C13.5 10.8 14.7 10 16 10C18.8 10 21 12.2 21 15C21 15.6 20.9 16.2 20.6 16.7" stroke="#2B3344" stroke-width="1.2" stroke-linecap="round"/>
-              <path d="M11 10.5L12.8 12L13.2 9.8" fill="#2B3344"/>
-              <path d="M19.5 20C18.5 21.2 17.3 22 16 22C13.2 22 11 19.8 11 17C11 16.4 11.1 15.8 11.4 15.3" stroke="#2B3344" stroke-width="1.2" stroke-linecap="round"/>
-              <path d="M21 21.5L19.2 20L18.8 22.2" fill="#2B3344"/>
-              <text x="16" y="19" font-family="'Lato', sans-serif" font-size="9" font-weight="700" fill="#2B3344" text-anchor="middle">$</text>
+              <circle cx="16" cy="16" r="14" stroke="#2B3344" stroke-width="1.2" fill="#FFFFFF" />
+              <circle cx="16" cy="16" r="11" stroke="#2B3344" stroke-width="0.8" stroke-dasharray="2 2" />
+              <path d="M12.5 12C13.5 10.8 14.7 10 16 10C18.8 10 21 12.2 21 15C21 15.6 20.9 16.2 20.6 16.7"
+                stroke="#2B3344" stroke-width="1.2" stroke-linecap="round" />
+              <path d="M11 10.5L12.8 12L13.2 9.8" fill="#2B3344" />
+              <path d="M19.5 20C18.5 21.2 17.3 22 16 22C13.2 22 11 19.8 11 17C11 16.4 11.1 15.8 11.4 15.3"
+                stroke="#2B3344" stroke-width="1.2" stroke-linecap="round" />
+              <path d="M21 21.5L19.2 20L18.8 22.2" fill="#2B3344" />
+              <text x="16" y="19" font-family="'Lato', sans-serif" font-size="9" font-weight="700" fill="#2B3344"
+                text-anchor="middle">$</text>
             </svg>
           </div>
           <div class="bundle-trust-content">
@@ -1946,10 +2324,10 @@
         <div class="bundle-trust-item">
           <div class="bundle-trust-icon-wrap" aria-hidden="true">
             <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="16" cy="16" r="14" stroke="#2B3344" stroke-width="1.2" fill="#FFFFFF"/>
-              <ellipse cx="16" cy="16" rx="6" ry="10" stroke="#2B3344" stroke-width="1"/>
-              <line x1="6" y1="13" x2="26" y2="13" stroke="#2B3344" stroke-width="1"/>
-              <line x1="6" y1="19" x2="26" y2="19" stroke="#2B3344" stroke-width="1"/>
+              <circle cx="16" cy="16" r="14" stroke="#2B3344" stroke-width="1.2" fill="#FFFFFF" />
+              <ellipse cx="16" cy="16" rx="6" ry="10" stroke="#2B3344" stroke-width="1" />
+              <line x1="6" y1="13" x2="26" y2="13" stroke="#2B3344" stroke-width="1" />
+              <line x1="6" y1="19" x2="26" y2="19" stroke="#2B3344" stroke-width="1" />
             </svg>
           </div>
           <div class="bundle-trust-content">
@@ -1962,10 +2340,11 @@
         <div class="bundle-trust-item">
           <div class="bundle-trust-icon-wrap" aria-hidden="true">
             <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="16" cy="16" r="14" stroke="#2B3344" stroke-width="1.2" fill="#FFFFFF"/>
-              <rect x="10.5" y="11.5" width="11" height="9" rx="1.5" stroke="#2B3344" stroke-width="1.2"/>
-              <path d="M14 10L16 8L18 10" stroke="#2B3344" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M16 8V14" stroke="#2B3344" stroke-width="1.2" stroke-linecap="round"/>
+              <circle cx="16" cy="16" r="14" stroke="#2B3344" stroke-width="1.2" fill="#FFFFFF" />
+              <rect x="10.5" y="11.5" width="11" height="9" rx="1.5" stroke="#2B3344" stroke-width="1.2" />
+              <path d="M14 10L16 8L18 10" stroke="#2B3344" stroke-width="1.2" stroke-linecap="round"
+                stroke-linejoin="round" />
+              <path d="M16 8V14" stroke="#2B3344" stroke-width="1.2" stroke-linecap="round" />
             </svg>
           </div>
           <div class="bundle-trust-content">
@@ -1978,10 +2357,10 @@
         <div class="bundle-trust-item">
           <div class="bundle-trust-icon-wrap" aria-hidden="true">
             <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="16" cy="16" r="14" stroke="#2B3344" stroke-width="1.2" fill="#FFFFFF"/>
-              <rect x="9.5" y="12" width="13" height="9" rx="1.5" stroke="#2B3344" stroke-width="1.2"/>
-              <line x1="9.5" y1="15" x2="22.5" y2="15" stroke="#2B3344" stroke-width="1.2"/>
-              <rect x="12" y="17" width="2.5" height="2" rx="0.5" fill="#2B3344"/>
+              <circle cx="16" cy="16" r="14" stroke="#2B3344" stroke-width="1.2" fill="#FFFFFF" />
+              <rect x="9.5" y="12" width="13" height="9" rx="1.5" stroke="#2B3344" stroke-width="1.2" />
+              <line x1="9.5" y1="15" x2="22.5" y2="15" stroke="#2B3344" stroke-width="1.2" />
+              <rect x="12" y="17" width="2.5" height="2" rx="0.5" fill="#2B3344" />
             </svg>
           </div>
           <div class="bundle-trust-content">
@@ -2023,11 +2402,13 @@
 
             <!-- Video Slide 1 -->
             <div class="swiper-slide ugc-video-slide">
-              <div class="ugc-video-card js-open-benefits-video" role="button" tabindex="0" aria-label="Play Customer Video 1">
-                <img src="assets/ugc-customer-1.png" alt="Customer Video Review 1 - Polar Hair Dye" class="ugc-video-img" loading="lazy">
+              <div class="ugc-video-card js-open-benefits-video" role="button" tabindex="0"
+                aria-label="Play Customer Video 1">
+                <img src="assets/ugc-customer-1.png" alt="Customer Video Review 1 - Polar Hair Dye"
+                  class="ugc-video-img" loading="lazy">
                 <div class="ugc-play-btn-circle" aria-hidden="true">
                   <svg width="18" height="21" viewBox="0 0 18 21" fill="none">
-                    <path d="M17 10.5L1 19.5981L1 1.40192L17 10.5Z" fill="#2C3452"/>
+                    <path d="M17 10.5L1 19.5981L1 1.40192L17 10.5Z" fill="#2C3452" />
                   </svg>
                 </div>
               </div>
@@ -2035,11 +2416,13 @@
 
             <!-- Video Slide 2 -->
             <div class="swiper-slide ugc-video-slide">
-              <div class="ugc-video-card js-open-benefits-video" role="button" tabindex="0" aria-label="Play Customer Video 2">
-                <img src="assets/ugc-customer-2.png" alt="Customer Video Review 2 - Polar Hair Dye" class="ugc-video-img" loading="lazy">
+              <div class="ugc-video-card js-open-benefits-video" role="button" tabindex="0"
+                aria-label="Play Customer Video 2">
+                <img src="assets/ugc-customer-2.png" alt="Customer Video Review 2 - Polar Hair Dye"
+                  class="ugc-video-img" loading="lazy">
                 <div class="ugc-play-btn-circle" aria-hidden="true">
                   <svg width="18" height="21" viewBox="0 0 18 21" fill="none">
-                    <path d="M17 10.5L1 19.5981L1 1.40192L17 10.5Z" fill="#2C3452"/>
+                    <path d="M17 10.5L1 19.5981L1 1.40192L17 10.5Z" fill="#2C3452" />
                   </svg>
                 </div>
               </div>
@@ -2047,11 +2430,13 @@
 
             <!-- Video Slide 3 -->
             <div class="swiper-slide ugc-video-slide">
-              <div class="ugc-video-card js-open-benefits-video" role="button" tabindex="0" aria-label="Play Customer Video 3">
-                <img src="assets/ugc-customer-3.png" alt="Customer Video Review 3 - Polar Hair Dye" class="ugc-video-img" loading="lazy">
+              <div class="ugc-video-card js-open-benefits-video" role="button" tabindex="0"
+                aria-label="Play Customer Video 3">
+                <img src="assets/ugc-customer-3.png" alt="Customer Video Review 3 - Polar Hair Dye"
+                  class="ugc-video-img" loading="lazy">
                 <div class="ugc-play-btn-circle" aria-hidden="true">
                   <svg width="18" height="21" viewBox="0 0 18 21" fill="none">
-                    <path d="M17 10.5L1 19.5981L1 1.40192L17 10.5Z" fill="#2C3452"/>
+                    <path d="M17 10.5L1 19.5981L1 1.40192L17 10.5Z" fill="#2C3452" />
                   </svg>
                 </div>
               </div>
@@ -2059,11 +2444,13 @@
 
             <!-- Video Slide 4 -->
             <div class="swiper-slide ugc-video-slide">
-              <div class="ugc-video-card js-open-benefits-video" role="button" tabindex="0" aria-label="Play Customer Video 4">
-                <img src="assets/ugc-customer-4.png" alt="Customer Video Review 4 - Polar Hair Dye" class="ugc-video-img" loading="lazy">
+              <div class="ugc-video-card js-open-benefits-video" role="button" tabindex="0"
+                aria-label="Play Customer Video 4">
+                <img src="assets/ugc-customer-4.png" alt="Customer Video Review 4 - Polar Hair Dye"
+                  class="ugc-video-img" loading="lazy">
                 <div class="ugc-play-btn-circle" aria-hidden="true">
                   <svg width="18" height="21" viewBox="0 0 18 21" fill="none">
-                    <path d="M17 10.5L1 19.5981L1 1.40192L17 10.5Z" fill="#2C3452"/>
+                    <path d="M17 10.5L1 19.5981L1 1.40192L17 10.5Z" fill="#2C3452" />
                   </svg>
                 </div>
               </div>
@@ -2071,11 +2458,13 @@
 
             <!-- Video Slide 5 -->
             <div class="swiper-slide ugc-video-slide">
-              <div class="ugc-video-card js-open-benefits-video" role="button" tabindex="0" aria-label="Play Customer Video 5">
-                <img src="assets/ugc-customer-5.png" alt="Customer Video Review 5 - Polar Hair Dye" class="ugc-video-img" loading="lazy">
+              <div class="ugc-video-card js-open-benefits-video" role="button" tabindex="0"
+                aria-label="Play Customer Video 5">
+                <img src="assets/ugc-customer-5.png" alt="Customer Video Review 5 - Polar Hair Dye"
+                  class="ugc-video-img" loading="lazy">
                 <div class="ugc-play-btn-circle" aria-hidden="true">
                   <svg width="18" height="21" viewBox="0 0 18 21" fill="none">
-                    <path d="M17 10.5L1 19.5981L1 1.40192L17 10.5Z" fill="#2C3452"/>
+                    <path d="M17 10.5L1 19.5981L1 1.40192L17 10.5Z" fill="#2C3452" />
                   </svg>
                 </div>
               </div>
@@ -2103,15 +2492,15 @@
     <div class="final-cta-container">
 
       <div class="final-cta-banner">
-        
+
         <!-- Copy Column -->
         <div class="final-cta-content">
           <span class="final-cta-eyebrow">FALL SALE — UP TO 52% OFF</span>
-          
+
           <h2 class="final-cta-title" id="finalCtaTitle">
             Ready to see your grays disappear in 10 minutes?
           </h2>
-          
+
           <p class="final-cta-subtitle">
             Try Polar risk-free. If it doesn’t work for you, our 30-day money-back guarantee has you covered.
           </p>
@@ -2130,19 +2519,24 @@
           <div class="final-cta-rating-row">
             <div class="final-cta-stars" aria-label="5 out of 5 stars">
               <svg viewBox="0 0 20 20" fill="currentColor" width="16" height="16" aria-hidden="true">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
               </svg>
               <svg viewBox="0 0 20 20" fill="currentColor" width="16" height="16" aria-hidden="true">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
               </svg>
               <svg viewBox="0 0 20 20" fill="currentColor" width="16" height="16" aria-hidden="true">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
               </svg>
               <svg viewBox="0 0 20 20" fill="currentColor" width="16" height="16" aria-hidden="true">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
               </svg>
               <svg viewBox="0 0 20 20" fill="currentColor" width="16" height="16" aria-hidden="true">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
               </svg>
             </div>
             <span class="final-cta-review-count">26,966 verified reviews</span>
@@ -2152,12 +2546,8 @@
 
         <!-- Media / Product Pair Column -->
         <div class="final-cta-media">
-          <img 
-            src="assets/final-cta-bottles.png" 
-            alt="Polar Instant Dye Shampoo Pair" 
-            class="final-cta-bottles-img"
-            loading="lazy"
-          >
+          <img src="assets/final-cta-bottles.png" alt="Polar Instant Dye Shampoo Pair" class="final-cta-bottles-img"
+            loading="lazy">
         </div>
 
       </div>
@@ -2168,18 +2558,23 @@
   <!-- 13 — Polar Haircare Footer -->
   <footer class="site-footer" role="contentinfo">
     <div class="footer-container">
-      
+
       <!-- Top Block: Brand Info & Contact -->
       <div class="footer-top-block">
         <div class="footer-brand-logo-wrap">
-          <svg class="footer-logo-svg" viewBox="0 0 150 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-label="Polar Hair Care">
-            <text x="0" y="19" font-family="'Lato', sans-serif" font-size="20" font-weight="300" letter-spacing="4.5" fill="#FFFFFF">POLAR</text>
-            <text x="2" y="29" font-family="'Lato', sans-serif" font-size="6.5" font-weight="400" letter-spacing="4.2" fill="#FFFFFF">HAIR CARE</text>
+          <svg class="footer-logo-svg" viewBox="0 0 150 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
+            aria-label="Polar Hair Care">
+            <text x="0" y="19" font-family="'Lato', sans-serif" font-size="20" font-weight="300" letter-spacing="4.5"
+              fill="#FFFFFF">POLAR</text>
+            <text x="2" y="29" font-family="'Lato', sans-serif" font-size="6.5" font-weight="400" letter-spacing="4.2"
+              fill="#FFFFFF">HAIR CARE</text>
           </svg>
         </div>
 
         <p class="footer-about-text">
-          At Polar, we prioritize naturally vibrant hair. Our instant dye shampoo covers grays in 10 minutes without the mess, damage, or chemicals of traditional dyes. When you choose Polar, you're committing to effortless confidence.
+          At Polar, we prioritize naturally vibrant hair. Our instant dye shampoo covers grays in 10 minutes without the
+          mess, damage, or chemicals of traditional dyes. When you choose Polar, you're committing to effortless
+          confidence.
         </p>
 
         <p class="footer-service-hours">
@@ -2189,7 +2584,8 @@
         <ul class="footer-contact-list">
           <li class="footer-contact-item">
             <span class="footer-contact-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                stroke-linejoin="round">
                 <rect x="2" y="4" width="20" height="16" rx="2"></rect>
                 <path d="M22 6L12 13L2 6"></path>
               </svg>
@@ -2201,8 +2597,11 @@
 
           <li class="footer-contact-item">
             <span class="footer-contact-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                </path>
               </svg>
             </span>
             <a href="tel:+18334240123" class="footer-contact-link">
@@ -2211,9 +2610,11 @@
           </li>
 
           <li class="footer-contact-item">
-            <a href="https://instagram.com/polarhaircare" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="Follow us on Instagram">
+            <a href="https://instagram.com/polarhaircare" target="_blank" rel="noopener noreferrer"
+              class="footer-social-link" aria-label="Follow us on Instagram">
               <span class="footer-contact-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                  stroke-linejoin="round">
                   <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
                   <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
                   <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
@@ -2227,20 +2628,15 @@
 
       <!-- Middle Block: Newsletter & Navigation -->
       <div class="footer-middle-block">
-        
+
         <!-- Newsletter Subscription -->
         <div class="footer-newsletter-col">
           <h3 class="footer-block-heading">Subscribe to our emails</h3>
           <form class="footer-newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
-            <input
-              type="email"
-              class="footer-newsletter-input"
-              placeholder="Email"
-              aria-label="Email address"
-              required
-            >
+            <input type="email" class="footer-newsletter-input" placeholder="Email" aria-label="Email address" required>
             <button type="submit" class="footer-newsletter-btn" aria-label="Subscribe to newsletter">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
                 <polyline points="12 5 19 12 12 19"></polyline>
               </svg>
@@ -2255,9 +2651,12 @@
             <h3 class="footer-block-heading">Information</h3>
             <ul class="footer-nav-list">
               <li class="footer-nav-item"><a href="/pages/track-order" class="footer-nav-link">Track Your Order</a></li>
-              <li class="footer-nav-item"><a href="/pages/returns-exchanges" class="footer-nav-link">Returns &amp; Exchanges</a></li>
-              <li class="footer-nav-item"><a href="/pages/shipping-information" class="footer-nav-link">Shipping Information</a></li>
-              <li class="footer-nav-item"><a href="/pages/help-center" class="footer-nav-link">Help Center / FAQ</a></li>
+              <li class="footer-nav-item"><a href="/pages/returns-exchanges" class="footer-nav-link">Returns &amp;
+                  Exchanges</a></li>
+              <li class="footer-nav-item"><a href="/pages/shipping-information" class="footer-nav-link">Shipping
+                  Information</a></li>
+              <li class="footer-nav-item"><a href="/pages/help-center" class="footer-nav-link">Help Center / FAQ</a>
+              </li>
               <li class="footer-nav-item"><a href="/pages/contact" class="footer-nav-link">Contact Us</a></li>
             </ul>
           </div>
@@ -2266,8 +2665,10 @@
           <div class="footer-nav-col">
             <h3 class="footer-block-heading">More Information</h3>
             <ul class="footer-nav-list">
-              <li class="footer-nav-item"><a href="/policies/terms-of-service" class="footer-nav-link">Terms of Service</a></li>
-              <li class="footer-nav-item"><a href="/policies/privacy-policy" class="footer-nav-link">Privacy Policy</a></li>
+              <li class="footer-nav-item"><a href="/policies/terms-of-service" class="footer-nav-link">Terms of
+                  Service</a></li>
+              <li class="footer-nav-item"><a href="/policies/privacy-policy" class="footer-nav-link">Privacy Policy</a>
+              </li>
               <li class="footer-nav-item"><a href="/blogs/news" class="footer-nav-link">Blog</a></li>
             </ul>
           </div>
@@ -2275,147 +2676,183 @@
 
       </div>
 
-      <!-- Bottom Block: Localization, Copyright & Payment Badges -->
+      <!-- Bottom Block: Payment Badges, Copyright & Currency -->
       <div class="footer-bottom-block">
-        
-        <!-- Localization Selector -->
-        <div class="footer-localization">
-          <div class="footer-localization-btn" role="button" tabindex="0" aria-label="Country and currency selector">
-            <span class="footer-localization-text">India | INR &#8377;</span>
-            <span class="footer-localization-chevron" aria-hidden="true">
-              <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M1 1L5 5L9 1"/>
-              </svg>
-            </span>
-          </div>
-        </div>
-
-        <!-- Copyright Notice -->
-        <p class="footer-copyright">
-          Copyright &copy; 2026 Polar Haircare
-        </p>
 
         <!-- Payment Method Badges -->
         <ul class="footer-payment-list" aria-label="Accepted Payment Methods">
           <!-- Amazon Pay -->
           <li class="footer-payment-item" title="Amazon Pay">
             <svg viewBox="0 0 42 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect width="42" height="26.5" rx="3" fill="#FFFFFF"/>
-              <path d="M16.5 15.5c-2.8 1.8-6.8 2.2-10 .8-.4-.2-.8.2-.5.6 2.3 2.1 6.5 2.5 10 .8.4-.2.4-.8.5-1.4.1-.4-.2-.7-.5-.8z" fill="#FF9900"/>
-              <path d="M17.8 14.2c-.3-.4-.9-.3-1.3-.2.3-.5.7-1.1.9-1.8.1-.3.4-.3.6-.2.4.6.7 1.3.9 2-.4-.2-.8-.2-1.1.2z" fill="#FF9900"/>
-              <path d="M11.6 8.5c-2.4 0-3.6 1.4-3.6 3.2 0 2.2 1.5 3.3 3.5 3.3 1.1 0 2-.4 2.5-1.1v.9c0 .5.3.7.8.7.3 0 .6-.1.8-.2V10c0-1.2-.6-1.5-1.6-1.5h-2.4zm1.6 3.8c0 1.2-.6 2-1.6 2-.8 0-1.3-.5-1.3-1.4 0-1 .6-1.5 1.6-1.7l1.3-.2v1.3z" fill="#221F1F"/>
+              <rect width="42" height="26.5" rx="3" fill="#FFFFFF" />
+              <path
+                d="M16.5 15.5c-2.8 1.8-6.8 2.2-10 .8-.4-.2-.8.2-.5.6 2.3 2.1 6.5 2.5 10 .8.4-.2.4-.8.5-1.4.1-.4-.2-.7-.5-.8z"
+                fill="#FF9900" />
+              <path d="M17.8 14.2c-.3-.4-.9-.3-1.3-.2.3-.5.7-1.1.9-1.8.1-.3.4-.3.6-.2.4.6.7 1.3.9 2-.4-.2-.8-.2-1.1.2z"
+                fill="#FF9900" />
+              <path
+                d="M11.6 8.5c-2.4 0-3.6 1.4-3.6 3.2 0 2.2 1.5 3.3 3.5 3.3 1.1 0 2-.4 2.5-1.1v.9c0 .5.3.7.8.7.3 0 .6-.1.8-.2V10c0-1.2-.6-1.5-1.6-1.5h-2.4zm1.6 3.8c0 1.2-.6 2-1.6 2-.8 0-1.3-.5-1.3-1.4 0-1 .6-1.5 1.6-1.7l1.3-.2v1.3z"
+                fill="#221F1F" />
             </svg>
           </li>
 
           <!-- American Express -->
           <li class="footer-payment-item" title="American Express">
             <svg viewBox="0 0 42 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect width="42" height="26.5" rx="3" fill="#0071CE"/>
-              <path d="M6 8.5h3.2l1.6 3.6 1.6-3.6h3.2v9H13v-5.2l-1.6 3.6h-1.2L8.6 12.3V17.5H6V8.5zm10.5 0h7.5v1.8h-5.2v1.8h4.6v1.8h-4.6v1.8H24v1.8h-7.5V8.5zm9 0h2.6l1.8 3.2 1.8-3.2h2.6l-3.1 5.2 3.3 3.8h-2.8l-2-2.5-2 2.5h-2.8l3.3-4-2.7-5z" fill="#FFFFFF"/>
+              <rect width="42" height="26.5" rx="3" fill="#0071CE" />
+              <path
+                d="M6 8.5h3.2l1.6 3.6 1.6-3.6h3.2v9H13v-5.2l-1.6 3.6h-1.2L8.6 12.3V17.5H6V8.5zm10.5 0h7.5v1.8h-5.2v1.8h4.6v1.8h-4.6v1.8H24v1.8h-7.5V8.5zm9 0h2.6l1.8 3.2 1.8-3.2h2.6l-3.1 5.2 3.3 3.8h-2.8l-2-2.5-2 2.5h-2.8l3.3-4-2.7-5z"
+                fill="#FFFFFF" />
             </svg>
           </li>
 
           <!-- Apple Pay -->
           <li class="footer-payment-item" title="Apple Pay">
             <svg viewBox="0 0 42 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect width="42" height="26.5" rx="3" fill="#000000"/>
-              <path d="M12.8 11.2c-.3.4-.8.6-1.3.6-.1-.5.1-1 .4-1.3.3-.4.8-.6 1.3-.6.1.5-.1 1-.4 1.3zm1.3 4.3c-.2.4-.4.8-.8 1.3-.5.7-1 1.4-1.8 1.4-.8 0-1-.5-1.9-.5-.9 0-1.2.5-1.9.5-.8 0-1.4-.8-1.9-1.5-1-1.5-1.7-4.1-.7-5.8.5-.9 1.4-1.5 2.4-1.5.8 0 1.5.5 1.9.5.5 0 1.3-.6 2.2-.5.4 0 1.4.1 2.1 1.1-.1.1-1.2.7-1.2 2.1 0 1.7 1.5 2.3 1.6 2.4z" fill="#FFFFFF"/>
-              <path d="M17.2 9.5h2.8c1.6 0 2.8 1.1 2.8 2.8 0 1.7-1.2 2.8-2.8 2.8h-1.4v3.4h-1.4V9.5zm1.4 4.3h1.4c.9 0 1.5-.6 1.5-1.5 0-.9-.6-1.5-1.5-1.5h-1.4v3zm8 1.6c0-1.3 1-2.1 2.6-2.2l1.7-.1v-.5c0-.7-.5-1.1-1.3-1.1-.7 0-1.2.3-1.4.8l-1.3-.4c.3-1 1.3-1.7 2.7-1.7 1.7 0 2.7.9 2.7 2.4v5.4h-1.3v-1.1c-.5.7-1.4 1.2-2.3 1.2-1.5 0-2.4-1-2.4-2.2zm4.3-.1v-.7l-1.5.1c-.8.1-1.3.5-1.3 1.2 0 .6.5 1 1.2 1 .9 0 1.6-.7 1.6-1.6zm4.8-3.4l1.6 4.7 1.5-4.7h1.5l-2.4 6.8c-.5 1.4-1.1 1.8-2.3 1.8h-.8v-1.2h.6c.5 0 .8-.2 1-.8l.2-.5-2.8-6.1h1.6z" fill="#FFFFFF"/>
+              <rect width="42" height="26.5" rx="3" fill="#000000" />
+              <path
+                d="M12.8 11.2c-.3.4-.8.6-1.3.6-.1-.5.1-1 .4-1.3.3-.4.8-.6 1.3-.6.1.5-.1 1-.4 1.3zm1.3 4.3c-.2.4-.4.8-.8 1.3-.5.7-1 1.4-1.8 1.4-.8 0-1-.5-1.9-.5-.9 0-1.2.5-1.9.5-.8 0-1.4-.8-1.9-1.5-1-1.5-1.7-4.1-.7-5.8.5-.9 1.4-1.5 2.4-1.5.8 0 1.5.5 1.9.5.5 0 1.3-.6 2.2-.5.4 0 1.4.1 2.1 1.1-.1.1-1.2.7-1.2 2.1 0 1.7 1.5 2.3 1.6 2.4z"
+                fill="#FFFFFF" />
+              <path
+                d="M17.2 9.5h2.8c1.6 0 2.8 1.1 2.8 2.8 0 1.7-1.2 2.8-2.8 2.8h-1.4v3.4h-1.4V9.5zm1.4 4.3h1.4c.9 0 1.5-.6 1.5-1.5 0-.9-.6-1.5-1.5-1.5h-1.4v3zm8 1.6c0-1.3 1-2.1 2.6-2.2l1.7-.1v-.5c0-.7-.5-1.1-1.3-1.1-.7 0-1.2.3-1.4.8l-1.3-.4c.3-1 1.3-1.7 2.7-1.7 1.7 0 2.7.9 2.7 2.4v5.4h-1.3v-1.1c-.5.7-1.4 1.2-2.3 1.2-1.5 0-2.4-1-2.4-2.2zm4.3-.1v-.7l-1.5.1c-.8.1-1.3.5-1.3 1.2 0 .6.5 1 1.2 1 .9 0 1.6-.7 1.6-1.6zm4.8-3.4l1.6 4.7 1.5-4.7h1.5l-2.4 6.8c-.5 1.4-1.1 1.8-2.3 1.8h-.8v-1.2h.6c.5 0 .8-.2 1-.8l.2-.5-2.8-6.1h1.6z"
+                fill="#FFFFFF" />
             </svg>
           </li>
 
           <!-- Diners Club -->
           <li class="footer-payment-item" title="Diners Club">
             <svg viewBox="0 0 42 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect width="42" height="26.5" rx="3" fill="#0079BE"/>
-              <rect x="1" y="1" width="40" height="24.5" rx="2" fill="#FFFFFF"/>
-              <circle cx="21" cy="13.25" r="8.5" fill="#0079BE"/>
-              <path d="M19.5 7.5c-3.2 0-5.8 2.6-5.8 5.75s2.6 5.75 5.8 5.75V7.5zm3 11.5c3.2 0 5.8-2.6 5.8-5.75s-2.6-5.75-5.8-5.75v11.5z" fill="#FFFFFF"/>
+              <rect width="42" height="26.5" rx="3" fill="#0079BE" />
+              <rect x="1" y="1" width="40" height="24.5" rx="2" fill="#FFFFFF" />
+              <circle cx="21" cy="13.25" r="8.5" fill="#0079BE" />
+              <path
+                d="M19.5 7.5c-3.2 0-5.8 2.6-5.8 5.75s2.6 5.75 5.8 5.75V7.5zm3 11.5c3.2 0 5.8-2.6 5.8-5.75s-2.6-5.75-5.8-5.75v11.5z"
+                fill="#FFFFFF" />
             </svg>
           </li>
 
           <!-- Discover -->
           <li class="footer-payment-item" title="Discover">
             <svg viewBox="0 0 42 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect width="42" height="26.5" rx="3" fill="#FFFFFF"/>
-              <path d="M6 10.5h2.5c1.8 0 3 1.2 3 2.8s-1.2 2.8-3 2.8H6v-5.6zm1.5 4.3h1c1 0 1.6-.6 1.6-1.5s-.6-1.5-1.6-1.5h-1v3zm5.5-4.3h1.5v5.6H13v-5.6zm3 4.2c.3.8 1.1 1.5 2.1 1.5 1 0 1.6-.5 1.6-1.2 0-.8-.7-1.1-1.6-1.4-1.2-.4-2.3-.9-2.3-2.1 0-1.2 1-2.1 2.4-2.1 1.2 0 2.1.6 2.5 1.5l-1.2.6c-.2-.5-.6-.8-1.3-.8-.6 0-1 .3-1 .8 0 .6.5.8 1.4 1.1 1.4.5 2.5.9 2.5 2.3 0 1.3-1.1 2.3-2.7 2.3-1.5 0-2.6-.8-3-1.9l1.6-.7zm9.5-4.2l1.6 3.6 1.6-3.6h1.7l-2.5 5.6h-1.6l-2.5-5.6h1.7zm6 0h4.2v1.3h-2.8v1h2.5v1.2h-2.5v1h2.9v1.1h-4.3v-5.6z" fill="#231F20"/>
-              <circle cx="21" cy="13.25" r="3.2" fill="#FF6000"/>
+              <rect width="42" height="26.5" rx="3" fill="#FFFFFF" />
+              <path
+                d="M6 10.5h2.5c1.8 0 3 1.2 3 2.8s-1.2 2.8-3 2.8H6v-5.6zm1.5 4.3h1c1 0 1.6-.6 1.6-1.5s-.6-1.5-1.6-1.5h-1v3zm5.5-4.3h1.5v5.6H13v-5.6zm3 4.2c.3.8 1.1 1.5 2.1 1.5 1 0 1.6-.5 1.6-1.2 0-.8-.7-1.1-1.6-1.4-1.2-.4-2.3-.9-2.3-2.1 0-1.2 1-2.1 2.4-2.1 1.2 0 2.1.6 2.5 1.5l-1.2.6c-.2-.5-.6-.8-1.3-.8-.6 0-1 .3-1 .8 0 .6.5.8 1.4 1.1 1.4.5 2.5.9 2.5 2.3 0 1.3-1.1 2.3-2.7 2.3-1.5 0-2.6-.8-3-1.9l1.6-.7zm9.5-4.2l1.6 3.6 1.6-3.6h1.7l-2.5 5.6h-1.6l-2.5-5.6h1.7zm6 0h4.2v1.3h-2.8v1h2.5v1.2h-2.5v1h2.9v1.1h-4.3v-5.6z"
+                fill="#231F20" />
+              <circle cx="21" cy="13.25" r="3.2" fill="#FF6000" />
             </svg>
           </li>
 
           <!-- Google Pay -->
           <li class="footer-payment-item" title="Google Pay">
             <svg viewBox="0 0 42 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect width="42" height="26.5" rx="3" fill="#FFFFFF"/>
-              <path d="M12.5 13.3v-1.6h5.8c.1.3.1.6.1 1 0 1.2-.3 2.7-1.3 3.6-.9 1-2.2 1.5-3.8 1.5-3 0-5.5-2.4-5.5-5.5s2.5-5.5 5.5-5.5c1.6 0 2.8.6 3.7 1.5l-1.1 1.1c-.6-.6-1.5-1.1-2.6-1.1-2.2 0-3.9 1.8-3.9 4s1.7 4 3.9 4c1.4 0 2.2-.6 2.7-1.1.4-.4.7-1 .8-1.9h-4.3v-.5z" fill="#4285F4"/>
-              <path d="M21.5 10.5h2.2c1.2 0 2.1.9 2.1 2.1 0 1.3-.9 2.2-2.1 2.2h-1.1v2.5h-1.1v-6.8zm1.1 3.3h1.1c.6 0 1.1-.4 1.1-1.1 0-.6-.5-1.1-1.1-1.1h-1.1v2.2zm5.8 1.2c0-1.1.9-1.7 2.1-1.8l1.3-.1v-.4c0-.5-.4-.8-1-.8-.5 0-.9.2-1.1.6l-.9-.5c.4-.7 1.1-1.1 2.1-1.1 1.3 0 2.1.7 2.1 1.9v4.3h-1v-.9c-.4.6-1.1 1-1.8 1-1.2 0-1.8-.8-1.8-1.7zm3.4-.1v-.6l-1.2.1c-.6.1-1 .3-1 .9 0 .5.4.8.9.8.7 0 1.3-.5 1.3-1.2zm3.8-2.7l1.3 3.7 1.2-3.7h1.2l-1.9 5.4c-.4 1.1-.9 1.4-1.8 1.4h-.6v-1h.5c.4 0 .6-.2.8-.6l.2-.4-2.2-4.8h1.3z" fill="#5F6368"/>
-              <path d="M8.2 11.8c-.2.5-.2 1.1 0 1.6l-1.7 1.3C5.9 13.6 5.6 12.1 6 10.5l2.2 1.3z" fill="#FBBC04"/>
-              <path d="M12.5 8.2c1.1 0 2.1.4 2.8 1.1l-1.1 1.1c-.4-.4-1-.7-1.7-.7-1.5 0-2.8 1-3.2 2.3L7 10.7c.9-1.8 2.7-3 4.8-3.1.2.6.5.6.7.6z" fill="#EA4335"/>
-              <path d="M9.3 14.6c.4 1.3 1.7 2.3 3.2 2.3 1.3 0 2.2-.5 2.7-1.1l1.1 1.1c-.9.9-2.2 1.5-3.8 1.5-2.1 0-3.9-1.2-4.8-3.1l2.3-1.2c-.3.2-.6.3-.7.5z" fill="#34A853"/>
+              <rect width="42" height="26.5" rx="3" fill="#FFFFFF" />
+              <path
+                d="M12.5 13.3v-1.6h5.8c.1.3.1.6.1 1 0 1.2-.3 2.7-1.3 3.6-.9 1-2.2 1.5-3.8 1.5-3 0-5.5-2.4-5.5-5.5s2.5-5.5 5.5-5.5c1.6 0 2.8.6 3.7 1.5l-1.1 1.1c-.6-.6-1.5-1.1-2.6-1.1-2.2 0-3.9 1.8-3.9 4s1.7 4 3.9 4c1.4 0 2.2-.6 2.7-1.1.4-.4.7-1 .8-1.9h-4.3v-.5z"
+                fill="#4285F4" />
+              <path
+                d="M21.5 10.5h2.2c1.2 0 2.1.9 2.1 2.1 0 1.3-.9 2.2-2.1 2.2h-1.1v2.5h-1.1v-6.8zm1.1 3.3h1.1c.6 0 1.1-.4 1.1-1.1 0-.6-.5-1.1-1.1-1.1h-1.1v2.2zm5.8 1.2c0-1.1.9-1.7 2.1-1.8l1.3-.1v-.4c0-.5-.4-.8-1-.8-.5 0-.9.2-1.1.6l-.9-.5c.4-.7 1.1-1.1 2.1-1.1 1.3 0 2.1.7 2.1 1.9v4.3h-1v-.9c-.4.6-1.1 1-1.8 1-1.2 0-1.8-.8-1.8-1.7zm3.4-.1v-.6l-1.2.1c-.6.1-1 .3-1 .9 0 .5.4.8.9.8.7 0 1.3-.5 1.3-1.2zm3.8-2.7l1.3 3.7 1.2-3.7h1.2l-1.9 5.4c-.4 1.1-.9 1.4-1.8 1.4h-.6v-1h.5c.4 0 .6-.2.8-.6l.2-.4-2.2-4.8h1.3z"
+                fill="#5F6368" />
+              <path d="M8.2 11.8c-.2.5-.2 1.1 0 1.6l-1.7 1.3C5.9 13.6 5.6 12.1 6 10.5l2.2 1.3z" fill="#FBBC04" />
+              <path
+                d="M12.5 8.2c1.1 0 2.1.4 2.8 1.1l-1.1 1.1c-.4-.4-1-.7-1.7-.7-1.5 0-2.8 1-3.2 2.3L7 10.7c.9-1.8 2.7-3 4.8-3.1.2.6.5.6.7.6z"
+                fill="#EA4335" />
+              <path
+                d="M9.3 14.6c.4 1.3 1.7 2.3 3.2 2.3 1.3 0 2.2-.5 2.7-1.1l1.1 1.1c-.9.9-2.2 1.5-3.8 1.5-2.1 0-3.9-1.2-4.8-3.1l2.3-1.2c-.3.2-.6.3-.7.5z"
+                fill="#34A853" />
             </svg>
           </li>
 
           <!-- JCB -->
           <li class="footer-payment-item" title="JCB">
             <svg viewBox="0 0 42 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect width="42" height="26.5" rx="3" fill="#FFFFFF"/>
-              <rect x="7" y="5.5" width="8.5" height="15.5" rx="3" fill="#00377B"/>
-              <rect x="16.5" y="5.5" width="8.5" height="15.5" rx="3" fill="#D9161B"/>
-              <rect x="26" y="5.5" width="8.5" height="15.5" rx="3" fill="#007934"/>
-              <path d="M13 13.5v-3h-1.5v3c0 .8-.4 1.2-1.2 1.2-.5 0-.9-.2-1.1-.5l-.8.9c.5.6 1.1.9 1.9.9 1.8 0 2.7-.9 2.7-2.5zm9.5-1.5c0-1.5-.9-2.5-2.6-2.5h-2.4v6.5h2.4c1.7 0 2.6-1 2.6-2.5v-1.5zm-1.5 1.5c0 .8-.4 1.2-1.2 1.2h-.9v-3.9h.9c.8 0 1.2.4 1.2 1.2v1.5zm11-1.5c0-1.5-.9-2.5-2.6-2.5h-2.4v6.5h2.4c1.7 0 2.6-1 2.6-2.5v-.8h-2.5v-1.1h3.9v.4z" fill="#FFFFFF"/>
+              <rect width="42" height="26.5" rx="3" fill="#FFFFFF" />
+              <rect x="7" y="5.5" width="8.5" height="15.5" rx="3" fill="#00377B" />
+              <rect x="16.5" y="5.5" width="8.5" height="15.5" rx="3" fill="#D9161B" />
+              <rect x="26" y="5.5" width="8.5" height="15.5" rx="3" fill="#007934" />
+              <path
+                d="M13 13.5v-3h-1.5v3c0 .8-.4 1.2-1.2 1.2-.5 0-.9-.2-1.1-.5l-.8.9c.5.6 1.1.9 1.9.9 1.8 0 2.7-.9 2.7-2.5zm9.5-1.5c0-1.5-.9-2.5-2.6-2.5h-2.4v6.5h2.4c1.7 0 2.6-1 2.6-2.5v-1.5zm-1.5 1.5c0 .8-.4 1.2-1.2 1.2h-.9v-3.9h.9c.8 0 1.2.4 1.2 1.2v1.5zm11-1.5c0-1.5-.9-2.5-2.6-2.5h-2.4v6.5h2.4c1.7 0 2.6-1 2.6-2.5v-.8h-2.5v-1.1h3.9v.4z"
+                fill="#FFFFFF" />
             </svg>
           </li>
 
           <!-- Mastercard -->
           <li class="footer-payment-item" title="Mastercard">
             <svg viewBox="0 0 42 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect width="42" height="26.5" rx="3" fill="#232323"/>
-              <circle cx="16" cy="13.25" r="6.5" fill="#EB001B"/>
-              <circle cx="26" cy="13.25" r="6.5" fill="#F79E1B"/>
-              <path d="M21 8.25a6.47 6.47 0 0 0-2.6 5 6.47 6.47 0 0 0 2.6 5 6.47 6.47 0 0 0 2.6-5 6.47 6.47 0 0 0-2.6-5z" fill="#FF5F00"/>
+              <rect width="42" height="26.5" rx="3" fill="#232323" />
+              <circle cx="16" cy="13.25" r="6.5" fill="#EB001B" />
+              <circle cx="26" cy="13.25" r="6.5" fill="#F79E1B" />
+              <path
+                d="M21 8.25a6.47 6.47 0 0 0-2.6 5 6.47 6.47 0 0 0 2.6 5 6.47 6.47 0 0 0 2.6-5 6.47 6.47 0 0 0-2.6-5z"
+                fill="#FF5F00" />
             </svg>
           </li>
 
           <!-- MB WAY -->
           <li class="footer-payment-item" title="MB WAY">
             <svg viewBox="0 0 42 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect width="42" height="26.5" rx="3" fill="#FFFFFF"/>
-              <circle cx="11.5" cy="13.25" r="4.5" fill="#E31837"/>
-              <text x="18" y="15.5" font-family="'Lato', sans-serif" font-size="7.5" font-weight="900" fill="#100F0D" letter-spacing="0.5">MB WAY</text>
+              <rect width="42" height="26.5" rx="3" fill="#FFFFFF" />
+              <circle cx="11.5" cy="13.25" r="4.5" fill="#E31837" />
+              <text x="18" y="15.5" font-family="'Lato', sans-serif" font-size="7.5" font-weight="900" fill="#100F0D"
+                letter-spacing="0.5">MB WAY</text>
             </svg>
           </li>
 
           <!-- PayPal -->
           <li class="footer-payment-item" title="PayPal">
             <svg viewBox="0 0 42 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect width="42" height="26.5" rx="3" fill="#FFFFFF"/>
-              <path d="M15.5 8h4.5c2.3 0 3.8 1.2 3.5 3.2-.4 2.2-2.1 3.5-4.4 3.5h-1.8l-1 5.3h-2.5l2.7-12z" fill="#003087"/>
-              <path d="M19 11.5h3.8c1.8 0 3 1 2.7 2.6-.4 1.8-1.8 2.9-3.7 2.9H19.5l-.8 4h-2.2l2.5-9.5z" fill="#0079C1"/>
-              <path d="M19.5 17h2.3c1.9 0 3.3-1.1 3.7-2.9.1-.5.1-1 0-1.4-.4 1.8-1.8 2.9-3.7 2.9H19.5l-.8 4h1.6l.7-2.6z" fill="#00457C"/>
+              <rect width="42" height="26.5" rx="3" fill="#FFFFFF" />
+              <path d="M15.5 8h4.5c2.3 0 3.8 1.2 3.5 3.2-.4 2.2-2.1 3.5-4.4 3.5h-1.8l-1 5.3h-2.5l2.7-12z"
+                fill="#003087" />
+              <path d="M19 11.5h3.8c1.8 0 3 1 2.7 2.6-.4 1.8-1.8 2.9-3.7 2.9H19.5l-.8 4h-2.2l2.5-9.5z" fill="#0079C1" />
+              <path d="M19.5 17h2.3c1.9 0 3.3-1.1 3.7-2.9.1-.5.1-1 0-1.4-.4 1.8-1.8 2.9-3.7 2.9H19.5l-.8 4h1.6l.7-2.6z"
+                fill="#00457C" />
             </svg>
           </li>
 
           <!-- Shop Pay -->
           <li class="footer-payment-item" title="Shop Pay">
             <svg viewBox="0 0 42 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect width="42" height="26.5" rx="3" fill="#5A31F4"/>
-              <path d="M13.8 16.2c-.3 0-.6-.1-.9-.3-.5-.4-.6-1-.2-1.5l2.8-3.4c.4-.5 1.1-.5 1.5-.1.4.4.5 1.1.1 1.5l-2.4 2.9c-.2.3-.5.4-.9.4zm1.5-5.2c-.3 0-.6-.1-.8-.3l-3-3c-.4-.4-.4-1.1 0-1.5.4-.4 1.1-.4 1.5 0l3 3c.4.4.4 1.1 0 1.5-.2.2-.5.3-.7.3zm3.9 7c-.3 0-.6-.1-.8-.3l-7-7c-.4-.4-.4-1.1 0-1.5.4-.4 1.1-.4 1.5 0l7 7c.4.4.4 1.1 0 1.5-.2.2-.4.3-.7.3z" fill="#FFFFFF"/>
-              <text x="21" y="16" font-family="'Lato', sans-serif" font-size="8" font-weight="700" fill="#FFFFFF">pay</text>
+              <rect width="42" height="26.5" rx="3" fill="#5A31F4" />
+              <path
+                d="M13.8 16.2c-.3 0-.6-.1-.9-.3-.5-.4-.6-1-.2-1.5l2.8-3.4c.4-.5 1.1-.5 1.5-.1.4.4.5 1.1.1 1.5l-2.4 2.9c-.2.3-.5.4-.9.4zm1.5-5.2c-.3 0-.6-.1-.8-.3l-3-3c-.4-.4-.4-1.1 0-1.5.4-.4 1.1-.4 1.5 0l3 3c.4.4.4 1.1 0 1.5-.2.2-.5.3-.7.3zm3.9 7c-.3 0-.6-.1-.8-.3l-7-7c-.4-.4-.4-1.1 0-1.5.4-.4 1.1-.4 1.5 0l7 7c.4.4.4 1.1 0 1.5-.2.2-.4.3-.7.3z"
+                fill="#FFFFFF" />
+              <text x="21" y="16" font-family="'Lato', sans-serif" font-size="8" font-weight="700"
+                fill="#FFFFFF">pay</text>
             </svg>
           </li>
 
           <!-- Visa -->
           <li class="footer-payment-item" title="Visa">
             <svg viewBox="0 0 42 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect width="42" height="26.5" rx="3" fill="#142FBD"/>
-              <path d="M16.5 17.5l2.2-10h2.6l-2.2 10h-2.6zm9.2-9.7c-.5-.2-1.3-.4-2.3-.4-2.5 0-4.3 1.3-4.3 3.2 0 1.4 1.3 2.2 2.2 2.7.9.5 1.3.8 1.3 1.2 0 .6-.8.9-1.5.9-.9 0-1.5-.2-2.3-.6l-.3-.2-.3 1.9c.5.2 1.5.4 2.5.4 2.7 0 4.4-1.3 4.4-3.3 0-1.1-.7-2-2.2-2.7-.9-.5-1.5-.8-1.5-1.3 0-.4.5-.9 1.5-.9.8 0 1.4.2 1.9.4l.2.1.3-1.9zm7.3 6.3l1.1-5.4.6 3.1c.1.6.6 2.3.6 2.3h-2.3zm3.5-6.6h-2c-.6 0-1.1.2-1.3.8l-3.8 9.2h2.7l.5-1.5h3.4l.3 1.5h2.4l-2.2-10zm-17 0l-2.5 6.9-.3-1.4c-.5-1.7-2-3.5-3.7-4.4l2.4 8.9h2.7l4-10h-2.6z" fill="#FFFFFF"/>
-              <path d="M12.2 7.5h-4.3l-.1.3c3.3.8 5.5 2.8 6.4 5.2l-.9-4.5c-.2-.7-.6-1-1.1-1z" fill="#F7B600"/>
+              <rect width="42" height="26.5" rx="3" fill="#142FBD" />
+              <path
+                d="M16.5 17.5l2.2-10h2.6l-2.2 10h-2.6zm9.2-9.7c-.5-.2-1.3-.4-2.3-.4-2.5 0-4.3 1.3-4.3 3.2 0 1.4 1.3 2.2 2.2 2.7.9.5 1.3.8 1.3 1.2 0 .6-.8.9-1.5.9-.9 0-1.5-.2-2.3-.6l-.3-.2-.3 1.9c.5.2 1.5.4 2.5.4 2.7 0 4.4-1.3 4.4-3.3 0-1.1-.7-2-2.2-2.7-.9-.5-1.5-.8-1.5-1.3 0-.4.5-.9 1.5-.9.8 0 1.4.2 1.9.4l.2.1.3-1.9zm7.3 6.3l1.1-5.4.6 3.1c.1.6.6 2.3.6 2.3h-2.3zm3.5-6.6h-2c-.6 0-1.1.2-1.3.8l-3.8 9.2h2.7l.5-1.5h3.4l.3 1.5h2.4l-2.2-10zm-17 0l-2.5 6.9-.3-1.4c-.5-1.7-2-3.5-3.7-4.4l2.4 8.9h2.7l4-10h-2.6z"
+                fill="#FFFFFF" />
+              <path d="M12.2 7.5h-4.3l-.1.3c3.3.8 5.5 2.8 6.4 5.2l-.9-4.5c-.2-.7-.6-1-1.1-1z" fill="#F7B600" />
             </svg>
           </li>
         </ul>
 
-      </div>
+        <!-- Sub-row: Copyright Notice & Localization Selector -->
+        <div class="footer-bottom-subrow">
+          <p class="footer-copyright">
+            &copy; 2026 Polar Haircare
+          </p>
 
+          <div class="footer-localization">
+            <div class="footer-localization-btn" role="button" tabindex="0" aria-label="Country and currency selector">
+              <span class="footer-localization-text">India | INR &#8377;</span>
+              <span class="footer-localization-chevron" aria-hidden="true">
+                <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <path d="M1 1L5 5L9 1" />
+                </svg>
+              </span>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
   </footer>
 
@@ -2480,12 +2917,15 @@
     // 3. Thumbnail Gallery Picker
     const mainImg = document.getElementById('mainProductImage');
     const thumbBtns = document.querySelectorAll('.thumb-item');
+    const galleryCurrentIndex = document.getElementById('galleryCurrentIndex');
 
-    thumbBtns.forEach(thumb => {
+    thumbBtns.forEach((thumb, idx) => {
       thumb.addEventListener('click', () => {
         thumbBtns.forEach(t => t.classList.remove('active'));
         thumb.classList.add('active');
         const newSrc = thumb.getAttribute('data-img');
+        const index = thumb.getAttribute('data-index') || (idx + 1);
+        if (galleryCurrentIndex) galleryCurrentIndex.textContent = index;
         if (mainImg && newSrc) {
           mainImg.style.opacity = '0.4';
           setTimeout(() => {
@@ -2506,6 +2946,8 @@
     const rewardsHintText = document.getElementById('rewardsHintText');
     const rewardShipping = document.getElementById('rewardShipping');
     const rewardConditioner = document.getElementById('rewardConditioner');
+    const milestoneShipping = document.getElementById('milestoneShipping');
+    const milestoneConditioner = document.getElementById('milestoneConditioner');
 
     bundleCards.forEach(card => {
       card.addEventListener('click', () => {
@@ -2523,23 +2965,29 @@
 
         // Update unlock tier box
         if (qty === 1) {
-          rewardsStatusText.textContent = '0 of 2 unlocked';
-          rewardsProgressFill.style.width = '15%';
-          rewardShipping.classList.remove('unlocked');
-          rewardConditioner.classList.remove('unlocked');
-          rewardsHintText.textContent = 'Add 1 more bottle to unlock free shipping';
+          if (rewardsStatusText) rewardsStatusText.textContent = '0 of 2 unlocked';
+          if (rewardsProgressFill) rewardsProgressFill.style.width = '15%';
+          if (rewardShipping) rewardShipping.classList.remove('unlocked');
+          if (rewardConditioner) rewardConditioner.classList.remove('unlocked');
+          if (milestoneShipping) milestoneShipping.classList.remove('unlocked');
+          if (milestoneConditioner) milestoneConditioner.classList.remove('unlocked');
+          if (rewardsHintText) rewardsHintText.textContent = 'Add 1 more bottle to unlock free shipping';
         } else if (qty === 2) {
-          rewardsStatusText.textContent = '1 of 2 unlocked';
-          rewardsProgressFill.style.width = '55%';
-          rewardShipping.classList.add('unlocked');
-          rewardConditioner.classList.remove('unlocked');
-          rewardsHintText.textContent = 'Add 1 more bottle to unlock free conditioner';
+          if (rewardsStatusText) rewardsStatusText.textContent = '1 of 2 unlocked';
+          if (rewardsProgressFill) rewardsProgressFill.style.width = '55%';
+          if (rewardShipping) rewardShipping.classList.add('unlocked');
+          if (rewardConditioner) rewardConditioner.classList.remove('unlocked');
+          if (milestoneShipping) milestoneShipping.classList.add('unlocked');
+          if (milestoneConditioner) milestoneConditioner.classList.remove('unlocked');
+          if (rewardsHintText) rewardsHintText.textContent = 'Add 1 more bottle to unlock free conditioner';
         } else if (qty >= 3) {
-          rewardsStatusText.textContent = '2 of 2 unlocked 🎉';
-          rewardsProgressFill.style.width = '100%';
-          rewardShipping.classList.add('unlocked');
-          rewardConditioner.classList.add('unlocked');
-          rewardsHintText.textContent = 'All rewards unlocked! You qualify for Free Shipping & Conditioner!';
+          if (rewardsStatusText) rewardsStatusText.textContent = '2 of 2 unlocked 🎉';
+          if (rewardsProgressFill) rewardsProgressFill.style.width = '100%';
+          if (rewardShipping) rewardShipping.classList.add('unlocked');
+          if (rewardConditioner) rewardConditioner.classList.add('unlocked');
+          if (milestoneShipping) milestoneShipping.classList.add('unlocked');
+          if (milestoneConditioner) milestoneConditioner.classList.add('unlocked');
+          if (rewardsHintText) rewardsHintText.textContent = 'All rewards unlocked! You qualify for Free Shipping & Conditioner!';
         }
       });
     });
@@ -2579,8 +3027,8 @@
 
     if (resultsSwiperContainer && typeof Swiper !== 'undefined') {
       const resultsSwiper = new Swiper(resultsSwiperContainer, {
-        slidesPerView: 1.15,
-        spaceBetween: 16,
+        slidesPerView: 'auto',
+        spaceBetween: 12,
         grabCursor: true,
         watchOverflow: true,
         pagination: {
@@ -2591,11 +3039,7 @@
           }
         },
         breakpoints: {
-          480: {
-            slidesPerView: 1.6,
-            spaceBetween: 16
-          },
-          768: {
+          769: {
             slidesPerView: 2.5,
             spaceBetween: 20
           },
@@ -2641,45 +3085,99 @@
       });
     }
 
-    // 8. Key Benefits Video Modal Handler
-    const openBenefitsVideoBtn = document.getElementById('openBenefitsVideoBtn');
-    const benefitsVideoModal = document.getElementById('benefitsVideoModal');
-    const benefitsVideoCloseBtn = document.getElementById('benefitsVideoCloseBtn');
-    const benefitsVideoPlayer = document.getElementById('benefitsVideoPlayer');
+    // 8. Make Hair Coloring Simple Video Modal Handler
+    const openSimpleVideoBtn = document.getElementById('openSimpleVideoBtn');
+    const simpleVideoModal = document.getElementById('simpleVideoModal');
+    const simpleVideoCloseBtn = document.getElementById('simpleVideoCloseBtn');
+    const simpleVideoPlayer = document.getElementById('simpleVideoPlayer');
 
-    function openBenefitsModal() {
-      if (!benefitsVideoModal) return;
-      benefitsVideoModal.classList.add('active');
-      benefitsVideoModal.setAttribute('aria-hidden', 'false');
+    function openSimpleModal() {
+      if (!simpleVideoModal) return;
+      simpleVideoModal.classList.add('active');
+      simpleVideoModal.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
-      if (benefitsVideoPlayer) {
-        benefitsVideoPlayer.currentTime = 0;
-        benefitsVideoPlayer.play().catch(function () { });
+      if (simpleVideoPlayer) {
+        simpleVideoPlayer.currentTime = 0;
+        simpleVideoPlayer.play().catch(function () { });
       }
     }
 
-    function closeBenefitsModal() {
-      if (!benefitsVideoModal) return;
-      benefitsVideoModal.classList.remove('active');
-      benefitsVideoModal.setAttribute('aria-hidden', 'true');
+    function closeSimpleModal() {
+      if (!simpleVideoModal) return;
+      simpleVideoModal.classList.remove('active');
+      simpleVideoModal.setAttribute('aria-hidden', 'true');
       document.body.style.overflow = '';
-      if (benefitsVideoPlayer) {
-        benefitsVideoPlayer.pause();
+      if (simpleVideoPlayer) {
+        simpleVideoPlayer.pause();
       }
     }
 
-    openBenefitsVideoBtn?.addEventListener('click', openBenefitsModal);
-    openBenefitsVideoBtn?.addEventListener('keydown', function (e) {
+    openSimpleVideoBtn?.addEventListener('click', openSimpleModal);
+    openSimpleVideoBtn?.addEventListener('keydown', function (e) {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
-        openBenefitsModal();
+        openSimpleModal();
       }
     });
 
-    benefitsVideoCloseBtn?.addEventListener('click', closeBenefitsModal);
-    benefitsVideoModal?.addEventListener('click', function (e) {
-      if (e.target === benefitsVideoModal) {
-        closeBenefitsModal();
+    simpleVideoCloseBtn?.addEventListener('click', closeSimpleModal);
+    simpleVideoModal?.addEventListener('click', function (e) {
+      if (e.target === simpleVideoModal) {
+        closeSimpleModal();
+      }
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && simpleVideoModal && simpleVideoModal.classList.contains('active')) {
+        closeSimpleModal();
+      }
+    });
+
+    // 8b. Four Reasons Video Modal Handler
+    const openFourReasonsBtn = document.getElementById('openFourReasonsVideoBtn');
+    const fourReasonsModal = document.getElementById('fourReasonsVideoModal');
+    const fourReasonsCloseBtn = document.getElementById('fourReasonsCloseBtn');
+    const fourReasonsPlayer = document.getElementById('fourReasonsVideoPlayer');
+
+    function openFourReasonsModal() {
+      if (!fourReasonsModal) return;
+      fourReasonsModal.classList.add('active');
+      fourReasonsModal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      if (fourReasonsPlayer) {
+        fourReasonsPlayer.currentTime = 0;
+        fourReasonsPlayer.play().catch(function () { });
+      }
+    }
+
+    function closeFourReasonsModal() {
+      if (!fourReasonsModal) return;
+      fourReasonsModal.classList.remove('active');
+      fourReasonsModal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      if (fourReasonsPlayer) {
+        fourReasonsPlayer.pause();
+      }
+    }
+
+    openFourReasonsBtn?.addEventListener('click', openFourReasonsModal);
+    openFourReasonsBtn?.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openFourReasonsModal();
+      }
+    });
+
+    fourReasonsCloseBtn?.addEventListener('click', closeFourReasonsModal);
+    fourReasonsModal?.addEventListener('click', function (e) {
+      if (e.target === fourReasonsModal) {
+        closeFourReasonsModal();
+      }
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && fourReasonsModal && fourReasonsModal.classList.contains('active')) {
+        closeFourReasonsModal();
       }
     });
 
@@ -2769,6 +3267,27 @@
           1025: {
             slidesPerView: 5,
             spaceBetween: 20
+          }
+        }
+      });
+    }
+
+    // 10. Buy Box UGC Customer Videos Swiper
+    const ugcCustomersSwiperEl = document.getElementById('ugcCustomersSwiper');
+    if (ugcCustomersSwiperEl && typeof Swiper !== 'undefined') {
+      new Swiper(ugcCustomersSwiperEl, {
+        slidesPerView: 2.3,
+        spaceBetween: 10,
+        grabCursor: true,
+        watchOverflow: true,
+        navigation: {
+          nextEl: '.ugc-customers-section .ugc-cust-next',
+          prevEl: '.ugc-customers-section .ugc-cust-prev',
+        },
+        breakpoints: {
+          769: {
+            slidesPerView: 3,
+            spaceBetween: 12,
           }
         }
       });

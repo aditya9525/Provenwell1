@@ -1,0 +1,286 @@
+{%- comment -%}
+  Polar Haircare — 05 Four Reasons Key Benefits & How It Works Section
+  Features 3-column desktop layout (Left 2 Benefit Cards, Center Demo Video, Right 2 Benefit Cards)
+  and vertical stacked mobile layout with video on top and 4 horizontal cards.
+{%- endcomment -%}
+
+{%- if section.settings.enable_section -%}
+  <section class="four-reasons-section" id="fourReasonsSection" aria-labelledby="fourReasonsTitle">
+    <div class="four-reasons-container">
+
+      <!-- Section Heading -->
+      <div class="four-reasons-header">
+        <div class="four-reasons-pill">
+          <span>{{ section.settings.pill_text | default: "4 REASONS" }}</span>
+        </div>
+        <h2 class="four-reasons-title" id="fourReasonsTitle">
+          {{ section.settings.heading | default: "Thousands are switching to Polar Instant Dye Shampoo" }}
+        </h2>
+      </div>
+
+      <!-- Main Dark Purple Benefits Panel -->
+      <div class="four-reasons-panel">
+
+        <!-- Desktop Left Column (2 Benefit Cards) / Mobile order 2 -->
+        <div class="four-reasons-col four-reasons-col-left">
+
+          <!-- Card 1 -->
+          <div class="four-reasons-card">
+            <div class="four-reasons-icon-badge">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="13" r="8"></circle>
+                <path d="M12 9v4l2.5 1.5"></path>
+                <path d="M10 2h4"></path>
+                <path d="M12 2v3"></path>
+              </svg>
+            </div>
+            <div class="four-reasons-card-copy">
+              <h3 class="four-reasons-card-title">{{ section.settings.card_1_title | default: "WORKS IN JUST 10 MINUTES" }}</h3>
+              <p class="four-reasons-card-desc">{{ section.settings.card_1_desc | default: "No more scheduling life around hair dye. Apply to dry hair, wait 10 minutes, and rinse. It’s that easy." }}</p>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="four-reasons-card">
+            <div class="four-reasons-icon-badge">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"></path>
+              </svg>
+            </div>
+            <div class="four-reasons-card-copy">
+              <h3 class="four-reasons-card-title">{{ section.settings.card_2_title | default: "QUICK, MESS-FREE APPLICATION" }}</h3>
+              <p class="four-reasons-card-desc">{{ section.settings.card_2_desc | default: "Forget messy box dyes. No mixing, no gloves, no stains — it works just like your regular shampoo." }}</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Center Column (Video Card) / Mobile order 1 (Top) -->
+        <div class="four-reasons-video-col">
+          <div class="four-reasons-video-card js-open-four-reasons-video" role="button" tabindex="0" aria-label="Play demonstration video">
+            {%- if section.settings.video_poster != blank -%}
+              <img src="{{ section.settings.video_poster | image_url: width: 1000 }}" alt="{{ section.settings.heading | escape }}" class="four-reasons-video-poster" loading="lazy">
+            {%- else -%}
+              <img src="{{ 'customer_story.jpg' | asset_url }}" alt="Thousands are switching to Polar Instant Dye Shampoo" class="four-reasons-video-poster" loading="lazy">
+            {%- endif -%}
+            <div class="four-reasons-play-btn" aria-hidden="true">
+              <svg width="22" height="26" viewBox="0 0 24 24" fill="#4A2346">
+                <polygon points="6 3 20 12 6 21 6 3"></polygon>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Desktop Right Column (2 Benefit Cards) / Mobile order 3 -->
+        <div class="four-reasons-col four-reasons-col-right">
+
+          <!-- Card 3 -->
+          <div class="four-reasons-card">
+            <div class="four-reasons-icon-badge">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path>
+                <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
+              </svg>
+            </div>
+            <div class="four-reasons-card-copy">
+              <h3 class="four-reasons-card-title">{{ section.settings.card_3_title | default: "GENTLE ON HAIR" }}</h3>
+              <p class="four-reasons-card-desc">{{ section.settings.card_3_desc | default: "Natural ingredients like reishi mushroom, without harsh chemicals like ammonia. Hair stays soft, not damaged." }}</p>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="four-reasons-card">
+            <div class="four-reasons-icon-badge">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="13.5" cy="6.5" r=".5" fill="#FFFFFF"></circle>
+                <circle cx="17.5" cy="10.5" r=".5" fill="#FFFFFF"></circle>
+                <circle cx="8.5" cy="7.5" r=".5" fill="#FFFFFF"></circle>
+                <circle cx="6.5" cy="12.5" r=".5" fill="#FFFFFF"></circle>
+                <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.563-2.512 5.563-5.563C22 6.5 17.5 2 12 2Z"></path>
+              </svg>
+            </div>
+            <div class="four-reasons-card-copy">
+              <h3 class="four-reasons-card-title">{{ section.settings.card_4_title | default: "LONG-LASTING NATURAL COLOR" }}</h3>
+              <p class="four-reasons-card-desc">{{ section.settings.card_4_desc | default: "Natural-looking color that lasts up to 6 weeks, so you can stay confident without frequent touch-ups." }}</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Four Reasons Video Modal -->
+  <div class="four-reasons-modal-overlay" id="fourReasonsVideoModal" aria-hidden="true" role="dialog" aria-label="Demo Video Player">
+    <div class="four-reasons-modal-container">
+      <button class="four-reasons-modal-close-btn js-close-four-reasons-video" aria-label="Close video player">&times;</button>
+      <div class="four-reasons-modal-player-wrapper">
+        <video id="fourReasonsVideoPlayer" controls playsinline preload="metadata">
+          <source src="{{ section.settings.video_url | default: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4' }}" type="video/mp4">
+          Your browser does not support HTML5 video.
+        </video>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const openBtns = document.querySelectorAll('.js-open-four-reasons-video');
+      const modal = document.getElementById('fourReasonsVideoModal');
+      const closeBtn = modal?.querySelector('.js-close-four-reasons-video');
+      const video = document.getElementById('fourReasonsVideoPlayer');
+
+      function openModal() {
+        if (!modal) return;
+        modal.classList.add('active');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        if (video) {
+          video.currentTime = 0;
+          video.play().catch(function() {});
+        }
+      }
+
+      function closeModal() {
+        if (!modal) return;
+        modal.classList.remove('active');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        if (video) {
+          video.pause();
+        }
+      }
+
+      openBtns.forEach(function(btn) {
+        btn.addEventListener('click', openModal);
+        btn.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            openModal();
+          }
+        });
+      });
+
+      closeBtn?.addEventListener('click', closeModal);
+      modal?.addEventListener('click', function(e) {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal?.classList.contains('active')) {
+          closeModal();
+        }
+      });
+    });
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "05 — 4 Reasons Key Benefits",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_section",
+      "label": "Show / Hide Section",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "pill_text",
+      "label": "Heading Pill Text",
+      "default": "4 REASONS"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Main Heading",
+      "default": "Thousands are switching to Polar Instant Dye Shampoo"
+    },
+    {
+      "type": "image_picker",
+      "id": "video_poster",
+      "label": "Video Poster Image"
+    },
+    {
+      "type": "text",
+      "id": "video_url",
+      "label": "Video MP4 URL",
+      "default": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+    },
+    {
+      "type": "header",
+      "content": "Feature 1"
+    },
+    {
+      "type": "text",
+      "id": "card_1_title",
+      "label": "Title",
+      "default": "WORKS IN JUST 10 MINUTES"
+    },
+    {
+      "type": "textarea",
+      "id": "card_1_desc",
+      "label": "Description",
+      "default": "No more scheduling life around hair dye. Apply to dry hair, wait 10 minutes, and rinse. It’s that easy."
+    },
+    {
+      "type": "header",
+      "content": "Feature 2"
+    },
+    {
+      "type": "text",
+      "id": "card_2_title",
+      "label": "Title",
+      "default": "QUICK, MESS-FREE APPLICATION"
+    },
+    {
+      "type": "textarea",
+      "id": "card_2_desc",
+      "label": "Description",
+      "default": "Forget messy box dyes. No mixing, no gloves, no stains — it works just like your regular shampoo."
+    },
+    {
+      "type": "header",
+      "content": "Feature 3"
+    },
+    {
+      "type": "text",
+      "id": "card_3_title",
+      "label": "Title",
+      "default": "GENTLE ON HAIR"
+    },
+    {
+      "type": "textarea",
+      "id": "card_3_desc",
+      "label": "Description",
+      "default": "Natural ingredients like reishi mushroom, without harsh chemicals like ammonia. Hair stays soft, not damaged."
+    },
+    {
+      "type": "header",
+      "content": "Feature 4"
+    },
+    {
+      "type": "text",
+      "id": "card_4_title",
+      "label": "Title",
+      "default": "LONG-LASTING NATURAL COLOR"
+    },
+    {
+      "type": "textarea",
+      "id": "card_4_desc",
+      "label": "Description",
+      "default": "Natural-looking color that lasts up to 6 weeks, so you can stay confident without frequent touch-ups."
+    }
+  ],
+  "presets": [
+    {
+      "name": "05 — 4 Reasons Key Benefits"
+    }
+  ]
+}
+{% endschema %}

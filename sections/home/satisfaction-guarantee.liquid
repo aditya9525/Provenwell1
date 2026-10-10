@@ -1,18 +1,13 @@
 {%- comment -%}
   Shopify Section: 07 — 30-Day Satisfaction Guarantee
-  Presents the 30-day money-back guarantee banner with product imagery, gold badge, and wave background.
+  Desktop: Full-width banner card with product imagery on left, guarantee promise & ADD TO CART CTA on right.
+  Mobile: Vertical card with product visual on top, guarantee promise & full-width Add to cart CTA on bottom.
 {%- endcomment -%}
 
 {%- style -%}
   #shopify-section-{{ section.id }} .guarantee-section {
-    background-color: {{ section.settings.section_bg_color | default: '#F4F4F4' }};
+    background-color: {{ section.settings.section_bg_color | default: '#FFFFFF' }};
   }
-
-  {%- if section.settings.card_bg_color != blank -%}
-    #shopify-section-{{ section.id }} .guarantee-banner-card {
-      background-color: {{ section.settings.card_bg_color }};
-    }
-  {%- endif -%}
 {%- endstyle -%}
 
 {%- if section.settings.enable_section -%}
@@ -20,16 +15,16 @@
     class="guarantee-section" 
     id="satisfactionGuarantee-{{ section.id }}" 
     aria-label="30-Day Satisfaction Guarantee"
-    style="background-color: {{ section.settings.section_bg_color | default: '#F4F4F4' }};"
   >
     <div class="guarantee-container">
 
+      <!-- DESKTOP BANNER CARD (> 768px) -->
       <div 
         class="guarantee-banner-card"
-        style="{% if section.settings.card_bg_color != blank %}background-color: {{ section.settings.card_bg_color }};{% endif %}{% if section.settings.bg_image != blank %}background-image: url('{{ section.settings.bg_image | image_url: width: 1400 }}');{% endif %}"
+        style="{% if section.settings.bg_image != blank %}background-image: url('{{ section.settings.bg_image | image_url: width: 1400 }}');{% endif %}"
       >
         
-        <!-- Right Content: Titles & Guarantee Promise -->
+        <!-- Right Content: Titles, Description & CTA -->
         <div class="guarantee-content-col">
           
           <div class="guarantee-title-wrap">
@@ -49,6 +44,40 @@
             </div>
           {%- endif -%}
 
+          <div class="guarantee-btn-wrap">
+            <a href="{{ section.settings.cta_link | default: '#chooseBundle' }}" class="guarantee-cta-btn">
+              {{ section.settings.cta_text | default: "ADD TO CART" }}
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- MOBILE CARD (<= 768px) -->
+      <div class="guarantee-mobile-card">
+        
+        <div class="guarantee-mobile-visual">
+          {%- if section.settings.bg_image != blank -%}
+            <img src="{{ section.settings.bg_image | image_url: width: 800 }}" alt="30-Day Satisfaction Guarantee" class="guarantee-mob-img" loading="lazy">
+          {%- else -%}
+            <img src="{{ 'guarantee-bg.png' | asset_url }}" alt="30-Day Satisfaction Guarantee" class="guarantee-mob-img" loading="lazy">
+          {%- endif -%}
+        </div>
+
+        <div class="guarantee-mobile-copy">
+          <h2 class="guarantee-mob-title-primary">
+            {{ section.settings.title_primary | default: "30-DAY" }}
+          </h2>
+          <h3 class="guarantee-mob-title-secondary">
+            {{ section.settings.title_secondary | default: "SATISFACTION GUARANTEE" }}
+          </h3>
+          <p class="guarantee-mob-desc">
+            {{ section.settings.mobile_description | default: "We understand that trying new products can feel risky, which is why Polar offers you a completely risk-free experience with our 30-Day Money Back Guarantee." }}
+          </p>
+          <a href="{{ section.settings.cta_link | default: '#chooseBundle' }}" class="guarantee-mob-cta-btn">
+            {{ section.settings.cta_text | default: "Add to cart" }}
+          </a>
         </div>
 
       </div>
@@ -73,13 +102,7 @@
       "type": "color",
       "id": "section_bg_color",
       "label": "Section Background Color",
-      "default": "#F4F4F4"
-    },
-    {
-      "type": "color",
-      "id": "card_bg_color",
-      "label": "Banner Card Background Color",
-      "default": "#F8F9FB"
+      "default": "#FFFFFF"
     },
     {
       "type": "image_picker",
@@ -101,8 +124,26 @@
     {
       "type": "textarea",
       "id": "description",
-      "label": "Description",
+      "label": "Desktop Description",
       "default": "We understand that trying new products can feel risky, which is why Polar offers you a completely Risk-Free experience. With our 30-Day Money Back Guarantee, you can try our natural hair dye solution with confidence. Achieving vibrant, healthy hair has never been safer or easier!"
+    },
+    {
+      "type": "textarea",
+      "id": "mobile_description",
+      "label": "Mobile Description",
+      "default": "We understand that trying new products can feel risky, which is why Polar offers you a completely risk-free experience with our 30-Day Money Back Guarantee."
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Button Text",
+      "default": "ADD TO CART"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "Button Link",
+      "default": "/#chooseBundle"
     }
   ],
   "presets": [

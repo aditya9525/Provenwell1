@@ -1,0 +1,25 @@
+{
+  "name": "Footer",
+  "type": "footer",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "settings": {
+        "logo_width": 150,
+        "about_text": "At Polar, we prioritize naturally vibrant hair. Our instant dye shampoo covers grays in 10 minutes without the mess, damage, or chemicals of traditional dyes. When you choose Polar, you're committing to effortless confidence.",
+        "service_hours": "Our customer service team is available 24/7, Monday through Saturday.",
+        "email": "customers@polarhaircare.com",
+        "phone": "+1 (833) 424-0123",
+        "phone_link": "+18334240123",
+        "instagram_url": "https://instagram.com/polarhaircare",
+        "newsletter_heading": "Subscribe to our emails",
+        "menu_1_heading": "Information",
+        "menu_1": "footer",
+        "menu_2_heading": "More Information"
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}

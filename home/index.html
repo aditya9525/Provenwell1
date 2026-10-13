@@ -167,24 +167,10 @@
         <!-- Rating & Social Proof -->
         <div class="hero-rating-row" aria-label="Customer Rating">
           <div class="hero-stars-wrap" aria-hidden="true">
-            <svg viewBox="0 0 20 20" fill="currentColor">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-            </svg>
-            <svg viewBox="0 0 20 20" fill="currentColor">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-            </svg>
-            <svg viewBox="0 0 20 20" fill="currentColor">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-            </svg>
-            <svg viewBox="0 0 20 20" fill="currentColor">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-            </svg>
-            <svg viewBox="0 0 20 20" fill="currentColor">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-            </svg>
+            <img src="../assets/stars-rating.png" alt="5 stars rating" class="hero-stars-img" width="116" height="20">
           </div>
           <span class="hero-verified-reviews">26,966 verified reviews</span>
-          <span class="hero-happy-customers">· 840,000+ happy customers</span>
+          <span class="hero-happy-customers">· 840K+ customers</span>
         </div>
 
         <!-- Divider -->
@@ -533,27 +519,30 @@
         </div>
 
         <!-- Shade Swatches -->
-        <div class="product-overview-swatches" role="radiogroup" aria-label="Select Hair Shade">
-          <button type="button" class="product-swatch-btn is-active" role="radio" aria-checked="true" aria-label="Shade Black" data-shade="black">
-            <span class="product-swatch-thumb-wrap">
-              <img src="../assets/swatch-black.png" alt="Black Shade Swatch" class="product-swatch-img" width="74" height="74" loading="lazy">
-            </span>
-            <span class="product-swatch-title">Black</span>
-          </button>
+        <div class="product-overview-shades-wrapper">
+          <p class="product-overview-shades-heading">Choose your shade</p>
+          <div class="product-overview-swatches" role="radiogroup" aria-label="Select Hair Shade">
+            <button type="button" class="product-swatch-btn is-active" role="radio" aria-checked="true" aria-label="Shade Black" data-shade="black">
+              <span class="product-swatch-thumb-wrap">
+                <img src="../assets/swatch-black.png" alt="Black Shade Swatch" class="product-swatch-img" width="74" height="74" loading="lazy">
+              </span>
+              <span class="product-swatch-title">Black</span>
+            </button>
 
-          <button type="button" class="product-swatch-btn" role="radio" aria-checked="false" aria-label="Shade Dark Brown" data-shade="dark-brown">
-            <span class="product-swatch-thumb-wrap">
-              <img src="../assets/swatch-dark-brown.png" alt="Dark Brown Shade Swatch" class="product-swatch-img" width="74" height="74" loading="lazy">
-            </span>
-            <span class="product-swatch-title">Dark Brown</span>
-          </button>
+            <button type="button" class="product-swatch-btn" role="radio" aria-checked="false" aria-label="Shade Dark Brown" data-shade="dark-brown">
+              <span class="product-swatch-thumb-wrap">
+                <img src="../assets/swatch-dark-brown.png" alt="Dark Brown Shade Swatch" class="product-swatch-img" width="74" height="74" loading="lazy">
+              </span>
+              <span class="product-swatch-title">Dark Brown</span>
+            </button>
 
-          <button type="button" class="product-swatch-btn" role="radio" aria-checked="false" aria-label="Shade Medium Brown" data-shade="medium-brown">
-            <span class="product-swatch-thumb-wrap">
-              <img src="../assets/swatch-medium-brown.png" alt="Medium Brown Shade Swatch" class="product-swatch-img" width="74" height="74" loading="lazy">
-            </span>
-            <span class="product-swatch-title">Medium Brown</span>
-          </button>
+            <button type="button" class="product-swatch-btn" role="radio" aria-checked="false" aria-label="Shade Medium Brown" data-shade="medium-brown">
+              <span class="product-swatch-thumb-wrap">
+                <img src="../assets/swatch-medium-brown.png" alt="Medium Brown Shade Swatch" class="product-swatch-img" width="74" height="74" loading="lazy">
+              </span>
+              <span class="product-swatch-title">Medium Brown</span>
+            </button>
+          </div>
         </div>
 
         <!-- CTAs Row -->
@@ -792,97 +781,114 @@
 
       </div>
 
-      <!-- Before / After Review Cards Grid -->
-      <div class="proof-trust-reviews-grid">
-        
-        <!-- Card 1 -->
-        <div class="proof-review-card">
-          <div class="proof-review-media">
-            <img src="../assets/before_after.jpg" alt="Before and After Demara O." class="proof-review-img" loading="lazy">
-            <span class="proof-pill-before">BEFORE</span>
-            <span class="proof-pill-after">AFTER</span>
-          </div>
-          <div class="proof-review-body">
-            <div class="proof-review-stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-            <p class="proof-review-quote">“I absolutely love this! It’s so easy to use like regular shampoo. No mess, no long salon visits, just quick color in one step.”</p>
-            <div class="proof-review-footer">
-              <span class="proof-review-author">Demara O., Miami, FL</span>
-              <span class="proof-verified-badge">
-                <svg class="proof-verified-icon" viewBox="0 0 16 16" fill="currentColor">
-                  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
-                </svg>
-                <span class="proof-verified-text">Verified Buyer</span>
-              </span>
+      <!-- Before / After Review Cards (Swiper for Mobile <= 768px, Grid for Desktop) -->
+      <div class="swiper proof-trust-reviews-swiper" id="proofReviewsSwiper">
+        <div class="swiper-wrapper proof-trust-reviews-wrapper">
+          
+          <!-- Card 1 -->
+          <div class="swiper-slide proof-review-slide">
+            <div class="proof-review-card">
+              <div class="proof-review-media">
+                <img src="../assets/before_after.jpg" alt="Before and After Demara O." class="proof-review-img" loading="lazy">
+                <span class="proof-pill-before">BEFORE</span>
+                <span class="proof-pill-after">AFTER</span>
+              </div>
+              <div class="proof-review-body">
+                <div class="proof-review-stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <p class="proof-review-quote">“I absolutely love this! It’s so easy to use like regular shampoo. No mess, no long salon visits, just quick color in one step.”</p>
+                <div class="proof-review-footer">
+                  <span class="proof-review-author">Demara O., Miami, FL</span>
+                  <span class="proof-verified-badge">
+                    <svg class="proof-verified-icon" viewBox="0 0 16 16" fill="currentColor">
+                      <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                    </svg>
+                    <span class="proof-verified-text">Verified Buyer</span>
+                  </span>
+                  <span class="proof-verified-mobile">&#10003; Verified</span>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- Card 2 -->
-        <div class="proof-review-card">
-          <div class="proof-review-media">
-            <img src="../assets/spotlight-caroline.png" alt="Before and After Laura T." class="proof-review-img" loading="lazy">
-            <span class="proof-pill-before">BEFORE</span>
-            <span class="proof-pill-after">AFTER</span>
-          </div>
-          <div class="proof-review-body">
-            <div class="proof-review-stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-            <p class="proof-review-quote">“Covered my grays in 10 minutes, no mess and no strong smell! Very happy with my order!”</p>
-            <div class="proof-review-footer">
-              <span class="proof-review-author">Laura T., Austin, TX</span>
-              <span class="proof-verified-badge">
-                <svg class="proof-verified-icon" viewBox="0 0 16 16" fill="currentColor">
-                  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
-                </svg>
-                <span class="proof-verified-text">Verified Buyer</span>
-              </span>
+          <!-- Card 2 -->
+          <div class="swiper-slide proof-review-slide">
+            <div class="proof-review-card">
+              <div class="proof-review-media">
+                <img src="../assets/spotlight-caroline.png" alt="Before and After Laura T." class="proof-review-img" loading="lazy">
+                <span class="proof-pill-before">BEFORE</span>
+                <span class="proof-pill-after">AFTER</span>
+              </div>
+              <div class="proof-review-body">
+                <div class="proof-review-stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <p class="proof-review-quote">“Covered my grays in 10 minutes, no mess and no strong smell! Very happy with my order!”</p>
+                <div class="proof-review-footer">
+                  <span class="proof-review-author">Laura T., Austin, TX</span>
+                  <span class="proof-verified-badge">
+                    <svg class="proof-verified-icon" viewBox="0 0 16 16" fill="currentColor">
+                      <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                    </svg>
+                    <span class="proof-verified-text">Verified Buyer</span>
+                  </span>
+                  <span class="proof-verified-mobile">&#10003; Verified</span>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- Card 3 (User's uploaded image) -->
-        <div class="proof-review-card">
-          <div class="proof-review-media">
-            <img src="../assets/before-after-priadashni.jpg" alt="Before and After Priadashni T." class="proof-review-img" loading="lazy">
-            <span class="proof-pill-before">BEFORE</span>
-            <span class="proof-pill-after">AFTER</span>
-          </div>
-          <div class="proof-review-body">
-            <div class="proof-review-stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-            <p class="proof-review-quote">“Quick and easy. Color looks really good. No staining on hairline or face / ears. Love this product.”</p>
-            <div class="proof-review-footer">
-              <span class="proof-review-author">Priadashni T., Boston, MA</span>
-              <span class="proof-verified-badge">
-                <svg class="proof-verified-icon" viewBox="0 0 16 16" fill="currentColor">
-                  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
-                </svg>
-                <span class="proof-verified-text">Verified Buyer</span>
-              </span>
+          <!-- Card 3 (User's uploaded image) -->
+          <div class="swiper-slide proof-review-slide">
+            <div class="proof-review-card">
+              <div class="proof-review-media">
+                <img src="../assets/before-after-priadashni.jpg" alt="Before and After Priadashni T." class="proof-review-img" loading="lazy">
+                <span class="proof-pill-before">BEFORE</span>
+                <span class="proof-pill-after">AFTER</span>
+              </div>
+              <div class="proof-review-body">
+                <div class="proof-review-stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <p class="proof-review-quote">“Quick and easy. Color looks really good. No staining on hairline or face / ears. Love this product.”</p>
+                <div class="proof-review-footer">
+                  <span class="proof-review-author">Priadashni T., Boston, MA</span>
+                  <span class="proof-verified-badge">
+                    <svg class="proof-verified-icon" viewBox="0 0 16 16" fill="currentColor">
+                      <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                    </svg>
+                    <span class="proof-verified-text">Verified Buyer</span>
+                  </span>
+                  <span class="proof-verified-mobile">&#10003; Verified</span>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- Card 4 -->
-        <div class="proof-review-card">
-          <div class="proof-review-media">
-            <img src="../assets/before_after.jpg" alt="Before and After Kara P." class="proof-review-img" loading="lazy">
-            <span class="proof-pill-before">BEFORE</span>
-            <span class="proof-pill-after">AFTER</span>
-          </div>
-          <div class="proof-review-body">
-            <div class="proof-review-stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-            <p class="proof-review-quote">“Covered all grays. No nasty smell. Didn’t stain my skin. Finally an easy to use solution.”</p>
-            <div class="proof-review-footer">
-              <span class="proof-review-author">Kara P., Nashville, TN</span>
-              <span class="proof-verified-badge">
-                <svg class="proof-verified-icon" viewBox="0 0 16 16" fill="currentColor">
-                  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
-                </svg>
-                <span class="proof-verified-text">Verified Buyer</span>
-              </span>
+          <!-- Card 4 -->
+          <div class="swiper-slide proof-review-slide">
+            <div class="proof-review-card">
+              <div class="proof-review-media">
+                <img src="../assets/before-after-3.jpg" alt="Before and After Kara P." class="proof-review-img" loading="lazy">
+                <span class="proof-pill-before">BEFORE</span>
+                <span class="proof-pill-after">AFTER</span>
+              </div>
+              <div class="proof-review-body">
+                <div class="proof-review-stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <p class="proof-review-quote">“Covered all grays. No nasty smell. Didn’t stain my skin. Finally an easy to use solution.”</p>
+                <div class="proof-review-footer">
+                  <span class="proof-review-author">Kara P., Nashville, TN</span>
+                  <span class="proof-verified-badge">
+                    <svg class="proof-verified-icon" viewBox="0 0 16 16" fill="currentColor">
+                      <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                    </svg>
+                    <span class="proof-verified-text">Verified Buyer</span>
+                  </span>
+                  <span class="proof-verified-mobile">&#10003; Verified</span>
+                </div>
+              </div>
             </div>
           </div>
+
         </div>
 
+        <!-- Swiper Pagination (Mobile Only) -->
+        <div class="swiper-pagination proof-trust-reviews-pagination"></div>
       </div>
 
     </div>
@@ -1187,69 +1193,79 @@
         </p>
       </div>
 
-      <!-- 4 Cards Grid -->
-      <div class="who-for-grid">
+      <!-- 4 Cards Swiper (Mobile <= 768px, Grid for Desktop) -->
+      <div class="swiper who-for-swiper" id="whoForSwiper">
+        <div class="swiper-wrapper who-for-wrapper who-for-grid">
 
-        <!-- Card 1: For Women -->
-        <div class="who-for-card">
-          <div class="who-for-img-wrap">
-            <img src="../assets/spotlight-caroline.png" alt="For Women" class="who-for-img" loading="lazy">
+          <!-- Card 1: For Women -->
+          <div class="swiper-slide who-for-slide">
+            <div class="who-for-card">
+              <div class="who-for-img-wrap">
+                <img src="../assets/spotlight-caroline.png" alt="For Women" class="who-for-img" loading="lazy">
+              </div>
+              <div class="who-for-body">
+                <span class="who-for-card-tag">FOR WOMEN</span>
+                <h3 class="who-for-card-title">Roots, temples & full coverage</h3>
+                <p class="who-for-card-desc">Blend first grays or cover them completely — with soft, natural-looking color that never looks flat or fake.</p>
+                <a href="../index.html" class="who-for-card-link">
+                  Shop now →
+                </a>
+              </div>
+            </div>
           </div>
-          <div class="who-for-body">
-            <span class="who-for-card-tag">FOR WOMEN</span>
-            <h3 class="who-for-card-title">Roots, temples & full coverage</h3>
-            <p class="who-for-card-desc">Blend first grays or cover them completely — with soft, natural-looking color that never looks flat or fake.</p>
-            <a href="../index.html" class="who-for-card-link">
-              Shop now →
-            </a>
+
+          <!-- Card 2: For Men -->
+          <div class="swiper-slide who-for-slide">
+            <div class="who-for-card">
+              <div class="who-for-img-wrap">
+                <img src="../assets/before_after.jpg" alt="For Men" class="who-for-img" loading="lazy">
+              </div>
+              <div class="who-for-body">
+                <span class="who-for-card-tag">FOR MEN</span>
+                <h3 class="who-for-card-title">Hair and beards, in one bottle</h3>
+                <p class="who-for-card-desc">Works just as well on beards. A subtle, natural refresh without a trip to the salon or barber.</p>
+                <a href="../index.html" class="who-for-card-link">
+                  Shop now →
+                </a>
+              </div>
+            </div>
           </div>
+
+          <!-- Card 3: For Busy Schedules -->
+          <div class="swiper-slide who-for-slide">
+            <div class="who-for-card">
+              <div class="who-for-img-wrap">
+                <img src="../assets/customer_story.jpg" alt="For Busy Schedules" class="who-for-img" loading="lazy">
+              </div>
+              <div class="who-for-body">
+                <span class="who-for-card-tag">FOR BUSY SCHEDULES</span>
+                <h3 class="who-for-card-title">10 minutes, done in the shower</h3>
+                <p class="who-for-card-desc">No appointments, bowls or brushes. Color your hair at home whenever it suits you.</p>
+                <a href="../index.html" class="who-for-card-link">
+                  Shop now →
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4: For Gentle Care -->
+          <div class="swiper-slide who-for-slide">
+            <div class="who-for-card">
+              <div class="who-for-img-wrap">
+                <img src="../assets/polar_shampoo.jpg" alt="For Gentle Care" class="who-for-img" loading="lazy">
+              </div>
+              <div class="who-for-body">
+                <span class="who-for-card-tag">FOR GENTLE CARE</span>
+                <h3 class="who-for-card-title">Ammonia-free, plant-powered</h3>
+                <p class="who-for-card-desc">Reishi, black sesame, ginseng and fo-ti help keep hair soft, shiny and healthy-feeling.</p>
+                <a href="../index.html" class="who-for-card-link">
+                  Shop now →
+                </a>
+              </div>
+            </div>
+          </div>
+
         </div>
-
-        <!-- Card 2: For Men -->
-        <div class="who-for-card">
-          <div class="who-for-img-wrap">
-            <img src="../assets/before_after.jpg" alt="For Men" class="who-for-img" loading="lazy">
-          </div>
-          <div class="who-for-body">
-            <span class="who-for-card-tag">FOR MEN</span>
-            <h3 class="who-for-card-title">Hair and beards, in one bottle</h3>
-            <p class="who-for-card-desc">Works just as well on beards. A subtle, natural refresh without a trip to the salon or barber.</p>
-            <a href="../index.html" class="who-for-card-link">
-              Shop now →
-            </a>
-          </div>
-        </div>
-
-        <!-- Card 3: For Busy Schedules -->
-        <div class="who-for-card">
-          <div class="who-for-img-wrap">
-            <img src="../assets/customer_story.jpg" alt="For Busy Schedules" class="who-for-img" loading="lazy">
-          </div>
-          <div class="who-for-body">
-            <span class="who-for-card-tag">FOR BUSY SCHEDULES</span>
-            <h3 class="who-for-card-title">10 minutes, done in the shower</h3>
-            <p class="who-for-card-desc">No appointments, bowls or brushes. Color your hair at home whenever it suits you.</p>
-            <a href="../index.html" class="who-for-card-link">
-              Shop now →
-            </a>
-          </div>
-        </div>
-
-        <!-- Card 4: For Gentle Care -->
-        <div class="who-for-card">
-          <div class="who-for-img-wrap">
-            <img src="../assets/polar_shampoo.jpg" alt="For Gentle Care" class="who-for-img" loading="lazy">
-          </div>
-          <div class="who-for-body">
-            <span class="who-for-card-tag">FOR GENTLE CARE</span>
-            <h3 class="who-for-card-title">Ammonia-free, plant-powered</h3>
-            <p class="who-for-card-desc">Reishi, black sesame, ginseng and fo-ti help keep hair soft, shiny and healthy-feeling.</p>
-            <a href="../index.html" class="who-for-card-link">
-              Shop now →
-            </a>
-          </div>
-        </div>
-
       </div>
 
     </div>
@@ -1276,23 +1292,22 @@
       <div class="bundle-cards-row">
 
         <!-- Bundle Card 1: 1 Bottle -->
-        <div class="bundle-item-card">
-          <div class="bundle-card-badge-placeholder" aria-hidden="true"></div>
-
-          <div class="bundle-img-box">
-            <img src="../assets/bundle-1-bottle.png" alt="1 Bottle - Polar Instant Dye Shampoo" class="bundle-bottle-img" loading="lazy">
-          </div>
-
-          <h3 class="bundle-item-title">1 Bottle</h3>
-
-          <div class="bundle-price-row">
-            <span class="bundle-price-compare">Rs. 4,900</span>
-            <span class="bundle-price-current">Rs. 3,500</span>
-            <span class="bundle-price-unit">/ bottle</span>
-          </div>
-
-          <div class="bundle-save-tag">
-            <span>Save 29% &middot; Total Rs. 3,500</span>
+        <div class="bundle-item-card bundle-card-1">
+          <div class="bundle-card-top">
+            <div class="bundle-img-box">
+              <img src="../assets/bundle-1-bottle.png" alt="1 Bottle - Polar Instant Dye Shampoo" class="bundle-bottle-img" loading="lazy">
+            </div>
+            <div class="bundle-card-info">
+              <h3 class="bundle-item-title">1 Bottle</h3>
+              <div class="bundle-price-row">
+                <span class="bundle-price-compare">Rs. 4,900</span>
+                <span class="bundle-price-current">Rs. 3,500</span>
+                <span class="bundle-price-unit">/ bottle</span>
+              </div>
+              <div class="bundle-save-tag">
+                <span>Save 29% &middot; Total Rs. 3,500</span>
+              </div>
+            </div>
           </div>
 
           <div class="bundle-divider"></div>
@@ -1333,25 +1348,28 @@
         </div>
 
         <!-- Bundle Card 2: 2 Bottles (Featured / Most Popular) -->
-        <div class="bundle-item-card bundle-featured-card">
-          <div class="bundle-badge bundle-badge-white">
-            <span>MOST POPULAR</span>
-          </div>
-
-          <div class="bundle-img-box">
-            <img src="../assets/bundle-2-bottles.png" alt="2 Bottles - Polar Instant Dye Shampoo" class="bundle-bottle-img" loading="lazy">
-          </div>
-
-          <h3 class="bundle-item-title bundle-title-light">2 Bottles</h3>
-
-          <div class="bundle-price-row">
-            <span class="bundle-price-compare bundle-light">Rs. 4,900</span>
-            <span class="bundle-price-current bundle-light">Rs. 2,950</span>
-            <span class="bundle-price-unit bundle-light">/ bottle</span>
-          </div>
-
-          <div class="bundle-save-tag bundle-save-tag-glass">
-            <span>Save 40% &middot; Total Rs. 5,900</span>
+        <div class="bundle-item-card bundle-featured-card bundle-card-2">
+          <div class="bundle-card-top">
+            <div class="bundle-badge bundle-badge-white">
+              <span>MOST POPULAR</span>
+            </div>
+            <div class="bundle-img-box">
+              <img src="../assets/bundle-2-bottles.png" alt="2 Bottles - Polar Instant Dye Shampoo" class="bundle-bottle-img" loading="lazy">
+            </div>
+            <div class="bundle-card-info">
+              <div class="bundle-mobile-badge bundle-badge-white">
+                <span>MOST POPULAR</span>
+              </div>
+              <h3 class="bundle-item-title bundle-title-light">2 Bottles</h3>
+              <div class="bundle-price-row">
+                <span class="bundle-price-compare bundle-light">Rs. 4,900</span>
+                <span class="bundle-price-current bundle-light">Rs. 2,950</span>
+                <span class="bundle-price-unit bundle-light">/ bottle</span>
+              </div>
+              <div class="bundle-save-tag bundle-save-tag-glass">
+                <span>Save 40% &middot; Total Rs. 5,900</span>
+              </div>
+            </div>
           </div>
 
           <div class="bundle-divider bundle-divider-light"></div>
@@ -1392,25 +1410,28 @@
         </div>
 
         <!-- Bundle Card 3: 3 Bottles (Best Value) -->
-        <div class="bundle-item-card">
-          <div class="bundle-badge bundle-badge-dark">
-            <span>BEST VALUE</span>
-          </div>
-
-          <div class="bundle-img-box">
-            <img src="../assets/bundle-3-bottles.png" alt="3 Bottles - Polar Instant Dye Shampoo" class="bundle-bottle-img" loading="lazy">
-          </div>
-
-          <h3 class="bundle-item-title">3 Bottles</h3>
-
-          <div class="bundle-price-row">
-            <span class="bundle-price-compare">Rs. 4,900</span>
-            <span class="bundle-price-current">Rs. 2,333</span>
-            <span class="bundle-price-unit">/ bottle</span>
-          </div>
-
-          <div class="bundle-save-tag">
-            <span>Save 52% &middot; Total Rs. 6,999</span>
+        <div class="bundle-item-card bundle-card-3">
+          <div class="bundle-card-top">
+            <div class="bundle-badge bundle-badge-dark">
+              <span>BEST VALUE</span>
+            </div>
+            <div class="bundle-img-box">
+              <img src="../assets/bundle-3-bottles.png" alt="3 Bottles - Polar Instant Dye Shampoo" class="bundle-bottle-img" loading="lazy">
+            </div>
+            <div class="bundle-card-info">
+              <div class="bundle-mobile-badge bundle-badge-dark">
+                <span>BEST VALUE</span>
+              </div>
+              <h3 class="bundle-item-title">3 Bottles</h3>
+              <div class="bundle-price-row">
+                <span class="bundle-price-compare">Rs. 4,900</span>
+                <span class="bundle-price-current">Rs. 2,333</span>
+                <span class="bundle-price-unit">/ bottle</span>
+              </div>
+              <div class="bundle-save-tag">
+                <span>Save 52% &middot; Total Rs. 6,999</span>
+              </div>
+            </div>
           </div>
 
           <div class="bundle-divider"></div>
@@ -1459,18 +1480,21 @@
         <div class="bundle-trust-item">
           <div class="bundle-trust-icon-wrap" aria-hidden="true">
             <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="16" cy="16" r="14" stroke="#2B3344" stroke-width="1.2" fill="#FFFFFF"/>
-              <circle cx="16" cy="16" r="11" stroke="#2B3344" stroke-width="0.8" stroke-dasharray="2 2"/>
-              <path d="M12.5 12C13.5 10.8 14.7 10 16 10C18.8 10 21 12.2 21 15C21 15.6 20.9 16.2 20.6 16.7" stroke="#2B3344" stroke-width="1.2" stroke-linecap="round"/>
-              <path d="M11 10.5L12.8 12L13.2 9.8" fill="#2B3344"/>
-              <path d="M19.5 20C18.5 21.2 17.3 22 16 22C13.2 22 11 19.8 11 17C11 16.4 11.1 15.8 11.4 15.3" stroke="#2B3344" stroke-width="1.2" stroke-linecap="round"/>
-              <path d="M21 21.5L19.2 20L18.8 22.2" fill="#2B3344"/>
-              <text x="16" y="19" font-family="'Lato', sans-serif" font-size="9" font-weight="700" fill="#2B3344" text-anchor="middle">$</text>
+              <circle cx="16" cy="16" r="14.5" stroke="#5E3A58" stroke-width="1.18" fill="#FFFFFF"/>
+              <circle cx="16" cy="16" r="11.5" stroke="#5E3A58" stroke-width="0.6" stroke-dasharray="2 2" fill="none"/>
+              <path d="M12.5 12C13.5 10.8 14.7 10 16 10C18.8 10 21 12.2 21 15C21 15.6 20.9 16.2 20.6 16.7" stroke="#5E3A58" stroke-width="1.2" stroke-linecap="round"/>
+              <path d="M11 10.5L12.8 12L13.2 9.8" fill="#5E3A58"/>
+              <path d="M19.5 20C18.5 21.2 17.3 22 16 22C13.2 22 11 19.8 11 17C11 16.4 11.1 15.8 11.4 15.3" stroke="#5E3A58" stroke-width="1.2" stroke-linecap="round"/>
+              <path d="M21 21.5L19.2 20L18.8 22.2" fill="#5E3A58"/>
+              <text x="16" y="19" font-family="'Lato', sans-serif" font-size="9" font-weight="700" fill="#5E3A58" text-anchor="middle">$</text>
             </svg>
           </div>
           <div class="bundle-trust-content">
             <strong class="bundle-trust-title">30-Day Money Back</strong>
-            <span class="bundle-trust-desc">Hassle-free money-back option</span>
+            <span class="bundle-trust-desc">
+              <span class="bundle-desc-desktop">Hassle-free money-back option</span>
+              <span class="bundle-desc-mobile">Hassle-free option</span>
+            </span>
           </div>
         </div>
 
@@ -1478,15 +1502,18 @@
         <div class="bundle-trust-item">
           <div class="bundle-trust-icon-wrap" aria-hidden="true">
             <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="16" cy="16" r="14" stroke="#2B3344" stroke-width="1.2" fill="#FFFFFF"/>
-              <ellipse cx="16" cy="16" rx="6" ry="10" stroke="#2B3344" stroke-width="1"/>
-              <line x1="6" y1="13" x2="26" y2="13" stroke="#2B3344" stroke-width="1"/>
-              <line x1="6" y1="19" x2="26" y2="19" stroke="#2B3344" stroke-width="1"/>
+              <circle cx="16" cy="16" r="14.5" stroke="#5E3A58" stroke-width="1.18" fill="#FFFFFF"/>
+              <ellipse cx="16" cy="16" rx="6" ry="10" stroke="#5E3A58" stroke-width="1" fill="none"/>
+              <line x1="6" y1="13" x2="26" y2="13" stroke="#5E3A58" stroke-width="1"/>
+              <line x1="6" y1="19" x2="26" y2="19" stroke="#5E3A58" stroke-width="1"/>
             </svg>
           </div>
           <div class="bundle-trust-content">
             <strong class="bundle-trust-title">Insured &amp; Fast Shipping</strong>
-            <span class="bundle-trust-desc">Worldwide delivery to your door</span>
+            <span class="bundle-trust-desc">
+              <span class="bundle-desc-desktop">Worldwide delivery to your door</span>
+              <span class="bundle-desc-mobile">Worldwide delivery</span>
+            </span>
           </div>
         </div>
 
@@ -1494,15 +1521,18 @@
         <div class="bundle-trust-item">
           <div class="bundle-trust-icon-wrap" aria-hidden="true">
             <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="16" cy="16" r="14" stroke="#2B3344" stroke-width="1.2" fill="#FFFFFF"/>
-              <rect x="10.5" y="11.5" width="11" height="9" rx="1.5" stroke="#2B3344" stroke-width="1.2"/>
-              <path d="M14 10L16 8L18 10" stroke="#2B3344" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M16 8V14" stroke="#2B3344" stroke-width="1.2" stroke-linecap="round"/>
+              <circle cx="16" cy="16" r="14.5" stroke="#5E3A58" stroke-width="1.18" fill="#FFFFFF"/>
+              <rect x="10.5" y="11.5" width="11" height="9" rx="1.5" stroke="#5E3A58" stroke-width="1.2" fill="none"/>
+              <path d="M14 10L16 8L18 10" stroke="#5E3A58" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M16 8V14" stroke="#5E3A58" stroke-width="1.2" stroke-linecap="round"/>
             </svg>
           </div>
           <div class="bundle-trust-content">
             <strong class="bundle-trust-title">Returns Accepted</strong>
-            <span class="bundle-trust-desc">Easy and simple return process</span>
+            <span class="bundle-trust-desc">
+              <span class="bundle-desc-desktop">Easy and simple return process</span>
+              <span class="bundle-desc-mobile">Easy return process</span>
+            </span>
           </div>
         </div>
 
@@ -1510,15 +1540,18 @@
         <div class="bundle-trust-item">
           <div class="bundle-trust-icon-wrap" aria-hidden="true">
             <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="16" cy="16" r="14" stroke="#2B3344" stroke-width="1.2" fill="#FFFFFF"/>
-              <rect x="9.5" y="12" width="13" height="9" rx="1.5" stroke="#2B3344" stroke-width="1.2"/>
-              <line x1="9.5" y1="15" x2="22.5" y2="15" stroke="#2B3344" stroke-width="1.2"/>
-              <rect x="12" y="17" width="2.5" height="2" rx="0.5" fill="#2B3344"/>
+              <circle cx="16" cy="16" r="14.5" stroke="#5E3A58" stroke-width="1.18" fill="#FFFFFF"/>
+              <rect x="9.5" y="12" width="13" height="9" rx="1.5" stroke="#5E3A58" stroke-width="1.2" fill="none"/>
+              <line x1="9.5" y1="15" x2="22.5" y2="15" stroke="#5E3A58" stroke-width="1.2"/>
+              <rect x="12" y="17" width="2.5" height="2" rx="0.5" fill="#5E3A58"/>
             </svg>
           </div>
           <div class="bundle-trust-content">
             <strong class="bundle-trust-title">Secure Payment</strong>
-            <span class="bundle-trust-desc">Protected and safe transactions</span>
+            <span class="bundle-trust-desc">
+              <span class="bundle-desc-desktop">Protected and safe transactions</span>
+              <span class="bundle-desc-mobile">Protected transactions</span>
+            </span>
           </div>
         </div>
 
@@ -1559,7 +1592,7 @@
                 <img src="../assets/ugc-customer-1.png" alt="Customer Video Review 1 - Polar Hair Dye" class="ugc-video-img" loading="lazy">
                 <div class="ugc-play-btn-circle" aria-hidden="true">
                   <svg width="18" height="21" viewBox="0 0 18 21" fill="none">
-                    <path d="M17 10.5L1 19.5981L1 1.40192L17 10.5Z" fill="#2C3452"/>
+                    <path d="M17 10.5L1 19.5981L1 1.40192L17 10.5Z" fill="#4A2346"/>
                   </svg>
                 </div>
               </div>
@@ -1571,7 +1604,7 @@
                 <img src="../assets/ugc-customer-2.png" alt="Customer Video Review 2 - Polar Hair Dye" class="ugc-video-img" loading="lazy">
                 <div class="ugc-play-btn-circle" aria-hidden="true">
                   <svg width="18" height="21" viewBox="0 0 18 21" fill="none">
-                    <path d="M17 10.5L1 19.5981L1 1.40192L17 10.5Z" fill="#2C3452"/>
+                    <path d="M17 10.5L1 19.5981L1 1.40192L17 10.5Z" fill="#4A2346"/>
                   </svg>
                 </div>
               </div>
@@ -1583,7 +1616,7 @@
                 <img src="../assets/ugc-customer-3.png" alt="Customer Video Review 3 - Polar Hair Dye" class="ugc-video-img" loading="lazy">
                 <div class="ugc-play-btn-circle" aria-hidden="true">
                   <svg width="18" height="21" viewBox="0 0 18 21" fill="none">
-                    <path d="M17 10.5L1 19.5981L1 1.40192L17 10.5Z" fill="#2C3452"/>
+                    <path d="M17 10.5L1 19.5981L1 1.40192L17 10.5Z" fill="#4A2346"/>
                   </svg>
                 </div>
               </div>
@@ -1595,7 +1628,7 @@
                 <img src="../assets/ugc-customer-4.png" alt="Customer Video Review 4 - Polar Hair Dye" class="ugc-video-img" loading="lazy">
                 <div class="ugc-play-btn-circle" aria-hidden="true">
                   <svg width="18" height="21" viewBox="0 0 18 21" fill="none">
-                    <path d="M17 10.5L1 19.5981L1 1.40192L17 10.5Z" fill="#2C3452"/>
+                    <path d="M17 10.5L1 19.5981L1 1.40192L17 10.5Z" fill="#4A2346"/>
                   </svg>
                 </div>
               </div>
@@ -1607,7 +1640,7 @@
                 <img src="../assets/ugc-customer-5.png" alt="Customer Video Review 5 - Polar Hair Dye" class="ugc-video-img" loading="lazy">
                 <div class="ugc-play-btn-circle" aria-hidden="true">
                   <svg width="18" height="21" viewBox="0 0 18 21" fill="none">
-                    <path d="M17 10.5L1 19.5981L1 1.40192L17 10.5Z" fill="#2C3452"/>
+                    <path d="M17 10.5L1 19.5981L1 1.40192L17 10.5Z" fill="#4A2346"/>
                   </svg>
                 </div>
               </div>
@@ -1940,6 +1973,9 @@
   </div>
   <div class="drawer-overlay" id="drawerOverlay"></div>
 
+  <!-- Swiper JS CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
   <script>
     const mobileMenuToggle = document.getElementById('mobileMenuToggle');
     const mobileDrawer = document.getElementById('mobileDrawer');
@@ -2036,38 +2072,117 @@
     const ugcSwiperContainer = document.getElementById('ugcVideosSwiper');
     if (ugcSwiperContainer && typeof Swiper !== 'undefined') {
       new Swiper(ugcSwiperContainer, {
-        slidesPerView: 1.1, // Screen <= 390px shows 1.1 cards
-        spaceBetween: 14,
+        slidesPerView: 2.15,
+        spaceBetween: 12,
         grabCursor: true,
         watchOverflow: true,
-        pagination: {
-          el: '.ugc-swiper-pagination',
-          clickable: true,
-        },
         breakpoints: {
-          390: {
-            slidesPerView: 1.1, // After 390px shows 1.1 cards
+          520: {
+            slidesPerView: 2.5,
             spaceBetween: 14
           },
-          430: {
-            slidesPerView: 1.5, // After 430px shows 1.5 cards
-            spaceBetween: 16
-          },
-          640: {
-            slidesPerView: 2.5,
-            spaceBetween: 16
-          },
-          840: {
+          769: {
             slidesPerView: 3.5,
-            spaceBetween: 18
+            spaceBetween: 16
           },
           1025: {
             slidesPerView: 5,
-            spaceBetween: 20
+            spaceBetween: 20,
+            allowTouchMove: false
           }
         }
       });
     }
+
+    // Proof & Trust Reviews Swiper
+    let proofSwiperInstance = null;
+    function initProofReviewsSwiper() {
+      const proofReviewsContainer = document.getElementById('proofReviewsSwiper');
+      if (!proofReviewsContainer || typeof Swiper === 'undefined') return;
+
+      if (proofSwiperInstance) {
+        proofSwiperInstance.update();
+        return;
+      }
+
+      proofSwiperInstance = new Swiper(proofReviewsContainer, {
+        slidesPerView: 'auto',
+        spaceBetween: 12,
+        slidesOffsetBefore: 16,
+        slidesOffsetAfter: 16,
+        grabCursor: true,
+        watchOverflow: true,
+        pagination: {
+          el: proofReviewsContainer.querySelector('.proof-trust-reviews-pagination'),
+          clickable: true,
+        },
+        breakpoints: {
+          640: {
+            slidesPerView: 2,
+            spaceBetween: 16,
+            slidesOffsetBefore: 0,
+            slidesOffsetAfter: 0,
+          },
+          900: {
+            slidesPerView: 3,
+            spaceBetween: 20,
+            slidesOffsetBefore: 0,
+            slidesOffsetAfter: 0,
+          },
+          1100: {
+            slidesPerView: 4,
+            spaceBetween: 24,
+            slidesOffsetBefore: 0,
+            slidesOffsetAfter: 0,
+          }
+        }
+      });
+    }
+
+    initProofReviewsSwiper();
+
+    // Who It's For Swiper
+    let whoForSwiperInstance = null;
+    function initWhoForSwiper() {
+      const whoForContainer = document.getElementById('whoForSwiper');
+      if (!whoForContainer || typeof Swiper === 'undefined') return;
+
+      if (whoForSwiperInstance) {
+        whoForSwiperInstance.update();
+        return;
+      }
+
+      whoForSwiperInstance = new Swiper(whoForContainer, {
+        slidesPerView: 'auto',
+        spaceBetween: 12,
+        slidesOffsetBefore: 16,
+        slidesOffsetAfter: 16,
+        grabCursor: true,
+        watchOverflow: true,
+        breakpoints: {
+          640: {
+            slidesPerView: 2,
+            spaceBetween: 16,
+            slidesOffsetBefore: 0,
+            slidesOffsetAfter: 0,
+          },
+          900: {
+            slidesPerView: 3,
+            spaceBetween: 20,
+            slidesOffsetBefore: 0,
+            slidesOffsetAfter: 0,
+          },
+          1100: {
+            slidesPerView: 4,
+            spaceBetween: 24,
+            slidesOffsetBefore: 0,
+            slidesOffsetAfter: 0,
+          }
+        }
+      });
+    }
+
+    initWhoForSwiper();
   </script>
 </body>
 </html>

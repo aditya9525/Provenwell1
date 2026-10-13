@@ -109,6 +109,40 @@
 
       </div>
 
+      {%- if section.settings.show_steps_grid -%}
+        <!-- 3-Step How-To Grid -->
+        <div class="benefits-steps-grid">
+          
+          <!-- Step 1 -->
+          <div class="benefit-step-card">
+            <div class="benefit-step-num">{{ section.settings.step_1_num | default: "01" }}</div>
+            <div class="benefit-step-content">
+              <h3 class="benefit-step-title">{{ section.settings.step_1_title | default: "Apply to dry hair" }}</h3>
+              <p class="benefit-step-desc">{{ section.settings.step_1_desc | default: "Massage evenly from roots to ends — just like shampoo." }}</p>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="benefit-step-card">
+            <div class="benefit-step-num">{{ section.settings.step_2_num | default: "02" }}</div>
+            <div class="benefit-step-content">
+              <h3 class="benefit-step-title">{{ section.settings.step_2_title | default: "Wait 10 minutes" }}</h3>
+              <p class="benefit-step-desc">{{ section.settings.step_2_desc | default: "No bowls, brushes or timers to babysit." }}</p>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="benefit-step-card">
+            <div class="benefit-step-num">{{ section.settings.step_3_num | default: "03" }}</div>
+            <div class="benefit-step-content">
+              <h3 class="benefit-step-title">{{ section.settings.step_3_title | default: "Rinse & reveal" }}</h3>
+              <p class="benefit-step-desc">{{ section.settings.step_3_desc | default: "Natural-looking color that lasts 4–6 weeks." }}</p>
+            </div>
+          </div>
+
+        </div>
+      {%- endif -%}
+
     </div>
   </section>
 
@@ -181,7 +215,7 @@
 
 {% schema %}
 {
-  "name": "05 — 4 Reasons Key Benefits",
+  "name": "4 Reasons Key Benefits",
   "settings": [
     {
       "type": "checkbox",
@@ -275,11 +309,75 @@
       "id": "card_4_desc",
       "label": "Description",
       "default": "Natural-looking color that lasts up to 6 weeks, so you can stay confident without frequent touch-ups."
+    },
+    {
+      "type": "header",
+      "content": "3-Step How-To Grid"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_steps_grid",
+      "label": "Show 3-Step How-To Grid",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "step_1_num",
+      "label": "Step 1 Number",
+      "default": "01"
+    },
+    {
+      "type": "text",
+      "id": "step_1_title",
+      "label": "Step 1 Title",
+      "default": "Apply to dry hair"
+    },
+    {
+      "type": "textarea",
+      "id": "step_1_desc",
+      "label": "Step 1 Description",
+      "default": "Massage evenly from roots to ends — just like shampoo."
+    },
+    {
+      "type": "text",
+      "id": "step_2_num",
+      "label": "Step 2 Number",
+      "default": "02"
+    },
+    {
+      "type": "text",
+      "id": "step_2_title",
+      "label": "Step 2 Title",
+      "default": "Wait 10 minutes"
+    },
+    {
+      "type": "textarea",
+      "id": "step_2_desc",
+      "label": "Step 2 Description",
+      "default": "No bowls, brushes or timers to babysit."
+    },
+    {
+      "type": "text",
+      "id": "step_3_num",
+      "label": "Step 3 Number",
+      "default": "03"
+    },
+    {
+      "type": "text",
+      "id": "step_3_title",
+      "label": "Step 3 Title",
+      "default": "Rinse & reveal"
+    },
+    {
+      "type": "textarea",
+      "id": "step_3_desc",
+      "label": "Step 3 Description",
+      "default": "Natural-looking color that lasts 4–6 weeks."
     }
   ],
   "presets": [
     {
-      "name": "05 — 4 Reasons Key Benefits"
+      "name": "4 Reasons Key Benefits"
     }
   ]
 }

@@ -128,27 +128,30 @@
       </div>
 
       <!-- Shade Swatches -->
-      <div class="product-overview-swatches" role="radiogroup" aria-label="Select Hair Shade">
-        <button type="button" class="product-swatch-btn is-active" role="radio" aria-checked="true" aria-label="Shade Black" data-shade="black">
-          <span class="product-swatch-thumb-wrap">
-            <img src="{{ 'swatch-black.png' | asset_url }}" alt="Black Shade Swatch" class="product-swatch-img" width="74" height="74" loading="lazy">
-          </span>
-          <span class="product-swatch-title">Black</span>
-        </button>
+      <div class="product-overview-shades-wrapper">
+        <p class="product-overview-shades-heading">{{ section.settings.shades_heading | default: 'Choose your shade' }}</p>
+        <div class="product-overview-swatches" role="radiogroup" aria-label="Select Hair Shade">
+          <button type="button" class="product-swatch-btn is-active" role="radio" aria-checked="true" aria-label="Shade Black" data-shade="black">
+            <span class="product-swatch-thumb-wrap">
+              <img src="{{ 'swatch-black.png' | asset_url }}" alt="Black Shade Swatch" class="product-swatch-img" width="74" height="74" loading="lazy">
+            </span>
+            <span class="product-swatch-title">Black</span>
+          </button>
 
-        <button type="button" class="product-swatch-btn" role="radio" aria-checked="false" aria-label="Shade Dark Brown" data-shade="dark-brown">
-          <span class="product-swatch-thumb-wrap">
-            <img src="{{ 'swatch-dark-brown.png' | asset_url }}" alt="Dark Brown Shade Swatch" class="product-swatch-img" width="74" height="74" loading="lazy">
-          </span>
-          <span class="product-swatch-title">Dark Brown</span>
-        </button>
+          <button type="button" class="product-swatch-btn" role="radio" aria-checked="false" aria-label="Shade Dark Brown" data-shade="dark-brown">
+            <span class="product-swatch-thumb-wrap">
+              <img src="{{ 'swatch-dark-brown.png' | asset_url }}" alt="Dark Brown Shade Swatch" class="product-swatch-img" width="74" height="74" loading="lazy">
+            </span>
+            <span class="product-swatch-title">Dark Brown</span>
+          </button>
 
-        <button type="button" class="product-swatch-btn" role="radio" aria-checked="false" aria-label="Shade Medium Brown" data-shade="medium-brown">
-          <span class="product-swatch-thumb-wrap">
-            <img src="{{ 'swatch-medium-brown.png' | asset_url }}" alt="Medium Brown Shade Swatch" class="product-swatch-img" width="74" height="74" loading="lazy">
-          </span>
-          <span class="product-swatch-title">Medium Brown</span>
-        </button>
+          <button type="button" class="product-swatch-btn" role="radio" aria-checked="false" aria-label="Shade Medium Brown" data-shade="medium-brown">
+            <span class="product-swatch-thumb-wrap">
+              <img src="{{ 'swatch-medium-brown.png' | asset_url }}" alt="Medium Brown Shade Swatch" class="product-swatch-img" width="74" height="74" loading="lazy">
+            </span>
+            <span class="product-swatch-title">Medium Brown</span>
+          </button>
+        </div>
       </div>
 
       <!-- CTAs Row -->
@@ -285,6 +288,16 @@
       "id": "spec_4_val",
       "label": "Spec 4 Value",
       "default": "Ammonia-free"
+    },
+    {
+      "type": "header",
+      "content": "Shades"
+    },
+    {
+      "type": "text",
+      "id": "shades_heading",
+      "label": "Shades Heading",
+      "default": "Choose your shade"
     },
     {
       "type": "header",

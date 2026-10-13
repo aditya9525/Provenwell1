@@ -13,28 +13,57 @@
       </p>
     </div>
 
+    {%- liquid
+      assign v1 = product.variants[0]
+      assign v2 = product.variants[1]
+      assign v3 = product.variants[2]
+
+      assign v1_price = v1.price | default: 350000
+      assign v1_compare = v1.compare_at_price | default: 490000
+      assign v1_save = 29
+      if v1_compare != blank and v1_compare > v1_price
+        assign v1_save = v1_compare | minus: v1_price | times: 100.0 | divided_by: v1_compare | round
+      endif
+
+      assign v2_price = v2.price | default: 295000
+      assign v2_compare = v2.compare_at_price | default: 490000
+      assign v2_save = 40
+      if v2_compare != blank and v2_compare > v2_price
+        assign v2_save = v2_compare | minus: v2_price | times: 100.0 | divided_by: v2_compare | round
+      endif
+
+      assign v3_price = v3.price | default: 233300
+      assign v3_compare = v3.compare_at_price | default: 490000
+      assign v3_save = 52
+      if v3_compare != blank and v3_compare > v3_price
+        assign v3_save = v3_compare | minus: v3_price | times: 100.0 | divided_by: v3_compare | round
+      endif
+    -%}
+
     <!-- Bundles Grid / Cards Row -->
     <div class="bundle-cards-row">
 
       <!-- Bundle Card 1: 1 Bottle -->
-      <div class="bundle-item-card">
-        <!-- Optional placeholder to balance top space or badge alignment -->
-        <div class="bundle-card-badge-placeholder" aria-hidden="true"></div>
-
-        <div class="bundle-img-box">
-          <img src="assets/bundle-1-bottle.png" alt="1 Bottle - Polar Instant Dye Shampoo" class="bundle-bottle-img" loading="lazy">
-        </div>
-
-        <h3 class="bundle-item-title">1 Bottle</h3>
-
-        <div class="bundle-price-row">
-          <span class="bundle-price-compare">Rs. 4,900</span>
-          <span class="bundle-price-current">Rs. 3,500</span>
-          <span class="bundle-price-unit">/ bottle</span>
-        </div>
-
-        <div class="bundle-save-tag">
-          <span>Save 29% &middot; Total Rs. 3,500</span>
+      <div class="bundle-item-card bundle-card-1">
+        <div class="bundle-card-top">
+          <div class="bundle-img-box">
+            <img src="{{ 'bundle-1-bottle.png' | asset_url }}" alt="1 Bottle - Polar Instant Dye Shampoo" class="bundle-bottle-img" loading="lazy">
+          </div>
+          <div class="bundle-card-info">
+            <h3 class="bundle-item-title">{{ v1.title | default: '1 Bottle' }}</h3>
+            <div class="bundle-price-row">
+              {%- if v1_compare != blank and v1_compare > v1_price -%}
+                <span class="bundle-price-compare">{{ v1_compare | money_without_trailing_zeros | remove: '.00' }}</span>
+              {%- else -%}
+                <span class="bundle-price-compare">Rs. 4,900</span>
+              {%- endif -%}
+              <span class="bundle-price-current">{{ v1_price | money_without_trailing_zeros | remove: '.00' }}</span>
+              <span class="bundle-price-unit">/ bottle</span>
+            </div>
+            <div class="bundle-save-tag">
+              <span>Save {{ v1_save | default: 29 }}% &middot; Total {{ v1_price | money_without_trailing_zeros | remove: '.00' }}</span>
+            </div>
+          </div>
         </div>
 
         <div class="bundle-divider"></div>
@@ -69,31 +98,38 @@
           </li>
         </ul>
 
-        <button type="button" class="bundle-btn bundle-btn-primary" data-bundle-qty="1" data-bundle-price="3500" aria-label="Add 1 Bottle bundle to cart">
+        <button type="button" class="bundle-btn bundle-btn-primary" data-variant-id="{{ v1.id }}" data-bundle-qty="1" data-bundle-price="{{ v1_price }}" aria-label="Add 1 Bottle bundle to cart">
           <span>ADD TO CART</span>
         </button>
       </div>
 
       <!-- Bundle Card 2: 2 Bottles (Featured / Most Popular) -->
-      <div class="bundle-item-card bundle-featured-card">
-        <div class="bundle-badge bundle-badge-white">
-          <span>MOST POPULAR</span>
-        </div>
-
-        <div class="bundle-img-box">
-          <img src="assets/bundle-2-bottles.png" alt="2 Bottles - Polar Instant Dye Shampoo" class="bundle-bottle-img" loading="lazy">
-        </div>
-
-        <h3 class="bundle-item-title bundle-title-light">2 Bottles</h3>
-
-        <div class="bundle-price-row">
-          <span class="bundle-price-compare bundle-light">Rs. 4,900</span>
-          <span class="bundle-price-current bundle-light">Rs. 2,950</span>
-          <span class="bundle-price-unit bundle-light">/ bottle</span>
-        </div>
-
-        <div class="bundle-save-tag bundle-save-tag-glass">
-          <span>Save 40% &middot; Total Rs. 5,900</span>
+      <div class="bundle-item-card bundle-featured-card bundle-card-2">
+        <div class="bundle-card-top">
+          <div class="bundle-badge bundle-badge-white">
+            <span>MOST POPULAR</span>
+          </div>
+          <div class="bundle-img-box">
+            <img src="{{ 'bundle-2-bottles.png' | asset_url }}" alt="2 Bottles - Polar Instant Dye Shampoo" class="bundle-bottle-img" loading="lazy">
+          </div>
+          <div class="bundle-card-info">
+            <div class="bundle-mobile-badge bundle-badge-white">
+              <span>MOST POPULAR</span>
+            </div>
+            <h3 class="bundle-item-title bundle-title-light">{{ v2.title | default: '2 Bottles' }}</h3>
+            <div class="bundle-price-row">
+              {%- if v2_compare != blank and v2_compare > v2_price -%}
+                <span class="bundle-price-compare bundle-light">{{ v2_compare | money_without_trailing_zeros | remove: '.00' }}</span>
+              {%- else -%}
+                <span class="bundle-price-compare bundle-light">Rs. 4,900</span>
+              {%- endif -%}
+              <span class="bundle-price-current bundle-light">{{ v2_price | money_without_trailing_zeros | remove: '.00' }}</span>
+              <span class="bundle-price-unit bundle-light">/ bottle</span>
+            </div>
+            <div class="bundle-save-tag bundle-save-tag-glass">
+              <span>Save {{ v2_save | default: 40 }}% &middot; Total {{ v2_price | times: 2 | default: 590000 | money_without_trailing_zeros | remove: '.00' }}</span>
+            </div>
+          </div>
         </div>
 
         <div class="bundle-divider bundle-divider-light"></div>
@@ -128,31 +164,38 @@
           </li>
         </ul>
 
-        <button type="button" class="bundle-btn bundle-btn-inverse" data-bundle-qty="2" data-bundle-price="5900" aria-label="Add 2 Bottles bundle to cart">
+        <button type="button" class="bundle-btn bundle-btn-inverse" data-variant-id="{{ v2.id }}" data-bundle-qty="2" data-bundle-price="{{ v2_price | times: 2 | default: 590000 }}" aria-label="Add 2 Bottles bundle to cart">
           <span>ADD TO CART</span>
         </button>
       </div>
 
       <!-- Bundle Card 3: 3 Bottles (Best Value) -->
-      <div class="bundle-item-card">
-        <div class="bundle-badge bundle-badge-dark">
-          <span>BEST VALUE</span>
-        </div>
-
-        <div class="bundle-img-box">
-          <img src="assets/bundle-3-bottles.png" alt="3 Bottles - Polar Instant Dye Shampoo" class="bundle-bottle-img" loading="lazy">
-        </div>
-
-        <h3 class="bundle-item-title">3 Bottles</h3>
-
-        <div class="bundle-price-row">
-          <span class="bundle-price-compare">Rs. 4,900</span>
-          <span class="bundle-price-current">Rs. 2,333</span>
-          <span class="bundle-price-unit">/ bottle</span>
-        </div>
-
-        <div class="bundle-save-tag">
-          <span>Save 52% &middot; Total Rs. 6,999</span>
+      <div class="bundle-item-card bundle-card-3">
+        <div class="bundle-card-top">
+          <div class="bundle-badge bundle-badge-dark">
+            <span>BEST VALUE</span>
+          </div>
+          <div class="bundle-img-box">
+            <img src="{{ 'bundle-3-bottles.png' | asset_url }}" alt="3 Bottles - Polar Instant Dye Shampoo" class="bundle-bottle-img" loading="lazy">
+          </div>
+          <div class="bundle-card-info">
+            <div class="bundle-mobile-badge bundle-badge-dark">
+              <span>BEST VALUE</span>
+            </div>
+            <h3 class="bundle-item-title">{{ v3.title | default: '3 Bottles' }}</h3>
+            <div class="bundle-price-row">
+              {%- if v3_compare != blank and v3_compare > v3_price -%}
+                <span class="bundle-price-compare">{{ v3_compare | money_without_trailing_zeros | remove: '.00' }}</span>
+              {%- else -%}
+                <span class="bundle-price-compare">Rs. 4,900</span>
+              {%- endif -%}
+              <span class="bundle-price-current">{{ v3_price | money_without_trailing_zeros | remove: '.00' }}</span>
+              <span class="bundle-price-unit">/ bottle</span>
+            </div>
+            <div class="bundle-save-tag">
+              <span>Save {{ v3_save | default: 52 }}% &middot; Total {{ v3_price | times: 3 | default: 699900 | money_without_trailing_zeros | remove: '.00' }}</span>
+            </div>
+          </div>
         </div>
 
         <div class="bundle-divider"></div>
@@ -187,7 +230,7 @@
           </li>
         </ul>
 
-        <button type="button" class="bundle-btn bundle-btn-primary" data-bundle-qty="3" data-bundle-price="6999" aria-label="Add 3 Bottles bundle to cart">
+        <button type="button" class="bundle-btn bundle-btn-primary" data-bundle-qty="3" data-bundle-price="{{ v3_price | times: 3 | default: 699900 }}" aria-label="Add 3 Bottles bundle to cart">
           <span>ADD TO CART</span>
         </button>
       </div>
@@ -201,19 +244,21 @@
       <div class="bundle-trust-item">
         <div class="bundle-trust-icon-wrap" aria-hidden="true">
           <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="16" cy="16" r="14" stroke="#2B3344" stroke-width="1.2" fill="#FFFFFF"/>
-            <circle cx="16" cy="16" r="11" stroke="#2B3344" stroke-width="0.8" stroke-dasharray="2 2"/>
-            <!-- Circular Dollar Return Arrows -->
-            <path d="M12.5 12C13.5 10.8 14.7 10 16 10C18.8 10 21 12.2 21 15C21 15.6 20.9 16.2 20.6 16.7" stroke="#2B3344" stroke-width="1.2" stroke-linecap="round"/>
-            <path d="M11 10.5L12.8 12L13.2 9.8" fill="#2B3344"/>
-            <path d="M19.5 20C18.5 21.2 17.3 22 16 22C13.2 22 11 19.8 11 17C11 16.4 11.1 15.8 11.4 15.3" stroke="#2B3344" stroke-width="1.2" stroke-linecap="round"/>
-            <path d="M21 21.5L19.2 20L18.8 22.2" fill="#2B3344"/>
-            <text x="16" y="19" font-family="'Lato', sans-serif" font-size="9" font-weight="700" fill="#2B3344" text-anchor="middle">$</text>
+            <circle cx="16" cy="16" r="14.5" stroke="#5E3A58" stroke-width="1.18" fill="#FFFFFF"/>
+            <circle cx="16" cy="16" r="11.5" stroke="#5E3A58" stroke-width="0.6" stroke-dasharray="2 2" fill="none"/>
+            <path d="M12.5 12C13.5 10.8 14.7 10 16 10C18.8 10 21 12.2 21 15C21 15.6 20.9 16.2 20.6 16.7" stroke="#5E3A58" stroke-width="1.2" stroke-linecap="round"/>
+            <path d="M11 10.5L12.8 12L13.2 9.8" fill="#5E3A58"/>
+            <path d="M19.5 20C18.5 21.2 17.3 22 16 22C13.2 22 11 19.8 11 17C11 16.4 11.1 15.8 11.4 15.3" stroke="#5E3A58" stroke-width="1.2" stroke-linecap="round"/>
+            <path d="M21 21.5L19.2 20L18.8 22.2" fill="#5E3A58"/>
+            <text x="16" y="19" font-family="'Lato', sans-serif" font-size="9" font-weight="700" fill="#5E3A58" text-anchor="middle">$</text>
           </svg>
         </div>
         <div class="bundle-trust-content">
           <strong class="bundle-trust-title">30-Day Money Back</strong>
-          <span class="bundle-trust-desc">Hassle-free money-back option</span>
+          <span class="bundle-trust-desc">
+            <span class="bundle-desc-desktop">Hassle-free money-back option</span>
+            <span class="bundle-desc-mobile">Hassle-free option</span>
+          </span>
         </div>
       </div>
 
@@ -221,16 +266,18 @@
       <div class="bundle-trust-item">
         <div class="bundle-trust-icon-wrap" aria-hidden="true">
           <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="16" cy="16" r="14" stroke="#2B3344" stroke-width="1.2" fill="#FFFFFF"/>
-            <!-- Worldwide / Fast Shipping -->
-            <ellipse cx="16" cy="16" rx="6" ry="10" stroke="#2B3344" stroke-width="1"/>
-            <line x1="6" y1="13" x2="26" y2="13" stroke="#2B3344" stroke-width="1"/>
-            <line x1="6" y1="19" x2="26" y2="19" stroke="#2B3344" stroke-width="1"/>
+            <circle cx="16" cy="16" r="14.5" stroke="#5E3A58" stroke-width="1.18" fill="#FFFFFF"/>
+            <ellipse cx="16" cy="16" rx="6" ry="10" stroke="#5E3A58" stroke-width="1" fill="none"/>
+            <line x1="6" y1="13" x2="26" y2="13" stroke="#5E3A58" stroke-width="1"/>
+            <line x1="6" y1="19" x2="26" y2="19" stroke="#5E3A58" stroke-width="1"/>
           </svg>
         </div>
         <div class="bundle-trust-content">
           <strong class="bundle-trust-title">Insured &amp; Fast Shipping</strong>
-          <span class="bundle-trust-desc">Worldwide delivery to your door</span>
+          <span class="bundle-trust-desc">
+            <span class="bundle-desc-desktop">Worldwide delivery to your door</span>
+            <span class="bundle-desc-mobile">Worldwide delivery</span>
+          </span>
         </div>
       </div>
 
@@ -238,16 +285,18 @@
       <div class="bundle-trust-item">
         <div class="bundle-trust-icon-wrap" aria-hidden="true">
           <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="16" cy="16" r="14" stroke="#2B3344" stroke-width="1.2" fill="#FFFFFF"/>
-            <!-- Box with Return Arrow -->
-            <rect x="10.5" y="11.5" width="11" height="9" rx="1.5" stroke="#2B3344" stroke-width="1.2"/>
-            <path d="M14 10L16 8L18 10" stroke="#2B3344" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M16 8V14" stroke="#2B3344" stroke-width="1.2" stroke-linecap="round"/>
+            <circle cx="16" cy="16" r="14.5" stroke="#5E3A58" stroke-width="1.18" fill="#FFFFFF"/>
+            <rect x="10.5" y="11.5" width="11" height="9" rx="1.5" stroke="#5E3A58" stroke-width="1.2" fill="none"/>
+            <path d="M14 10L16 8L18 10" stroke="#5E3A58" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M16 8V14" stroke="#5E3A58" stroke-width="1.2" stroke-linecap="round"/>
           </svg>
         </div>
         <div class="bundle-trust-content">
           <strong class="bundle-trust-title">Returns Accepted</strong>
-          <span class="bundle-trust-desc">Easy and simple return process</span>
+          <span class="bundle-trust-desc">
+            <span class="bundle-desc-desktop">Easy and simple return process</span>
+            <span class="bundle-desc-mobile">Easy return process</span>
+          </span>
         </div>
       </div>
 
@@ -255,16 +304,18 @@
       <div class="bundle-trust-item">
         <div class="bundle-trust-icon-wrap" aria-hidden="true">
           <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="16" cy="16" r="14" stroke="#2B3344" stroke-width="1.2" fill="#FFFFFF"/>
-            <!-- Card / Lock -->
-            <rect x="9.5" y="12" width="13" height="9" rx="1.5" stroke="#2B3344" stroke-width="1.2"/>
-            <line x1="9.5" y1="15" x2="22.5" y2="15" stroke="#2B3344" stroke-width="1.2"/>
-            <rect x="12" y="17" width="2.5" height="2" rx="0.5" fill="#2B3344"/>
+            <circle cx="16" cy="16" r="14.5" stroke="#5E3A58" stroke-width="1.18" fill="#FFFFFF"/>
+            <rect x="9.5" y="12" width="13" height="9" rx="1.5" stroke="#5E3A58" stroke-width="1.2" fill="none"/>
+            <line x1="9.5" y1="15" x2="22.5" y2="15" stroke="#5E3A58" stroke-width="1.2"/>
+            <rect x="12" y="17" width="2.5" height="2" rx="0.5" fill="#5E3A58"/>
           </svg>
         </div>
         <div class="bundle-trust-content">
           <strong class="bundle-trust-title">Secure Payment</strong>
-          <span class="bundle-trust-desc">Protected and safe transactions</span>
+          <span class="bundle-trust-desc">
+            <span class="bundle-desc-desktop">Protected and safe transactions</span>
+            <span class="bundle-desc-mobile">Protected transactions</span>
+          </span>
         </div>
       </div>
 
@@ -277,3 +328,111 @@
 
   </div>
 </section>
+
+<script>
+  (function() {
+    function initBundleCart() {
+      var section = document.getElementById('bundleOfferSection') || document.getElementById('chooseBundle') || document.querySelector('.bundle-offer-section');
+      if (!section) return;
+
+      var bundleButtons = section.querySelectorAll('.bundle-btn');
+      bundleButtons.forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          var variantId = btn.getAttribute('data-variant-id');
+          var qty = parseInt(btn.getAttribute('data-bundle-qty') || '1', 10);
+          if (!variantId) return;
+
+          var btnSpan = btn.querySelector('span');
+          var originalText = btnSpan ? btnSpan.textContent : btn.textContent;
+          btn.disabled = true;
+          if (btnSpan) btnSpan.textContent = 'ADDING...';
+
+          var cartDrawer = document.querySelector('cart-drawer') || document.querySelector('#CartDrawer') || document.querySelector('cart-notification');
+          var sectionsToRender = [];
+          if (cartDrawer && typeof cartDrawer.getSectionsToRender === 'function') {
+            sectionsToRender = cartDrawer.getSectionsToRender().map(function(s) { return s.section || s.id; });
+          } else {
+            sectionsToRender = ['cart-drawer', 'cart-icon-bubble'];
+          }
+
+          var formData = new FormData();
+          formData.append('id', variantId);
+          formData.append('quantity', qty);
+          if (sectionsToRender.length > 0) {
+            formData.append('sections', sectionsToRender.join(','));
+            formData.append('sections_url', window.location.pathname);
+          }
+
+          var addUrl = (window.routes && window.routes.cart_add_url) ? window.routes.cart_add_url : '/cart/add';
+
+          fetch(addUrl, {
+            method: 'POST',
+            headers: {
+              'X-Requested-With': 'XMLHttpRequest',
+              'Accept': 'application/javascript'
+            },
+            body: formData
+          })
+          .then(function(res) { return res.json(); })
+          .then(function(data) {
+            if (data.status && data.message) {
+              alert(data.message + (data.description ? ': ' + data.description : ''));
+              return;
+            }
+
+            if (typeof window.openShopifyCartDrawer === 'function') {
+              window.openShopifyCartDrawer(data, btn);
+            } else {
+              if (cartDrawer && typeof cartDrawer.renderContents === 'function') {
+                cartDrawer.renderContents(data);
+              } else if (cartDrawer && typeof cartDrawer.open === 'function') {
+                cartDrawer.open(btn);
+              } else if (cartDrawer && cartDrawer.classList) {
+                cartDrawer.classList.add('animate', 'active');
+                document.body.classList.add('overflow-hidden');
+              } else {
+                var bubble = document.querySelector('#cart-icon-bubble');
+                if (bubble) bubble.click();
+              }
+            }
+          })
+          .catch(function(err) {
+            console.error('Bundle add to cart error:', err);
+          })
+          .finally(function() {
+            btn.disabled = false;
+            if (btnSpan) btnSpan.textContent = originalText;
+          });
+        });
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initBundleCart);
+    } else {
+      initBundleCart();
+    }
+
+    document.addEventListener('shopify:section:load', function(e) {
+      if (e.target && (e.target.querySelector('#bundleOfferSection') || e.target.querySelector('#chooseBundle') || e.target.querySelector('.bundle-offer-section'))) {
+        initBundleCart();
+      }
+    });
+  })();
+</script>
+
+
+{% schema %}
+{
+  "name": "Bundle Offer",
+  "tag": "section",
+  "class": "bundle-offer-wrapper",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Bundle Offer"
+    }
+  ]
+}
+{% endschema %}

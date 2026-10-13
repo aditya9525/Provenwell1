@@ -1,66 +1,211 @@
+{{ 'style.css' | asset_url | stylesheet_tag }}
+
 {%- comment -%}
   Shopify Main Product Section
   Complete responsive product page with dynamic variant pricing, bundles, reward unlocks, spotlight reviews, trust badges, and accordions.
 {%- endcomment -%}
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 <section class="product-section" id="productSection">
-<img
-  class="top-line-style"
-  src="{{ 'line_style.svg' | asset_url }}"
-  alt=""
->
+  <img
+    class="top-line-style"
+    src="{{ 'line_style.svg' | asset_url }}"
+    alt=""
+  >
 
-<img
-  class="bottom-line-style"
-  src="{{ 'line_style1.svg' | asset_url }}"
-  alt=""
->
+  <img
+    class="bottom-line-style"
+    src="{{ 'line_style1.svg' | asset_url }}"
+    alt=""
+  >
   <div class="product-container">
-
     <!-- Left Column: Gallery & Spotlight -->
     <div class="product-left-col">
       <div class="product-gallery">
         <div class="main-image-wrapper">
           <div class="badge-per-use">
             <span>as low as</span>
-            <strong>$2.33</strong>
+            <strong>
+              {%- assign lowest_var_price = product.variants.last.price | default: 233100 -%}
+              {{ lowest_var_price | money_without_trailing_zeros }}
+            </strong>
             <span>per use</span>
           </div>
 
-          {%- if product.featured_image != blank -%}
-            <img id="mainProductImage" src="{{ product.featured_image | image_url: width: 800 }}" alt="{{ product.title | escape }}" class="main-product-img">
-          {%- else -%}
-            <img id="mainProductImage" src="{{ 'product-black-main.png' | asset_url }}" alt="Polar Instant Hair Dye Shampoo" class="main-product-img">
-          {%- endif -%}
-          <div class="gallery-counter-badge"><span id="galleryCurrentIndex">1</span> / <span id="galleryTotalCount">8</span></div>
+          <!-- Product Main Images Swiper Carousel -->
+          <div class="swiper main-product-swiper" id="mainProductSwiper">
+            <div class="swiper-wrapper">
+              {%- if product.media.size > 0 -%}
+                {%- for media in product.media -%}
+                  <div class="swiper-slide main-product-slide" data-index="{{ forloop.index }}">
+                    {%- if media.media_type == 'video' or media.media_type == 'external_video' -%}
+                      <div class="slide-video-container">
+                        {{ media | video_tag: controls: true, autoplay: false, class: 'main-product-img' }}
+                      </div>
+                    {%- else -%}
+                      <img
+                        src="{{ media | image_url: width: 1000 }}"
+                        alt="{{ media.alt | default: product.title | escape }}"
+                        class="main-product-img"
+                        loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
+                      >
+                    {%- endif -%}
+                  </div>
+                {%- endfor -%}
+              {%- else -%}
+                <div class="swiper-slide main-product-slide" data-index="1">
+                  <img
+                    src="{{ 'product-black-main.png' | asset_url }}"
+                    alt="Natural Black Bottle & Box"
+                    class="main-product-img"
+                    loading="eager"
+                  >
+                </div>
+                <div class="swiper-slide main-product-slide" data-index="2">
+                  <img
+                    src="{{ 'polar-bottle-tall.png' | asset_url }}"
+                    alt="Polar Tall Bottle"
+                    class="main-product-img"
+                    loading="lazy"
+                  >
+                </div>
+                <div class="swiper-slide main-product-slide" data-index="3">
+                  <img
+                    src="{{ 'spotlight-caroline.png' | asset_url }}"
+                    alt="Before After Caroline"
+                    class="main-product-img"
+                    loading="lazy"
+                  >
+                </div>
+                <div class="swiper-slide main-product-slide" data-index="4">
+                  <img
+                    src="{{ 'customer_story.jpg' | asset_url }}"
+                    alt="Video Review"
+                    class="main-product-img"
+                    loading="lazy"
+                  >
+                </div>
+                <div class="swiper-slide main-product-slide" data-index="5">
+                  <img
+                    src="{{ 'polar_shampoo.jpg' | asset_url }}"
+                    alt="Packaging view"
+                    class="main-product-img"
+                    loading="lazy"
+                  >
+                </div>
+                <div class="swiper-slide main-product-slide" data-index="6">
+                  <img
+                    src="{{ 'before_after.jpg' | asset_url }}"
+                    alt="Before After Results"
+                    class="main-product-img"
+                    loading="lazy"
+                  >
+                </div>
+                <div class="swiper-slide main-product-slide" data-index="7">
+                  <img
+                    src="{{ 'product-feature-callout.png' | asset_url }}"
+                    alt="Features"
+                    class="main-product-img"
+                    loading="lazy"
+                  >
+                </div>
+                <div class="swiper-slide main-product-slide" data-index="8">
+                  <img
+                    src="{{ 'before-after-3.jpg' | asset_url }}"
+                    alt="Hair Results"
+                    class="main-product-img"
+                    loading="lazy"
+                  >
+                </div>
+              {%- endif -%}
+            </div>
+          </div>
+          <div class="gallery-counter-badge">
+            <span id="galleryCurrentIndex">1</span> /
+            <span id="galleryTotalCount">
+              {%- if product.media.size > 0 %}{{ product.media.size }}{% else %}8{% endif -%}
+            </span>
+          </div>
         </div>
 
         <!-- Thumbnails Slider -->
         <div class="thumbnails-container">
           <button class="thumb-nav-btn prev" type="button" aria-label="Previous image">
-            <svg width="8" height="14" viewBox="0 0 8 14" fill="none"><path d="M7 1L1 7L7 13" stroke="#1E2123" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg width="8" height="14" viewBox="0 0 8 14" fill="none">
+              <path d="M7 1L1 7L7 13" stroke="#1E2123" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
           </button>
           <div class="thumbnails-slider" id="thumbnailsSlider">
             {%- for media in product.media -%}
-              <button class="thumb-item{% if forloop.first %} active{% endif %}" data-img="{{ media | image_url: width: 800 }}" data-index="{{ forloop.index }}" type="button">
+              <button
+                class="thumb-item{% if forloop.first %} active{% endif %}"
+                data-img="{{ media | image_url: width: 800 }}"
+                data-index="{{ forloop.index }}"
+                type="button"
+              >
                 <img src="{{ media | image_url: width: 120 }}" alt="{{ media.alt | escape }}">
               </button>
             {%- else -%}
-              <button class="thumb-item active" data-img="{{ 'product-black-main.png' | asset_url }}" data-index="1" type="button"><img src="{{ 'product-black-main.png' | asset_url }}" alt="Natural Black Bottle & Box"></button>
-              <button class="thumb-item" data-img="{{ 'polar-bottle-tall.png' | asset_url }}" data-index="2" type="button"><img src="{{ 'polar-bottle-tall.png' | asset_url }}" alt="Polar Tall Bottle"></button>
-              <button class="thumb-item" data-img="{{ 'spotlight-caroline.png' | asset_url }}" data-index="3" type="button"><img src="{{ 'spotlight-caroline.png' | asset_url }}" alt="Before After Caroline"></button>
-              <button class="thumb-item video-thumb" data-img="{{ 'customer_story.jpg' | asset_url }}" data-index="4" type="button">
-                <img src="{{ 'customer_story.jpg' | asset_url }}" alt="Video Review">
-                <span class="thumb-play-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="#FFFFFF"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg></span>
+              <button
+                class="thumb-item active"
+                data-img="{{ 'product-black-main.png' | asset_url }}"
+                data-index="1"
+                type="button"
+              >
+                <img src="{{ 'product-black-main.png' | asset_url }}" alt="Natural Black Bottle & Box">
               </button>
-              <button class="thumb-item" data-img="{{ 'polar_shampoo.jpg' | asset_url }}" data-index="5" type="button"><img src="{{ 'polar_shampoo.jpg' | asset_url }}" alt="Packaging view"></button>
-              <button class="thumb-item" data-img="{{ 'before_after.jpg' | asset_url }}" data-index="6" type="button"><img src="{{ 'before_after.jpg' | asset_url }}" alt="Before After Results"></button>
-              <button class="thumb-item" data-img="{{ 'product-feature-callout.png' | asset_url }}" data-index="7" type="button"><img src="{{ 'product-feature-callout.png' | asset_url }}" alt="Features"></button>
-              <button class="thumb-item" data-img="{{ 'before-after-3.jpg' | asset_url }}" data-index="8" type="button"><img src="{{ 'before-after-3.jpg' | asset_url }}" alt="Hair Results"></button>
+              <button
+                class="thumb-item"
+                data-img="{{ 'polar-bottle-tall.png' | asset_url }}"
+                data-index="2"
+                type="button"
+              >
+                <img src="{{ 'polar-bottle-tall.png' | asset_url }}" alt="Polar Tall Bottle">
+              </button>
+              <button
+                class="thumb-item"
+                data-img="{{ 'spotlight-caroline.png' | asset_url }}"
+                data-index="3"
+                type="button"
+              >
+                <img src="{{ 'spotlight-caroline.png' | asset_url }}" alt="Before After Caroline">
+              </button>
+              <button
+                class="thumb-item video-thumb"
+                data-img="{{ 'customer_story.jpg' | asset_url }}"
+                data-index="4"
+                type="button"
+              >
+                <img src="{{ 'customer_story.jpg' | asset_url }}" alt="Video Review">
+                <span class="thumb-play-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="#FFFFFF">
+                    <polygon points="6 3 20 12 6 21 6 3"></polygon>
+                  </svg>
+                </span>
+              </button>
+              <button class="thumb-item" data-img="{{ 'polar_shampoo.jpg' | asset_url }}" data-index="5" type="button">
+                <img src="{{ 'polar_shampoo.jpg' | asset_url }}" alt="Packaging view">
+              </button>
+              <button class="thumb-item" data-img="{{ 'before_after.jpg' | asset_url }}" data-index="6" type="button">
+                <img src="{{ 'before_after.jpg' | asset_url }}" alt="Before After Results">
+              </button>
+              <button
+                class="thumb-item"
+                data-img="{{ 'product-feature-callout.png' | asset_url }}"
+                data-index="7"
+                type="button"
+              >
+                <img src="{{ 'product-feature-callout.png' | asset_url }}" alt="Features">
+              </button>
+              <button class="thumb-item" data-img="{{ 'before-after-3.jpg' | asset_url }}" data-index="8" type="button">
+                <img src="{{ 'before-after-3.jpg' | asset_url }}" alt="Hair Results">
+              </button>
             {%- endfor -%}
           </div>
           <button class="thumb-nav-btn next" type="button" aria-label="Next image">
-            <svg width="8" height="14" viewBox="0 0 8 14" fill="none"><path d="M1 1L7 7L1 13" stroke="#1E2123" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg width="8" height="14" viewBox="0 0 8 14" fill="none">
+              <path d="M1 1L7 7L1 13" stroke="#1E2123" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
           </button>
         </div>
       </div>
@@ -77,11 +222,25 @@
         <div class="spotlight-content">
           <div class="star-rating-row">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
           <h3 class="spotlight-title">I FEEL LIKE MYSELF AGAIN</h3>
-          <p class="spotlight-quote">&ldquo;I look and feel like my younger self again. It’s nice having color that looks natural and not fake or harsh.&rdquo;</p>
+          <p class="spotlight-quote">
+            &ldquo;I look and feel like my younger self again. It’s nice having color that looks natural and not fake or
+            harsh.&rdquo;
+          </p>
           <div class="spotlight-author-row">
             <span class="spotlight-author">Caroline T., Austin, TX</span>
             <div class="verified-buyer-pill">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <svg
+                width="12"
+                height="12"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
               <span>VERIFIED BUYER</span>
             </div>
           </div>
@@ -99,74 +258,316 @@
       <h1 class="product-main-title">{{ product.title | default: 'Instant Dye Shampoo' }}</h1>
       <h2 class="product-subtitle">THE EASIEST WAY TO COVER GRAYS NATURALLY</h2>
 
-      <hr class="product-divider">      <!-- Pricing Row -->
+      <hr class="product-divider">
+      <!-- Pricing Row -->
       <div class="product-pricing-row">
-        <span class="compare-at-price" id="comparePrice">{{ product.compare_at_price | default: 490000 | money }}</span>
-        <span class="current-price" id="currentPrice">{{ product.price | default: 350000 | money }}</span>
-        <div class="discount-pill desktop-view" id="discountPill">FALL SALE | SAVE 29%</div>
-        <div class="discount-pill mobile-view" id="discountPill">FALL SALE | SAVE 29%</div>
+        {%- assign initial_variant = product.selected_or_first_available_variant -%}
+        {%- assign initial_compare = initial_variant.compare_at_price
+          | default: product.compare_at_price
+          | default: 490000
+        -%}
+        {%- assign initial_price = initial_variant.price | default: product.price | default: 350100 -%}
+        {%- assign initial_save = 29 -%}
+        {%- if initial_compare > initial_price -%}
+          {%- assign initial_save = initial_compare
+            | minus: initial_price
+            | times: 100.0
+            | divided_by: initial_compare
+            | round
+          -%}
+        {%- endif -%}
+        <span class="compare-at-price" id="comparePrice">{{ initial_compare | money }}</span>
+        <span class="current-price" id="currentPrice">{{ initial_price | money }}</span>
+        <div class="discount-pill desktop-view" id="discountPill">FALL SALE | SAVE {{ initial_save }}%</div>
+        <div class="discount-pill mobile-view">FALL SALE | SAVE {{ initial_save }}%</div>
       </div>
 
       <!-- 4-Benefit Feature Grid -->
       <div class="features-highlight-box">
         <div class="feature-item">
-          <span class="feature-check-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+          <span class="feature-check-icon">
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#FFFFFF"
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </span>
           <div class="feature-text"><span>Covers grays</span><strong>in just 10 minutes</strong></div>
         </div>
         <div class="feature-item">
-          <span class="feature-check-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+          <span class="feature-check-icon">
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#FFFFFF"
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </span>
           <div class="feature-text"><span>Protects hair with</span><strong>ammonia-free formula</strong></div>
         </div>
         <div class="feature-item">
-          <span class="feature-check-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+          <span class="feature-check-icon">
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#FFFFFF"
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </span>
           <div class="feature-text"><span>As easy as</span><strong>regular shampoo</strong></div>
         </div>
         <div class="feature-item">
-          <span class="feature-check-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+          <span class="feature-check-icon">
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#FFFFFF"
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </span>
           <div class="feature-text"><span>Suitable for</span><strong>ALL hair types</strong></div>
         </div>
       </div>
 
-      <!-- Color Swatches -->
+      {%- liquid
+        assign cat_colors = product.metafields.shopify['color-pattern'].value
+        if cat_colors == blank
+          assign cat_colors = product.metafields.shopify.color.value
+        endif
+        if cat_colors == blank
+          assign cat_colors = product.metafields.shopify.color.value
+        endif
+        if cat_colors == blank
+          assign cat_colors = product.metafields.shopify['hair-color'].value
+        endif
+        if cat_colors == blank
+          assign cat_colors = product.metafields.shopify.hair_color.value
+        endif
+        if cat_colors == blank
+          assign cat_colors = product.metafields.custom.color.value
+        endif
+        if cat_colors == blank
+          assign cat_colors = product.metafields.custom.colors.value
+        endif
+        if cat_colors == blank and product.metafields.shopify['color-pattern'] != blank
+          assign cat_colors = product.metafields.shopify['color-pattern']
+        endif
+        if cat_colors == blank and product.metafields.shopify.color != blank
+          assign cat_colors = product.metafields.shopify.color
+        endif
+
+        assign default_first_color = 'Dark Brown'
+        if cat_colors != blank
+          for item in cat_colors
+            if forloop.first
+              assign default_first_color = item.label | default: item.name | default: item.value | default: item | strip
+            endif
+          endfor
+        endif
+      -%}
+
+      <!-- Color Swatches (Dynamic Category Metafield) -->
       <div class="color-selection-wrapper">
         <div class="section-label-row">
           <span class="label-title">Choose Color:</span>
-          <strong class="selected-color-name" id="selectedColorName">Black</strong>
+          <strong class="selected-color-name" id="selectedColorName">{{ default_first_color }}</strong>
         </div>
         <div class="color-swatches-list">
-          <button type="button" class="color-swatch-btn active" data-color="Black"><div class="swatch-img-box"><img src="{{ 'swatch-black.png' | asset_url }}" alt="Black Swatch" class="swatch-img"></div><span class="swatch-label">Black</span></button>
-          <button type="button" class="color-swatch-btn" data-color="Dark Brown"><div class="swatch-img-box"><img src="{{ 'swatch-dark-brown.png' | asset_url }}" alt="Dark Brown Swatch" class="swatch-img"></div><span class="swatch-label">Dark Brown</span></button>
-          <button type="button" class="color-swatch-btn" data-color="Medium Brown"><div class="swatch-img-box"><img src="{{ 'swatch-medium-brown.png' | asset_url }}" alt="Medium Brown Swatch" class="swatch-img"></div><span class="swatch-label">Medium Brown</span></button>
+          {%- if cat_colors != blank -%}
+            {%- for item in cat_colors -%}
+              {%- liquid
+                assign c_name = item.label | default: item.name | default: item.value | default: item | strip
+                assign c_handle = c_name | handleize
+                assign c_hex = item.color | default: item.hex | default: ''
+                assign c_image = item.image
+              -%}
+              <button
+                type="button"
+                class="color-swatch-btn{% if forloop.first %} active{% endif %}"
+                data-color="{{ c_name | escape }}"
+              >
+                <div class="swatch-img-box">
+                  {%- if c_image != blank -%}
+                    <img src="{{ c_image | image_url: width: 60 }}" alt="{{ c_name | escape }}" class="swatch-img">
+                  {%- elsif c_handle contains 'dark-brown' or c_handle contains 'dark' -%}
+                    <img src="{{ 'swatch-dark-brown.png' | asset_url }}" alt="{{ c_name | escape }}" class="swatch-img">
+                  {%- elsif c_handle contains 'medium-brown' or c_handle contains 'medium' -%}
+                    <img
+                      src="{{ 'swatch-medium-brown.png' | asset_url }}"
+                      alt="{{ c_name | escape }}"
+                      class="swatch-img"
+                    >
+                  {%- elsif c_handle contains 'black' -%}
+                    <img src="{{ 'swatch-black.png' | asset_url }}" alt="{{ c_name | escape }}" class="swatch-img">
+                  {%- elsif c_hex != blank -%}
+                    <span class="swatch-hex-circle" style="background-color: {{ c_hex }};"></span>
+                  {%- else -%}
+                    <span class="swatch-hex-circle swatch-fallback-{{ c_handle }}"></span>
+                  {%- endif -%}
+                </div>
+                <span class="swatch-label">{{ c_name }}</span>
+              </button>
+            {%- endfor -%}
+          {%- else -%}
+            <!-- Fallback Category Swatches matching store configuration -->
+            <button type="button" class="color-swatch-btn active" data-color="Dark Brown">
+              <div class="swatch-img-box">
+                <img src="{{ 'swatch-dark-brown.png' | asset_url }}" alt="Dark Brown Swatch" class="swatch-img">
+              </div>
+              <span class="swatch-label">Dark Brown</span>
+            </button>
+            <button type="button" class="color-swatch-btn" data-color="Medium Brown">
+              <div class="swatch-img-box">
+                <img src="{{ 'swatch-medium-brown.png' | asset_url }}" alt="Medium Brown Swatch" class="swatch-img">
+              </div>
+              <span class="swatch-label">Medium Brown</span>
+            </button>
+            <button type="button" class="color-swatch-btn" data-color="Black">
+              <div class="swatch-img-box">
+                <img src="{{ 'swatch-black.png' | asset_url }}" alt="Black Swatch" class="swatch-img">
+              </div>
+              <span class="swatch-label">Black</span>
+            </button>
+          {%- endif -%}
         </div>
       </div>
 
-      <!-- Bundle Selector -->
+      <!-- Bundle Selector (Dynamic Variants) -->
       <div class="quantity-bundles-wrapper">
         <div class="section-label-row"><span class="label-title">Select Quantity:</span></div>
         <div class="bundles-grid">
-          <div class="bundle-card active" data-qty="1" data-price="350000" data-compare="490000" data-save="29%">
-            <div class="bundle-box-btn">
-              <span class="bundle-qty-title">1 Bottle</span>
-              <span class="bundle-perk-text"></span>
+          {%- if product.variants.size > 0 and product.variants.first.title != 'Default Title' -%}
+            {%- for variant in product.variants -%}
+              {%- liquid
+                assign qty = forloop.index
+                if variant.title contains '1'
+                  assign qty = 1
+                elsif variant.title contains '2'
+                  assign qty = 2
+                elsif variant.title contains '3'
+                  assign qty = 3
+                endif
+
+                assign var_price = variant.price
+                assign var_compare = variant.compare_at_price
+                if var_compare == blank or var_compare <= var_price
+                  if qty == 1
+                    assign var_compare = 490000
+                  elsif qty == 2
+                    assign var_compare = 980000
+                  elsif qty == 3
+                    assign var_compare = 1470000
+                  else
+                    assign var_compare = var_price | times: 1.4 | round
+                  endif
+                endif
+
+                assign save_percent = 29
+                if qty == 2
+                  assign save_percent = 40
+                elsif qty == 3
+                  assign save_percent = 52
+                elsif var_compare > var_price
+                  assign save_percent = var_compare | minus: var_price | times: 100.0 | divided_by: var_compare | round
+                endif
+              -%}
+
+              <div
+                class="bundle-card{% if forloop.first %} active{% endif %}"
+                data-variant-id="{{ variant.id }}"
+                data-qty="{{ qty }}"
+                data-price="{{ var_price }}"
+                data-compare="{{ var_compare }}"
+                data-save="{{ save_percent }}%"
+                data-available="{{ variant.available }}"
+              >
+                {%- if qty == 2 -%}
+                  <div class="floating-benefit-badge shipping-badge">+ Free Shipping</div>
+                {%- elsif qty >= 3 -%}
+                  <div class="floating-benefit-badge conditioner-badge">+ Free Conditioner</div>
+                {%- endif -%}
+
+                <div class="bundle-box-btn">
+                  <span class="bundle-qty-title">{{ variant.title }}</span>
+                  <span class="bundle-perk-text">
+                    {%- if qty == 2 -%}+ Free Shipping{%- elsif qty >= 3 -%}+ Free Conditioner{%- endif -%}
+                  </span>
+                </div>
+                <span class="bundle-price-each">{{ var_price | money }} Each</span>
+              </div>
+            {%- endfor -%}
+          {%- else -%}
+            <!-- Fallback Static Bundles matching Shopify Variants -->
+            <div
+              class="bundle-card active"
+              data-variant-id="{{ product.selected_or_first_available_variant.id }}"
+              data-qty="1"
+              data-price="350100"
+              data-compare="490000"
+              data-save="29%"
+            >
+              <div class="bundle-box-btn">
+                <span class="bundle-qty-title">1 Bottle</span>
+                <span class="bundle-perk-text"></span>
+              </div>
+              <span class="bundle-price-each">Rs. 3,501 Each</span>
             </div>
-            <span class="bundle-price-each">Rs. 3,500 Each</span>
-          </div>
-          <div class="bundle-card" data-qty="2" data-price="590000" data-compare="980000" data-save="40%">
-            <div class="floating-benefit-badge shipping-badge">+ Free Shipping</div>
-            <div class="bundle-box-btn">
-              <span class="bundle-qty-title">2 Bottles</span>
-              <span class="bundle-perk-text">+ Free Shipping</span>
+            <div
+              class="bundle-card"
+              data-variant-id="{{ product.selected_or_first_available_variant.id }}"
+              data-qty="2"
+              data-price="295100"
+              data-compare="980000"
+              data-save="40%"
+            >
+              <div class="floating-benefit-badge shipping-badge">+ Free Shipping</div>
+              <div class="bundle-box-btn">
+                <span class="bundle-qty-title">2 Bottles</span>
+                <span class="bundle-perk-text">+ Free Shipping</span>
+              </div>
+              <span class="bundle-price-each">Rs. 2,951 Each</span>
             </div>
-            <span class="bundle-price-each">Rs. 2,950 Each</span>
-          </div>
-          <div class="bundle-card" data-qty="3" data-price="699900" data-compare="1470000" data-save="52%">
-            <div class="floating-benefit-badge conditioner-badge">+ Free Conditioner</div>
-            <div class="bundle-box-btn">
-              <span class="bundle-qty-title">3 Bottles</span>
-              <span class="bundle-perk-text">+ Free Conditioner</span>
+            <div
+              class="bundle-card"
+              data-variant-id="{{ product.selected_or_first_available_variant.id }}"
+              data-qty="3"
+              data-price="233100"
+              data-compare="1470000"
+              data-save="52%"
+            >
+              <div class="floating-benefit-badge conditioner-badge">+ Free Conditioner</div>
+              <div class="bundle-box-btn">
+                <span class="bundle-qty-title">3 Bottles</span>
+                <span class="bundle-perk-text">+ Free Conditioner</span>
+              </div>
+              <span class="bundle-price-each">Rs. 2,331 Each</span>
             </div>
-            <span class="bundle-price-each">Rs. 2,333 Each</span>
-          </div>
+          {%- endif -%}
         </div>
       </div>
 
@@ -177,7 +578,9 @@
           <span class="rewards-unlocked-status" id="rewardsStatusText">0 of 2 unlocked</span>
         </div>
         <div class="rewards-body">
-          <div class="rewards-progress-track"><div class="rewards-progress-fill" id="rewardsProgressFill" style="width: 15%;"></div></div>
+          <div class="rewards-progress-track">
+            <div class="rewards-progress-fill" id="rewardsProgressFill" style="width: 15%;"></div>
+          </div>
           <!-- Mobile Milestones Row -->
           <div class="rewards-milestones-row">
             <span class="milestone-item" id="milestoneShipping">&#10003; Free Shipping &middot; 2 Bottles</span>
@@ -186,17 +589,38 @@
           <div class="rewards-items-grid">
             <div class="reward-item" id="rewardShipping">
               <div class="reward-icon-wrapper">
-                <div class="lock-indicator"><svg width="9" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
-                <div class="reward-img-badge"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E63639" stroke-width="2"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg></div>
+                <div class="lock-indicator">
+                  <svg width="9" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                  </svg>
+                </div>
+                <div class="reward-img-badge">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E63639" stroke-width="2">
+                    <rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle>
+                  </svg>
+                </div>
               </div>
-              <div class="reward-text-col"><span class="reward-name">Free Shipping</span><span class="reward-req">2 Bottles</span></div>
+              <div class="reward-text-col">
+                <span class="reward-name">Free Shipping</span><span class="reward-req">2 Bottles</span>
+              </div>
             </div>
             <div class="reward-item" id="rewardConditioner">
               <div class="reward-icon-wrapper">
-                <div class="lock-indicator"><svg width="9" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
-                <div class="reward-img-badge"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg></div>
+                <div class="lock-indicator">
+                  <svg width="9" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                  </svg>
+                </div>
+                <div class="reward-img-badge">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2">
+                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path>
+                  </svg>
+                </div>
               </div>
-              <div class="reward-text-col"><span class="reward-name">Free Conditioner</span><span class="reward-req">3 Bottles · Rs. 2,300.00</span></div>
+              <div class="reward-text-col">
+                <span class="reward-name">Free Conditioner</span
+                ><span class="reward-req">3 Bottles · Rs. 2,300.00</span>
+              </div>
             </div>
           </div>
           <p class="rewards-hint" id="rewardsHintText">Add 1 more bottle to unlock free shipping</p>
@@ -205,31 +629,93 @@
 
       <!-- Add to Cart Form -->
       {%- form 'product', product, id: 'product-form' -%}
-        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+        <input
+          type="hidden"
+          name="id"
+          id="selectedVariantId"
+          value="{{ product.selected_or_first_available_variant.id }}"
+        >
         <input type="hidden" name="quantity" id="selectedQuantityInput" value="1">
-        <button type="submit" class="btn-add-to-cart"><span>ADD TO CART</span></button>
+        <input type="hidden" name="properties[Color]" id="selectedColorProperty" value="{{ default_first_color }}">
+        <button type="submit" class="btn-add-to-cart" id="addToCartBtn">
+          <span>
+            {%- if product.selected_or_first_available_variant.available == false -%}
+              SOLD OUT
+            {%- else -%}
+              ADD TO CART
+            {%- endif -%}
+          </span>
+        </button>
       {%- endform -%}
 
-      <p class="moneyback-guarantee-text"><strong>30 Day Money-Back-Guarantee.</strong> If it doesn't work for you we'll refund no questions asked</p>
+      <p class="moneyback-guarantee-text">
+        <strong>30 Day Money-Back-Guarantee.</strong> If it doesn't work for you we'll refund no questions asked
+      </p>
 
       <!-- Warning Stock Box -->
       <div class="warning-stock-box">
         <div class="warning-icon-col">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#111827"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line>
+          </svg>
         </div>
         <div class="warning-content-col">
           <h3 class="warning-title">⚠ WARNING: Low Stock Notice</h3>
-          <p class="warning-desc">This product sold out <strong>11 times</strong> last year. We encourage you to take advantage of the <strong>Limited Fall Sale</strong> and buy now.</p>
+          <p class="warning-desc">
+            This product sold out <strong>11 times</strong> last year. We encourage you to take advantage of the
+            <strong>Limited Fall Sale</strong> and buy now.
+          </p>
           <p class="warning-ps"><strong>PS:</strong> Only available here, don't buy fakes on Amazon/eBay</p>
         </div>
       </div>
 
       <!-- Trust Badges -->
       <div class="trust-grid-box">
-        <div class="trust-card"><div class="trust-icon-wrap"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#5E3A58" stroke-width="1.6"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg></div><strong class="trust-title">30-Day Money Back</strong><span class="trust-subtitle">Hassle-free money-back option</span></div>
-        <div class="trust-card"><div class="trust-icon-wrap"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#5E3A58" stroke-width="1.6"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg></div><strong class="trust-title">Insured & Fast Shipping</strong><span class="trust-subtitle">Worldwide delivery to your door</span></div>
-        <div class="trust-card"><div class="trust-icon-wrap"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#5E3A58" stroke-width="1.6"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg></div><strong class="trust-title">Returns Accepted</strong><span class="trust-subtitle">Easy and simple return process</span></div>
-        <div class="trust-card"><div class="trust-icon-wrap"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#5E3A58" stroke-width="1.6"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg></div><strong class="trust-title">Secure Payment</strong><span class="trust-subtitle">Protected and safe transactions</span></div>
+        <div class="trust-card">
+          <div class="trust-icon-wrap">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#5E3A58" stroke-width="1.6">
+              <circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path>
+            </svg>
+          </div>
+          <strong class="trust-title">30-Day Money Back</strong
+          ><span class="trust-subtitle">Hassle-free money-back option</span>
+        </div>
+        <div class="trust-card">
+          <div class="trust-icon-wrap">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#5E3A58" stroke-width="1.6">
+              <rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle>
+            </svg>
+          </div>
+          <strong class="trust-title">Insured & Fast Shipping</strong
+          ><span class="trust-subtitle">Worldwide delivery to your door</span>
+        </div>
+        <div class="trust-card">
+          <div class="trust-icon-wrap">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#5E3A58" stroke-width="1.6">
+              <polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+            </svg>
+          </div>
+          <strong class="trust-title">Returns Accepted</strong
+          ><span class="trust-subtitle">Easy and simple return process</span>
+        </div>
+        <div class="trust-card">
+          <div class="trust-icon-wrap">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#5E3A58" stroke-width="1.6">
+              <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line>
+            </svg>
+          </div>
+          <strong class="trust-title">Secure Payment</strong
+          ><span class="trust-subtitle">Protected and safe transactions</span>
+        </div>
       </div>
 
       <!-- Mobile-Only Featured Review Card (Caroline T.) -->
@@ -244,7 +730,10 @@
         <div class="review-body">
           <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
           <h4 class="review-headline">I Feel Like Myself Again</h4>
-          <p class="review-quote">&ldquo;I look and feel like my younger self again. It’s nice having color that looks natural and not fake or harsh.&rdquo;</p>
+          <p class="review-quote">
+            &ldquo;I look and feel like my younger self again. It’s nice having color that looks natural and not fake or
+            harsh.&rdquo;
+          </p>
           <div class="review-author-row">
             <span class="review-author">Caroline T., Austin, TX</span>
             <span class="review-verified">&#10003; Verified Buyer</span>
@@ -255,7 +744,8 @@
       <!-- UGC Social Proof Section: Happy Customers Have Made The Switch -->
       <div class="ugc-customers-section">
         <h2 class="ugc-section-heading">
-          Over 840,000+ Happy Customers<br>Have Made The Switch
+          Over 840,000+ Happy Customers<br>
+          Have Made The Switch
         </h2>
 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
@@ -334,7 +824,11 @@
             <!-- Video Card 5 -->
             <div class="swiper-slide ugc-customer-slide">
               <div class="ugc-video-card">
-                <img src="{{ 'spotlight-caroline.png' | asset_url }}" alt="Customer Video Review 5" class="ugc-cover-img">
+                <img
+                  src="{{ 'spotlight-caroline.png' | asset_url }}"
+                  alt="Customer Video Review 5"
+                  class="ugc-cover-img"
+                >
                 <button class="ugc-play-btn" aria-label="Play Customer Video">
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="#FFFFFF">
                     <polygon points="6 3 20 12 6 21 6 3"></polygon>
@@ -365,41 +859,152 @@
       <!-- Accordions -->
       <div class="product-accordions-group">
         <div class="accordion-item active">
-          <button class="accordion-header" type="button"><span class="accordion-title">Description</span><svg class="accordion-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1.5L6 6.5L11 1.5" stroke="#1E2123" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-          <div class="accordion-panel"><p>{{ product.description | default: 'Experience salon-grade gray coverage from the comfort of your own shower. Polar Hair Care Instant Dye Shampoo naturally covers stubborn gray hairs in under 10 minutes.' }}</p></div>
+          <button class="accordion-header" type="button">
+            <span class="accordion-title">Description</span>
+            <svg class="accordion-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none">
+              <path d="M1 1.5L6 6.5L11 1.5" stroke="#1E2123" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="accordion-panel">
+            <p>
+              {{
+                product.description
+                | default: 'Experience salon-grade gray coverage from the comfort of your own shower. Polar Hair Care Instant Dye Shampoo naturally covers stubborn gray hairs in under 10 minutes.'
+              }}
+            </p>
+          </div>
         </div>
         <div class="accordion-item">
-          <button class="accordion-header" type="button"><span class="accordion-title">Ingredients</span><svg class="accordion-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1.5L6 6.5L11 1.5" stroke="#1E2123" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-          <div class="accordion-panel"><p>Aqua (Water), Argan Oil, Polygonum Multiflorum Extract, Ginseng Extract, Keratin, Ammonia-Free Plant Dye Actives, Glycerin, Fragrance.</p></div>
+          <button class="accordion-header" type="button">
+            <span class="accordion-title">Ingredients</span>
+            <svg class="accordion-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none">
+              <path d="M1 1.5L6 6.5L11 1.5" stroke="#1E2123" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="accordion-panel">
+            <p>
+              Aqua (Water), Argan Oil, Polygonum Multiflorum Extract, Ginseng Extract, Keratin, Ammonia-Free Plant Dye
+              Actives, Glycerin, Fragrance.
+            </p>
+          </div>
         </div>
         <div class="accordion-item">
-          <button class="accordion-header" type="button"><span class="accordion-title">Shipping & delivery</span><svg class="accordion-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1.5L6 6.5L11 1.5" stroke="#1E2123" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-          <div class="accordion-panel"><p>Dispatched within 24-48 hours. Free expedited shipping on 2+ bottles.</p></div>
+          <button class="accordion-header" type="button">
+            <span class="accordion-title">Shipping & delivery</span>
+            <svg class="accordion-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none">
+              <path d="M1 1.5L6 6.5L11 1.5" stroke="#1E2123" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="accordion-panel">
+            <p>Dispatched within 24-48 hours. Free expedited shipping on 2+ bottles.</p>
+          </div>
         </div>
         <div class="accordion-item">
-          <button class="accordion-header" type="button"><span class="accordion-title">Price breakdown</span><svg class="accordion-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1.5L6 6.5L11 1.5" stroke="#1E2123" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button class="accordion-header" type="button">
+            <span class="accordion-title">Price breakdown</span>
+            <svg class="accordion-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none">
+              <path d="M1 1.5L6 6.5L11 1.5" stroke="#1E2123" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
           <div class="accordion-panel"><p>Up to 15 full uses per bottle = as low as $2.33 / Rs. 195 per use.</p></div>
         </div>
         <div class="accordion-item">
-          <button class="accordion-header" type="button"><span class="accordion-title">How To Use</span><svg class="accordion-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1.5L6 6.5L11 1.5" stroke="#1E2123" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-          <div class="accordion-panel"><p>1. Put on gloves. 2. Pump into damp hair. 3. Massage 3-5 mins. 4. Wait 10 mins. 5. Rinse until clear.</p></div>
+          <button class="accordion-header" type="button">
+            <span class="accordion-title">How To Use</span>
+            <svg class="accordion-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none">
+              <path d="M1 1.5L6 6.5L11 1.5" stroke="#1E2123" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="accordion-panel">
+            <p>1. Put on gloves. 2. Pump into damp hair. 3. Massage 3-5 mins. 4. Wait 10 mins. 5. Rinse until clear.</p>
+          </div>
         </div>
+        {%- if product.metafields.shopify['application-type'] != blank
+          or product.metafields.shopify['hair-color-formulation'] != blank
+          or product.metafields.shopify['product-form'] != blank
+          or product.metafields.shopify.material != blank
+          or product.metafields.shopify.application_type != blank
+          or product.metafields.shopify.hair_color_formulation != blank
+          or product.metafields.shopify.product_form != blank
+        -%}
+          <div class="accordion-item">
+            <button class="accordion-header" type="button">
+              <span class="accordion-title">Product Specifications</span>
+              <svg class="accordion-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none">
+                <path d="M1 1.5L6 6.5L11 1.5" stroke="#1E2123" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <div class="accordion-panel">
+              <div class="metafield-specs-grid">
+                {%- if product.metafields.shopify['application-type'] != blank
+                  or product.metafields.shopify.application_type != blank
+                -%}
+                  <div class="spec-item">
+                    <span class="spec-label">Application Type</span
+                    ><strong class="spec-val">
+                      {{-
+                        product.metafields.shopify['application-type'].value
+                        | default: product.metafields.shopify.application_type.value
+                        | default: product.metafields.shopify['application-type']
+                      -}}
+                    </strong>
+                  </div>
+                {%- endif -%}
+                {%- if product.metafields.shopify['hair-color-formulation'] != blank
+                  or product.metafields.shopify.hair_color_formulation != blank
+                -%}
+                  <div class="spec-item">
+                    <span class="spec-label">Hair Color Formulation</span
+                    ><strong class="spec-val">
+                      {{-
+                        product.metafields.shopify['hair-color-formulation'].value
+                        | default: product.metafields.shopify.hair_color_formulation.value
+                        | default: product.metafields.shopify['hair-color-formulation']
+                      -}}
+                    </strong>
+                  </div>
+                {%- endif -%}
+                {%- if product.metafields.shopify['product-form'] != blank
+                  or product.metafields.shopify.product_form != blank
+                -%}
+                  <div class="spec-item">
+                    <span class="spec-label">Product Form</span
+                    ><strong class="spec-val">
+                      {{-
+                        product.metafields.shopify['product-form'].value
+                        | default: product.metafields.shopify.product_form.value
+                        | default: product.metafields.shopify['product-form']
+                      -}}
+                    </strong>
+                  </div>
+                {%- endif -%}
+                {%- if product.metafields.shopify.material != blank -%}
+                  <div class="spec-item">
+                    <span class="spec-label">Material</span
+                    ><strong class="spec-val">
+                      {{- product.metafields.shopify.material.value | default: product.metafields.shopify.material -}}
+                    </strong>
+                  </div>
+                {%- endif -%}
+              </div>
+            </div>
+          </div>
+        {%- endif -%}
       </div>
-
     </div>
   </div>
 </section>
 
 <script>
-  (function() {
+  (function () {
     function initMainProduct() {
       var section = document.getElementById('productSection');
       if (!section) return;
 
       // 1. Accordion Toggle
       var accordionHeaders = section.querySelectorAll('.accordion-header');
-      accordionHeaders.forEach(function(header) {
-        header.addEventListener('click', function(e) {
+      accordionHeaders.forEach(function (header) {
+        header.addEventListener('click', function (e) {
           e.preventDefault();
           var item = header.closest('.accordion-item');
           if (item) {
@@ -408,51 +1013,125 @@
         });
       });
 
-      // 2. Thumbnail Gallery Picker
-      var mainImg = section.querySelector('#mainProductImage');
-      var thumbBtns = section.querySelectorAll('.thumb-item');
-      var galleryCurrentIndex = section.querySelector('#galleryCurrentIndex');
+      // 2. Product Main Image Swiper Carousel & Thumbnails Sync
+      var productSwiperInstance = null;
 
-      thumbBtns.forEach(function(thumb, idx) {
-        thumb.addEventListener('click', function(e) {
-          e.preventDefault();
-          thumbBtns.forEach(function(t) { t.classList.remove('active'); });
-          thumb.classList.add('active');
-          var newSrc = thumb.getAttribute('data-img');
-          var index = thumb.getAttribute('data-index') || (idx + 1);
-          if (galleryCurrentIndex) galleryCurrentIndex.textContent = index;
-          if (mainImg && newSrc) {
-            mainImg.style.opacity = '0.4';
-            setTimeout(function() {
-              mainImg.src = newSrc;
-              mainImg.style.opacity = '1';
-            }, 120);
+      function initProductGallerySwiper() {
+        var gallerySwiperEl = section.querySelector('#mainProductSwiper');
+        if (!gallerySwiperEl || typeof Swiper === 'undefined') return;
+
+        var thumbBtns = section.querySelectorAll('.thumb-item');
+        var galleryCurrentIndex = section.querySelector('#galleryCurrentIndex');
+        var galleryTotalCount = section.querySelector('#galleryTotalCount');
+        var prevBtn = section.querySelector('.thumb-nav-btn.prev');
+        var nextBtn = section.querySelector('.thumb-nav-btn.next');
+
+        if (galleryTotalCount && thumbBtns.length > 0) {
+          galleryTotalCount.textContent = thumbBtns.length;
+        }
+
+        if (productSwiperInstance) {
+          try {
+            productSwiperInstance.destroy(true, true);
+          } catch (err) {}
+          productSwiperInstance = null;
+        }
+
+        function syncThumbnails(activeIndex) {
+          if (galleryCurrentIndex) {
+            galleryCurrentIndex.textContent = activeIndex + 1;
           }
-        });
-      });
+          thumbBtns.forEach(function (thumb, i) {
+            if (i === activeIndex) {
+              thumb.classList.add('active');
+              thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            } else {
+              thumb.classList.remove('active');
+            }
+          });
+        }
 
-      // 3. Color Swatches
+        productSwiperInstance = new Swiper(gallerySwiperEl, {
+          slidesPerView: 1,
+          spaceBetween: 0,
+          speed: 350,
+          grabCursor: true,
+          rewind: true,
+          watchOverflow: true,
+          touchRatio: 1,
+          threshold: 5,
+          resistanceRatio: 0.85,
+          on: {
+            init: function () {
+              syncThumbnails(this.activeIndex);
+            },
+            slideChange: function () {
+              syncThumbnails(this.activeIndex);
+            },
+          },
+        });
+
+        // Prev Button click handler
+        if (prevBtn) {
+          prevBtn.onclick = function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (productSwiperInstance) {
+              productSwiperInstance.slidePrev();
+            }
+          };
+        }
+
+        // Next Button click handler
+        if (nextBtn) {
+          nextBtn.onclick = function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (productSwiperInstance) {
+              productSwiperInstance.slideNext();
+            }
+          };
+        }
+
+        // Thumbnail Items click handler
+        thumbBtns.forEach(function (thumb, idx) {
+          thumb.onclick = function (e) {
+            e.preventDefault();
+            if (productSwiperInstance) {
+              productSwiperInstance.slideTo(idx);
+            }
+          };
+        });
+      }
+
+      // 3. Color Swatches (Category Metafield)
       var colorSwatches = section.querySelectorAll('.color-swatch-btn');
       var selectedColorName = section.querySelector('#selectedColorName');
       var shadeBadgeText = section.querySelector('#shadeBadgeText');
+      var selectedColorProperty = section.querySelector('#selectedColorProperty');
 
-      colorSwatches.forEach(function(swatch) {
-        swatch.addEventListener('click', function(e) {
+      colorSwatches.forEach(function (swatch) {
+        swatch.addEventListener('click', function (e) {
           e.preventDefault();
-          colorSwatches.forEach(function(s) { s.classList.remove('active'); });
+          colorSwatches.forEach(function (s) {
+            s.classList.remove('active');
+          });
           swatch.classList.add('active');
           var color = swatch.getAttribute('data-color');
           if (selectedColorName && color) selectedColorName.textContent = color;
           if (shadeBadgeText && color) shadeBadgeText.textContent = 'NATURAL ' + color.toUpperCase();
+          if (selectedColorProperty && color) selectedColorProperty.value = color;
         });
       });
 
-      // 4. Bundle Quantity & Rewards Unlock
+      // 4. Bundle Quantity & Rewards Unlock (Variants)
       var bundleCards = section.querySelectorAll('.bundle-card');
       var currentPriceEl = section.querySelector('#currentPrice');
       var comparePriceEl = section.querySelector('#comparePrice');
-      var discountPillEl = section.querySelector('#discountPill');
+      var discountPills = section.querySelectorAll('.discount-pill');
+      var selectedVariantId = section.querySelector('#selectedVariantId');
       var selectedQuantityInput = section.querySelector('#selectedQuantityInput');
+      var addToCartBtn = section.querySelector('#addToCartBtn');
       var rewardsStatusText = section.querySelector('#rewardsStatusText');
       var rewardsProgressFill = section.querySelector('#rewardsProgressFill');
       var rewardsHintText = section.querySelector('#rewardsHintText');
@@ -461,21 +1140,48 @@
       var milestoneShipping = section.querySelector('#milestoneShipping');
       var milestoneConditioner = section.querySelector('#milestoneConditioner');
 
-      bundleCards.forEach(function(card) {
-        card.addEventListener('click', function(e) {
+      function formatPrice(centsOrValue) {
+        if (!centsOrValue) return '';
+        var num = Number(centsOrValue);
+        if (num > 10000) num = num / 100;
+        return 'Rs. ' + Math.round(num).toLocaleString('en-IN') + '.00';
+      }
+
+      bundleCards.forEach(function (card) {
+        card.addEventListener('click', function (e) {
           e.preventDefault();
-          bundleCards.forEach(function(c) { c.classList.remove('active'); });
+          bundleCards.forEach(function (c) {
+            c.classList.remove('active');
+          });
           card.classList.add('active');
 
+          var variantId = card.getAttribute('data-variant-id');
           var qty = parseInt(card.getAttribute('data-qty') || '1', 10);
           var price = card.getAttribute('data-price');
           var compare = card.getAttribute('data-compare');
           var save = card.getAttribute('data-save');
+          var isAvailable = card.getAttribute('data-available') !== 'false';
 
+          if (selectedVariantId && variantId) selectedVariantId.value = variantId;
           if (selectedQuantityInput) selectedQuantityInput.value = qty;
-          if (currentPriceEl && price) currentPriceEl.textContent = 'Rs. ' + Number(price).toLocaleString('en-IN') + '.00';
-          if (comparePriceEl && compare) comparePriceEl.textContent = 'Rs. ' + Number(compare).toLocaleString('en-IN') + '.00';
-          if (discountPillEl && save) discountPillEl.textContent = 'FALL SALE | SAVE ' + save;
+          if (currentPriceEl && price) currentPriceEl.textContent = formatPrice(price);
+          if (comparePriceEl && compare) comparePriceEl.textContent = formatPrice(compare);
+          if (discountPills.length > 0 && save) {
+            discountPills.forEach(function (pill) {
+              pill.textContent = 'FALL SALE | SAVE ' + save;
+            });
+          }
+
+          if (addToCartBtn) {
+            var btnSpan = addToCartBtn.querySelector('span') || addToCartBtn;
+            if (!isAvailable) {
+              btnSpan.textContent = 'SOLD OUT';
+              addToCartBtn.disabled = true;
+            } else {
+              btnSpan.textContent = 'ADD TO CART';
+              addToCartBtn.disabled = false;
+            }
+          }
 
           if (qty === 1) {
             if (rewardsStatusText) rewardsStatusText.textContent = '0 of 2 unlocked';
@@ -500,10 +1206,183 @@
             if (rewardConditioner) rewardConditioner.classList.add('unlocked');
             if (milestoneShipping) milestoneShipping.classList.add('unlocked');
             if (milestoneConditioner) milestoneConditioner.classList.add('unlocked');
-            if (rewardsHintText) rewardsHintText.textContent = 'All rewards unlocked! You qualify for Free Shipping & Conditioner!';
+            if (rewardsHintText)
+              rewardsHintText.textContent = 'All rewards unlocked! You qualify for Free Shipping & Conditioner!';
           }
         });
       });
+
+      // 5. Global Cart Drawer Instant Update & Opener
+      window.openShopifyCartDrawer = async function (data, triggerBtn) {
+        var rootUrl = (window.Shopify && window.Shopify.routes && window.Shopify.routes.root) || '/';
+        var currentDrawer =
+          document.querySelector('cart-drawer-component') ||
+          document.querySelector('#cart-drawer') ||
+          document.querySelector('cart-drawer') ||
+          document.querySelector('#CartDrawer');
+
+        // 1. Fetch fresh page HTML from Shopify (cache-busted) so server returns freshly rendered cart drawer
+        try {
+          var cleanPath = window.location.pathname;
+          var freshRes = await fetch(cleanPath + '?_nocache=' + Date.now(), {
+            headers: {
+              'Cache-Control': 'no-cache, no-store, must-revalidate',
+              'Pragma': 'no-cache',
+            },
+          });
+
+          if (freshRes.ok) {
+            var freshHtml = await freshRes.text();
+            var parser = new DOMParser();
+            var freshDoc = parser.parseFromString(freshHtml, 'text/html');
+
+            var freshDrawer =
+              freshDoc.querySelector('cart-drawer-component') ||
+              freshDoc.querySelector('#cart-drawer') ||
+              freshDoc.querySelector('cart-drawer') ||
+              freshDoc.querySelector('#CartDrawer');
+
+            if (freshDrawer && currentDrawer) {
+              currentDrawer.innerHTML = freshDrawer.innerHTML;
+
+              // Synchronize drawer classes (such as removing is-empty)
+              if (freshDrawer.classList.contains('is-empty')) {
+                currentDrawer.classList.add('is-empty');
+              } else {
+                currentDrawer.classList.remove('is-empty');
+              }
+
+              // Copy any updated attributes
+              Array.from(freshDrawer.attributes).forEach(function (attr) {
+                if (attr.name !== 'class' && attr.name !== 'id') {
+                  currentDrawer.setAttribute(attr.name, attr.value);
+                }
+              });
+            }
+
+            // Synchronize header cart icon / count
+            var freshBubble = freshDoc.querySelector('#cart-icon-bubble');
+            var currentBubble = document.querySelector('#cart-icon-bubble');
+            if (freshBubble && currentBubble) {
+              currentBubble.innerHTML = freshBubble.innerHTML;
+            }
+          }
+        } catch (fetchErr) {
+          console.warn('Could not sync drawer HTML from server:', fetchErr);
+        }
+
+        // 2. Fetch cart JSON for badges & events
+        var cart = null;
+        try {
+          var cartResponse = await fetch(rootUrl + 'cart.js');
+          cart = await cartResponse.json();
+          if (cart) {
+            var badges = document.querySelectorAll('.cart-count, .cart-count-bubble, [data-cart-count]');
+            badges.forEach(function (b) {
+              b.textContent = cart.item_count;
+              b.style.display = cart.item_count > 0 ? 'flex' : 'none';
+            });
+
+            document.dispatchEvent(
+              new CustomEvent('cart:update', {
+                bubbles: true,
+                detail: {
+                  data: {
+                    itemCount: cart.item_count,
+                    source: 'product-form-component',
+                  },
+                },
+              })
+            );
+            document.dispatchEvent(new CustomEvent('cart:updated', { bubbles: true, detail: { cart: cart } }));
+          }
+        } catch (cErr) {}
+
+        // 3. Dispatch native Horizon CartUpdateEvent if available
+        if (cart) {
+          try {
+            var themeEvents = await import('@theme/events');
+            if (themeEvents && themeEvents.CartUpdateEvent) {
+              var updateEvent = new themeEvents.CartUpdateEvent(cart, 'manual-trigger', {
+                itemCount: cart.item_count,
+                source: 'product-form-component',
+                sections: {},
+              });
+              document.dispatchEvent(updateEvent);
+            }
+          } catch (mErr) {}
+        }
+
+        // 4. Open the Cart Drawer
+        if (currentDrawer) {
+          if (typeof currentDrawer.open === 'function') {
+            currentDrawer.open(triggerBtn);
+          } else if (typeof currentDrawer.show === 'function') {
+            currentDrawer.show(triggerBtn);
+          } else {
+            currentDrawer.classList.add('active', 'animate');
+            document.body.classList.add('overflow-hidden');
+          }
+        } else {
+          var nativeTrigger =
+            document.querySelector('#cart-icon-bubble') ||
+            document.querySelector('[data-cart-drawer-trigger]');
+          if (nativeTrigger) nativeTrigger.click();
+        }
+      };
+
+      // 6. Product Form Submit Handler
+      var productForm = section.querySelector('#product-form');
+
+      if (productForm) {
+        productForm.addEventListener('submit', async function (e) {
+          e.preventDefault();
+
+          if (!selectedVariantId || !selectedVariantId.value) return;
+
+          var btnSpan = addToCartBtn ? addToCartBtn.querySelector('span') : null;
+          var originalBtnText = btnSpan ? btnSpan.textContent : '';
+          if (addToCartBtn) {
+            addToCartBtn.disabled = true;
+            if (btnSpan) btnSpan.textContent = 'ADDING...';
+          }
+
+          try {
+            var rootUrl = (window.Shopify && window.Shopify.routes && window.Shopify.routes.root) || '/';
+            var formData = new FormData(productForm);
+
+            // Request fresh drawer section HTML from Shopify Section Rendering API
+            formData.append('sections', 'cart-drawer,cart-icon-bubble');
+            formData.append('sections_url', window.location.pathname);
+
+            var response = await fetch(rootUrl + 'cart/add.js', {
+              method: 'POST',
+              headers: {
+                Accept: 'application/json',
+                'X-Requested-With': 'XMLHttpRequest',
+              },
+              body: formData,
+            });
+
+            var data = await response.json();
+
+            if (!response.ok) {
+              throw new Error(data.description || data.message || 'Unable to add product');
+            }
+
+            // Instantly update and open the cart drawer
+            await window.openShopifyCartDrawer(data, addToCartBtn);
+          } catch (error) {
+            console.error('Add to cart failed:', error);
+            alert(error.message || 'Something went wrong.');
+          } finally {
+            if (addToCartBtn) {
+              addToCartBtn.disabled = false;
+              if (btnSpan) btnSpan.textContent = originalBtnText;
+            }
+          }
+        });
+      }
 
       // 5. UGC Video Carousel Swiper
       function initUgcSwiper() {
@@ -523,19 +1402,29 @@
               769: {
                 slidesPerView: 3,
                 spaceBetween: 12,
-              }
-            }
+              },
+            },
           });
         }
       }
 
-      if (typeof Swiper === 'undefined') {
-        var script = document.createElement('script');
-        script.src = 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js';
-        script.onload = initUgcSwiper;
-        document.head.appendChild(script);
-      } else {
+      function initAllSwipers() {
+        initProductGallerySwiper();
         initUgcSwiper();
+      }
+
+      if (typeof Swiper === 'undefined') {
+        var existingScript = document.querySelector('script[src*="swiper-bundle.min.js"]');
+        if (existingScript) {
+          existingScript.addEventListener('load', initAllSwipers);
+        } else {
+          var script = document.createElement('script');
+          script.src = 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js';
+          script.onload = initAllSwipers;
+          document.head.appendChild(script);
+        }
+      } else {
+        initAllSwipers();
       }
     }
 
@@ -546,7 +1435,7 @@
     }
 
     // Support Shopify Theme Customizer section reload
-    document.addEventListener('shopify:section:load', function(e) {
+    document.addEventListener('shopify:section:load', function (e) {
       if (e.target && e.target.querySelector('#productSection')) {
         initMainProduct();
       }

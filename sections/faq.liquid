@@ -5,7 +5,7 @@
 
 {%- style -%}
   #shopify-section-{{ section.id }} .faq-section {
-    background-color: {{ section.settings.section_bg_color | default: '#F4F4F4' }};
+    background-color: {{ section.settings.section_bg_color | default: '#FFFFFF' }};
   }
 
   {%- if section.settings.card_bg_color != blank -%}
@@ -20,23 +20,47 @@
     class="faq-section" 
     id="faqSection-{{ section.id }}" 
     aria-label="Frequently Asked Questions"
-    style="background-color: {{ section.settings.section_bg_color | default: '#F4F4F4' }};"
+    style="background-color: {{ section.settings.section_bg_color | default: '#FFFFFF' }};"
   >
     <div class="faq-container">
 
       <div 
         class="faq-card"
-        style="{% if section.settings.card_bg_color != blank %}background-color: {{ section.settings.card_bg_color }};{% endif %}{% if section.settings.bg_image != blank %}background-image: url('{{ section.settings.bg_image | image_url: width: 1400 }}');{% endif %}"
+        style="{% if section.settings.card_bg_color != blank %}background-color: {{ section.settings.card_bg_color }};{% endif %}"
       >
         
-        <!-- Left Column: Title -->
+        <!-- Left Column: Title & Image -->
         <div class="faq-header-col">
-          <h2 class="faq-title-line-1">
-            {{ section.settings.title_line_1 | default: "FREQUENTLY" }}
-          </h2>
-          <span class="faq-title-line-2">
-            {{ section.settings.title_line_2 | default: "ASKED QUESTIONS" }}
-          </span>
+          <div class="faq-title-wrap">
+            <h2 class="faq-title-line-1">
+              {{ section.settings.title_line_1 | default: "FREQUENTLY" }}
+            </h2>
+            <span class="faq-title-line-2">
+              {{ section.settings.title_line_2 | default: "ASKED QUESTIONS" }}
+            </span>
+          </div>
+
+          <div class="faq-media-wrap">
+            {%- if section.settings.faq_image != blank -%}
+              <img 
+                src="{{ section.settings.faq_image | image_url: width: 800 }}" 
+                alt="{{ section.settings.faq_image.alt | default: 'Provenwell Hair Dye Shampoo' | escape }}" 
+                class="faq-product-img" 
+                loading="lazy" 
+                width="400" 
+                height="400"
+              >
+            {%- else -%}
+              <img 
+                src="{{ 'faq-product.png' | asset_url }}" 
+                alt="Provenwell Hair Dye Shampoo" 
+                class="faq-product-img" 
+                loading="lazy" 
+                width="400" 
+                height="400"
+              >
+            {%- endif -%}
+          </div>
         </div>
 
         <!-- Right Column: Accordion Items -->
@@ -265,18 +289,18 @@
       "type": "color",
       "id": "section_bg_color",
       "label": "Section Background Color",
-      "default": "#F4F4F4"
+      "default": "#FFFFFF"
     },
     {
       "type": "color",
       "id": "card_bg_color",
       "label": "Card Background Color",
-      "default": "#F8F9FB"
+      "default": "#FFFFFF"
     },
     {
       "type": "image_picker",
-      "id": "bg_image",
-      "label": "Background Image"
+      "id": "faq_image",
+      "label": "Left Container Image"
     },
     {
       "type": "text",

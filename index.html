@@ -143,10 +143,43 @@
         <!-- Main Image Gallery Display -->
         <div class="product-gallery">
           <div class="main-image-wrapper">
-            <img id="mainProductImage" src="assets/product-black-main.png"
-              alt="Polar Instant Hair Dye Shampoo - Natural Black" class="main-product-img">
-            <div class="gallery-counter-badge"><span id="galleryCurrentIndex">1</span> / <span
-                id="galleryTotalCount">8</span></div>
+            <div class="badge-per-use">
+              <span>as low as</span>
+              <strong>$2.33</strong>
+              <span>per use</span>
+            </div>
+
+            <!-- Main Product Images Swiper Carousel -->
+            <div class="swiper main-product-swiper" id="mainProductSwiper">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide main-product-slide" data-index="1">
+                  <img src="assets/product-black-main.png" alt="Natural Black Shampoo Bottle and Box" class="main-product-img">
+                </div>
+                <div class="swiper-slide main-product-slide" data-index="2">
+                  <img src="assets/polar-bottle-tall.png" alt="Polar Tall Bottle" class="main-product-img" loading="lazy">
+                </div>
+                <div class="swiper-slide main-product-slide" data-index="3">
+                  <img src="assets/spotlight-caroline.png" alt="Before and After Results" class="main-product-img" loading="lazy">
+                </div>
+                <div class="swiper-slide main-product-slide" data-index="4">
+                  <img src="assets/customer_story.jpg" alt="Customer Video Review" class="main-product-img" loading="lazy">
+                </div>
+                <div class="swiper-slide main-product-slide" data-index="5">
+                  <img src="assets/polar_shampoo.jpg" alt="Packaging studio view" class="main-product-img" loading="lazy">
+                </div>
+                <div class="swiper-slide main-product-slide" data-index="6">
+                  <img src="assets/before_after.jpg" alt="Customer Transformation" class="main-product-img" loading="lazy">
+                </div>
+                <div class="swiper-slide main-product-slide" data-index="7">
+                  <img src="assets/product-feature-callout.png" alt="Feature Callouts" class="main-product-img" loading="lazy">
+                </div>
+                <div class="swiper-slide main-product-slide" data-index="8">
+                  <img src="assets/before-after-3.jpg" alt="Hair Results" class="main-product-img" loading="lazy">
+                </div>
+              </div>
+            </div>
+
+            <div class="gallery-counter-badge"><span id="galleryCurrentIndex">1</span> / <span id="galleryTotalCount">8</span></div>
           </div>
 
           <!-- Thumbnails Carousel -->
@@ -269,7 +302,7 @@
         <!-- Pricing Row -->
         <div class="product-pricing-row">
           <span class="compare-at-price" id="comparePrice">Rs. 4,900.00</span>
-          <span class="current-price" id="currentPrice">Rs. 3,500.00</span>
+          <span class="current-price" id="currentPrice">Rs. 3,501.00</span>
           <div class="discount-pill desktop-view" id="discountPill">FALL SALE | SAVE 29%</div>
           <div class="discount-pill mobile-view" id="discountPill">SAVE 29%</div>
         </div>
@@ -326,37 +359,34 @@
           </div>
         </div>
 
-        <!-- Choose Color Option -->
+        <!-- Choose Color Option (Category Metafields) -->
         <div class="color-selection-wrapper">
           <div class="section-label-row">
             <span class="label-title">Choose Color:</span>
-            <strong class="selected-color-name" id="selectedColorName">Black</strong>
+            <strong class="selected-color-name" id="selectedColorName">Dark Brown</strong>
           </div>
 
           <div class="color-swatches-list">
-            <!-- Swatch 1: Black -->
-            <button class="color-swatch-btn active" data-color="Black" data-img="assets/product-black-main.png"
-              aria-label="Color Black">
-              <div class="swatch-img-box">
-                <img src="assets/swatch-black.png" alt="Black Hair Swatch" class="swatch-img">
-              </div>
-              <span class="swatch-label">Black</span>
-            </button>
-            <!-- Swatch 2: Dark Brown -->
-            <button class="color-swatch-btn" data-color="Dark Brown" data-img="assets/product-black-main.png"
-              aria-label="Color Dark Brown">
+            <!-- Swatch 1: Dark Brown -->
+            <button class="color-swatch-btn active" data-color="Dark Brown" aria-label="Color Dark Brown">
               <div class="swatch-img-box">
                 <img src="assets/swatch-dark-brown.png" alt="Dark Brown Hair Swatch" class="swatch-img">
               </div>
               <span class="swatch-label">Dark Brown</span>
             </button>
-            <!-- Swatch 3: Medium Brown -->
-            <button class="color-swatch-btn" data-color="Medium Brown" data-img="assets/product-black-main.png"
-              aria-label="Color Medium Brown">
+            <!-- Swatch 2: Medium Brown -->
+            <button class="color-swatch-btn" data-color="Medium Brown" aria-label="Color Medium Brown">
               <div class="swatch-img-box">
                 <img src="assets/swatch-medium-brown.png" alt="Medium Brown Hair Swatch" class="swatch-img">
               </div>
               <span class="swatch-label">Medium Brown</span>
+            </button>
+            <!-- Swatch 3: Black -->
+            <button class="color-swatch-btn" data-color="Black" aria-label="Color Black">
+              <div class="swatch-img-box">
+                <img src="assets/swatch-black.png" alt="Black Hair Swatch" class="swatch-img">
+              </div>
+              <span class="swatch-label">Black</span>
             </button>
           </div>
         </div>
@@ -369,32 +399,32 @@
           <div class="bundles-grid">
 
             <!-- Bundle 1: 1 Bottle -->
-            <div class="bundle-card active" data-qty="1" data-price="3500" data-compare="4900" data-save="29%">
+            <div class="bundle-card active" data-qty="1" data-price="3501" data-compare="4900" data-save="29%">
               <div class="bundle-box-btn">
                 <span class="bundle-qty-title">1 Bottle</span>
                 <span class="bundle-perk-text"></span>
               </div>
-              <span class="bundle-price-each">Rs. 3,500 Each</span>
+              <span class="bundle-price-each">Rs. 3,501 Each</span>
             </div>
 
             <!-- Bundle 2: 2 Bottles -->
-            <div class="bundle-card" data-qty="2" data-price="5900" data-compare="9800" data-save="40%">
+            <div class="bundle-card" data-qty="2" data-price="2951" data-compare="9800" data-save="40%">
               <div class="floating-benefit-badge shipping-badge">+ Free Shipping</div>
               <div class="bundle-box-btn">
                 <span class="bundle-qty-title">2 Bottles</span>
                 <span class="bundle-perk-text">+ Free Shipping</span>
               </div>
-              <span class="bundle-price-each">Rs. 2,950 Each</span>
+              <span class="bundle-price-each">Rs. 2,951 Each</span>
             </div>
 
             <!-- Bundle 3: 3 Bottles -->
-            <div class="bundle-card" data-qty="3" data-price="6999" data-compare="14700" data-save="52%">
+            <div class="bundle-card" data-qty="3" data-price="2331" data-compare="14700" data-save="52%">
               <div class="floating-benefit-badge conditioner-badge">+ Free Conditioner</div>
               <div class="bundle-box-btn">
                 <span class="bundle-qty-title">3 Bottles</span>
                 <span class="bundle-perk-text">+ Free Conditioner</span>
               </div>
-              <span class="bundle-price-each">Rs. 2,333 Each</span>
+              <span class="bundle-price-each">Rs. 2,331 Each</span>
             </div>
 
           </div>
@@ -944,6 +974,38 @@
             </div>
           </div>
 
+        </div>
+
+      </div>
+
+      <!-- 3-Step How-To Grid -->
+      <div class="benefits-steps-grid">
+        
+        <!-- Step 1 -->
+        <div class="benefit-step-card">
+          <div class="benefit-step-num">01</div>
+          <div class="benefit-step-content">
+            <h3 class="benefit-step-title">Apply to dry hair</h3>
+            <p class="benefit-step-desc">Massage evenly from roots to ends — just like shampoo.</p>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="benefit-step-card">
+          <div class="benefit-step-num">02</div>
+          <div class="benefit-step-content">
+            <h3 class="benefit-step-title">Wait 10 minutes</h3>
+            <p class="benefit-step-desc">No bowls, brushes or timers to babysit.</p>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="benefit-step-card">
+          <div class="benefit-step-num">03</div>
+          <div class="benefit-step-content">
+            <h3 class="benefit-step-title">Rinse & reveal</h3>
+            <p class="benefit-step-desc">Natural-looking color that lasts 4–6 weeks.</p>
+          </div>
         </div>
 
       </div>
@@ -1812,6 +1874,20 @@
       <!-- DESKTOP BANNER CARD (> 768px) -->
       <div class="guarantee-banner-card">
 
+        <!-- Background Wavy Decor -->
+        <div class="guarantee-waves-decor" aria-hidden="true">
+          <svg class="guarantee-wave-svg" viewBox="0 0 1024 380" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <path d="M-40 130 C 160 50, 240 230, 460 150 C 660 70, 770 190, 1060 90" stroke="#E1E4EB" stroke-width="2.2" fill="none" />
+            <path d="M-60 270 C 130 170, 310 330, 540 210 C 740 110, 870 260, 1080 150" stroke="#E1E4EB" stroke-width="1.8" fill="none" />
+            <path d="M180 -10 C 360 110, 500 -30, 700 85 C 860 180, 950 45, 1100 125" stroke="#E8EAF0" stroke-width="1.8" fill="none" />
+          </svg>
+        </div>
+
+        <!-- Left Visual: Model holding Provenwell product -->
+        <div class="guarantee-visual-col">
+          <img src="assets/guarantee-model.png" alt="30-Day Satisfaction Guarantee" class="guarantee-model-img" loading="lazy" width="500" height="500">
+        </div>
+
         <!-- Right Content: Titles, Description & CTA -->
         <div class="guarantee-content-col">
 
@@ -1846,7 +1922,7 @@
       <div class="guarantee-mobile-card">
         
         <div class="guarantee-mobile-visual">
-          <img src="assets/guarantee-bg.png" alt="30-Day Satisfaction Guarantee" class="guarantee-mob-img" loading="lazy">
+          <img src="assets/guarantee-model.png" alt="30-Day Satisfaction Guarantee" class="guarantee-mob-img" loading="lazy" width="400" height="400">
         </div>
 
         <div class="guarantee-mobile-copy">
@@ -1877,14 +1953,20 @@
 
       <div class="faq-card">
 
-        <!-- Left Column: Title -->
+        <!-- Left Column: Title & Image -->
         <div class="faq-header-col">
-          <h2 class="faq-title-line-1" id="faqHeading">
-            FREQUENTLY
-          </h2>
-          <span class="faq-title-line-2">
-            ASKED QUESTIONS
-          </span>
+          <div class="faq-title-wrap">
+            <h2 class="faq-title-line-1" id="faqHeading">
+              FREQUENTLY
+            </h2>
+            <span class="faq-title-line-2">
+              ASKED QUESTIONS
+            </span>
+          </div>
+
+          <div class="faq-media-wrap">
+            <img src="assets/faq-product.png" alt="Provenwell Hair Dye Shampoo" class="faq-product-img" loading="lazy" width="400" height="400">
+          </div>
         </div>
 
         <!-- Right Column: Accordion Items -->
@@ -2104,24 +2186,22 @@
       <div class="bundle-cards-row">
 
         <!-- Bundle Card 1: 1 Bottle -->
-        <div class="bundle-item-card">
-          <div class="bundle-card-badge-placeholder" aria-hidden="true"></div>
-
-          <div class="bundle-img-box">
-            <img src="assets/bundle-1-bottle.png" alt="1 Bottle - Polar Instant Dye Shampoo" class="bundle-bottle-img"
-              loading="lazy">
-          </div>
-
-          <h3 class="bundle-item-title">1 Bottle</h3>
-
-          <div class="bundle-price-row">
-            <span class="bundle-price-compare">Rs. 4,900</span>
-            <span class="bundle-price-current">Rs. 3,500</span>
-            <span class="bundle-price-unit">/ bottle</span>
-          </div>
-
-          <div class="bundle-save-tag">
-            <span>Save 29% &middot; Total Rs. 3,500</span>
+        <div class="bundle-item-card bundle-card-1">
+          <div class="bundle-card-top">
+            <div class="bundle-img-box">
+              <img src="assets/bundle-1-bottle.png" alt="1 Bottle - Polar Instant Dye Shampoo" class="bundle-bottle-img" loading="lazy">
+            </div>
+            <div class="bundle-card-info">
+              <h3 class="bundle-item-title">1 Bottle</h3>
+              <div class="bundle-price-row">
+                <span class="bundle-price-compare">Rs. 4,900</span>
+                <span class="bundle-price-current">Rs. 3,500</span>
+                <span class="bundle-price-unit">/ bottle</span>
+              </div>
+              <div class="bundle-save-tag">
+                <span>Save 29% &middot; Total Rs. 3,500</span>
+              </div>
+            </div>
           </div>
 
           <div class="bundle-divider"></div>
@@ -2131,8 +2211,7 @@
               <span class="bundle-check-icon" aria-hidden="true">
                 <svg viewBox="0 0 18 18" fill="none" width="18" height="18">
                   <circle cx="9" cy="9" r="9" fill="#2FA60F" />
-                  <path d="M5.5 9.2L7.8 11.5L12.5 6.8" stroke="#FFFFFF" stroke-width="1.88" stroke-linecap="round"
-                    stroke-linejoin="round" />
+                  <path d="M5.5 9.2L7.8 11.5L12.5 6.8" stroke="#FFFFFF" stroke-width="1.88" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
               </span>
               <span class="bundle-perk-text">15 applications</span>
@@ -2141,8 +2220,7 @@
               <span class="bundle-check-icon" aria-hidden="true">
                 <svg viewBox="0 0 18 18" fill="none" width="18" height="18">
                   <circle cx="9" cy="9" r="9" fill="#2FA60F" />
-                  <path d="M5.5 9.2L7.8 11.5L12.5 6.8" stroke="#FFFFFF" stroke-width="1.88" stroke-linecap="round"
-                    stroke-linejoin="round" />
+                  <path d="M5.5 9.2L7.8 11.5L12.5 6.8" stroke="#FFFFFF" stroke-width="1.88" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
               </span>
               <span class="bundle-perk-text">Covers grays in 10 minutes</span>
@@ -2151,41 +2229,41 @@
               <span class="bundle-check-icon" aria-hidden="true">
                 <svg viewBox="0 0 18 18" fill="none" width="18" height="18">
                   <circle cx="9" cy="9" r="9" fill="#2FA60F" />
-                  <path d="M5.5 9.2L7.8 11.5L12.5 6.8" stroke="#FFFFFF" stroke-width="1.88" stroke-linecap="round"
-                    stroke-linejoin="round" />
+                  <path d="M5.5 9.2L7.8 11.5L12.5 6.8" stroke="#FFFFFF" stroke-width="1.88" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
               </span>
               <span class="bundle-perk-text">30-day money-back guarantee</span>
             </li>
           </ul>
 
-          <button type="button" class="bundle-btn bundle-btn-primary" data-bundle-qty="1" data-bundle-price="3500"
-            aria-label="Add 1 Bottle bundle to cart">
+          <button type="button" class="bundle-btn bundle-btn-primary" data-bundle-qty="1" data-bundle-price="3500" aria-label="Add 1 Bottle bundle to cart">
             <span>ADD TO CART</span>
           </button>
         </div>
 
         <!-- Bundle Card 2: 2 Bottles (Featured / Most Popular) -->
-        <div class="bundle-item-card bundle-featured-card">
-          <div class="bundle-badge bundle-badge-white">
-            <span>MOST POPULAR</span>
-          </div>
-
-          <div class="bundle-img-box">
-            <img src="assets/bundle-2-bottles.png" alt="2 Bottles - Polar Instant Dye Shampoo" class="bundle-bottle-img"
-              loading="lazy">
-          </div>
-
-          <h3 class="bundle-item-title bundle-title-light">2 Bottles</h3>
-
-          <div class="bundle-price-row">
-            <span class="bundle-price-compare bundle-light">Rs. 4,900</span>
-            <span class="bundle-price-current bundle-light">Rs. 2,950</span>
-            <span class="bundle-price-unit bundle-light">/ bottle</span>
-          </div>
-
-          <div class="bundle-save-tag bundle-save-tag-glass">
-            <span>Save 40% &middot; Total Rs. 5,900</span>
+        <div class="bundle-item-card bundle-featured-card bundle-card-2">
+          <div class="bundle-card-top">
+            <div class="bundle-badge bundle-badge-white">
+              <span>MOST POPULAR</span>
+            </div>
+            <div class="bundle-img-box">
+              <img src="assets/bundle-2-bottles.png" alt="2 Bottles - Polar Instant Dye Shampoo" class="bundle-bottle-img" loading="lazy">
+            </div>
+            <div class="bundle-card-info">
+              <div class="bundle-mobile-badge bundle-badge-white">
+                <span>MOST POPULAR</span>
+              </div>
+              <h3 class="bundle-item-title bundle-title-light">2 Bottles</h3>
+              <div class="bundle-price-row">
+                <span class="bundle-price-compare bundle-light">Rs. 4,900</span>
+                <span class="bundle-price-current bundle-light">Rs. 2,950</span>
+                <span class="bundle-price-unit bundle-light">/ bottle</span>
+              </div>
+              <div class="bundle-save-tag bundle-save-tag-glass">
+                <span>Save 40% &middot; Total Rs. 5,900</span>
+              </div>
+            </div>
           </div>
 
           <div class="bundle-divider bundle-divider-light"></div>
@@ -2195,8 +2273,7 @@
               <span class="bundle-check-icon" aria-hidden="true">
                 <svg viewBox="0 0 18 18" fill="none" width="18" height="18">
                   <circle cx="9" cy="9" r="9" fill="#2FA60F" />
-                  <path d="M5.5 9.2L7.8 11.5L12.5 6.8" stroke="#FFFFFF" stroke-width="1.88" stroke-linecap="round"
-                    stroke-linejoin="round" />
+                  <path d="M5.5 9.2L7.8 11.5L12.5 6.8" stroke="#FFFFFF" stroke-width="1.88" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
               </span>
               <span class="bundle-perk-text bundle-text-light">30 applications</span>
@@ -2205,8 +2282,7 @@
               <span class="bundle-check-icon" aria-hidden="true">
                 <svg viewBox="0 0 18 18" fill="none" width="18" height="18">
                   <circle cx="9" cy="9" r="9" fill="#2FA60F" />
-                  <path d="M5.5 9.2L7.8 11.5L12.5 6.8" stroke="#FFFFFF" stroke-width="1.88" stroke-linecap="round"
-                    stroke-linejoin="round" />
+                  <path d="M5.5 9.2L7.8 11.5L12.5 6.8" stroke="#FFFFFF" stroke-width="1.88" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
               </span>
               <span class="bundle-perk-text bundle-text-light">+ Free shipping</span>
@@ -2215,41 +2291,41 @@
               <span class="bundle-check-icon" aria-hidden="true">
                 <svg viewBox="0 0 18 18" fill="none" width="18" height="18">
                   <circle cx="9" cy="9" r="9" fill="#2FA60F" />
-                  <path d="M5.5 9.2L7.8 11.5L12.5 6.8" stroke="#FFFFFF" stroke-width="1.88" stroke-linecap="round"
-                    stroke-linejoin="round" />
+                  <path d="M5.5 9.2L7.8 11.5L12.5 6.8" stroke="#FFFFFF" stroke-width="1.88" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
               </span>
               <span class="bundle-perk-text bundle-text-light">30-day money-back guarantee</span>
             </li>
           </ul>
 
-          <button type="button" class="bundle-btn bundle-btn-inverse" data-bundle-qty="2" data-bundle-price="5900"
-            aria-label="Add 2 Bottles bundle to cart">
+          <button type="button" class="bundle-btn bundle-btn-inverse" data-bundle-qty="2" data-bundle-price="5900" aria-label="Add 2 Bottles bundle to cart">
             <span>ADD TO CART</span>
           </button>
         </div>
 
         <!-- Bundle Card 3: 3 Bottles (Best Value) -->
-        <div class="bundle-item-card">
-          <div class="bundle-badge bundle-badge-dark">
-            <span>BEST VALUE</span>
-          </div>
-
-          <div class="bundle-img-box">
-            <img src="assets/bundle-3-bottles.png" alt="3 Bottles - Polar Instant Dye Shampoo" class="bundle-bottle-img"
-              loading="lazy">
-          </div>
-
-          <h3 class="bundle-item-title">3 Bottles</h3>
-
-          <div class="bundle-price-row">
-            <span class="bundle-price-compare">Rs. 4,900</span>
-            <span class="bundle-price-current">Rs. 2,333</span>
-            <span class="bundle-price-unit">/ bottle</span>
-          </div>
-
-          <div class="bundle-save-tag">
-            <span>Save 52% &middot; Total Rs. 6,999</span>
+        <div class="bundle-item-card bundle-card-3">
+          <div class="bundle-card-top">
+            <div class="bundle-badge bundle-badge-dark">
+              <span>BEST VALUE</span>
+            </div>
+            <div class="bundle-img-box">
+              <img src="assets/bundle-3-bottles.png" alt="3 Bottles - Polar Instant Dye Shampoo" class="bundle-bottle-img" loading="lazy">
+            </div>
+            <div class="bundle-card-info">
+              <div class="bundle-mobile-badge bundle-badge-dark">
+                <span>BEST VALUE</span>
+              </div>
+              <h3 class="bundle-item-title">3 Bottles</h3>
+              <div class="bundle-price-row">
+                <span class="bundle-price-compare">Rs. 4,900</span>
+                <span class="bundle-price-current">Rs. 2,333</span>
+                <span class="bundle-price-unit">/ bottle</span>
+              </div>
+              <div class="bundle-save-tag">
+                <span>Save 52% &middot; Total Rs. 6,999</span>
+              </div>
+            </div>
           </div>
 
           <div class="bundle-divider"></div>
@@ -2259,8 +2335,7 @@
               <span class="bundle-check-icon" aria-hidden="true">
                 <svg viewBox="0 0 18 18" fill="none" width="18" height="18">
                   <circle cx="9" cy="9" r="9" fill="#2FA60F" />
-                  <path d="M5.5 9.2L7.8 11.5L12.5 6.8" stroke="#FFFFFF" stroke-width="1.88" stroke-linecap="round"
-                    stroke-linejoin="round" />
+                  <path d="M5.5 9.2L7.8 11.5L12.5 6.8" stroke="#FFFFFF" stroke-width="1.88" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
               </span>
               <span class="bundle-perk-text">45 applications</span>
@@ -2269,8 +2344,7 @@
               <span class="bundle-check-icon" aria-hidden="true">
                 <svg viewBox="0 0 18 18" fill="none" width="18" height="18">
                   <circle cx="9" cy="9" r="9" fill="#2FA60F" />
-                  <path d="M5.5 9.2L7.8 11.5L12.5 6.8" stroke="#FFFFFF" stroke-width="1.88" stroke-linecap="round"
-                    stroke-linejoin="round" />
+                  <path d="M5.5 9.2L7.8 11.5L12.5 6.8" stroke="#FFFFFF" stroke-width="1.88" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
               </span>
               <span class="bundle-perk-text">+ Free shipping</span>
@@ -2279,16 +2353,14 @@
               <span class="bundle-check-icon" aria-hidden="true">
                 <svg viewBox="0 0 18 18" fill="none" width="18" height="18">
                   <circle cx="9" cy="9" r="9" fill="#2FA60F" />
-                  <path d="M5.5 9.2L7.8 11.5L12.5 6.8" stroke="#FFFFFF" stroke-width="1.88" stroke-linecap="round"
-                    stroke-linejoin="round" />
+                  <path d="M5.5 9.2L7.8 11.5L12.5 6.8" stroke="#FFFFFF" stroke-width="1.88" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
               </span>
               <span class="bundle-perk-text">+ Free conditioner</span>
             </li>
           </ul>
 
-          <button type="button" class="bundle-btn bundle-btn-primary" data-bundle-qty="3" data-bundle-price="6999"
-            aria-label="Add 3 Bottles bundle to cart">
+          <button type="button" class="bundle-btn bundle-btn-primary" data-bundle-qty="3" data-bundle-price="6999" aria-label="Add 3 Bottles bundle to cart">
             <span>ADD TO CART</span>
           </button>
         </div>
@@ -2297,26 +2369,26 @@
 
       <!-- Trust Badges Container (4 Badges) -->
       <div class="bundle-trust-card">
-
+        
         <!-- Trust Item 1: 30-Day Money Back -->
         <div class="bundle-trust-item">
           <div class="bundle-trust-icon-wrap" aria-hidden="true">
             <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="16" cy="16" r="14" stroke="#2B3344" stroke-width="1.2" fill="#FFFFFF" />
-              <circle cx="16" cy="16" r="11" stroke="#2B3344" stroke-width="0.8" stroke-dasharray="2 2" />
-              <path d="M12.5 12C13.5 10.8 14.7 10 16 10C18.8 10 21 12.2 21 15C21 15.6 20.9 16.2 20.6 16.7"
-                stroke="#2B3344" stroke-width="1.2" stroke-linecap="round" />
-              <path d="M11 10.5L12.8 12L13.2 9.8" fill="#2B3344" />
-              <path d="M19.5 20C18.5 21.2 17.3 22 16 22C13.2 22 11 19.8 11 17C11 16.4 11.1 15.8 11.4 15.3"
-                stroke="#2B3344" stroke-width="1.2" stroke-linecap="round" />
-              <path d="M21 21.5L19.2 20L18.8 22.2" fill="#2B3344" />
-              <text x="16" y="19" font-family="'Lato', sans-serif" font-size="9" font-weight="700" fill="#2B3344"
-                text-anchor="middle">$</text>
+              <circle cx="16" cy="16" r="14.5" stroke="#5E3A58" stroke-width="1.18" fill="#FFFFFF"/>
+              <circle cx="16" cy="16" r="11.5" stroke="#5E3A58" stroke-width="0.6" stroke-dasharray="2 2" fill="none"/>
+              <path d="M12.5 12C13.5 10.8 14.7 10 16 10C18.8 10 21 12.2 21 15C21 15.6 20.9 16.2 20.6 16.7" stroke="#5E3A58" stroke-width="1.2" stroke-linecap="round"/>
+              <path d="M11 10.5L12.8 12L13.2 9.8" fill="#5E3A58"/>
+              <path d="M19.5 20C18.5 21.2 17.3 22 16 22C13.2 22 11 19.8 11 17C11 16.4 11.1 15.8 11.4 15.3" stroke="#5E3A58" stroke-width="1.2" stroke-linecap="round"/>
+              <path d="M21 21.5L19.2 20L18.8 22.2" fill="#5E3A58"/>
+              <text x="16" y="19" font-family="'Lato', sans-serif" font-size="9" font-weight="700" fill="#5E3A58" text-anchor="middle">$</text>
             </svg>
           </div>
           <div class="bundle-trust-content">
             <strong class="bundle-trust-title">30-Day Money Back</strong>
-            <span class="bundle-trust-desc">Hassle-free money-back option</span>
+            <span class="bundle-trust-desc">
+              <span class="bundle-desc-desktop">Hassle-free money-back option</span>
+              <span class="bundle-desc-mobile">Hassle-free option</span>
+            </span>
           </div>
         </div>
 
@@ -2324,15 +2396,18 @@
         <div class="bundle-trust-item">
           <div class="bundle-trust-icon-wrap" aria-hidden="true">
             <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="16" cy="16" r="14" stroke="#2B3344" stroke-width="1.2" fill="#FFFFFF" />
-              <ellipse cx="16" cy="16" rx="6" ry="10" stroke="#2B3344" stroke-width="1" />
-              <line x1="6" y1="13" x2="26" y2="13" stroke="#2B3344" stroke-width="1" />
-              <line x1="6" y1="19" x2="26" y2="19" stroke="#2B3344" stroke-width="1" />
+              <circle cx="16" cy="16" r="14.5" stroke="#5E3A58" stroke-width="1.18" fill="#FFFFFF"/>
+              <ellipse cx="16" cy="16" rx="6" ry="10" stroke="#5E3A58" stroke-width="1" fill="none"/>
+              <line x1="6" y1="13" x2="26" y2="13" stroke="#5E3A58" stroke-width="1"/>
+              <line x1="6" y1="19" x2="26" y2="19" stroke="#5E3A58" stroke-width="1"/>
             </svg>
           </div>
           <div class="bundle-trust-content">
             <strong class="bundle-trust-title">Insured &amp; Fast Shipping</strong>
-            <span class="bundle-trust-desc">Worldwide delivery to your door</span>
+            <span class="bundle-trust-desc">
+              <span class="bundle-desc-desktop">Worldwide delivery to your door</span>
+              <span class="bundle-desc-mobile">Worldwide delivery</span>
+            </span>
           </div>
         </div>
 
@@ -2340,16 +2415,18 @@
         <div class="bundle-trust-item">
           <div class="bundle-trust-icon-wrap" aria-hidden="true">
             <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="16" cy="16" r="14" stroke="#2B3344" stroke-width="1.2" fill="#FFFFFF" />
-              <rect x="10.5" y="11.5" width="11" height="9" rx="1.5" stroke="#2B3344" stroke-width="1.2" />
-              <path d="M14 10L16 8L18 10" stroke="#2B3344" stroke-width="1.2" stroke-linecap="round"
-                stroke-linejoin="round" />
-              <path d="M16 8V14" stroke="#2B3344" stroke-width="1.2" stroke-linecap="round" />
+              <circle cx="16" cy="16" r="14.5" stroke="#5E3A58" stroke-width="1.18" fill="#FFFFFF"/>
+              <rect x="10.5" y="11.5" width="11" height="9" rx="1.5" stroke="#5E3A58" stroke-width="1.2" fill="none"/>
+              <path d="M14 10L16 8L18 10" stroke="#5E3A58" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M16 8V14" stroke="#5E3A58" stroke-width="1.2" stroke-linecap="round"/>
             </svg>
           </div>
           <div class="bundle-trust-content">
             <strong class="bundle-trust-title">Returns Accepted</strong>
-            <span class="bundle-trust-desc">Easy and simple return process</span>
+            <span class="bundle-trust-desc">
+              <span class="bundle-desc-desktop">Easy and simple return process</span>
+              <span class="bundle-desc-mobile">Easy return process</span>
+            </span>
           </div>
         </div>
 
@@ -2357,15 +2434,18 @@
         <div class="bundle-trust-item">
           <div class="bundle-trust-icon-wrap" aria-hidden="true">
             <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="16" cy="16" r="14" stroke="#2B3344" stroke-width="1.2" fill="#FFFFFF" />
-              <rect x="9.5" y="12" width="13" height="9" rx="1.5" stroke="#2B3344" stroke-width="1.2" />
-              <line x1="9.5" y1="15" x2="22.5" y2="15" stroke="#2B3344" stroke-width="1.2" />
-              <rect x="12" y="17" width="2.5" height="2" rx="0.5" fill="#2B3344" />
+              <circle cx="16" cy="16" r="14.5" stroke="#5E3A58" stroke-width="1.18" fill="#FFFFFF"/>
+              <rect x="9.5" y="12" width="13" height="9" rx="1.5" stroke="#5E3A58" stroke-width="1.2" fill="none"/>
+              <line x1="9.5" y1="15" x2="22.5" y2="15" stroke="#5E3A58" stroke-width="1.2"/>
+              <rect x="12" y="17" width="2.5" height="2" rx="0.5" fill="#5E3A58"/>
             </svg>
           </div>
           <div class="bundle-trust-content">
             <strong class="bundle-trust-title">Secure Payment</strong>
-            <span class="bundle-trust-desc">Protected and safe transactions</span>
+            <span class="bundle-trust-desc">
+              <span class="bundle-desc-desktop">Protected and safe transactions</span>
+              <span class="bundle-desc-mobile">Protected transactions</span>
+            </span>
           </div>
         </div>
 
@@ -2408,7 +2488,7 @@
                   class="ugc-video-img" loading="lazy">
                 <div class="ugc-play-btn-circle" aria-hidden="true">
                   <svg width="18" height="21" viewBox="0 0 18 21" fill="none">
-                    <path d="M17 10.5L1 19.5981L1 1.40192L17 10.5Z" fill="#2C3452" />
+                    <path d="M17 10.5L1 19.5981L1 1.40192L17 10.5Z" fill="#4A2346" />
                   </svg>
                 </div>
               </div>
@@ -2422,7 +2502,7 @@
                   class="ugc-video-img" loading="lazy">
                 <div class="ugc-play-btn-circle" aria-hidden="true">
                   <svg width="18" height="21" viewBox="0 0 18 21" fill="none">
-                    <path d="M17 10.5L1 19.5981L1 1.40192L17 10.5Z" fill="#2C3452" />
+                    <path d="M17 10.5L1 19.5981L1 1.40192L17 10.5Z" fill="#4A2346" />
                   </svg>
                 </div>
               </div>
@@ -2436,7 +2516,7 @@
                   class="ugc-video-img" loading="lazy">
                 <div class="ugc-play-btn-circle" aria-hidden="true">
                   <svg width="18" height="21" viewBox="0 0 18 21" fill="none">
-                    <path d="M17 10.5L1 19.5981L1 1.40192L17 10.5Z" fill="#2C3452" />
+                    <path d="M17 10.5L1 19.5981L1 1.40192L17 10.5Z" fill="#4A2346" />
                   </svg>
                 </div>
               </div>
@@ -2450,7 +2530,7 @@
                   class="ugc-video-img" loading="lazy">
                 <div class="ugc-play-btn-circle" aria-hidden="true">
                   <svg width="18" height="21" viewBox="0 0 18 21" fill="none">
-                    <path d="M17 10.5L1 19.5981L1 1.40192L17 10.5Z" fill="#2C3452" />
+                    <path d="M17 10.5L1 19.5981L1 1.40192L17 10.5Z" fill="#4A2346" />
                   </svg>
                 </div>
               </div>
@@ -2464,7 +2544,7 @@
                   class="ugc-video-img" loading="lazy">
                 <div class="ugc-play-btn-circle" aria-hidden="true">
                   <svg width="18" height="21" viewBox="0 0 18 21" fill="none">
-                    <path d="M17 10.5L1 19.5981L1 1.40192L17 10.5Z" fill="#2C3452" />
+                    <path d="M17 10.5L1 19.5981L1 1.40192L17 10.5Z" fill="#4A2346" />
                   </svg>
                 </div>
               </div>
@@ -2914,27 +2994,82 @@
       });
     });
 
-    // 3. Thumbnail Gallery Picker
-    const mainImg = document.getElementById('mainProductImage');
+    // 3. Main Product Swiper Gallery & Thumbnail Synchronization
+    const gallerySwiperEl = document.getElementById('mainProductSwiper');
     const thumbBtns = document.querySelectorAll('.thumb-item');
     const galleryCurrentIndex = document.getElementById('galleryCurrentIndex');
+    const prevBtn = document.querySelector('.thumb-nav-btn.prev');
+    const nextBtn = document.querySelector('.thumb-nav-btn.next');
 
-    thumbBtns.forEach((thumb, idx) => {
-      thumb.addEventListener('click', () => {
-        thumbBtns.forEach(t => t.classList.remove('active'));
-        thumb.classList.add('active');
-        const newSrc = thumb.getAttribute('data-img');
-        const index = thumb.getAttribute('data-index') || (idx + 1);
-        if (galleryCurrentIndex) galleryCurrentIndex.textContent = index;
-        if (mainImg && newSrc) {
-          mainImg.style.opacity = '0.4';
-          setTimeout(() => {
-            mainImg.src = newSrc;
-            mainImg.style.opacity = '1';
-          }, 120);
+    let mainProductSwiper = null;
+
+    function syncThumbnails(activeIndex) {
+      if (galleryCurrentIndex) {
+        galleryCurrentIndex.textContent = activeIndex + 1;
+      }
+      thumbBtns.forEach((thumb, i) => {
+        if (i === activeIndex) {
+          thumb.classList.add('active');
+          thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        } else {
+          thumb.classList.remove('active');
         }
       });
-    });
+    }
+
+    if (gallerySwiperEl && typeof Swiper !== 'undefined') {
+      mainProductSwiper = new Swiper(gallerySwiperEl, {
+        slidesPerView: 1,
+        spaceBetween: 0,
+        speed: 350,
+        grabCursor: true,
+        rewind: true,
+        watchOverflow: true,
+        touchRatio: 1,
+        threshold: 5,
+        resistanceRatio: 0.85,
+        on: {
+          init: function () {
+            syncThumbnails(this.activeIndex);
+          },
+          slideChange: function () {
+            syncThumbnails(this.activeIndex);
+          }
+        }
+      });
+
+      // Prev Button navigation click
+      if (prevBtn) {
+        prevBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          if (mainProductSwiper) {
+            mainProductSwiper.slidePrev();
+          }
+        });
+      }
+
+      // Next Button navigation click
+      if (nextBtn) {
+        nextBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          if (mainProductSwiper) {
+            mainProductSwiper.slideNext();
+          }
+        });
+      }
+
+      // Thumbnails click
+      thumbBtns.forEach((thumb, idx) => {
+        thumb.addEventListener('click', (e) => {
+          e.preventDefault();
+          if (mainProductSwiper) {
+            mainProductSwiper.slideTo(idx);
+          }
+        });
+      });
+    }
 
     // 4. Bundle Quantity Selector & Dynamic Reward Unlock
     const bundleCards = document.querySelectorAll('.bundle-card');
@@ -3239,34 +3374,23 @@
     const ugcSwiperContainer = document.getElementById('ugcVideosSwiper');
     if (ugcSwiperContainer && typeof Swiper !== 'undefined') {
       new Swiper(ugcSwiperContainer, {
-        slidesPerView: 1.1, // Screen <= 390px shows 1.1 cards
-        spaceBetween: 14,
+        slidesPerView: 2.15,
+        spaceBetween: 12,
         grabCursor: true,
         watchOverflow: true,
-        pagination: {
-          el: '.ugc-swiper-pagination',
-          clickable: true,
-        },
         breakpoints: {
-          390: {
-            slidesPerView: 1.1, // After 390px shows 1.1 cards
+          520: {
+            slidesPerView: 2.5,
             spaceBetween: 14
           },
-          430: {
-            slidesPerView: 1.5, // After 430px shows 1.5 cards
-            spaceBetween: 16
-          },
-          640: {
-            slidesPerView: 2.5,
-            spaceBetween: 16
-          },
-          840: {
+          769: {
             slidesPerView: 3.5,
-            spaceBetween: 18
+            spaceBetween: 16
           },
           1025: {
             slidesPerView: 5,
-            spaceBetween: 20
+            spaceBetween: 20,
+            allowTouchMove: false
           }
         }
       });

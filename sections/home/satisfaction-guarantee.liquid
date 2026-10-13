@@ -13,7 +13,7 @@
 {%- if section.settings.enable_section -%}
   <section 
     class="guarantee-section" 
-    id="satisfactionGuarantee-{{ section.id }}" 
+    id="satisfactionGuarantee" 
     aria-label="30-Day Satisfaction Guarantee"
   >
     <div class="guarantee-container">
@@ -21,9 +21,41 @@
       <!-- DESKTOP BANNER CARD (> 768px) -->
       <div 
         class="guarantee-banner-card"
-        style="{% if section.settings.bg_image != blank %}background-image: url('{{ section.settings.bg_image | image_url: width: 1400 }}');{% endif %}"
+        style="{% if section.settings.card_bg_color != blank %}background-color: {{ section.settings.card_bg_color }};{% endif %}{% if section.settings.bg_image != blank %}background-image: url('{{ section.settings.bg_image | image_url: width: 1400 }}');{% endif %}"
       >
         
+        <!-- Background Wavy Decor -->
+        <div class="guarantee-waves-decor" aria-hidden="true">
+          <svg class="guarantee-wave-svg" viewBox="0 0 1024 380" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <path d="M-40 130 C 160 50, 240 230, 460 150 C 660 70, 770 190, 1060 90" stroke="#E1E4EB" stroke-width="2.2" fill="none" />
+            <path d="M-60 270 C 130 170, 310 330, 540 210 C 740 110, 870 260, 1080 150" stroke="#E1E4EB" stroke-width="1.8" fill="none" />
+            <path d="M180 -10 C 360 110, 500 -30, 700 85 C 860 180, 950 45, 1100 125" stroke="#E8EAF0" stroke-width="1.8" fill="none" />
+          </svg>
+        </div>
+
+        <!-- Left Visual: Model holding Provenwell product -->
+        <div class="guarantee-visual-col">
+          {%- if section.settings.model_image != blank -%}
+            <img 
+              src="{{ section.settings.model_image | image_url: width: 900 }}" 
+              alt="{{ section.settings.model_image.alt | default: '30-Day Satisfaction Guarantee' | escape }}" 
+              class="guarantee-model-img" 
+              loading="lazy" 
+              width="500" 
+              height="500"
+            >
+          {%- else -%}
+            <img 
+              src="{{ 'guarantee-model.png' | asset_url }}" 
+              alt="30-Day Satisfaction Guarantee" 
+              class="guarantee-model-img" 
+              loading="lazy" 
+              width="500" 
+              height="500"
+            >
+          {%- endif -%}
+        </div>
+
         <!-- Right Content: Titles, Description & CTA -->
         <div class="guarantee-content-col">
           
@@ -58,10 +90,10 @@
       <div class="guarantee-mobile-card">
         
         <div class="guarantee-mobile-visual">
-          {%- if section.settings.bg_image != blank -%}
-            <img src="{{ section.settings.bg_image | image_url: width: 800 }}" alt="30-Day Satisfaction Guarantee" class="guarantee-mob-img" loading="lazy">
+          {%- if section.settings.model_image != blank -%}
+            <img src="{{ section.settings.model_image | image_url: width: 800 }}" alt="{{ section.settings.model_image.alt | default: '30-Day Satisfaction Guarantee' | escape }}" class="guarantee-mob-img" loading="lazy" width="400" height="400">
           {%- else -%}
-            <img src="{{ 'guarantee-bg.png' | asset_url }}" alt="30-Day Satisfaction Guarantee" class="guarantee-mob-img" loading="lazy">
+            <img src="{{ 'guarantee-model.png' | asset_url }}" alt="30-Day Satisfaction Guarantee" class="guarantee-mob-img" loading="lazy" width="400" height="400">
           {%- endif -%}
         </div>
 
@@ -105,9 +137,20 @@
       "default": "#FFFFFF"
     },
     {
+      "type": "color",
+      "id": "card_bg_color",
+      "label": "Card Background Color",
+      "default": "#F8F9FB"
+    },
+    {
+      "type": "image_picker",
+      "id": "model_image",
+      "label": "Model Image"
+    },
+    {
       "type": "image_picker",
       "id": "bg_image",
-      "label": "Banner Background Image"
+      "label": "Custom Background Image"
     },
     {
       "type": "text",
@@ -142,8 +185,7 @@
     {
       "type": "url",
       "id": "cta_link",
-      "label": "Button Link",
-      "default": "/#chooseBundle"
+      "label": "Button Link"
     }
   ],
   "presets": [

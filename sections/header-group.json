@@ -1,0 +1,25 @@
+{
+  "name": "Header",
+  "type": "header",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "settings": {
+        "show_announcement": true,
+        "text": "FALL SALE IS LIVE"
+      }
+    },
+    "header": {
+      "type": "header",
+      "settings": {
+        "logo_width": 130,
+        "menu": "main-menu",
+        "enable_country_selector": true
+      }
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "header"
+  ]
+}
